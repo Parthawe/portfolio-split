@@ -1,3 +1,4 @@
+import { projectLink } from '../../config/portfolio'
 import { Link } from 'react-router-dom'
 import { getProject } from '../../data/projects'
 import { projectImageProps } from '../../utils/projectImage'
@@ -20,7 +21,7 @@ export default function RelatedProjectEvidence({ slug }: { slug: string }) {
     <div>{items.map(item => {
       const project = getProject(item.slug)
       const src = project?.cover16x9 || project?.image
-      return <Link key={item.slug} to={`/${item.slug}`}>
+      return <Link key={item.slug} to={projectLink(`/${item.slug}`)}>
         {src && <img {...projectImageProps(src)} src={src} alt="" loading="lazy" />}
         <span><strong>{item.title}</strong><span>{item.note}</span></span>
       </Link>

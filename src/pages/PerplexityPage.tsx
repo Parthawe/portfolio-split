@@ -199,7 +199,7 @@ const proof = [
     title: 'TransFi',
     label: 'Product-state motion proposal',
     body: 'A proposed transaction story built from original product states, using timing and continuity to make each step observable.',
-    image: '/Assets/Projects/Transfi/public/Frame 427318646.png',
+    image: '/Assets/Projects/Transfi/public/Group%20550.png',
     href: '/motion/transfi-identity-motion',
   },
   {
