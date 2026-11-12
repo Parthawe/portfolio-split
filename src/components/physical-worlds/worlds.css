@@ -58,8 +58,21 @@
 
 .jugalbandi-instruments { display: flex; flex-wrap: wrap; gap: .25rem; padding: 0 1rem .75rem; }
 .jugalbandi-instruments button { border-color: var(--world-rule); min-height: 44px; }
-.world-story { padding: 1rem; border-top: 1px solid var(--world-rule); }
-.world-story p { margin: .5rem 0 0; color: var(--world-muted); line-height: 1.6; }
+.world-story {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
+  padding: clamp(1rem, 3vw, 1.5rem);
+  border-bottom: 1px solid var(--world-rule);
+}
+.world-story h2, .world-story h3 { color: var(--world-ink); margin: 0; }
+.world-story h2 { font: 500 clamp(1.125rem, 2.4vw, 1.5rem)/1.2 var(--sans); }
+.world-story h3 { font: 500 1.125rem/1.25 var(--sans); }
+.world-story__scene p { margin: .3rem 0 0; font-size: var(--text-sm); line-height: 1.45; }
+.world-story__scene p:first-child { margin: 0 0 .35rem; color: var(--world-muted); font-size: var(--text-xs); }
+@media (max-width: 680px) {
+  .world-story { grid-template-columns: minmax(0, 1fr); }
+}
 .world-evidence { margin: 0 0 1rem; }
 .world-evidence summary { cursor: pointer; padding: .75rem 0; }
 .world-evidence img { display: block; width: min(100%, 680px); max-height: 520px; object-fit: contain; margin-block: 1rem; }
@@ -79,8 +92,10 @@
 
 .physical-world > header .physical-world-actions > .glass-segments { flex-wrap:nowrap; min-width:0; }
 @media(max-width:680px) { .physical-world > header .physical-world-actions { display:grid; grid-template-columns:minmax(0,1fr) auto; width:100%; } .physical-world > header .physical-world-actions > .glass-segments { display:flex; width:100%; } .physical-world > header .physical-world-actions > .glass-segments button { min-width:0; padding-inline:8px; } .physical-world > header .physical-world-actions > button:not(.glass-action) { grid-column:1/-1; } }
-.world-turn-actions { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:16px; }
+.world-turn-actions { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
 .world-turn-actions button { border-color:var(--world-rule); }
+.world-turn-actions button:first-child { background:var(--world-selected); }
+.world-turn-actions button:disabled { opacity:.5; cursor:default; }
 .physical-world-stage.world-original-experiment { height:auto; }
 .physical-world .world-original-experiment .physical-world-hint { display:block; position:static; width:auto; max-width:none; margin:0; padding:12px 16px; border-radius:0; line-height:1.6; }
 .world-original-experiment [tabindex="0"]:focus-visible { outline:3px solid var(--world-accent); outline-offset:-3px; }
@@ -119,6 +134,13 @@
 /* Control chrome stays neutral; the mill's original materials keep their colours. */
 .physical-world[data-project="sea-of-salt"] { --world-bg:#f4f4f4; --world-ink:#222; --world-muted:#606060; --world-rule:#bcbcbc; --world-selected:#dedede; --world-accent:#333; }
 .physical-world[data-project="sea-of-salt"][data-world-theme="dark"] { --world-bg:#1e1e1e; --world-ink:#f2f2f2; --world-muted:#bdbdbd; --world-rule:#555; --world-selected:#3b3b3b; --world-accent:#eee; }
+#cs-try .physical-world[data-project="sea-of-salt"] > header { justify-content: flex-end; padding-block: .35rem; }
+#cs-try .project-study { margin: 0; padding: 0; border: 0; }
+#cs-try .physical-world[data-project="sea-of-salt"] > header > p { display: none; }
+#cs-try .physical-world-stage { height: clamp(280px, 38vw, 440px); }
+@media (max-width: 680px) {
+  #cs-try .physical-world-stage { height: 280px; }
+}
 
 /* Enigma alone: keep the signal legend next to the working tablet and lights. */
 .enigma-signal-path { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; list-style:none; padding:16px 20px; margin:0; border-top:1px solid var(--world-rule); }

@@ -189,9 +189,28 @@ export default function RoomScene(props: Props) {
       box(1.6,.045,.28,black,root,0,.855,.72);box(1.3,.015,.035,silver,root,0,.89,.72)
       const cap=box(.12,.06,.11,white,root,-.65,.92,.72);pick(cap,0)
       label('WHY THE SEA IS SALT',2.0,.20,root,0,.58,1.12)
-      const grains=new T.InstancedMesh(new T.IcosahedronGeometry(.015,0),white,900);root.add(grains);const dummy=new T.Object3D();let highest=0
-      updates.push((values,time)=>{highest=Math.max(highest,values[0]);grains.count=Math.round(highest*9);cap.position.x=(values[0]/100-.5)*1.3;crank.rotation.y=values[0]/100*Math.PI*8
-        for(let i=0;i<grains.count;i++){const angle=i*2.39996,radius=.22+Math.sqrt(i/900)*.8;dummy.position.set(Math.cos(angle)*radius,.845+Math.max(0,.18-radius*.15)+.015*Math.sin(i),-.25+Math.sin(angle)*radius);dummy.rotation.set(i,i*1.2,time*0);dummy.updateMatrix();grains.setMatrixAt(i,dummy.matrix)}grains.instanceMatrix.needsUpdate=true})
+      const grains = new T.InstancedMesh(new T.IcosahedronGeometry(.015, 0), white, 900)
+      grains.count = 0
+      // The pile starts empty and grows outside its initial bounds.
+      grains.frustumCulled = false
+      root.add(grains)
+      const grain = new T.Object3D()
+      updates.push(values => {
+        cap.position.x = (values[0] / 100 - .5) * 1.3
+        crank.rotation.y = values[0] / 100 * Math.PI * 8
+        const nextCount = Math.round(values[0] * 9)
+        if (nextCount <= grains.count) return
+        for (let i = grains.count; i < nextCount; i++) {
+          const angle = i * 2.39996
+          const radius = .22 + Math.sqrt(i / 900) * .8
+          grain.position.set(Math.cos(angle) * radius, .845 + Math.max(0, .18 - radius * .15) + .015 * Math.sin(i), -.25 + Math.sin(angle) * radius)
+          grain.rotation.set(i, i * 1.2, 0)
+          grain.updateMatrix()
+          grains.setMatrixAt(i, grain.matrix)
+        }
+        grains.count = nextCount
+        grains.instanceMatrix.needsUpdate = true
+      })
     }
     const revolvingStage=props.project==='revolving-stage'?buildRevolvingStage({root,plywood,black,silver,white,mat,mesh,box,cylinder,pick}):null
     if(revolvingStage){
@@ -277,9 +296,9 @@ export default function RoomScene(props: Props) {
         if(props.project==='sea-of-salt'||blackExhibits){
           root.updateMatrixWorld(true)
           const bounds=blackExhibits?new T.Box3().setFromObject(blackExhibits[state.values[0]]):new T.Box3().setFromObject(root)
-          if(props.project==='sea-of-salt'&&state.cameraView===1)bounds.set(V(-.65,.80,-.90),V(.65,1.60,.40))
+          if(props.project==='sea-of-salt'&&state.cameraView===1)bounds.set(V(-.94,.80,-1.20),V(.94,1.53,.90))
           bounds.getCenter(target)
-          const direction=(state.cameraView===2?V(0,1,.001):state.cameraView===1?V(.16,.38,1):V(.48,.50,1)).normalize()
+          const direction=(state.cameraView===2?V(0,1,.001):state.cameraView===1?V(.16,.66,1):V(.48,.50,1)).normalize()
           const vertical=T.MathUtils.degToRad(camera.fov/2),horizontal=Math.atan(Math.tan(vertical)*camera.aspect),right=V(0,1,0).cross(direction).normalize(),up=direction.clone().cross(right).normalize()
           let distance=.6
           for(const x of[bounds.min.x,bounds.max.x])for(const y of[bounds.min.y,bounds.max.y])for(const z of[bounds.min.z,bounds.max.z]){const point=V(x,y,z).sub(target),depth=point.dot(direction);distance=Math.max(distance,Math.abs(point.dot(right))/Math.tan(horizontal)+depth,Math.abs(point.dot(up))/Math.tan(vertical)+depth)}

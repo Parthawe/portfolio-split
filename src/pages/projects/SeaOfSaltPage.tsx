@@ -33,23 +33,34 @@ export default function SeaOfSaltPage() {
           backLink="/work"
           categorySlug="creative-tech"
           backLabel="Back to Work"
-          tags={['Installation', 'Physical Computing', 'Storytelling', 'Fabrication']}
+          tags={['Installation', 'Physical Computing', 'Storytelling']}
           title="Why the Sea is Salt"
           subtitle="A storytelling machine that grinds real salt as visitors advance a Norse folktale."
           info={[
             { label: 'Collaborator', value: 'Audrey Oh' },
             { label: 'Context', value: 'Storytelling, NYU ITP' },
-                { label: 'Year', value: '2025' },
+            { label: 'Year', value: '2025' },
             { label: 'Tools', value: 'Arduino, Servo Motor, 3D Printing, Laser Cutting' },
           ]}
+          showHeaderSummary={false}
+          heroFraming="image"
+          openingMediaId="cs-try"
+          visualHeroMedia={
+            <div>
+              <DeferredObjectStudy project="sea-of-salt" />
+              <section className="public-workflow-contribution" aria-labelledby="salt-contribution-title">
+                <h2 id="salt-contribution-title">What I designed</h2>
+                <p>I co-created the installation with Audrey Oh at NYU ITP. I designed and fabricated the salt mill and its platform, and mapped the story slider to motor speed. The mill ground faster as the visitor approached the shipwreck, and the black platform made the growing pile of white salt visible.</p>
+              </section>
+            </div>
+          }
         />
 
-        {/* Hero photos */}
-        <section className="cs-section reveal">
+        <section id="cs-original-object" className="cs-section reveal" aria-label="Original installation photographs">
           <div className="wrap">
             <div className="cs-img-grid project-image-grid--two">
-              <div className="cs-img reveal"><img {...projectImageProps("/Assets/Projects/sea-of-salt/photos/salt-ground.webp")} data-project-preview src="/Assets/Projects/sea-of-salt/photos/salt-ground.webp" alt="Salt mill grinding salt onto the black platform as the story advances" loading="eager" /></div>
-              <div className="cs-img reveal"><img {...projectImageProps("/Assets/Projects/sea-of-salt/photos/overview.webp")} data-project-preview src="/Assets/Projects/sea-of-salt/photos/overview.webp" alt="Why the Sea is Salt: white cylindrical mill on black platform with story slider" loading="eager" /></div>
+              <div className="cs-img reveal"><img {...projectImageProps("/Assets/Projects/sea-of-salt/photos/salt-ground.webp")} data-project-preview src="/Assets/Projects/sea-of-salt/photos/salt-ground.webp" alt="Ground salt spread across the original installation’s black platform" loading="lazy" /></div>
+              <div className="cs-img reveal"><img {...projectImageProps("/Assets/Projects/sea-of-salt/photos/overview.webp")} data-project-preview src="/Assets/Projects/sea-of-salt/photos/overview.webp" alt="Why the Sea is Salt: white cylindrical mill on black platform with story slider" loading="lazy" /></div>
             </div>
           </div>
         </section>
@@ -83,16 +94,6 @@ export default function SeaOfSaltPage() {
             <p>The piece asks one question: <strong>what if advancing a story had physical consequences?</strong></p>
             <p>Every inch of the slider adds salt to the room. The mill cannot stop, the salt keeps accumulating, and reading becomes a physical act.</p>
           </CsBody>
-        </CsSection>
-
-        {/* Interactive — salt simulation */}
-        <CsSection id="cs-try" label="Interactive" title="Grind the Story">
-          <CsBody>
-            <p>Turn the mill directly to advance the story and build up the salt. The original installation used a linear potentiometer to control motor speed; direct rotation is the browser interpretation. Reset begins a new telling.</p>
-          </CsBody>
-          <div className="project-content-block">
-            <DeferredObjectStudy project="sea-of-salt" />
-          </div>
         </CsSection>
 
         {/* Mill detail photos */}
@@ -155,6 +156,7 @@ export default function SeaOfSaltPage() {
         </CsExpandPreview>
 
         <BottomNav sections={[
+          { id: 'cs-try', label: 'Turn the mill' },
           { id: 'cs-folktale', label: 'The Folktale' },
           { id: 'cs-installation', label: 'Installation' },
           { id: 'cs-system', label: 'How It Works' },

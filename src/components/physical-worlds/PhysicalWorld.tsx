@@ -11,6 +11,13 @@ import CompactSheet from '../CompactSheet'
 const RoomScene = lazy(() => import('./RoomScene'))
 const OriginalLensing=lazy(()=>import('../BlackHoleInteractives').then(module=>({default:()=> <module.GravLensing interactiveOnly/>})))
 
+const saltStory = [
+  { start: 0, title: 'The gift is found', text: 'An enchanted mill is given to a poor man.' },
+  { start: 25, title: 'The mill begins', text: 'The mill produces whatever its owner asks for.' },
+  { start: 55, title: 'The captain loses control', text: 'A captain takes the mill and asks for salt. He does not know how to stop it.' },
+  { start: 82, title: 'The sea fills with salt', text: 'The accumulating salt sinks the ship. The mill keeps grinding beneath the sea.' },
+]
+
 export default function PhysicalWorld({ project }: { project: WorldKey }) {
   const spec = worlds[project]
   const [values, setValues] = useState<number[]>([...spec.initial])
@@ -74,7 +81,27 @@ export default function PhysicalWorld({ project }: { project: WorldKey }) {
     {project==='jugalbandi'&&<div className="physical-world-sound"><label><input type="checkbox" checked={sound} onChange={event=>{setSound(event.target.checked);if(!event.target.checked)void audio.current?.suspend()}}/> Enable synthesized sound</label><p>{sound?'Sound on · browser synthesis, not an installation recording.':'Sound off · mechanisms remain interactive.'}</p>{['Pluck string','Play flute','Tilt rainstick'].map((label,index)=><button key={label} onClick={()=>play(index)}>{label}</button>)}</div>}
   </div>
   const explanation = project==='enigma'&&enigma.mode==='draw'?`${strokes} drawing stroke${strokes===1?'':'s'}. Your strokes drive the front 8 × 8 lights and illustrative signal mixing. ${enigma.label===null?'Choose a letter below to label the drawing.':`Label: ${String.fromCharCode(65+enigma.label)}. The rear light shows your chosen label.`} No automatic letter recognition is used.`:project==='enigma'?`Letter ${String.fromCharCode(65+values[0])}: the front 8 × 8 input samples its shape. Two intermediate layers mix nearby signals. The rear alphabet lights the selected letter directly; this is not a learned prediction.`:project==='black-hole'?values[0]===0?`The right clock runs at ${Math.round(15+.85*values[1])}% of the left reference clock’s speed. Move it closer to the central sphere to slow it down; move it away to speed it up. Hands are accelerated to show the difference. Rates are illustrative.`:values[0]===3?'Light lensing: move the lens through the star field in the original browser demonstration. Mass changes its illustrative distortion; this is not a calculated optical model. The paired wormhole artifact remains documented in the source photograph.':values[0]===1?`Spacetime fabric: depth ${(0.08+values[1]/100*.30).toFixed(2)} model units. The surface dips under the central mass; depth is an explanatory setting, not a calculated field.`:`Binary ${['inspiral','merger','ringdown'][values[2]??0]}: ${['two masses orbit with adjustable separation','the joined mass deforms through the transition','the merged mass settles as disturbance decreases'][values[2]??0]}. Qualitative motion, not numerical relativity.`:project==='revolving-stage'?`Deck turned ${Math.round(values[0])}°. ${values[1]?'Cutaway: the deck is lifted to reveal the stationary 8 × 8 ft base, central bearing and 16 casters.':'Assembled: the 15 × 8 ft deck carries the scene over a stationary supporting base.'}`:project==='jugalbandi'?(actionMessage||'Choose a close view, then operate a string, flute actuator or rainstick. Sound must be enabled explicitly.'):`Mill position ${(values[0]/25).toFixed(1)} turns. Salt accumulated through ${(saltPeak/25).toFixed(1)} turns. Turning backward revisits the story; deposited salt remains until reset.`
+  const saltSceneIndex = saltStory.findIndex((_, index) => values[0] < (saltStory[index + 1]?.start ?? Infinity))
+  const saltScene = saltStory[saltSceneIndex]
+  const nextSaltScene = saltStory[saltSceneIndex + 1]
+  const evidencePath = project === 'sea-of-salt' ? '/sea-of-salt#cs-original-object' : `/${project}`
   return <div className="physical-world" data-project={project} data-world-theme={dark?'dark':'light'}>
+    {project === 'sea-of-salt' && (
+      <section className="world-story" aria-labelledby="salt-story-title">
+        <div>
+          <h2 id="salt-story-title">Turn the mill to tell the story</h2>
+          <div className="world-turn-actions">
+            <button type="button" disabled={!nextSaltScene} onClick={() => nextSaltScene && change(0, nextSaltScene.start)}>Turn to next scene</button>
+            <button type="button" disabled={saltSceneIndex === 0} onClick={() => change(0, saltStory[saltSceneIndex - 1].start)}>Previous scene</button>
+          </div>
+        </div>
+        <div className="world-story__scene" role="status" aria-atomic="true">
+          <p>Scene {saltSceneIndex + 1} of {saltStory.length}</p>
+          <h3>{saltScene.title}</h3>
+          <p>{saltScene.text}</p>
+        </div>
+      </section>
+    )}
     <header><p>{spec.setting}</p><div className="physical-world-actions">{!(project==='black-hole'&&values[0]===3)&&<div className="glass-segments" role="group" aria-label="Camera view">{['Overview','Object','Overhead'].map((label,i)=><button key={label} disabled={failed} aria-pressed={camera===i} onClick={()=>{setBeforeReset(null);if(project==='enigma')setFocus(0);setCamera(i);setRevision(n=>n+1)}}>{label}</button>)}</div>}<button className="glass-action" ref={resetButton} aria-label="Reset" onClick={reset}>{resetNotice?'Reset done':'Reset'}</button>{beforeReset&&project!=='sea-of-salt'&&project!=='enigma'&&<button onClick={()=>{setValues(beforeReset.values);setCamera(beforeReset.camera);setFocus(beforeReset.focus);setBeforeReset(null);setStatusMessage('Previous settings restored');resetButton.current?.focus();setRevision(n=>n+1)}}>Undo reset</button>}</div></header>
     {project==='jugalbandi'&&<div className="world-primary"><label>Instrument<select aria-label="Inspect an instrument" value={focus} onChange={event=>{const next=Number(event.target.value);setBeforeReset(null);setFocus(next);setCamera(next?1:0);setRevision(n=>n+1)}}>{['Ensemble','Hexa-18','Harp','Flute','Rainsticks'].map((label,index)=><option key={label} value={index}>{label}</option>)}</select></label></div>}
     {project==='revolving-stage'&&<div className="jugalbandi-instruments glass-segments" role="group" aria-label="Stage scenes">{[['Building',0],['Corner',90],['Garden',180]].map(([label,angle])=><button key={label} aria-pressed={values[0]===angle} onClick={()=>{change(0,Number(angle));change(1,0)}}>{label}</button>)}</div>}
@@ -91,7 +118,6 @@ export default function PhysicalWorld({ project }: { project: WorldKey }) {
     {project==='enigma'&&<div className="enigma-letter-keys" role="group" aria-label="Choose an input letter">{Array.from({length:26},(_,i)=><button key={i} aria-pressed={(enigma.mode==='draw'?enigma.label:values[0])===i} aria-label={`Input ${String.fromCharCode(65+i)}`} onClick={()=>{if(enigma.mode==='draw')setEnigma(old=>({...old,label:i}));else change(0,i)}}>{String.fromCharCode(65+i)}</button>)}</div>}
     {project!=='enigma'&&<div className="world-desktop-controls">{controls}</div>}
     {toolsOpen&&<CompactSheet title="Project controls" id={`world-controls-${project}`} returnFocus={toolsButton.current} onClose={()=>setToolsOpen(false)}><div className="physical-world" data-project={project} data-world-theme={dark?'dark':'light'}>{controls}</div></CompactSheet>}
-    {project==='sea-of-salt'&&<div className="world-story"><div className="world-turn-actions"><button disabled={values[0]>=100} onClick={()=>change(0,Math.min(100,values[0]+6.25))}>Turn clockwise ¼ turn</button><button disabled={values[0]<=0} onClick={()=>change(0,Math.max(0,values[0]-6.25))}>Turn backward ¼ turn</button></div><strong>{values[0]<25?'The gift is found':values[0]<55?'The mill begins':values[0]<82?'The command breaks loose':'The sea fills with salt'}</strong><p>{values[0]<25?'An enchanted mill is given to a poor man.':values[0]<55?'The mill can produce what its owner asks for.':values[0]<82?'A captain takes the mill but does not know how to stop it.':'The accumulating salt sinks the ship. The mill continues beneath the sea.'}</p><p>Story position follows the current mill turns. Accumulation records the furthest turn reached; reverse movement does not remove deposited salt.</p></div>}
-    <footer><p>{spec.note}</p><Link to={`/${project}`}>Original project evidence</Link></footer>
+    <footer><p>{project === 'sea-of-salt' ? 'In this browser reconstruction, turning the mill advances the story. The original installation used a slider to change grinding speed.' : spec.note}</p><Link to={evidencePath}>Original project evidence</Link></footer>
   </div>
 }
