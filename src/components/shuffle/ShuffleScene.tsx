@@ -10,6 +10,7 @@ type Props = {
   view: ShuffleView
   dark: boolean
   reduced: boolean
+  featured: boolean
   viewRevision: number
   onChange: (key: Key, value: number) => void
   onFail: () => void
@@ -104,7 +105,7 @@ export default function ShuffleScene(props: Props) {
     renderer.shadowMap.enabled = true; renderer.shadowMap.autoUpdate = false; renderer.shadowMap.needsUpdate = true; renderer.shadowMap.type = THREE.PCFSoftShadowMap
     renderer.outputColorSpace = THREE.SRGBColorSpace
     renderer.toneMapping = THREE.ACESFilmicToneMapping; renderer.toneMappingExposure = 1.05
-    renderer.domElement.setAttribute('aria-label', 'Interactive 3D Shuffle board. Use slider controls below for keyboard access.')
+    renderer.domElement.setAttribute('aria-label', 'Interactive 3D Shuffle board. Use the slider controls for keyboard access.')
     renderer.domElement.setAttribute('role', 'img')
     host.appendChild(renderer.domElement)
     const scene = new THREE.Scene(); scene.background = new THREE.Color(latest.current.dark ? '#1b1d1a' : '#eae6de')
@@ -279,7 +280,9 @@ export default function ShuffleScene(props: Props) {
       activity?.wake()
       const w = host.clientWidth; const h = host.clientHeight
       renderer.setSize(w, h); camera.aspect = w / h
-      camera.fov = w < 600 ? 46 : 36; camera.updateProjectionMatrix()
+      const standardFov = w < 600 ? 46 : 36
+      camera.fov = standardFov - (latest.current.featured ? 7 : 0)
+      camera.updateProjectionMatrix()
     }
     const observer = new ResizeObserver(resize); observer.observe(host); resize()
     const render = (delta: number) => {

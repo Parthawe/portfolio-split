@@ -38,18 +38,30 @@ export default function ShufflePage() {
           tags={['Creative Technology', 'Physical Computing', 'Installation']}
           title="Shuffle"
           heroFraming="image"
-          subtitle="A motorized-fader board where every student-life priority has a cost"
+          subtitle="Push one fader and the others move. A physical game about balancing student life."
           info={[
-                { label: 'Year', value: '2023' },
+            { label: 'Year', value: '2023' },
             { label: 'Role', value: 'Interaction designer + fabricator' },
           ]}
+          showHeaderSummary={false}
+          openingMediaId="cs-interactive"
+          visualHeroMedia={
+            <div>
+              <ShuffleInteractive featured />
+              <section className="public-workflow-contribution" aria-labelledby="shuffle-contribution-title">
+                <h2 id="shuffle-contribution-title">What I designed</h2>
+                <p>I designed and built the eight-fader board at NYU ITP. I chose which student priorities would affect each other and programmed the Arduino to move the other motorized faders when someone pushed one. I made the angled plywood enclosure and 3D-printed the slider caps.</p>
+                <Link className="glass-action" to="/shuffle/simulation">Open the standalone simulation</Link>
+              </section>
+            </div>
+          }
         />
 
         <CsMediaSpotlight
           id="cs-film"
-          label="Watch first"
-          title="Time as sliders"
-          lede="The video shows the physical idea quickly: every choice changes the balance of student life, and the board makes those tradeoffs visible."
+          label="Original footage"
+          title="See the physical board in use"
+          lede="Watch the motors move the other faders when someone pushes one by hand."
         >
           <ExternalVideo
             src="https://player.vimeo.com/video/897796834?h=853abf08b1&badge=0&autopause=0&player_id=0&app_id=58479"
@@ -72,18 +84,6 @@ export default function ShufflePage() {
             </div>
           </div>
         </section>
-
-        {/* Interactive demo */}
-        <CsSection id="cs-interactive" label="Interactive" title="Redistribute Your Time">
-          <CsBody>
-            <p className="cs-caption">Browser interpretation of the coupled faders. The film shows the original motorized hardware.</p>
-            <p>Drag a slider to explore the relationships in this browser model. The weights are illustrative design choices, not measured relationships between student habits and outcomes.</p>
-          </CsBody>
-          <div className="project-content-block--roomy">
-            <ShuffleInteractive />
-            <p><Link to="/shuffle/simulation">Open the 3D simulation</Link></p>
-          </div>
-        </CsSection>
 
         <CsSection title="What one slider changes">
           <CsBody>
@@ -183,8 +183,8 @@ export default function ShufflePage() {
         </CsExpandPreview>
 
         <BottomNav sections={[
-          { id: 'cs-film', label: 'Film' },
           { id: 'cs-interactive', label: 'Interactive' },
+          { id: 'cs-film', label: 'Film' },
           { id: 'cs-concept', label: 'Concept' },
           { id: 'cs-process', label: 'Process' },
           { id: 'cs-exhibition', label: 'In Play' },
