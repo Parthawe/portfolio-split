@@ -24,7 +24,11 @@ export default function ClawedChatPage() {
     {id:'cs-glasses',label:'Glasses proposal'},
     {id:'cs-impact',label:'Evidence limits'},
   ]
-  const sections = [{id:'cs-summary',label:'Overview'},...(viewMode === 'full' ? storySections : [])]
+  const sections = [
+    { id: 'cs-clawed-setup', label: 'Mac setup' },
+    { id: 'cs-summary', label: 'Overview' },
+    ...(viewMode === 'full' ? storySections : []),
+  ]
 
   const handleViewModeChange = (nextMode: 'summary' | 'full') => {
     if (nextMode === viewMode) return
@@ -66,7 +70,7 @@ export default function ClawedChatPage() {
           backLabel="Back to Work"
           tags={['AI Assistant', 'Smart Glasses', 'Product Design', 'Full-stack Design']}
           title="Clawed"
-          subtitle="Help someone choose where an assistant runs, then make proposed actions reviewable."
+          subtitle="A web hub that helps people choose where their AI assistant runs and find the right setup guide."
           info={[
             { label: 'Role', value: 'Product Designer (sole designer + 3 engineers)' },
             { label: 'Timeline', value: 'Jan \u2013 Mar 2026 (~10 weeks)' },
@@ -74,8 +78,46 @@ export default function ClawedChatPage() {
             { label: 'Platform', value: 'Web + Smart Glasses (via Mentra integration)' },
           ]}
           liveUrl="https://clawed.chat" liveLabel="Product website"
-          heroImage="/Assets/Projects/Clawed.chat/landing-hero.webp"
-          heroAlt="Clawed.chat landing page: Your AI agent, live in 30 seconds"
+          heroFraming="image"
+          openingMediaId="cs-clawed-setup"
+          visualHeroMedia={
+            <div>
+              <section className="clawed-setup-opening" aria-labelledby="clawed-setup-title">
+                <h2 id="clawed-setup-title">Set up Clawed on your Mac</h2>
+                <ol className="clawed-setup-opening__steps">
+                  <li>
+                    <h3>1. Choose Mac Companion</h3>
+                    <p>The deployment page puts Mac Companion next to Cloud Deploy so you can choose to run Clawed on your own Mac.</p>
+                    <img
+                      src="/Assets/Projects/Clawed.chat/deploy-options.webp"
+                      alt="Original Clawed deployment page with Cloud Deploy on the left and Mac Companion on the right"
+                      width={1281}
+                      height={628}
+                      decoding="async"
+                      data-project-preview
+                    />
+                  </li>
+                  <li>
+                    <h3>2. Find the Mac Companion guide</h3>
+                    <p>In Docs, open Deployment and look for Mac Companion App alongside the Cloud VM and Self-Hosted guides.</p>
+                    <img
+                      src="/Assets/Projects/Clawed.chat/docs-page.webp"
+                      alt="Original Clawed Docs index with Mac Companion App under Deployment in the left sidebar"
+                      width={1483}
+                      height={938}
+                      decoding="async"
+                      data-project-preview
+                    />
+                  </li>
+                </ol>
+                <p className="clawed-setup-opening__source">Original web hub and documentation captures. The walkthrough ends at the guide entry.</p>
+              </section>
+              <section className="public-workflow-contribution" aria-labelledby="clawed-contribution-title">
+                <h2 id="clawed-contribution-title">What I designed</h2>
+                <p>I was the sole product designer, working with three engineers. I designed the launch site and web hub, including the side-by-side hosting choices and the documentation structure that gave each setup path its own guide.</p>
+              </section>
+            </div>
+          }
           showHeaderSummary={false}
         />
 

@@ -4,7 +4,7 @@ export const projectReadingPaths: Record<string, { label: string; id: string }> 
   "mentra-miniapps": { label: "Inspect the Store screens", id: "cs-store-flow" },
   "transfi-project": { label: "See the public work", id: "cs-public-story" },
   "zentipay": { label: "See the public work", id: "cs-public-story" },
-  "clawed-chat": { label: "Inspect the setup choices", id: "cs-webhub" },
+  "clawed-chat": { label: "Follow the Mac setup", id: "cs-clawed-setup" },
   "executivelens": { label: "Try the citation example", id: "cs-demo" },
   "org-dashboard": { label: "See the product decisions", id: "cs-decisions" },
   "cuetv": { label: "Read the public overview", id: "cs-public-story" },

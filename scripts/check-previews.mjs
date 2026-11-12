@@ -12,7 +12,7 @@ const cases = {
   product: {
     heading: 'Designing product systems people trust.',
     caseStudy: ['mentra', 'Mentra'],
-    otherFeatured: [['transfi-project', 'TransFi'], ['clawed-chat', 'Clawed']],
+    otherFeatured: [['transfi-project', 'TransFi']],
   },
   experimental: {
     heading: 'Design That Plays',
@@ -143,6 +143,17 @@ try {
         await expect(trip.locator('img')).toHaveCount(3)
         await trip.locator('img').evaluateAll(images => Promise.all(images.map(image => image.decode())))
         await page.getByRole('heading', { name: 'What I designed', exact: true }).waitFor()
+        assert.equal((await page.goto(`${url}/clawed-chat/`)).status(), 200)
+        const macSetup = page.getByRole('region', { name: 'Set up Clawed on your Mac' })
+        await expect(macSetup.getByRole('heading', { level: 3 })).toHaveText([
+          '1. Choose Mac Companion', '2. Find the Mac Companion guide',
+        ])
+        const setupScreens = macSetup.locator('img')
+        await expect(setupScreens).toHaveCount(2)
+        await setupScreens.evaluateAll(images => Promise.all(images.map(image => image.decode())))
+        const designRole = page.getByRole('region', { name: 'What I designed' })
+        await expect(designRole).toContainText('sole product designer, working with three engineers')
+        assert.ok((await macSetup.boundingBox()).y < (await designRole.boundingBox()).y)
       } else {
         const opening = page.locator('#cs-film')
         const film = opening.getByLabel('Jugalbandi Performance', { exact: true })
