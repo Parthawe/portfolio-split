@@ -1,8 +1,12 @@
+import { isExperimental } from '../config/portfolio'
+
+const signature = isExperimental ? 'design that plays' : 'design which works'
+
 export default function PixelLoaderVisual() {
   const cursorPath = 'M64 174 C150 124 250 110 340 130 C440 154 530 160 620 138 C704 118 792 124 850 154'
 
   return (
-    <div className="loader-orientation" role="status" aria-label="Loading — design which works">
+    <div className="loader-orientation" role="status" aria-label={`Loading ${signature}`}>
       <div className="loader-stage">
         <svg
           className="loader-signature"
@@ -28,7 +32,7 @@ export default function PixelLoaderVisual() {
             textLength="786"
             lengthAdjust="spacingAndGlyphs"
           >
-            design which works
+            {signature}
           </text>
           <circle className="loader-signature-cursor" r="7">
             <animateMotion

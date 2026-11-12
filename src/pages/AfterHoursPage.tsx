@@ -72,7 +72,7 @@ export default function AfterHoursPage() {
     return () => { animation.dispose(); renderer.dispose(); theme.disconnect(); window.removeEventListener('resize', resize); media.removeEventListener('change', syncMotion); surface.removeEventListener('pointerdown', down); surface.removeEventListener('pointermove', move); surface.removeEventListener('pointerup', up); surface.removeEventListener('pointercancel', up); surface.removeEventListener('wheel', wheel); wake.current = () => {} }
   }, [])
   return <div className="after-hours">
-    <Helmet><title>After Hours · Parth Pawar</title><meta name="robots" content="index, follow" /><meta name="googlebot" content="index, follow" /><meta name="description" content="Explore an endless isometric floor of original animated workshops. A playful generative illustration by Parth Pawar." /><link rel="canonical" href="https://designwhich.works/after-hours" /></Helmet>
+    <Helmet><title>After Hours · Parth Pawar</title><meta name="robots" content="noindex, nofollow" /><meta name="googlebot" content="noindex, nofollow" /><meta name="description" content="Explore an endless isometric floor of original animated workshops. A playful generative illustration by Parth Pawar." /><link rel="canonical" href="https://designwhich.works/after-hours" /></Helmet>
     <header className="ah-top"><Link to="/">Parth Pawar</Link><span>A small world, still awake.</span><ThemeToggle /></header>
     <main id="main-content">
       <section className="ah-heading"><div><span className="ah-kicker">An endless illustration / 01</span><h1>After <em>hours.</em></h1></div><p>The lights are on in every workshop.<br />Take a look around. There is no last room.</p></section>

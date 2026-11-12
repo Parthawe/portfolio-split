@@ -228,7 +228,7 @@ export default function HomePage() {
         <div className="wr-hero-web-scrim" aria-hidden="true" />
 
         {isExperimental ? <figure className="plays-hero-object">
-          <img src="/Assets/images/jugalbandi.webp" alt="Jugalbandi, a sculptural instrument for a human–machine duet" fetchPriority="high" />
+          <img src="/Assets/Projects/Jugalbandi/Photos/538A3938_nsquare_23.webp" alt="Jugalbandi, a sculptural instrument for a human–machine duet" fetchPriority="high" />
           <figcaption><Link to="/jugalbandi">Jugalbandi</Link></figcaption>
         </figure> : <div className="wr-hero-still" aria-hidden="true">
           <img src={`/Assets/hero/connected-objects-${heroStillTheme}-480.webp`} srcSet={`/Assets/hero/connected-objects-${heroStillTheme}-480.webp 480w, /Assets/hero/connected-objects-${heroStillTheme}-749.webp 749w`} sizes="(max-width: 767px) 90vw, 52vw" width="749" height="759" alt="" fetchPriority="high" decoding="async" />

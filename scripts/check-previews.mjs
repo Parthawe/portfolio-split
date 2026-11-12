@@ -50,6 +50,7 @@ try {
       assert.equal(await page.locator(`#works a[href$="/${details.other}"]`).count(), 0)
       assert.ok(await page.evaluate(async () => { await document.fonts.ready; return [...document.fonts].some(font => font.status === 'loaded') }))
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1))
+      await page.locator('.page-loader').waitFor({ state: 'detached' })
       if (screenshots) await page.screenshot({ path: `${screenshots}/${variant}-${viewport.width}.png` })
 
       assert.equal((await page.goto(`${url}/work/`)).status(), 200)
@@ -69,8 +70,23 @@ try {
         assert.equal((await page.goto(`${url}/transfi-project/`)).status(), 200)
         await page.getByRole('link', { name: 'Request access on the live portfolio' }).waitFor()
       } else {
+        const film = page.getByLabel('Jugalbandi Performance', { exact: true })
+        await film.waitFor({ state: 'attached' })
+        const duration = await film.evaluate(video => new Promise((resolve, reject) => {
+          const timeout = setTimeout(() => reject(new Error('Film metadata did not load')), 12000)
+          video.addEventListener('loadedmetadata', () => { clearTimeout(timeout); resolve(video.duration) }, { once: true })
+          video.preload = 'metadata'
+          video.load()
+        }))
+        assert.ok(duration > 0)
         assert.equal((await page.goto(`${url}/shuffle/simulation/`)).status(), 200)
         await page.getByRole('heading', { name: /Shuffle/ }).first().waitFor()
+        const controls = page.locator('.shuffle-controls')
+        if (await controls.getAttribute('open') === null) await controls.locator('summary').click()
+        const slider = page.getByRole('slider').first()
+        const before = await slider.inputValue()
+        await slider.press('ArrowRight')
+        assert.notEqual(await slider.inputValue(), before)
       }
       assert.deepEqual(errors, [], `${variant} at ${viewport.width}px`)
       console.log(`${variant} passed at ${viewport.width}px`)
