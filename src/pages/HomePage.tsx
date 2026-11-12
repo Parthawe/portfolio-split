@@ -1,7 +1,7 @@
-import { isExperimental, portfolio } from '../config/portfolio';
+import { isExperimental, portfolio, sibling, siblingHome } from '../config/portfolio';
 import { useThemeMode } from '../hooks/useThemeMode';
 import ExperienceBoundary from '../components/ExperienceBoundary';
-import { useState, useEffect, lazy, Suspense, useRef } from 'react';
+import { useState, useEffect, useCallback, lazy, Suspense, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Nav from '../components/Nav'
@@ -83,6 +83,14 @@ const IDENTITY_SLIDE_INTERVAL_MS = 6500;
 export default function HomePage() {
   const heroStillTheme = useThemeMode() ? 'dark' : 'light';
   const navigate = useNavigate();
+  const navigateFromHero = useCallback((route: string) => {
+    const page = route.slice(1);
+    if (!portfolio.pages.includes(page) && sibling.pages.includes(page)) {
+      window.location.assign(`${siblingHome}${page}/`);
+    } else {
+      navigate(route);
+    }
+  }, [navigate]);
   const [identityTab, setIdentityTab] = useState<(typeof identityTabs)[number]['id']>('who-i-am');
   const [heroWebOpen, setHeroWebOpen] = useState(false);
   const [heroSceneReady, setHeroSceneReady] = useState(false);
@@ -97,7 +105,7 @@ export default function HomePage() {
   const lowPowerDevice = isLowPowerDevice();
   const allowDecorative3D = !prefersReducedMotion;
   // Resolve capability before the deferred mount can race the hook's first effect.
-  const heroSceneUnavailable = isExperimental || !allowDecorative3D || performanceDegraded || !webglAvailable || !canUseWebGL() || heroSceneTimedOut;
+  const heroSceneUnavailable = !allowDecorative3D || performanceDegraded || !webglAvailable || !canUseWebGL() || heroSceneTimedOut;
   useEffect(() => {
     if (!heroSceneUnavailable) return;
     setHeroSceneReady(false);
@@ -208,7 +216,7 @@ export default function HomePage() {
       </Helmet>
 
       <section
-        className={`wr-hero wr-portfolio-hero${isExperimental ? " wr-hero--plays" : ""}${heroSceneReady && !heroSceneUnavailable ? ' is-scene-ready' : ''}${heroSceneUnavailable ? ' wr-hero--no-scene' : ''}${heroWebOpen ? ' wr-hero--web-open' : ''}`}
+        className={`wr-hero wr-portfolio-hero${isExperimental ? ' wr-hero--plays' : ''}${heroSceneReady && !heroSceneUnavailable ? ' is-scene-ready' : ''}${heroSceneUnavailable ? ' wr-hero--no-scene' : ''}${heroWebOpen ? ' wr-hero--web-open' : ''}`}
         id="hero"
         ref={heroRef}
         style={{ position: 'relative' }}
@@ -225,17 +233,14 @@ export default function HomePage() {
           </p>
         </div>
 
-        {isExperimental ? <figure className="plays-hero-object">
-          <img src="/Assets/Projects/Jugalbandi/Photos/538A3938_nsquare_23.webp" alt="Jugalbandi, a sculptural instrument for a human–machine duet" fetchPriority="high" />
-          <figcaption><Link to="/jugalbandi">Jugalbandi</Link></figcaption>
-        </figure> : <div className="wr-hero-still" aria-hidden="true">
+        <div className="wr-hero-still" aria-hidden="true">
           <img src={`/Assets/hero/connected-objects-${heroStillTheme}-480.webp`} srcSet={`/Assets/hero/connected-objects-${heroStillTheme}-480.webp 480w, /Assets/hero/connected-objects-${heroStillTheme}-749.webp 749w`} sizes="(max-width: 767px) 90vw, 52vw" width="749" height="759" alt="" fetchPriority="high" decoding="async" />
-        </div>}
+        </div>
         <div className="wr-hero-3d">
           {mountHeroScene ? (
             <ExperienceBoundary onError={() => setHeroSceneTimedOut(true)}><Suspense fallback={null}>
               <HeroScene
-                onNavigate={navigate}
+                onNavigate={navigateFromHero}
                 onExpandedChange={setHeroWebOpen}
                 onReady={() => {
                   // Keep the existing 2.2s warmup after the first real frame.

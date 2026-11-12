@@ -2207,60 +2207,6 @@ body.page-ready .wr-hero-stage {
   .wr-hero { height:calc(100svh - 3rem); min-height:calc(100svh - 3rem); }
 }
 
-.wr-hero--plays {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  align-items: center;
-  gap: clamp(1.5rem, 5vw, 6rem);
-  padding: clamp(6rem, 12vw, 10rem) max(6vw, 1.25rem) 3rem;
-}
-
-.wr-hero--plays .wr-hero-copy {
-  position: relative;
-  inset: auto;
-  transform: none;
-  grid-area: 1 / 1;
-  width: auto;
-  text-align: left;
-}
-
-.plays-hero-object {
-  position: relative;
-  z-index: 2;
-  grid-area: 1 / 2;
-  margin: 0;
-}
-
-.plays-hero-object img {
-  display: block;
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-}
-
-.plays-hero-object figcaption {
-  margin-top: .65rem;
-  font-size: .8rem;
-}
-
-@media (max-width: 900px) {
-  .wr-hero--plays {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 1.25rem;
-    height: auto;
-    min-height: 0;
-    padding: 5rem clamp(1.25rem, 4vw, 3rem) 1rem;
-  }
-
-  .plays-hero-object {
-    grid-area: 2 / 1;
-    width: min(100%, 28rem);
-  }
-
-  .plays-hero-object img {
-    aspect-ratio: 3 / 2;
-  }
-}
 
 .wr-featured-v2-inner,
 .wr-archive-inner {
@@ -2297,7 +2243,7 @@ body.page-ready .wr-hero-stage {
 }
 
 @media (max-width: 900px) {
-  .wr-portfolio-hero:not(.wr-hero--plays, .wr-hero--web-open) {
+  .wr-portfolio-hero:not(.wr-hero--web-open) {
     --wr-mobile-hero-scene-height: clamp(11rem, 54vw, 16rem);
     display: grid;
     grid-template-columns: minmax(0, 1fr);
@@ -2307,19 +2253,19 @@ body.page-ready .wr-hero-stage {
     padding: 5rem clamp(1.25rem, 4vw, 3rem) 1rem;
   }
 
-  .wr-portfolio-hero:not(.wr-hero--plays, .wr-hero--web-open) .wr-hero-copy {
+  .wr-portfolio-hero:not(.wr-hero--web-open) .wr-hero-copy {
     position: relative;
     inset: auto;
     grid-area: 1 / 1;
     width: auto;
   }
 
-  .wr-portfolio-hero:not(.wr-hero--plays, .wr-hero--web-open) .wr-hero-title {
+  .wr-portfolio-hero:not(.wr-hero--web-open) .wr-hero-title {
     max-width: 18ch;
     font-size: clamp(2.25rem, 9.8vw, 3.7rem);
   }
 
-  .wr-portfolio-hero:not(.wr-hero--plays, .wr-hero--web-open) :is(.wr-hero-still, .wr-hero-3d) {
+  .wr-portfolio-hero:not(.wr-hero--web-open) :is(.wr-hero-still, .wr-hero-3d) {
     position: relative;
     inset: auto;
     grid-area: 2 / 1;
@@ -2337,9 +2283,16 @@ body.page-ready .wr-hero-stage {
   .wr-featured-clients .wr-clients {
     margin-top: 2rem;
   }
+}
 
-  .wr-portfolio-hero.wr-hero--plays .wr-hero-title {
-    max-width: none;
+@media (max-width: 768px) {
+  .wr-portfolio-hero.wr-hero--plays:not(.wr-hero--web-open, .wr-hero--no-scene) {
+    padding-bottom: 2.25rem;
+  }
+
+  .wr-hero--plays .hero-web-trigger {
+    bottom: -1.75rem;
+    min-height: 44px;
   }
 }
 
