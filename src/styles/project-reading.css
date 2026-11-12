@@ -783,6 +783,81 @@ body.case-side-nav .project-main .project-header--visual.wrap,
   border-radius: var(--radius-pill);
   white-space: nowrap;
 }
+
+.transfi-quote-proof {
+  padding: clamp(1rem, 3vw, 2rem);
+  border: 1px solid var(--ink-08);
+  border-radius: inherit;
+  background: color-mix(in srgb, var(--surface) 94%, var(--select-blue));
+  color: var(--ink);
+}
+
+.transfi-quote-proof h2 {
+  margin: 0 0 1rem;
+  font: 500 clamp(1.25rem, 2.5vw, 1.75rem)/1.2 var(--sans);
+}
+
+.transfi-quote-proof__screens {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 20rem));
+  justify-content: center;
+  gap: clamp(0.65rem, 3vw, 1.5rem);
+}
+
+.transfi-quote-proof figure {
+  display: grid;
+  grid-template-rows: auto auto 1fr;
+  justify-items: center;
+  gap: 0.5rem;
+  min-width: 0;
+  margin: 0;
+}
+
+.transfi-quote-proof figcaption {
+  font: 500 var(--text-sm)/1.35 var(--sans);
+}
+
+.project-main .transfi-quote-proof img {
+  width: 100%;
+  height: clamp(10rem, 48vw, 20rem);
+  object-fit: contain;
+  border-radius: 0;
+  cursor: zoom-in;
+}
+
+.transfi-quote-proof p {
+  max-width: 31ch;
+  margin: 0;
+  color: var(--ink-70);
+  font: 400 var(--text-sm)/1.45 var(--sans);
+}
+
+.transfi-quote-proof figure p {
+  text-align: center;
+}
+
+.transfi-quote-proof .transfi-quote-proof__note {
+  max-width: none;
+  margin-top: 0.85rem;
+  font-size: var(--text-xs);
+}
+
+.public-workflow-contribution {
+  padding-block: clamp(1.25rem, 3vw, 2rem) 0.5rem;
+  color: var(--ink);
+}
+
+.public-workflow-contribution h2 {
+  margin: 0 0 0.55rem;
+  font: 500 clamp(1.25rem, 2.5vw, 1.75rem)/1.2 var(--sans);
+}
+
+.public-workflow-contribution p {
+  max-width: 64ch;
+  margin: 0 0 0.85rem;
+  color: var(--ink-70);
+  line-height: 1.6;
+}
 @media (max-width: 640px) {
   .project-main .study-explorer__flow { grid-template-columns: 1fr; gap: 20px; }
   .project-main .study-explorer__choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }

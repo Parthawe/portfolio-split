@@ -3,6 +3,11 @@ import { spawnSync } from 'node:child_process'
 import path from 'node:path'
 
 const portfolios = JSON.parse(await readFile('src/config/portfolios.json', 'utf8'))
+const transfiPublicSlides = JSON.parse(await readFile('src/data/transfi-public-slides.json', 'utf8'))
+const transfiSlideDirectory = 'Assets/case-study-slides/transfi/'
+const allowedTransfiSlides = new Set(transfiPublicSlides.flatMap(chapter =>
+  chapter.slides.flatMap(({ src }) => [src, src.replace('.webp', '-768.webp'), src.replace('.webp', '-1280.webp')])
+).map(src => src.slice(1)))
 const root = '/portfolio-split'
 const origin = 'https://parthawe.github.io'
 const dist = 'dist'
@@ -74,7 +79,14 @@ for (const [variant, portfolio] of Object.entries(portfolios)) {
   }
 }
 
-await cp('public', dist, { recursive: true })
+await cp('public', dist, {
+  recursive: true,
+  // The request-access story only publishes exports listed in the public manifest.
+  filter: file => {
+    const relative = path.relative('public', file).split(path.sep).join('/')
+    return !relative.startsWith(transfiSlideDirectory) || allowedTransfiSlides.has(relative)
+  },
+})
 await writeFile(path.join(dist, '.nojekyll'), '')
 await writeFile(path.join(dist, 'robots.txt'), 'User-agent: *\nAllow: /\n')
 const directoryPage = `<!doctype html>
