@@ -253,7 +253,7 @@ export default function WorkPage() {
   // Loading priority belongs to this layout, not the registry's homepage order.
   // Only the first featured card competes for initial bandwidth.
   const renderCard = useCallback((project: Project, index: number) => (
-    <ProjectCardComponent key={project.slug} slug={project.slug} name={project.name} image={project.image} tag={project.tag} year={project.year} desc={project.desc} loading={index === 0 ? 'eager' : 'lazy'} nda={project.nda} tilt={false} coverShape="wide" />
+    <ProjectCardComponent key={project.slug} slug={project.slug} name={project.name} image={project.image} tag={project.tag} year={project.year} desc={project.desc} loading={index === 0 ? 'eager' : 'lazy'} nda={project.nda} tilt={false} coverShape="wide" showCaption />
   ), [])
 
   const handleFilterChange = useCallback((filterKey: 'all' | ProjectCategory) => {
@@ -453,7 +453,7 @@ export default function WorkPage() {
                     <h2 className="mono-label work-group-label" id="work-more-title">More projects</h2>
                     <div className="work-project-grid">{archiveProjects.map(project => (
                       <ProjectCardComponent key={project.slug} slug={project.slug} name={project.name} image={project.image}
-                        tag={project.tag} year={project.year} desc={project.desc} loading="lazy" nda={project.nda} coverShape="wide" />
+                        tag={project.tag} year={project.year} desc={project.desc} loading="lazy" nda={project.nda} coverShape="wide" showCaption />
                     ))}</div>
                   </section>
                 )}

@@ -1225,11 +1225,6 @@ body.page-ready .wr-hero-stage {
   margin-top: clamp(3.5rem, 7vw, 6rem);
 }
 
-.wr-featured-v2-inner > .reveal:first-child .wr-clients {
-  margin-top: 0;
-  margin-bottom: clamp(2.25rem, 5vw, 4rem);
-}
-
 .wr-clients-label {
   margin: 0;
   font-family: var(--sans);
@@ -1444,26 +1439,6 @@ body.page-ready .wr-hero-stage {
 
 .wr-feat-grid .pcard-inner {
   border-radius: 20px;
-}
-
-.wr-feat-grid .pcard-name {
-  bottom: 2.7rem;
-  font-family: var(--sans);
-  font-size: clamp(1.25rem, 2vw, 1.7rem);
-  font-weight: 400;
-  letter-spacing: 0;
-}
-
-.wr-feat-grid .pcard-marquee {
-  display: block;
-}
-
-.wr-feat-grid .pcard-marquee {
-  padding: 0.48rem 0;
-}
-
-.wr-feat-grid .pcard-marquee-track span {
-  color: var(--text-on-dark-70);
 }
 
 .wr-featured-v2 {
@@ -2141,13 +2116,6 @@ body.page-ready .wr-hero-stage {
   object-fit: cover;
 }
 
-.wr-archive-grid .pcard-name {
-  font-family: var(--sans);
-  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
-  font-weight: 400;
-  letter-spacing: 0;
-}
-
 .wr-archive-column:nth-child(3n+2) > *:nth-child(odd) .pcard-visual { aspect-ratio: 1 / 1; }
 .wr-archive-column:nth-child(3n+2) > *:nth-child(even) .pcard-visual { aspect-ratio: 4 / 5; }
 .wr-archive-column:nth-child(3n+3) > *:nth-child(odd) .pcard-visual { aspect-ratio: 5 / 4; }
@@ -2275,20 +2243,22 @@ body.page-ready .wr-hero-stage {
   font-size: .8rem;
 }
 
-.preview-sibling {
-  padding-block: 2rem;
-}
-
-@media (max-width: 767px) {
+@media (max-width: 900px) {
   .wr-hero--plays {
     grid-template-columns: minmax(0, 1fr);
     gap: 1.25rem;
-    padding-top: 5rem;
-    min-height: auto;
+    height: auto;
+    min-height: 0;
+    padding: 5rem clamp(1.25rem, 4vw, 3rem) 1rem;
   }
 
   .plays-hero-object {
     grid-area: 2 / 1;
+    width: min(100%, 28rem);
+  }
+
+  .plays-hero-object img {
+    aspect-ratio: 3 / 2;
   }
 }
 
@@ -2316,7 +2286,7 @@ body.page-ready .wr-hero-stage {
   margin: 0;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .wr-portfolio-hero:not(.wr-hero--plays, .wr-hero--web-open) {
     --wr-mobile-hero-scene-height: clamp(11rem, 54vw, 16rem);
     display: grid;
@@ -2346,28 +2316,16 @@ body.page-ready .wr-hero-stage {
     height: var(--wr-mobile-hero-scene-height);
   }
 
-  .wr-featured-v2--product .wr-featured-v2-inner {
-    display: flex;
-    flex-direction: column;
+  .wr-featured-v2-inner {
     padding-top: 1.25rem;
   }
 
-  .wr-featured-v2--product .wr-section-head {
+  .wr-featured-v2 .wr-section-head {
     margin-bottom: 1.25rem;
   }
 
-  .wr-featured-v2--product .wr-featured-clients {
-    order: 1;
+  .wr-featured-clients .wr-clients {
     margin-top: 2rem;
-  }
-
-  .wr-featured-v2--product .wr-featured-clients .wr-clients {
-    margin-bottom: 0;
-  }
-
-  .wr-portfolio-hero.wr-hero--plays {
-    height: auto;
-    padding-inline: clamp(1.25rem, 4vw, 3rem);
   }
 
   .wr-portfolio-hero.wr-hero--plays .wr-hero-title {

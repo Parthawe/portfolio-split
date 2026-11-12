@@ -1,4 +1,4 @@
-import { isExperimental, portfolio, sibling, siblingHome } from '../config/portfolio';
+import { isExperimental, portfolio } from '../config/portfolio';
 import { useThemeMode } from '../hooks/useThemeMode';
 import ExperienceBoundary from '../components/ExperienceBoundary';
 import { useState, useEffect, lazy, Suspense, useRef } from 'react';
@@ -247,11 +247,9 @@ export default function HomePage() {
 
       <main id="main-content">
         <div className="abt-paper">
-          <section className={`wr-featured-v2${isExperimental ? "" : " wr-featured-v2--product"}`} id="works" style={{ position: 'relative' }}>
+          <section className="wr-featured-v2" id="works" style={{ position: 'relative' }}>
             <FigmaFrameLabel name="Featured Work" />
             <div className="wr-featured-v2-inner">
-              {!isExperimental && <div className="wr-featured-clients reveal"><ClientsMarquee /></div>}
-
               <div className="wr-section-head">
                 <h2 className="wr-section-highlight">Selected work</h2>
                 <Link to="/work" className="wr-arrow-btn figma-hover">View all work &rarr;<FigmaSelect /></Link>
@@ -259,13 +257,6 @@ export default function HomePage() {
 
               <div className="wr-feat-grid">
                 {featuredProjects.map((project) => {
-                  const featuredInfo = [
-                    project.desc,
-                    project.summaryRole?.replace(/\.$/, ''),
-                    ...(project.summaryStats?.slice(0, 2).map(stat => `${stat.label} ${stat.value}`) ?? []),
-                  ]
-                    .filter(Boolean)
-                    .join(' / ');
                   const hoverMedia = ['mentra', 'jugalbandi'].includes(project.slug) ? undefined : project.hoverMedia;
 
                   return (
@@ -283,8 +274,8 @@ export default function HomePage() {
                         hoverMediaAlt={hoverMedia?.alt}
                         tag={project.tag}
                         year={project.year}
-                        marqueeText={featuredInfo}
-                        marqueeSpeed={2}
+                        desc={project.desc}
+                        showCaption
                         loading="lazy"
                         deferUntilNearView
                         preloadMargin={cardPreloadMargin}
@@ -297,6 +288,7 @@ export default function HomePage() {
                 })}
               </div>
 
+              {!isExperimental && <div className="wr-featured-clients reveal"><ClientsMarquee /></div>}
             </div>
           </section>
 
@@ -381,7 +373,7 @@ export default function HomePage() {
               <div className="wr-archive-grid" id="homepage-project-archive">
                 {homepageSelectedProjects.map(project => (
                   <ProjectCard key={project.slug} slug={project.slug} name={project.name} image={project.image}
-                    tag={project.tag} year={project.year} desc={project.desc} nda={project.nda} coverShape="wide" />
+                    tag={project.tag} year={project.year} desc={project.desc} nda={project.nda} coverShape="wide" showCaption />
                 ))}
               </div>
             </div>
@@ -389,7 +381,6 @@ export default function HomePage() {
         </div>
       </main>
 
-      <div className="wrap preview-sibling"><a href={siblingHome}>{sibling.name} &rarr;</a></div>
       <Footer />
     </>
   );

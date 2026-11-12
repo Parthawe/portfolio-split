@@ -47,6 +47,12 @@ try {
       await page.getByRole('heading', { level: 1, name: details.heading }).waitFor()
       assert.match(await page.locator('meta[name="robots"]').first().getAttribute('content'), /noindex/)
       assert.deepEqual(await listSlugs(page.locator('#works .pcard')), featured)
+      const homeCards = page.locator('#works .pcard')
+      await expect(homeCards.locator('.pcard-caption p')).toHaveCount(featured.length)
+      if (viewport.width <= 540) {
+        const firstCard = await homeCards.first().boundingBox()
+        assert.ok(firstCard && firstCard.y < viewport.height, 'Selected work should start in the first mobile screen')
+      }
       assert.deepEqual(await listSlugs(page.locator('#homepage-project-archive .pcard')), [...supporting, ...archive])
       assert.ok(await page.evaluate(async () => { await document.fonts.ready; return [...document.fonts].some(font => font.status === 'loaded') }))
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1))
@@ -57,6 +63,7 @@ try {
       await page.getByRole('heading', { level: 1, name: 'Work', exact: true }).waitFor()
       const cards = page.locator('#work-project-results .pcard')
       assert.deepEqual(await listSlugs(cards), projects)
+      await expect(cards.locator('.pcard-caption__title')).toHaveCount(projects.length)
       const first = await cards.nth(0).boundingBox()
       const second = await cards.nth(1).boundingBox()
       if (viewport.width > 540) {
@@ -116,6 +123,11 @@ try {
         await slider.press('ArrowRight')
         assert.notEqual(await slider.inputValue(), before)
       }
+      const other = variant === 'product' ? 'experimental' : 'product'
+      await page.goto(`${url}/${slug}/`)
+      await page.locator('#nav').getByRole('link', { name: portfolios[other].name, exact: true }).click()
+      await page.waitForURL(`${base}/${other}/`)
+      await page.getByRole('heading', { level: 1, name: cases[other].heading, exact: true }).waitFor()
       assert.deepEqual(errors, [], `${variant} at ${viewport.width}px`)
       console.log(`${variant} passed at ${viewport.width}px`)
       await page.close()
