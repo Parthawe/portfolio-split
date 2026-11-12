@@ -17,7 +17,7 @@ import { usePerformanceDegraded } from '../hooks/usePerformanceDegraded';
 import { canUseWebGL, useWebGLAvailable } from '../hooks/useWebGLAvailable';
 import { featuredProjects, homepageSelectedProjects } from '../data/projects';
 import { DEFAULT_OG_IMAGE, SITE_ORIGIN, SITE_URL } from '../config/site';
-import { beginSceneStartup, isLowPowerDevice } from '../utils/performance';
+import { beginSceneStartup, isHeroScenePerformanceDegraded, isLowPowerDevice, isPerformanceDegraded, startRuntimePerformanceMonitor } from '../utils/performance';
 import ParthDoesSection from '../components/ParthDoesSection';
 import '../styles/homepage-wr.css';
 import { preloadHeroEnvironmentAsset } from '../utils/preloadHeroEnvironment';
@@ -91,7 +91,7 @@ export default function HomePage() {
   const [disciplinesRef, disciplinesInView] = useInView<HTMLElement>(0.05, '180px 0px');
   const coarsePointer = useMediaQuery('(hover: none), (pointer: coarse)');
   const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
-  const performanceDegraded = usePerformanceDegraded();
+  const performanceDegraded = usePerformanceDegraded(isHeroScenePerformanceDegraded);
   const webglAvailable = useWebGLAvailable();
   const lowPowerDevice = isLowPowerDevice();
   const allowDecorative3D = !prefersReducedMotion;
@@ -117,6 +117,11 @@ export default function HomePage() {
     timeout: coarsePointer ? 900 : lowPowerDevice ? 1100 : 1200,
     delayMs: coarsePointer ? 220 : lowPowerDevice ? 400 : 350,
   });
+  useEffect(() => {
+    // The site-wide monitor is skipped when touch layouts use lighter chrome.
+    if (!mountHeroScene || !isPerformanceDegraded()) return;
+    return startRuntimePerformanceMonitor(isHeroScenePerformanceDegraded);
+  }, [mountHeroScene]);
   const mountDisciplineObjects = useDeferredMount(allowDecorative3D && disciplinesInView, { timeout: lowPowerDevice ? 2200 : 1400, delayMs: lowPowerDevice ? 360 : 150 });
   const activeIdentity = identityTabs.find(tab => tab.id === identityTab) ?? identityTabs[0];
 

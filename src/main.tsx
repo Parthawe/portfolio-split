@@ -27,4 +27,4 @@ createRoot(document.getElementById('root')!).render(
 requestAnimationFrame(() => requestAnimationFrame(preloadHeroEnvironmentAsset))
 
 // Wheel and touch stay native; explicit navigation owns smooth scrolling.
-requestAnimationFrame(() => requestAnimationFrame(startRuntimePerformanceMonitor))
+requestAnimationFrame(() => requestAnimationFrame(() => startRuntimePerformanceMonitor()))

@@ -10,6 +10,7 @@ import * as THREE from 'three';
 import { useThemeMode } from '../hooks/useThemeMode';
 import { usePrefersReduced } from '../hooks/usePrefersReduced';
 import { useWebGLAvailable } from '../hooks/useWebGLAvailable';
+import { isHeroScenePerformanceDegraded } from '../utils/performance';
 import { usePerformanceDegraded } from '../hooks/usePerformanceDegraded';
 import { layoutHeroWeb, type WebNode, type WebEdge } from '../data/heroWeb';
 import SuperwhiteHighlight from './SuperwhiteHighlight';
@@ -2379,7 +2380,7 @@ export default function HeroScene({
   const reduced = usePrefersReduced();
   const dark = useThemeMode();
   const webglOk = useWebGLAvailable();
-  const performanceDegraded = usePerformanceDegraded();
+  const performanceDegraded = usePerformanceDegraded(isHeroScenePerformanceDegraded);
   const [isMobile] = useState(() =>
     typeof window !== 'undefined' ? window.matchMedia('(max-width: 768px)').matches : false,
   );

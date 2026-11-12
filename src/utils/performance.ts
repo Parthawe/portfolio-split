@@ -19,7 +19,7 @@ export function prefersReducedMotion() {
   return typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches
 }
 
-export function isLowPowerDevice() {
+export function isLowPowerDevice({ includeTouch = true } = {}) {
   if (typeof window === 'undefined') return false
 
   const nav = navigator as NavigatorWithPerformanceHints
@@ -37,7 +37,7 @@ export function isLowPowerDevice() {
   return Boolean(
     prefersReducedMotion() ||
     nav.connection?.saveData ||
-    touchOrTablet ||
+    (includeTouch && touchOrTablet) ||
     severelyLimitedMemory ||
     severelyLimitedCpu ||
     constrainedLaptop,
@@ -49,16 +49,22 @@ export function isPerformanceDegraded() {
     document.documentElement.classList.contains('is-low-power-device')
 }
 
+// Keep the lighter page chrome on touch devices without ruling out the hero
+// on viewport size alone. Hardware limits and runtime degradation still apply.
+export function isHeroScenePerformanceDegraded() {
+  return isLowPowerDevice({ includeTouch: false }) ||
+    (typeof document !== 'undefined' && document.documentElement.classList.contains('is-runtime-performance-degraded'))
+}
+
 function activatePerformanceMode(reason: PerformanceModeReason) {
   if (typeof document === 'undefined') return
 
   const root = document.documentElement
   const wasDegraded = root.classList.contains('is-low-power-device')
+  const wasRuntimeDegraded = root.classList.contains('is-runtime-performance-degraded')
+  const runtimeDegraded = reason === 'runtime' || reason === 'forced'
   root.classList.add('is-low-power-device')
-  root.classList.toggle(
-    'is-runtime-performance-degraded',
-    reason === 'runtime' || reason === 'forced',
-  )
+  root.classList.toggle('is-runtime-performance-degraded', runtimeDegraded)
   root.dataset.performanceMode = 'reduced'
 
   try {
@@ -67,7 +73,7 @@ function activatePerformanceMode(reason: PerformanceModeReason) {
     // Session storage can be unavailable in private contexts.
   }
 
-  if (!wasDegraded) {
+  if (!wasDegraded || wasRuntimeDegraded !== runtimeDegraded) {
     window.dispatchEvent(new CustomEvent<PerformanceModeDetail>(PERFORMANCE_MODE_EVENT, {
       detail: { degraded: true, reason },
     }))
@@ -122,8 +128,8 @@ export function beginSceneStartup(maxDurationMs = 15_000) {
   }
 }
 
-export function startRuntimePerformanceMonitor() {
-  if (typeof window === 'undefined' || isPerformanceDegraded()) return () => undefined
+export function startRuntimePerformanceMonitor(isDegraded = isPerformanceDegraded) {
+  if (typeof window === 'undefined' || isDegraded()) return () => undefined
 
   const WARMUP_MS = 2200
   const WINDOW_MS = 4200
