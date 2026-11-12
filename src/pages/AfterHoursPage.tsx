@@ -95,7 +95,7 @@ export default function AfterHoursPage() {
         let cell: Cell = { col: 0, row: 0 }; outer: for (let row = -8; row <= 8; row++) for (let col = -8; col <= 8; col++) if (roomType(col, row) === i) { cell = { col, row }; break outer }
         return <button key={item.name} onClick={() => choose(cell, true)}><strong>{item.name}</strong><span>{item.note}</span></button>
       })}</div></details>
-      <footer className="ah-footer"><p>An original generative illustration, inspired by the joy of exploring <a href="https://floor796.com/" target="_blank" rel="noreferrer">Floor796</a>. All scenes here are newly drawn.</p><Link to="/studio">Back to the studio</Link></footer>
+      <footer className="ah-footer"><p>An original generative illustration, inspired by the joy of exploring <a href="https://floor796.com/" target="_blank" rel="noreferrer">Floor796</a>. All scenes here are newly drawn.</p><Link to="/work">More experiments</Link></footer>
     </main>
   </div>
 }

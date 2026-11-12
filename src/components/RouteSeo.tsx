@@ -1,3 +1,4 @@
+import { portfolio } from '../config/portfolio'
 import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router-dom'
 import { categories } from '../data/categories'
@@ -123,8 +124,8 @@ function getRouteMeta(pathname: string): RouteMeta {
   }
   if (pathname === '/') {
     return {
-      title: 'Parth Pawar, Product Designer',
-      description: 'Portfolio of Parth Pawar, Product Designer crafting trusted systems across AI wearables, fintech, civic tools, design engineering, and physical interaction.',
+      title: `${portfolio.name} · Parth Pawar`,
+      description: portfolio.description,
       image: toAbsoluteUrl(DEFAULT_IMAGE),
       url,
       type: 'website',
@@ -137,7 +138,7 @@ function getRouteMeta(pathname: string): RouteMeta {
   if (pathname === '/work') {
     return {
       title: 'Work · Parth Pawar',
-      description: 'Selected work by Parth Pawar across AI wearables, fintech, UX design, design engineering, installations, and brand systems.',
+      description: portfolio.description,
       image: toAbsoluteUrl(DEFAULT_IMAGE),
       url,
       type: 'website',

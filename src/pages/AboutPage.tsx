@@ -1,4 +1,4 @@
-import { isExperimental, portfolio } from '../config/portfolio'
+import { isExperimental, portfolio, projectLink } from '../config/portfolio'
 import { Fragment, useEffect } from 'react'
 import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
@@ -411,7 +411,7 @@ export default function AboutPage() {
                   {r.date && <td className="abt-table-date">{r.date}</td>}
                   <td className="abt-table-main" data-co={r.co || ''} colSpan={r.date ? undefined : 2}>
                     <span className="abt-table-role">
-                      {r.link ? <Link to={r.link}>{r.role}</Link> : r.role}
+                      {r.link ? <Link to={projectLink(r.link)}>{r.role}</Link> : r.role}
                     </span>
                           {r.co && <span className="abt-table-co-inline">{r.co}</span>}
                           {r.desc && <span className="abt-table-desc">{r.desc}</span>}
@@ -607,7 +607,7 @@ export default function AboutPage() {
                     Download .zip
                     <FigmaSelect />
                   </a>
-                  <Link to="/typeface" className="abt-type-link figma-hover">
+                  <Link to={projectLink("/typeface")} className="abt-type-link figma-hover">
                     Case study
                     <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     <FigmaSelect />

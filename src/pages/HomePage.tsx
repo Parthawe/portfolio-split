@@ -99,6 +99,7 @@ export default function HomePage() {
   const heroRef = useRef<HTMLElement>(null);
   const [disciplinesRef, disciplinesInView] = useInView<HTMLElement>(0.05, '180px 0px');
   const coarsePointer = useMediaQuery('(hover: none), (pointer: coarse)');
+  const flagshipSingleColumn = useMediaQuery('(max-width: 480px)');
   const archiveSingleColumn = useMediaQuery('(max-width: 360px)');
   const archiveTwoColumn = useMediaQuery('(max-width: 1100px)');
   const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
@@ -136,7 +137,7 @@ export default function HomePage() {
     [archiveProjects, archiveColumnCount]
   );
   const activeIdentity = identityTabs.find(tab => tab.id === identityTab) ?? identityTabs[0];
-  const flagshipColumns = [
+  const flagshipColumns = flagshipSingleColumn ? [featuredProjects] : [
     featuredProjects.filter((_, index) => index === 0 || index === 2),
     featuredProjects.filter((_, index) => index === 1 || index === 3),
   ];
@@ -269,9 +270,7 @@ export default function HomePage() {
           <section className="wr-featured-v2" id="works" style={{ position: 'relative' }}>
             <FigmaFrameLabel name="Featured Work" />
             <div className="wr-featured-v2-inner">
-              <div className="reveal">
-                {!isExperimental && <ClientsMarquee />}
-              </div>
+              {!isExperimental && <div className="reveal"><ClientsMarquee /></div>}
 
               <div className="wr-section-head">
                 <span className="wr-label">FLAGSHIP WORK</span>

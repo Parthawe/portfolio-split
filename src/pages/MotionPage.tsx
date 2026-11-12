@@ -219,7 +219,7 @@ const projects: MotionProject[] = [
     frames: [
       { src: '/Assets/Projects/Transfi/public/Group 1000004741.png', alt: 'TransFi currency selection visual with USD, BTC, and EUR layers', caption: '01 — Currency choice', fit: 'contain' },
       { src: '/Assets/Projects/Transfi/public/Frame 427318638.png', alt: 'TransFi buy-crypto widget with currency and asset selection screens', caption: '02 — Checkout entry', fit: 'contain' },
-      { src: '/Assets/Projects/Transfi/public/Frame 427318646.png', alt: 'Six-step TransFi checkout journey from currency choice to crypto delivery', caption: '03 — Journey continuity', fit: 'cover' },
+      { src: 'https://designwhich.works/Assets/Projects/Transfi/public/Frame%20427318646.png', alt: 'Six-step TransFi checkout journey from currency choice to crypto delivery', caption: '03 — Journey continuity', fit: 'cover' },
       { src: '/Assets/Projects/Transfi/public/Order Summary.png', alt: 'TransFi order summary with amount, fees, and delivery status', caption: '04 — Resolved state', fit: 'contain' },
     ],
     decisions: [
@@ -419,7 +419,7 @@ function TransfiReel({ motionOn }: { motionOn: boolean }) {
         <div><small>CHOOSE THE CORRIDOR</small><strong>USD → BTC</strong><span>Amount remains anchored</span></div>
       </div>
       <div className="motion-transfi__scene motion-transfi__scene--move" aria-hidden="true">
-        <img src="/Assets/Projects/Transfi/public/Frame 427318646.png" alt="" />
+        <img src="https://designwhich.works/Assets/Projects/Transfi/public/Frame%20427318646.png" alt="" />
         <div><small>FOLLOW THE STATE</small><strong>Choose · verify · pay · deliver</strong></div>
       </div>
       <div className="motion-transfi__scene motion-transfi__scene--confirm" aria-hidden="true">
@@ -779,7 +779,7 @@ function TransfiMotionSystem() {
           <p><span>02 · Choice</span><strong>Real interface states show what the customer actually controls.</strong></p>
         </article>
         <article className="mentra-source-card transfi-source-card transfi-source-card--journey">
-          <img src="/Assets/Projects/Transfi/public/Frame 427318646.png" alt="TransFi six-step checkout and delivery journey" loading="lazy" />
+          <img src="https://designwhich.works/Assets/Projects/Transfi/public/Frame%20427318646.png" alt="TransFi six-step checkout and delivery journey" loading="lazy" />
           <p><span>03 · Route</span><strong>The six source screens become one continuous transaction path.</strong></p>
         </article>
         <article className="mentra-source-card mentra-source-card--os transfi-source-card transfi-source-card--summary">
@@ -810,7 +810,7 @@ function TransfiMotionSystem() {
           <p>The horizontal master can show the customer journey and merchant context together. The vertical cut follows one state at a time, keeps the amount in the upper third, and reserves the lower zone for the active action or confirmation.</p>
         </div>
         <figure className="mentra-format mentra-format--wide transfi-format transfi-format--wide">
-          <img src="/Assets/Projects/Transfi/public/Frame 427318646.png" alt="TransFi transaction journey in a horizontal delivery frame" loading="lazy" />
+          <img src="https://designwhich.works/Assets/Projects/Transfi/public/Frame%20427318646.png" alt="TransFi transaction journey in a horizontal delivery frame" loading="lazy" />
           <i aria-hidden="true" /><figcaption>16:9 · end-to-end master</figcaption>
         </figure>
         <figure className="mentra-format mentra-format--vertical transfi-format transfi-format--vertical">

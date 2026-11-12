@@ -409,7 +409,7 @@ export default function PerplexityPage() {
               <p>A job-specific study for Perplexity Computer, Deep Research, and Comet: one launch prototype, a deliberate concept choice, and the production system behind a high-volume social family.</p>
               <div>
                 <a className="perp-button perp-button--solid figma-hover" href="#prototype">View the concept <span>↓</span></a>
-                <Link className="perp-button figma-hover" to="/motion">Motion portfolio <span>↗</span></Link>
+                <Link className="perp-button figma-hover" to="https://designwhich.works/motion">Motion portfolio <span>↗</span></Link>
               </div>
             </div>
           </section>
@@ -609,7 +609,7 @@ export default function PerplexityPage() {
             <div className="perp-proof__grid">
               {proof.map((item) => (
                 <Reveal key={item.number}>
-                  <Link className="perp-proof-card figma-hover" to={item.href}>
+                  <Link className="perp-proof-card figma-hover" to={`https://designwhich.works${item.href}`}>
                     <div><img src={item.image} alt="" loading="lazy" /></div>
                     <p><span>{item.number} · {item.label}</span><i>↗</i></p>
                     <h3>{item.title}</h3><small>{item.body}</small>
@@ -637,7 +637,7 @@ export default function PerplexityPage() {
             <p>Independent study · Parth Pawar</p>
             <h2 id="close-title">Make the intelligence visible.<br />Keep the product believable.</h2>
             <div>
-              <Link className="perp-button perp-button--light figma-hover" to="/motion">View motion work <span>↗</span></Link>
+              <Link className="perp-button perp-button--light figma-hover" to="https://designwhich.works/motion">View motion work <span>↗</span></Link>
               <a className="perp-button perp-button--outline-light figma-hover" href="mailto:parthpawar@nyu.edu">Start a conversation <span>↗</span></a>
             </div>
             <small>This page is an independent portfolio response to a public role. It was not commissioned by, produced for, or approved by Perplexity. Product and role references are linked to their original sources; all proposed campaign concepts and the motion prototype are presented as speculative work.</small>

@@ -1,3 +1,4 @@
+import { projectLink } from '../../config/portfolio'
 import { Helmet } from 'react-helmet-async'
 import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -31,7 +32,7 @@ export default function PracticeEntry({ slug }: { slug: keyof typeof practiceEnt
     <main id="main-content" className="project-main practice-entry">
       <article className="wrap">
         <Link to="/work" className="glass-action">Back to work</Link>
-        <Link to={`/process/${encodeURIComponent(slug)}`} className="glass-action">References &amp; process ↗</Link>
+        <a href={`https://designwhich.works/process/${encodeURIComponent(slug)}`} className="glass-action">References &amp; process ↗</a>
         <header>
           <h1>{project.name}</h1>
           <p>{entry.description}</p>
@@ -58,7 +59,7 @@ export default function PracticeEntry({ slug }: { slug: keyof typeof practiceEnt
           {anchors.related.slice(1).map(id => <span key={id} id={id} className="practice-entry__anchor" />)}
           <h2>Related work with original material</h2>
           <p>These separate projects have their own documentation; they do not replace the missing course artifacts.</p>
-          {entry.related.map(item => <Link key={item.slug} to={`/${item.slug}`} className="practice-entry__link"><span>{item.title}</span><span>{item.note}</span></Link>)}
+          {entry.related.map(item => <Link key={item.slug} to={projectLink(`/${item.slug}`)} className="practice-entry__link"><span>{item.title}</span><span>{item.note}</span></Link>)}
         </section>
       </article>
     </main>
