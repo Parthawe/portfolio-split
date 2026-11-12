@@ -95,6 +95,18 @@ export default function BallahCodePage() {
           ]}
           heroImage="/Assets/mockups/projects/ballah-code_16x9.webp"
           heroAlt="Ballah Code cover showing the AI-native desktop IDE launch hero"
+          openingContribution="I designed the workspace layout that keeps files, assistant conversations, and terminal output visible within one coding task."
+          openingContent={
+            <CsSection id="cs-decisions" label="03 &mdash; Design Decisions" title="Editor, assistant, and terminal together">
+              <CsBody>
+                <p>The UI centers on a multi-workspace, multi-chat layout &mdash; file explorer with git awareness on the left, chat tabs in the center, and an integrated terminal at the bottom. The arrangement keeps files and command output within reach of the conversation, so a developer can inspect the work without leaving the workspace.</p>
+              </CsBody>
+              <div className="cs-slide ballah-wide-shot reveal">
+                <img data-project-preview src={siteScreens[1].src} alt={siteScreens[1].alt} loading="lazy" decoding="async" style={shotStyle} />
+              </div>
+              <p className="cs-caption">{siteScreens[1].caption}</p>
+            </CsSection>
+          }
         />
 
         {/* 01, Overview */}
@@ -130,15 +142,6 @@ export default function BallahCodePage() {
         </CsSection>
 
         {/* 03, Design Decisions */}
-        <CsSection id="cs-decisions" label="03 &mdash; Design Decisions" title="Editor, assistant, and terminal together">
-          <CsBody>
-            <p>The UI centers on a multi-workspace, multi-chat layout &mdash; file explorer with git awareness on the left, chat tabs in the center, and an integrated terminal at the bottom. The arrangement keeps files and command output within reach of the conversation, so a developer can inspect the work without leaving the workspace.</p>
-          </CsBody>
-          <div className="cs-slide ballah-wide-shot reveal">
-            <img data-project-preview src={siteScreens[1].src} alt={siteScreens[1].alt} loading="lazy" decoding="async" style={shotStyle} />
-          </div>
-          <p className="cs-caption">{siteScreens[1].caption}</p>
-        </CsSection>
 
         {/* 04, Technical Architecture */}
         <CsSection id="cs-architecture" label="04 &mdash; Technical Architecture" title="Desktop architecture">

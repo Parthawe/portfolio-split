@@ -43,6 +43,17 @@ export default function MoniacMachinePage() {
             { label: 'Year', value: '2024' },
             { label: 'Role', value: 'Creator' },
           ]}
+          openingContribution="I designed a strategy game around the MONIAC’s hydraulic metaphor. Players turn valves and see policy choices reflected in the reservoirs and the game’s economic indices."
+          openingContent={
+            <CsSection id="cs-interactive" label="Interactive" title="Run the Economy">
+              <CsBody>
+                <p>Choose “Explore rules without shocks” for a matched one-step comparison, or start the 60-second browser game. Its six on-screen wheels follow the labelled layout in the original game; interest is an additional browser-model control. Physical cabinet valve assignments are unverified.</p>
+              </CsBody>
+              <div className="project-content-block--roomy">
+                <DeferredMoniac />
+              </div>
+            </CsSection>
+          }
         />
 
         <CsMediaSpotlight
@@ -62,14 +73,6 @@ export default function MoniacMachinePage() {
         </CsMediaSpotlight>
 
         {/* Interactive simulator */}
-        <CsSection id="cs-interactive" label="Interactive" title="Run the Economy">
-          <CsBody>
-            <p>Choose “Explore rules without shocks” for a matched one-step comparison, or start the 60-second browser game. Its six on-screen wheels follow the labelled layout in the original game; interest is an additional browser-model control. Physical cabinet valve assignments are unverified.</p>
-          </CsBody>
-          <div className="project-content-block--roomy">
-            <DeferredMoniac />
-          </div>
-        </CsSection>
 
         <CsExpandPreview sectionIds={['cs-inspiration','cs-mechanics','cs-result','cs-original']} cta="Compare the cabinet and original game" note="Inspect the screen layout, construction and limits of the browser model.">
         <CsSection id="cs-original" title="Read the screen and the cabinet separately">

@@ -47,8 +47,17 @@ export default function MentraBrandPage() {
             { label: 'Scope', value: 'Logo, color, type, packaging, booklet, ads, social, renders' },
             { label: 'Status', value: 'Shipping — in customers\u2019 hands' },
           ]}
-          heroImage={`${P}/render-both-frames.webp`}
-          heroAlt="Mentra Live smart glasses — black and transparent frame variants"
+          openingContribution="I designed the packaging for both frame finishes, carried the setup QR code onto the dieline, and prepared the fixed-size factory label and production artwork."
+          openingContent={
+            <CsSection id="cs-packaging-artifacts" title="One structure, two variants">
+              <CsBody><p>The packaging work went through seven iterations. The three artifacts below show the shared box structure, the second frame variant, and the production label. They document the final constraints rather than a complete revision history.</p></CsBody>
+              <CsScreenExplorer format="landscape" label="Compare Mentra packaging artifacts" screens={[
+                { title: 'Black frame', label: 'Shared structure and setup', src: `${P}/packaging-box-black.png`, alt: 'Black-frame packaging dieline with product image, quickstart QR panel, and flap branding', caption: 'The dieline carries product identification, the brand pattern, and the setup route in one structure. Inspect the QR panel and the position of the product render.' },
+                { title: 'Clear frame', label: 'A second product variant', src: `${P}/packaging-box-clear-1.webp`, alt: 'Clear-frame packaging dieline using the same structure with transparent-frame imagery', caption: 'The clear-frame box keeps the structural layout while changing the product imagery. The two variants need to be distinguishable without rebuilding the packaging system.' },
+                { title: 'Factory label', label: '90.24 × 23.95 mm', src: `${P}/packaging-box-clear-2.webp`, alt: 'Annotated factory label with dimensions, barcode, model identification, and regulatory text', caption: 'The fixed label area holds model identification, barcode, and regulatory text. Outlined vectors and bleed/crop marks remove font dependencies from the factory handoff.' },
+              ]} />
+            </CsSection>
+          }
         />
 
         <ProjectOverview
@@ -87,14 +96,6 @@ export default function MentraBrandPage() {
           {title:'Hinge',label:'Physical detail',src:`${P}/render-hinge-detail.webp`,alt:'Original close-up render of the Mentra hinge',caption:'The original detail render shows the joint and material transition.'},
           {title:'Transparent frame',label:'Top view',src:`${P}/render-transparent-top.webp`,alt:'Original transparent Mentra frame top-view render',caption:'An alternate view of the same documented frame.'}
         ]}/></div></section>
-        <CsSection title="One structure, two variants">
-          <CsBody><p>The packaging work went through seven iterations. The three artifacts below show the shared box structure, the second frame variant, and the production label. They document the final constraints rather than a complete revision history.</p></CsBody>
-          <CsScreenExplorer format="landscape" label="Compare Mentra packaging artifacts" screens={[
-            { title: 'Black frame', label: 'Shared structure and setup', src: `${P}/packaging-box-black.png`, alt: 'Black-frame packaging dieline with product image, quickstart QR panel, and flap branding', caption: 'The dieline carries product identification, the brand pattern, and the setup route in one structure. Inspect the QR panel and the position of the product render.' },
-            { title: 'Clear frame', label: 'A second product variant', src: `${P}/packaging-box-clear-1.webp`, alt: 'Clear-frame packaging dieline using the same structure with transparent-frame imagery', caption: 'The clear-frame box keeps the structural layout while changing the product imagery. The two variants need to be distinguishable without rebuilding the packaging system.' },
-            { title: 'Factory label', label: '90.24 × 23.95 mm', src: `${P}/packaging-box-clear-2.webp`, alt: 'Annotated factory label with dimensions, barcode, model identification, and regulatory text', caption: 'The fixed label area holds model identification, barcode, and regulatory text. Outlined vectors and bleed/crop marks remove font dependencies from the factory handoff.' },
-          ]} />
-        </CsSection>
 
         <CsSection title="What changed between surfaces">
           <CsBody>

@@ -44,6 +44,20 @@ export default function OfficeOfDiversityPage() {
           heroFraming="image"
           heroImage="/Assets/Projects/office-of-diversity/photos/responsive-preview.png"
           heroAlt="Tisch IDBEA report shown across desktop and mobile responsive views"
+          openingContribution="I designed the web structure and navigation for the IDBEA report so readers could find a section and read its figures in context."
+          openingContent={
+            <CsSection id="cs-report" label="Report" title="Read the original report excerpts">
+              <CsBody>
+                <p>These four overlapping excerpts preserve the original capture. Their labels describe the content actually visible. Choose an excerpt, zoom for detail, or open the complete original report including its opening and background timeline.</p>
+              </CsBody>
+              <CsReportReader original="/Assets/Projects/office-of-diversity/photos/full-report-page.webp" chapters={[
+                { label: 'Priorities and community feedback', src: '/Assets/Projects/office-of-diversity/photos/report-slices/report-timeline.png', alt: 'Original four program priorities, advisement groups and community feedback structure' },
+                { label: 'Program overview and learning', src: '/Assets/Projects/office-of-diversity/photos/report-slices/report-intro.png', alt: 'Original program-area overview, learning and engagement chart, and resource development' },
+                { label: 'Learning and restorative practice', src: '/Assets/Projects/office-of-diversity/photos/report-slices/report-data.png', alt: 'Original learning participation chart, resource development and restorative-practice case summaries' },
+                { label: 'Feedback and the year ahead', src: '/Assets/Projects/office-of-diversity/photos/report-slices/report-access.png', alt: 'Original workshop feedback, implementation challenges, HEAR US, Future Artists and year-ahead priorities' },
+              ]} />
+            </CsSection>
+          }
         />
 
         <CsSection id="cs-glimpse" label="Design decision" title="Give a long report recognizable entry points">
@@ -51,17 +65,6 @@ export default function OfficeOfDiversityPage() {
           <DecisionNote decision={{question:'How can a reader find the part relevant to them?',choice:'Repeat the four program areas as an overview and as section headings.',evidence:'Learning and Engagement, Resource Development, Restorative Practices and Collaborative Programming appear in the original report.',limit:'The source captures document layout. They do not establish accessibility compliance or improved reading performance.'}} />
         </CsSection>
 
-        <CsSection id="cs-report" label="Report" title="Read the original report excerpts">
-          <CsBody>
-            <p>These four overlapping excerpts preserve the original capture. Their labels describe the content actually visible. Choose an excerpt, zoom for detail, or open the complete original report including its opening and background timeline.</p>
-          </CsBody>
-          <CsReportReader original="/Assets/Projects/office-of-diversity/photos/full-report-page.webp" chapters={[
-            { label: 'Priorities and community feedback', src: '/Assets/Projects/office-of-diversity/photos/report-slices/report-timeline.png', alt: 'Original four program priorities, advisement groups and community feedback structure' },
-            { label: 'Program overview and learning', src: '/Assets/Projects/office-of-diversity/photos/report-slices/report-intro.png', alt: 'Original program-area overview, learning and engagement chart, and resource development' },
-            { label: 'Learning and restorative practice', src: '/Assets/Projects/office-of-diversity/photos/report-slices/report-data.png', alt: 'Original learning participation chart, resource development and restorative-practice case summaries' },
-            { label: 'Feedback and the year ahead', src: '/Assets/Projects/office-of-diversity/photos/report-slices/report-access.png', alt: 'Original workshop feedback, implementation challenges, HEAR US, Future Artists and year-ahead priorities' },
-          ]} />
-        </CsSection>
 
         <CsSection id="cs-impact" label="Read the evidence" title="Keep the report’s figures in their context">
           <CsBody><p>The participation chart, case summaries and community feedback belong to the institution’s report. They are not measurements of this website’s usability. Keep the explanatory text beside those visuals; the source explicitly warns that restorative cases can involve more than one component.</p><p>A next review should test finding a program area, understanding a chart and returning to a section on a small screen. Keyboard navigation, text alternatives and chart comprehension need a documented audit before making accessibility claims.</p></CsBody>

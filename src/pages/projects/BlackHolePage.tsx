@@ -60,6 +60,21 @@ export default function BlackHolePage() {
             { label: 'Professor', value: 'Jeffrey Feddersen' },
             { label: 'Year', value: '2025' },
           ]}
+          openingContribution="I designed and fabricated five physical models with collaborator Saee Joshi. The clock study uses movement and contrasting rates to make time dilation easier to see."
+          openingContent={
+            <CsSection id="cs-time-trap" label="01 &mdash; Phenomenon" title="The Black Hole&rsquo;s Time Trap">
+              <CsBody>
+                <p>Near a black hole, gravity stretches spacetime, causing time to slow down dramatically. If you hover just above the event horizon, minutes for you could be years for a distant observer. The closer you get, the slower time moves.</p>
+              </CsBody>
+              <div className="cs-label-row">
+                <span className="cs-label-row-key">Slider</span>
+                <span className="cs-label-row-val">Drag to move the clock closer to or farther from the black hole &mdash; watch the second hand slow down</span>
+              </div>
+              <div className="black-hole-interactive">
+                <TimeDilation />
+              </div>
+            </CsSection>
+          }
         />
 
         <section className="cs-slide reveal" id="cs-film">
@@ -79,18 +94,6 @@ export default function BlackHolePage() {
         {/* ═══ 01: TIME DILATION ═══ */}
 
         <CsExpandPreview>
-        <CsSection id="cs-time-trap" label="01 &mdash; Phenomenon" title="The Black Hole&rsquo;s Time Trap">
-          <CsBody>
-            <p>Near a black hole, gravity stretches spacetime, causing time to slow down dramatically. If you hover just above the event horizon, minutes for you could be years for a distant observer. The closer you get, the slower time moves.</p>
-          </CsBody>
-          <div className="cs-label-row">
-            <span className="cs-label-row-key">Slider</span>
-            <span className="cs-label-row-val">Drag to move the clock closer to or farther from the black hole &mdash; watch the second hand slow down</span>
-          </div>
-          <div className="black-hole-interactive">
-            <TimeDilation />
-          </div>
-        </CsSection>
 
         {/* ═══ 02: SPACETIME FABRIC ═══ */}
         <CsSection id="cs-fabric" label="02 &mdash; Phenomenon" title="The Invisible Fabric of the Universe">

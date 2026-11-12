@@ -37,21 +37,25 @@ export default function HealthAppPage() {
         tags={['UX Design','Mobile','Self-initiated concept']} title="Health App"
         subtitle="Reimagining Google Tasks around personal goals, reminders and reviewable schedule changes."
         heroImage="/Assets/mockups/projects/healthapp_16x9.webp" heroAlt="Health App planning concept cover"
-        info={[{label:'Year',value:'2024'},{label:'Role',value:'Product Designer'},{label:'Duration',value:'4 months'},{label:'Status',value:'Concept redesign · no live health service'}]} />
+        info={[{label:'Year',value:'2024'},{label:'Role',value:'Product Designer'},{label:'Duration',value:'4 months'},{label:'Status',value:'Concept redesign · no live health service'}]}
+        openingContribution="I designed a Google Tasks concept that lets people choose a goal, schedule a reminder, and review a proposed calendar change before accepting it."
+        openingContent={
+          <CsSection id="cs-healthapp-screens" label="01 · Original redesign" title="Choose a goal; review the schedule change">
+            <span id="cs-healthapp-model" className="project-decision-alias" />
+            <span id="cs-process" className="project-decision-alias" />
+            <CsBody><p>The original boards cover goal selection, reminders and a calendar-conflict prompt. Select one, scroll within it or open the original at full resolution.</p></CsBody>
+            <CsScreenExplorer format="landscape" scrollPortrait label="Inspect original Health App redesign boards" screens={[
+              {title:'Choose goals and set reminders',label:'Original mobile redesign board',src:`${base}/07-screen-set.webp`,alt:'Original low-fidelity sketches, goal-selection screens, daily diary and meditation reminder setup',caption:'Original proposed screens, including sketches and mobile flows.',decision:{question:'How could someone choose what the planner supports?',choice:'Ask for a personal goal and let the person set a reminder’s time and days.',evidence:'The board shows What Brings You to Us, a daily diary and a meditation reminder with Save and No Thanks.',limit:'The screens do not demonstrate measured sleep, energy sensing or an adaptive scheduling engine.'}},
+              {title:'Ask before resolving an overlap',label:'Original calendar proposal',src:`${base}/09-calendar.webp`,alt:'Original calendar concept showing an Overlap Spotted prompt with Move Sleep and Cancel actions',caption:'Original conflict prompt shown against a calendar.',decision:{question:'Should a proposed schedule adjustment silently change the calendar?',choice:'Show the overlap and ask for confirmation or cancellation.',evidence:'The Overlap Spotted dialog offers Move Sleep and Cancel rather than silently applying the change.',limit:'The historical example proposes moving sleep. That recommendation has not been evaluated for suitability; the board is evidence of an interface proposal, not health guidance or a validated intervention.'}},
+            ]} />
+          </CsSection>
+        }
+      />
       <ProjectOverview id="cs-public-story" sections={[
         {label:'Design question',content:'How could a task planner include personal goals and recurring care activities without hiding changes to the day’s schedule?'},
         {label:'Proposal',content:'The original boards explore goal selection, reminder setup and a calendar-conflict prompt. They show interface ideas; they do not establish automatic health sensing or improved wellbeing.'},
       ]} />
       <CsExpandPreview cta="Inspect the original planning screens" note="Read the proposed interactions beside their original boards.">
-        <CsSection id="cs-healthapp-screens" label="01 · Original redesign" title="Choose a goal; review the schedule change">
-          <span id="cs-healthapp-model" className="project-decision-alias" />
-          <span id="cs-process" className="project-decision-alias" />
-          <CsBody><p>The original boards cover goal selection, reminders and a calendar-conflict prompt. Select one, scroll within it or open the original at full resolution.</p></CsBody>
-          <CsScreenExplorer format="landscape" scrollPortrait label="Inspect original Health App redesign boards" screens={[
-            {title:'Choose goals and set reminders',label:'Original mobile redesign board',src:`${base}/07-screen-set.webp`,alt:'Original low-fidelity sketches, goal-selection screens, daily diary and meditation reminder setup',caption:'Original proposed screens, including sketches and mobile flows.',decision:{question:'How could someone choose what the planner supports?',choice:'Ask for a personal goal and let the person set a reminder’s time and days.',evidence:'The board shows What Brings You to Us, a daily diary and a meditation reminder with Save and No Thanks.',limit:'The screens do not demonstrate measured sleep, energy sensing or an adaptive scheduling engine.'}},
-            {title:'Ask before resolving an overlap',label:'Original calendar proposal',src:`${base}/09-calendar.webp`,alt:'Original calendar concept showing an Overlap Spotted prompt with Move Sleep and Cancel actions',caption:'Original conflict prompt shown against a calendar.',decision:{question:'Should a proposed schedule adjustment silently change the calendar?',choice:'Show the overlap and ask for confirmation or cancellation.',evidence:'The Overlap Spotted dialog offers Move Sleep and Cancel rather than silently applying the change.',limit:'The historical example proposes moving sleep. That recommendation has not been evaluated for suitability; the board is evidence of an interface proposal, not health guidance or a validated intervention.'}},
-          ]} />
-        </CsSection>
         <CsSection id="cs-healthapp-archive" label="02 · Supporting source material" title="Separate the baseline from the redesign">
           <details className="service-source-details">
             <summary>Inspect the brief and existing Google Tasks references</summary>

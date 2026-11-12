@@ -62,22 +62,25 @@ export default function DumbWaiterPage() {
           ]}
           heroImage={dumbWaiterImages.hero}
           heroAlt="Wide front view of the Dumb Waiter scenic model inside a black stage frame."
+          openingContribution="I designed and built the scenic model, using room proportions, props, and the offstage dumbwaiter to shape what the audience could see."
+          openingContent={
+            <CsMediaSpotlight
+              id="cs-set"
+              label="Set first"
+              title="A basement built like a threat"
+              lede="The model treats Pinter's waiting room as a pressure chamber: a basement with beds, doors, weapons, a gramophone, and a dumb waiter that behaves like an unseen command system."
+              actionLabel="Scenic model"
+            >
+              <img data-project-preview
+                src={dumbWaiterImages.wall}
+                alt="Close scenic model view showing Ben and Gus staged near the stairs, bed, and dark wall."
+                loading="lazy"
+                decoding="async"
+              />
+            </CsMediaSpotlight>
+          }
         />
 
-        <CsMediaSpotlight
-          id="cs-set"
-          label="Set first"
-          title="A basement built like a threat"
-          lede="The model treats Pinter's waiting room as a pressure chamber: a basement with beds, doors, weapons, a gramophone, and a dumb waiter that behaves like an unseen command system."
-          actionLabel="Scenic model"
-        >
-          <img data-project-preview
-            src={dumbWaiterImages.wall}
-            alt="Close scenic model view showing Ben and Gus staged near the stairs, bed, and dark wall."
-            loading="lazy"
-            decoding="async"
-          />
-        </CsMediaSpotlight>
 
         <CsSection id="cs-overview" label="Overview" title="Waiting as Violence">
           <CsBody>

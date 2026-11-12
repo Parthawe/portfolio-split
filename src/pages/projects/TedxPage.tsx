@@ -43,6 +43,18 @@ export default function TedxPage() {
           ]}
           heroImage="/Assets/Projects/Tedxvitpune/Desktop/5.jpg"
           heroAlt="Completed TEDxVITPune stage with parallax cityscape"
+          openingContribution="I designed the parallax cityscape, directed its fabrication and installation, and coordinated the eight-person stage team."
+          openingContent={
+            <CsSection id="cs-stage" label="03 &mdash; Stage Design" title="Parallax Cityscape">
+              <CsBody className="cs-body--measure">
+                <p>The stage became a layered cityscape: box columns at different heights and depths, lit from behind so the skyline shifted as speakers moved.</p>
+                <p>The recognizable skyline won over abstract forms because it read clearly from the back rows, framed speakers on camera, and made the rotating stage feel intentional.</p>
+              </CsBody>
+              <figure className="cs-img-full project-media--transparent">
+                <img {...projectImageProps("/Assets/Projects/Tedxvitpune/Desktop/1.jpg")} data-project-preview src="/Assets/Projects/Tedxvitpune/Desktop/1.jpg" alt="The finished stage in use: a host, a speaker, and a guitarist performing in front of the blue-lit column cityscape and red TEDxVITPune lettering" loading="lazy" decoding="async" />
+              </figure>
+            </CsSection>
+          }
         />
 
         {/* Overview */}
@@ -89,21 +101,7 @@ export default function TedxPage() {
         </section>
 
         {/* Stage Design */}
-        <CsSection id="cs-stage" label="03 &mdash; Stage Design" title="Parallax Cityscape">
-          <CsBody className="cs-body--measure">
-            <p>The stage became a layered cityscape: box columns at different heights and depths, lit from behind so the skyline shifted as speakers moved.</p>
-            <p>The recognizable skyline won over abstract forms because it read clearly from the back rows, framed speakers on camera, and made the rotating stage feel intentional.</p>
-          </CsBody>
-        </CsSection>
 
-        {/* Stage Design Gallery */}
-        <section className="cs-section reveal">
-          <div className="wrap">
-            <figure className="cs-img-full project-media--transparent">
-              <img {...projectImageProps("/Assets/Projects/Tedxvitpune/Desktop/1.jpg")} data-project-preview src="/Assets/Projects/Tedxvitpune/Desktop/1.jpg" alt="The finished stage in use: a host, a speaker, and a guitarist performing in front of the blue-lit column cityscape and red TEDxVITPune lettering" loading="lazy" decoding="async" />
-            </figure>
-          </div>
-        </section>
 
         {/* Team Leadership */}
         <section className="cs-section"><div className="wrap"><h2 className="cs-section-title">From the 2019 talk archive</h2><CsBody><p>TED’s archive lists <cite>7 perspectives towards a better mental health</cite> from TEDxVITPune in November 2019. The archive is linked as an event reference; the original stage photographs above remain the reference for this reconstruction.</p><a className="glass-action" href="https://www.ted.com/talks/7_perspectives_towards_a_better_mental_health" target="_blank" rel="noopener noreferrer">Open the 2019 TED talk</a></CsBody></div></section>

@@ -90,6 +90,7 @@ export default function AfterHoursPage() {
       </div>
       <div className="ah-caption"><p id="ah-help">Drag to explore · Pinch to zoom · Arrow keys to move · Enter to inspect</p><p>Eight workshop stories. Endless arrangements.</p></div>
       <section className="ah-selected" aria-live="polite" aria-atomic="true"><span className="ah-kicker">Inside this room</span><h2>{room.name}</h2><p>{room.note}</p></section>
+      <section className="ah-selected" aria-labelledby="ah-opening-contribution"><h2 id="ah-opening-contribution">What I designed</h2><p>I drew eight isometric workshops and built a generative floor that arranges them as you explore. Each room has its own animated activity and a detail you can inspect.</p></section>
       <details className="ah-directory"><summary>Visit a workshop</summary><div>{ROOMS.map((item, i) => {
         // Each type has a deterministic home, so the directory is usable without a canvas.
         let cell: Cell = { col: 0, row: 0 }; outer: for (let row = -8; row <= 8; row++) for (let col = -8; col <= 8; col++) if (roomType(col, row) === i) { cell = { col, row }; break outer }

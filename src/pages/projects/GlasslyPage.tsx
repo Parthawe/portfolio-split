@@ -45,18 +45,22 @@ export default function GlasslyPage() {
         info={[{label:'Scope',value:'Product story, brand system and website'},{label:'Period',value:'2026'},{label:'Surfaces',value:'Web, phone and glasses demonstration'}]}
         heroExperience="visual" visualHeroImage={`${base}/cover.webp`} visualHeroAlt="Glassly identity with Even Realities G2 partner hardware"
         visualSummary="Miniapps on your phone. Useful information in view on your glasses."
-        liveUrl="https://glassly.ai" liveLabel="Glassly website" showHeaderSummary={false} />
+        liveUrl="https://glassly.ai" liveLabel="Glassly website" showHeaderSummary={false}
+        openingContribution="I designed and built the website demonstration that connects a phone miniapp to a sample view on the glasses. I also wrote the imagery and motion rules for the brand guidelines."
+        openingContent={
+          <section id="glassly-demo" className="glassly-case-section"><div className="wrap">
+            <h2>Let people see what a miniapp changes</h2>
+            <p className="glassly-case-intro">Choose Home, Captions, Navigation, Notifications, Assist or Terminal. The original website demonstration changes the phone interface and glasses output together. Manual selection pauses playback, and the larger mirror keeps the selected scene.</p>
+            <GlasslyDemo />
+          </div></section>
+        }
+      />
       <ProjectQuickSummary slug="glassly" title="Project overview" viewMode={viewMode} onViewModeChange={setViewMode} variant="open" proofLimit={0} />
-      <CsExpandPreview expanded={viewMode==='full'} onExpand={()=>setViewMode('full')} cta="Read the full case study" previewImage={`${base}/website-hero.webp`} sectionIds={sections.map(section=>section.id)}>
+      <CsExpandPreview expanded={viewMode==='full'} onExpand={()=>setViewMode('full')} cta="Read the full case study" previewImage={`${base}/website-hero.webp`} sectionIds={sections.filter(section=>section.id!=='glassly-demo').map(section=>section.id)}>
         <section id="glassly-product" className="glassly-case-section"><div className="wrap">
           <h2>Explain the platform through everyday use</h2>
           <div className="glassly-case-intro"><p>Glassly connects miniapps on a phone to supported wearable hardware. The website needed to explain that relationship before asking visitors to explore devices or request early access.</p><p>The story starts with captions, directions and notifications. A wide product image gives the hardware room; a separate sample caption shows the idea without pretending to reproduce the optics of a lens.</p></div>
           <CsImage src={`${base}/website-hero.webp`} aspectRatio="1440 / 744" alt="Original Glassly homepage with the platform headline, Even Realities G2 photograph and a separately labelled sample caption" caption="Original website. Glassly is the platform; Even Realities makes the pictured hardware." />
-        </div></section>
-        <section id="glassly-demo" className="glassly-case-section"><div className="wrap">
-          <h2>Let people see what a miniapp changes</h2>
-          <p className="glassly-case-intro">Choose Home, Captions, Navigation, Notifications, Assist or Terminal. The original website demonstration changes the phone interface and glasses output together. Manual selection pauses playback, and the larger mirror keeps the selected scene.</p>
-          <GlasslyDemo />
         </div></section>
         <section id="glassly-hardware" className="glassly-case-section"><div className="wrap">
           <h2>Separate the platform from the device</h2>

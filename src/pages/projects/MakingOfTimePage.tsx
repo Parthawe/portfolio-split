@@ -41,6 +41,17 @@ export default function MakingOfTimePage() {
             { label: 'Year', value: '2024' },
             { label: 'Role', value: 'Designer + builder' },
           ]}
+          openingContribution="I designed and built three timekeeping studies that make the same moment readable through a shadow, a mechanical display, and software."
+          openingContent={
+            <CsSection id="cs-interactive" label="Interactive" title="Three Ways to Read This Moment">
+              <CsBody>
+                <p>This browser illustration compares shadow, a ticking dial, and a color field. It is a new reading aid for the project; the photographs and film document the original watches.</p>
+              </CsBody>
+              <div className="project-content-block">
+                <ClockTrio />
+              </div>
+            </CsSection>
+          }
         />
 
         <CsMediaSpotlight layout="stacked"
@@ -69,14 +80,6 @@ export default function MakingOfTimePage() {
         </section>
 
         {/* Interactive, early proof */}
-        <CsSection id="cs-interactive" label="Interactive" title="Three Ways to Read This Moment">
-          <CsBody>
-            <p>This browser illustration compares shadow, a ticking dial, and a color field. It is a new reading aid for the project; the photographs and film document the original watches.</p>
-          </CsBody>
-          <div className="project-content-block">
-            <ClockTrio />
-          </div>
-        </CsSection>
 
         {/* Overview */}
         <section className="cs-section reveal">

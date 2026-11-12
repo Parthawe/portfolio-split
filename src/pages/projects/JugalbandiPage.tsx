@@ -85,6 +85,7 @@ export default function JugalbandiPage() {
           showHeaderSummary={false}
           heroFraming="image"
           openingMediaId="cs-film"
+          openingContribution="I designed and fabricated the performer’s Hexa-18 controller and the robotic flute, harp, and rainsticks that answer it."
           heroCaption="Original performance recording"
           visualHeroMedia={
             <ExternalVideo

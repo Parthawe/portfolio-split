@@ -30,11 +30,14 @@ export default function IntroCompMediaPage() {
             { label: 'Role', value: 'Creative Coder' },
             { label: 'Tools', value: 'p5.js, JavaScript, HTML Canvas' },
           ]}
+          openingContribution="I wrote a p5.js sketch that samples camera pixels and turns them into marks. The restored browser version lets you inspect that mapping directly."
+          openingContent={
+            <CsSection id="cs-sketch" label="Experiment" title="Paint with pixels">
+              <CsBody><p>Two hundred particles wander across the canvas. Each samples a color from a small camera image and leaves a translucent mark. Change the opacity to see how quickly the image builds.</p></CsBody>
+              <PixelPainting />
+            </CsSection>
+          }
         />
-        <CsSection id="cs-sketch" label="Experiment" title="Paint with pixels">
-          <CsBody><p>Two hundred particles wander across the canvas. Each samples a color from a small camera image and leaves a translucent mark. Change the opacity to see how quickly the image builds.</p></CsBody>
-          <PixelPainting />
-        </CsSection>
         <CsExpandPreview>
         <CsSection id="cs-overview" label="Source" title="From the original sketch">
           <CsBody>

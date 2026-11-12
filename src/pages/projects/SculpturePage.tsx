@@ -42,6 +42,14 @@ export default function SculpturePage() {
             { label: 'Role', value: 'Sculptor' },
             { label: 'Duration', value: 'Dec 2019 - Mar 2022' },
           ]}
+          openingContribution="I studied anatomy, built an armature, and worked the figure from its clay and plaster forms through the final finish."
+          openingContent={
+            <section id="cs-sculpture-process" className="cs-section"><div className="wrap"><h2 className="cs-section-title">Inspect the making</h2><CsBody><p>The available photographs document references, armature studies and the finished form. They do not cover enough angles to reconstruct the sculpture faithfully in 360 degrees.</p></CsBody><CsScreenExplorer format="landscape" label="Choose a sculpture evidence stage" screens={[
+              {title:'References',label:'Anatomy and posture',src:'/Assets/Projects/Sculpture/3.jpg',alt:'Original anatomy and classical sculpture reference board',caption:'The reference board informed the pose and proportions.'},
+              {title:'Structure',label:'Armature and early forms',src:'/Assets/Projects/Sculpture/4.jpg',alt:'Original sculpture process and armature board',caption:'The process board documents support and material build-up.'},
+              {title:'Finished form',label:'Surface and silhouette',src:'/Assets/Projects/Sculpture/5.jpg',alt:'Original finished sculpture photographs',caption:'Inspect the documented finished form. Unseen geometry has not been invented.'}
+            ]}/></div></section>
+          }
         />
 
         <CsSection id="cs-glimpse" label="Glimpse" title="Learning form through making">
@@ -61,11 +69,6 @@ export default function SculpturePage() {
             <span className="cs-label-row-val">A finished figurative sculpture that won in the competition context and became a useful proof of physical making discipline.</span>
           </div>
         </CsSection>
-        <section id="cs-sculpture-process" className="cs-section"><div className="wrap"><h2 className="cs-section-title">Inspect the making</h2><CsBody><p>The available photographs document references, armature studies and the finished form. They do not cover enough angles to reconstruct the sculpture faithfully in 360 degrees.</p></CsBody><CsScreenExplorer format="landscape" label="Choose a sculpture evidence stage" screens={[
-          {title:'References',label:'Anatomy and posture',src:'/Assets/Projects/Sculpture/3.jpg',alt:'Original anatomy and classical sculpture reference board',caption:'The reference board informed the pose and proportions.'},
-          {title:'Structure',label:'Armature and early forms',src:'/Assets/Projects/Sculpture/4.jpg',alt:'Original sculpture process and armature board',caption:'The process board documents support and material build-up.'},
-          {title:'Finished form',label:'Surface and silhouette',src:'/Assets/Projects/Sculpture/5.jpg',alt:'Original finished sculpture photographs',caption:'Inspect the documented finished form. Unseen geometry has not been invented.'}
-        ]}/></div></section>
         <CsSection id="cs-impact" label="Impact" title="Structure before surface detail">
           <CsFeatureGrid features={[
             { title: 'Physical patience', desc: 'The project forced slower decisions because material work does not have an easy undo button.' },

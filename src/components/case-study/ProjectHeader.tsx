@@ -45,6 +45,8 @@ interface ProjectHeaderProps {
   visualHeroAlt?: string
   visualHeroMedia?: ReactNode
   openingMediaId?: string
+  openingContent?: ReactNode
+  openingContribution?: string
   liveLabel?: string
   liveDownload?: boolean | string
   visualBriefMode?: 'combined' | 'split'
@@ -105,6 +107,8 @@ export default function ProjectHeader({
   visualHeroAlt,
   visualHeroMedia,
   openingMediaId,
+  openingContent,
+  openingContribution,
   liveLabel = 'Visit Live Site',
   liveDownload,
   visualBriefMode = 'combined',
@@ -121,6 +125,7 @@ export default function ProjectHeader({
   const readingPath = projectReadingPaths[currentSlug]
   const project = getProject(currentSlug)
   const story = project?.storyline
+  const evidenceFirst = Boolean(openingMediaId || openingContent || openingContribution)
   const resolvedHeroImage =
     heroImage ||
     project?.access?.publicPreviewImage ||
@@ -212,7 +217,7 @@ export default function ProjectHeader({
       </section>
     ) : null
 
-  if (heroExperience !== undefined || resolvedVisualHeroImage) {
+  if (heroExperience !== undefined || resolvedVisualHeroImage || openingContent) {
     const visualDeck = visualHeadline || visualSummary || subtitle
     const visualTitle = title
     const titleLength = projectTitleLengthClass(visualTitle)
@@ -232,7 +237,7 @@ export default function ProjectHeader({
       'wrap',
       'project-header',
       'project-header--visual',
-      openingMediaId ? 'project-header--evidence-first' : '',
+      evidenceFirst ? 'project-header--evidence-first' : '',
       heroFraming === 'image' ? 'project-header--image' : '',
       heroTone ? `project-header--${slugClass(heroTone)}` : '',
       project?.category ? `project-header--cat-${project.category}` : '',
@@ -252,7 +257,7 @@ export default function ProjectHeader({
 
     return (
       <div className={visualClasses}>
-        {!openingMediaId && readingLinks}
+        {!evidenceFirst && readingLinks}
         <section className="proj-visual-hero hero-anim hero-anim-1" aria-label={`${title} project introduction`}>
           <div className="proj-visual-hero__copy">
             <h1 className={`proj-visual-title proj-visual-title--${titleLength}`}>{visualTitle}</h1>
@@ -283,7 +288,7 @@ export default function ProjectHeader({
             </div>
           </div>
 
-          <div className="proj-visual-stage" id={openingMediaId}>
+          {!openingContent && <div className={`proj-visual-stage${visualHeroMedia ? '' : ' proj-visual-stage--still'}`} id={openingMediaId}>
             {heroFraming === 'panel' && <div className="proj-visual-hero__chrome" aria-hidden="true">
               <span />
               <span />
@@ -305,11 +310,18 @@ export default function ProjectHeader({
                 )}
               </div>
             )}
-          </div>
-          {heroCaption && <p className="proj-generated-caption">{heroCaption}</p>}
+          </div>}
+          {!openingContent && heroCaption && <p className="proj-generated-caption">{heroCaption}</p>}
         </section>
 
-        {openingMediaId && readingLinks}
+        {openingContent && <div className="project-opening-content">{openingContent}</div>}
+        {openingContribution && (
+          <section className="public-workflow-contribution" aria-labelledby="project-opening-contribution">
+            <h2 id="project-opening-contribution">What I did</h2>
+            <p>{openingContribution}</p>
+          </section>
+        )}
+        {evidenceFirst && readingLinks}
 
         <section id="project-overview" tabIndex={-1} className={`proj-visual-brief proj-visual-brief--${visualBriefMode} hero-anim hero-anim-2`} aria-label={`${title} project overview`}>
           {showHeaderSummary && (visualBriefMode === 'combined' ? (

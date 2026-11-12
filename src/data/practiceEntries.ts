@@ -1,4 +1,4 @@
-type Practice = { description: string; focus: string; notes: string[]; limitation: string; related: { slug: string; title: string; note: string }[] }
+type Practice = { description: string; focus: string; notes: string[]; limitation: string; example?: { title: string; text: string }; related: { slug: string; title: string; note: string }[] }
 export const practiceEntries = {
   'embodied-web': {
     description: 'Course notes on breath, pose, tilt, proximity, and silhouette as browser inputs.',
@@ -58,7 +58,8 @@ export const practiceEntries = {
   },
   'arcade-lab': {
     description: 'Practice notes on four physical-controller game prototypes leading toward The Omakase.',
-    focus: 'The recurring constraint was a custom controller. Slap Battle used pressure pads; Tilt Maze shared two axes; Sound Chef and Speed Sushi explored ingredient sequences.',
+    focus: 'I prototyped four games around custom controllers and explored how pressure, tilt, sound, and ingredient order could give players different ways to act together.',
+    example: { title: 'Four controller experiments', text: 'Slap Battle used pressure pads. Tilt Maze gave players two shared axes. Sound Chef and Speed Sushi explored ingredient sequences.' },
     notes: ['Adjacent players can notice one another while following an order.', 'Pair sound with visible feedback so neither is the only confirmation.', 'Ingredient order and color cues still need clear instructions.'],
     limitation: 'Original recordings of the four early prototypes and comparative playtest results are unavailable.',
     related: [{ slug: 'the-omakase', title: 'The Omakase', note: 'The finished cabinet, original game, controls, and performance film.' }],

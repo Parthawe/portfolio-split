@@ -46,6 +46,12 @@ export default function CodeForBuildPage() {
           ]}
           heroImage={`${CFB_PHOTOS}/phone-hero.png`}
           heroAlt="Code for Build hero with 3D block illustrations and mobile mockups"
+          openingContribution="I designed a phone-first coding lesson that connects visual blocks, their 3D arrangement, and the page they produce."
+          openingContent={
+            <section id="cs-block-study">
+              <DeferredCodeBlockStudy />
+            </section>
+          }
         />
 
 
@@ -67,7 +73,6 @@ export default function CodeForBuildPage() {
           </div>
         </CsSection>
 
-        <section className="wrap"><DeferredCodeBlockStudy /></section>
         <CsExpandPreview
           ctaLabel="Open the full build concept"
           note="Process maps, block grammar, result screens, and the learning system."
@@ -95,6 +100,7 @@ export default function CodeForBuildPage() {
             </div>
           </div>
         </section>
+
 
         <CsSection id="cs-result" label="Result" title="Connect code to its output">
           <CsBody>

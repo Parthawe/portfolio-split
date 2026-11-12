@@ -87,6 +87,15 @@ await cp('public', dist, {
     return !relative.startsWith(transfiSlideDirectory) || allowedTransfiSlides.has(relative)
   },
 })
+// Glassly ships a standalone export, so its URLs do not pass through Vite.
+const glasslyDemo = 'Assets/Projects/Glassly/demo'
+const glasslyFiles = await readdir(path.join(dist, glasslyDemo), { recursive: true })
+for (const file of glasslyFiles.filter(file => /\.(?:html|js|css)$/.test(file))) {
+  const target = path.join(dist, glasslyDemo, file)
+  const source = await readFile(target, 'utf8')
+  const rewritten = source.replaceAll(`/${glasslyDemo}/`, `${root}/${glasslyDemo}/`)
+  if (rewritten !== source) await writeFile(target, rewritten)
+}
 await writeFile(path.join(dist, '.nojekyll'), '')
 await writeFile(path.join(dist, 'robots.txt'), 'User-agent: *\nAllow: /\n')
 const directoryPage = `<!doctype html>

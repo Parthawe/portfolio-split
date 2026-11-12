@@ -42,6 +42,24 @@ export default function IbmPage() {
             { label: 'Duration', value: '8 Months' },
             { label: 'Year', value: '2020' },
           ]}
+          openingContribution="I worked on the encrypted computation workflow and the analysis used to present prognosis groups as research output."
+          openingContent={
+            <CsSection id="cs-result" label="Result" title="Research output and evaluation limits">
+              <CsBody>
+                <p>The output was a research workflow and a prognosis-group visualization. The Kaplan-Meier plot shows how the resulting groups were presented. It does not, on its own, establish clinical accuracy, generalizability, or readiness for patient care.</p>
+              </CsBody>
+              <CsImage
+                src="/Assets/Projects/CancerPrognosis/photos/km-clusters-dark.jpg"
+                alt="Kaplan-Meier survival cluster plot for seven prognosis groups"
+                caption="Research output: Kaplan-Meier curves for seven groups. The plot is an artifact of the study, not evidence of clinical readiness."
+              />
+              <CsStatGrid stats={[
+                { label: 'Reported client runtime', value: '42s' },
+                { label: 'Reported server runtime', value: '28s' },
+              ]} />
+              <CsBody><p>These are the runtimes recorded in the project material. Hardware, workload, and repeat-run details are not included here, so they should not be read as a reproducible benchmark.</p></CsBody>
+            </CsSection>
+          }
         />
 
         <section className="cs-slide reveal">
@@ -88,21 +106,6 @@ export default function IbmPage() {
           </div>
         </section>
 
-        <CsSection id="cs-result" label="Result" title="Research output and evaluation limits">
-          <CsBody>
-            <p>The output was a research workflow and a prognosis-group visualization. The Kaplan-Meier plot shows how the resulting groups were presented. It does not, on its own, establish clinical accuracy, generalizability, or readiness for patient care.</p>
-          </CsBody>
-          <CsImage
-            src="/Assets/Projects/CancerPrognosis/photos/km-clusters-dark.jpg"
-            alt="Kaplan-Meier survival cluster plot for seven prognosis groups"
-            caption="Research output: Kaplan-Meier curves for seven groups. The plot is an artifact of the study, not evidence of clinical readiness."
-          />
-          <CsStatGrid stats={[
-            { label: 'Reported client runtime', value: '42s' },
-            { label: 'Reported server runtime', value: '28s' },
-          ]} />
-          <CsBody><p>These are the runtimes recorded in the project material. Hardware, workload, and repeat-run details are not included here, so they should not be read as a reproducible benchmark.</p></CsBody>
-        </CsSection>
 
         <section className="cs-section"><div className="wrap"><h2 className="cs-section-title">Publication record</h2><CsBody><p>Co-author Sakshi Oswal lists <cite>Privacy Preserving Cancer Prognosis via Fully Homomorphic Encryption</cite> as an IP.com defensive publication dated May 11, 2022. The original publication document has not been recovered for this case study.</p><a className="glass-action" href="https://in.linkedin.com/in/sakshi-oswal" target="_blank" rel="noopener noreferrer">View the co-author’s publication record</a></CsBody></div></section>
 

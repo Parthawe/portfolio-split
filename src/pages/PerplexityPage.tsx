@@ -429,6 +429,10 @@ export default function PerplexityPage() {
               <span>Speculative Computer launch story · grounded in public product language, not Perplexity product UI</span>
               <span>CSS motion · reduced-motion safe</span>
             </div>
+            <section className="perp-opening-contribution" aria-labelledby="perp-opening-contribution">
+              <h2 id="perp-opening-contribution">What I designed</h2>
+              <p>I built the motion prototype and designed the launch sequence that takes a request through planning, parallel work, and a visible handoff. I developed a production system for adapting that sequence across launch and social formats.</p>
+            </section>
           </section>
 
           <Reveal>

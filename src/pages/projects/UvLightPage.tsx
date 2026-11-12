@@ -41,8 +41,22 @@ export default function UvLightPage() {
             { label: 'Duration', value: '2 Weeks' },
             { label: 'Year', value: '2023' },
           ]}
-          heroImage="/Assets/Projects/UVLight/photos/image-5.png"
-          heroAlt="UV Light blacklight installation with participants searching for hidden messages"
+          openingContribution="I designed the route through the installation and the sequence of blacklight reveals, so visitors discovered the hidden marks by moving through the space."
+          openingContent={
+            <section className="cs-section reveal" id="cs-narrative">
+              <div className="wrap">
+                <p className="cs-section-label">Narrative</p>
+                <h2 className="cs-display">How the Reveal Unfolded</h2>
+                <div className="cs-img-full"><img {...projectImageProps("/Assets/Projects/UVLight/photos/image-5.png")} data-project-preview src="/Assets/Projects/UVLight/photos/image-5.png" alt="Participants look for hidden messages under blacklight in the original installation" loading="lazy" /></div>
+                <CsNumList items={[
+                  <><strong>Arrival and Grouping</strong> &mdash; Participants were organized into groups of four and ushered into the first room.</>,
+                  <><strong>The UV Revelation</strong> &mdash; Initially handed blank paper, attendees discovered hidden drawings under UV light upon entering the room. Each revealed piece contributed to a larger painting.</>,
+                  <><strong>Completion of the Puzzle Painting</strong> &mdash; After completing their individual drawings, participants placed them strategically to form a cohesive puzzle painting.</>,
+                  <><strong>The Closing Performance</strong> &mdash; The sequence ended with a short Van Gogh-themed performance in the second room, closing with a paper violin placed at the center of the finished puzzle painting.</>,
+                ]} />
+              </div>
+            </section>
+          }
         />
 
         {/* The Concept */}
@@ -109,18 +123,6 @@ export default function UvLightPage() {
         </section>
 
         {/* Unfold of Act */}
-        <section className="cs-section reveal" id="cs-narrative">
-          <div className="wrap">
-            <p className="cs-section-label">Narrative</p>
-            <h2 className="cs-display">How the Reveal Unfolded</h2>
-            <CsNumList items={[
-              <><strong>Arrival and Grouping</strong> &mdash; Participants were organized into groups of four and ushered into the first room.</>,
-              <><strong>The UV Revelation</strong> &mdash; Initially handed blank paper, attendees discovered hidden drawings under UV light upon entering the room. Each revealed piece contributed to a larger painting.</>,
-              <><strong>Completion of the Puzzle Painting</strong> &mdash; After completing their individual drawings, participants placed them strategically to form a cohesive puzzle painting.</>,
-              <><strong>The Closing Performance</strong> &mdash; The sequence ended with a short Van Gogh-themed performance in the second room, closing with a paper violin placed at the center of the finished puzzle painting.</>,
-            ]} />
-          </div>
-        </section>
 
         {/* Van Gogh inspiration */}
         <section className="cs-section reveal">

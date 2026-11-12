@@ -27,6 +27,8 @@
 @media(max-width:700px){.project-study-source{grid-template-columns:1fr}.project-study-source img{height:auto;max-height:380px}.project-main--shuffle #cs-exhibition .cs-section-grid{grid-template-columns:1fr}}
 
 .code-block-study__views {display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:2rem;align-items:center}
+.project-opening-content .code-block-study { margin-block: 0; }
+.code-block-study h2 { font: 500 clamp(1.25rem, 2.5vw, 1.75rem)/1.2 var(--sans); margin: 0; }
 .code-block-study figure{margin:0}.code-block-study svg{width:100%;height:auto}.code-block-study figcaption{font:13px/1.6 var(--sans);color:var(--ink-70)}
 .code-block-preview {margin-top:1rem;min-height:240px;box-sizing:border-box}.code-block-preview h4{font:400 27px var(--sans);margin:18px 0}.code-block-preview__image{min-height:100px;background:var(--ink-06);display:grid;place-items:center;font:14px var(--mono)}
 .code-block-study pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.7 var(--mono);padding:1rem;background:var(--ink-04)}

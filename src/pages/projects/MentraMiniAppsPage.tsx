@@ -139,6 +139,19 @@ export default function MentraMiniAppsPage() {
           showHeaderSummary={false}
           heroImage="/Assets/mockups/projects/mentra-miniapps_16x9.webp"
           heroAlt="Mentra MiniApp Store 16:9 project cover showing the smart glasses app ecosystem"
+          openingContribution="I designed the phone Store, including how people find a MiniApp, configure it before use, and stop it without uninstalling it."
+          openingContent={
+            <section id="cs-store-flow" className="cs-section reveal" aria-label="Original MiniApp Store flow">
+              <div className="wrap">
+                <CsScreenStrip format="portrait" label="Discover, configure, run" screens={[
+                  { src: '/Assets/Projects/mentra-miniapps/figma/store-discovery.png', label: 'Discover apps', decision: { question: 'How does someone choose an app?', choice: 'Put search and app collections on the phone.', evidence: 'Inspect search, featured content, and editor choices before the app detail.' }, alt: 'Original Figma Mentra Store screen with search, featured app, must-have apps and editor choices' },
+                  { src: '/Assets/Projects/mentra-miniapps/figma/store-detail.png', label: 'Inspect Live Captions', decision: { question: 'Where can reading preferences be set?', choice: 'Keep language, line width, line count, and speed beside the app description.', evidence: 'Locate the settings below Get; these are phone controls, not a glasses screenshot.' }, alt: 'Original Figma Live Captions detail screen with Get action, language, line width and speed settings' },
+                  { src: '/Assets/Projects/mentra-miniapps/figma/store-installed.png', label: 'Manage a running app', decision: { question: 'How does running differ from installed?', choice: 'Expose Stop separately from Uninstall.', evidence: 'Compare the two actions here with Get in the preceding screen.' }, alt: 'Original Figma Live Captions running state with Stop and Uninstall actions' },
+                ]} />
+                <p className="cs-caption">Original companion-app designs from Figma: Store → Live Captions → running state. These are source screens, not a live installation.</p>
+              </div>
+            </section>
+          }
         />
 
         <ProjectQuickSummary
@@ -151,16 +164,6 @@ export default function MentraMiniAppsPage() {
           proofLimit={0}
         />
 
-        <section id="cs-store-flow" className="cs-section reveal" aria-label="Original MiniApp Store flow">
-          <div className="wrap">
-            <CsScreenStrip format="portrait" label="Discover, configure, run" screens={[
-              { src: '/Assets/Projects/mentra-miniapps/figma/store-discovery.png', label: 'Discover apps', decision: { question: 'How does someone choose an app?', choice: 'Put search and app collections on the phone.', evidence: 'Inspect search, featured content, and editor choices before the app detail.' }, alt: 'Original Figma Mentra Store screen with search, featured app, must-have apps and editor choices' },
-              { src: '/Assets/Projects/mentra-miniapps/figma/store-detail.png', label: 'Inspect Live Captions', decision: { question: 'Where can reading preferences be set?', choice: 'Keep language, line width, line count, and speed beside the app description.', evidence: 'Locate the settings below Get; these are phone controls, not a glasses screenshot.' }, alt: 'Original Figma Live Captions detail screen with Get action, language, line width and speed settings' },
-              { src: '/Assets/Projects/mentra-miniapps/figma/store-installed.png', label: 'Manage a running app', decision: { question: 'How does running differ from installed?', choice: 'Expose Stop separately from Uninstall.', evidence: 'Compare the two actions here with Get in the preceding screen.' }, alt: 'Original Figma Live Captions running state with Stop and Uninstall actions' },
-            ]} />
-            <p className="cs-caption">Original companion-app designs from Figma: Store → Live Captions → running state. These are source screens, not a live installation.</p>
-          </div>
-        </section>
 
         <CsSection id="cs-vision" label="Two surfaces" title="A quick choice on glasses; detail on the phone">
           <CsBody><p>The companion phone handles discovery, configuration, and longer reading. The original Store screens above make those tasks inspectable; the glasses surfaces below show a different scale of output. Sensor permissions and developer submission remain proposals, described separately.</p></CsBody>

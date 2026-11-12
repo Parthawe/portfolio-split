@@ -34,7 +34,8 @@ export default function PublicProjectSummary({ slug, workflow }: PublicProjectSu
       <ProjectHeader backLink="/work" backLabel="Back to work" tags={[project.tag]}
         title={project.name} subtitle={workflow?.subtitle ?? project.desc} heroImage={image}
         heroAlt={project.access?.publicPreviewAlt || project.name} heroFraming="image"
-        openingMediaId={workflow ? 'cs-public-story' : undefined}
+        openingMediaId="cs-public-story"
+        openingContribution={workflow ? undefined : project.summaryRole}
         visualHeroMedia={workflow && <div>
           {workflow.media}
           <section id="overview" className="public-workflow-contribution" aria-labelledby="public-workflow-contribution-title">
@@ -46,10 +47,9 @@ export default function PublicProjectSummary({ slug, workflow }: PublicProjectSu
         showHeaderSummary={false} info={workflow
           ? [{ label: 'Role', value: workflow.role }]
           : [{ label: 'Year', value: project.year }]} />
-      {!workflow && <CsSection id="overview" title="Project summary">
+      {!workflow && <CsSection id="overview" title="Public project summary">
         <CsBody>
           <p>{project.summaryProblem}</p>
-          <p>{project.summaryRole}</p>
           <p>{project.summaryOutcome}</p>
           <a className="proj-live-link" href={accessHref}>Request access on the live portfolio</a>
         </CsBody>

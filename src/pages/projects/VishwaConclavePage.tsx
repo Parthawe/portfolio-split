@@ -43,6 +43,15 @@ export default function VishwaConclavePage() {
             { label: 'Role', value: 'Junior designer → Creative director' },
             { label: 'Organization', value: 'Vishwakarma Institute of Technology, Pune' },
           ]}
+          openingContribution="I designed event graphics and web experiences across three editions and took on creative direction for the later work."
+          openingContent={
+            <section id="cs-events" className="cs-section"><div className="wrap"><h2 className="cs-section-title">Three years of an evolving identity</h2><CsBody><p>Choose an edition, inspect its complete board, then zoom or enter fullscreen to read the artwork. The original boards document the shift from individual campaigns to creative direction across an event.</p></CsBody>
+            <CsReportReader label="VishwaConclave edition archive" continueHref="#cs-scope" originalLabel="Open selected original board" chapters={[
+              {label:'2019 · Narrative and Revisit',src:'/Assets/Projects/VishwaConclave/2.jpg',alt:'2019 Narrative podcast and Revisit campaign artwork'},
+              {label:'2020 · Crafting the Decade',src:'/Assets/Projects/VishwaConclave/4.jpg',alt:'2020 conference campaigns and recruitment artwork'},
+              {label:'2021 · Accelerate the Paradigm Shift',src:'/Assets/Projects/VishwaConclave/5.webp',alt:'2021 campaigns, website, collateral and merchandise'}
+            ]}/></div></section>
+          }
         />
 
         {/* Overview */}
@@ -58,12 +67,6 @@ export default function VishwaConclavePage() {
           cta="Open the campaign archive"
           note="Event timeline, identity systems, campaign assets, scope, growth notes, and final sign-off."
         >
-        <section id="cs-events" className="cs-section"><div className="wrap"><h2 className="cs-section-title">Three years of an evolving identity</h2><CsBody><p>Choose an edition, inspect its complete board, then zoom or enter fullscreen to read the artwork. The original boards document the shift from individual campaigns to creative direction across an event.</p></CsBody>
-        <CsReportReader label="VishwaConclave edition archive" continueHref="#cs-scope" originalLabel="Open selected original board" chapters={[
-          {label:'2019 · Narrative and Revisit',src:'/Assets/Projects/VishwaConclave/2.jpg',alt:'2019 Narrative podcast and Revisit campaign artwork'},
-          {label:'2020 · Crafting the Decade',src:'/Assets/Projects/VishwaConclave/4.jpg',alt:'2020 conference campaigns and recruitment artwork'},
-          {label:'2021 · Accelerate the Paradigm Shift',src:'/Assets/Projects/VishwaConclave/5.webp',alt:'2021 campaigns, website, collateral and merchandise'}
-        ]}/></div></section>
 
         {/* Scope */}
         <CsSection id="cs-scope" label="02 &mdash; Scope" title="The scope of creative direction">

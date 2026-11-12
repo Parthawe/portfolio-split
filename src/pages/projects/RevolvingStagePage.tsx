@@ -56,6 +56,17 @@ export default function RevolvingStagePage() {
           ]}
           heroImage="/Assets/mockups/projects/revolving-stage_16x9.webp"
           heroAlt="Revolving Stage, designing a revolving stage for theatre play with stage photo and 3D render"
+          openingContribution="I designed the axle and rotating platform, planned the scene positions, and led the team that built the stage for the performance."
+          openingContent={
+            <CsSection id="cs-rotate" label="Interactive" title={experiencePreviewsEnabled ? "Explore the Stage" : "Spin the Stage"}>
+              <CsBody>
+                <p>{experiencePreviewsEnabled ? "Follow the stage anatomy from its base to performance and disassembly." : "Explore a simplified browser model of the rotating platform."} Turning it shows how different scene zones can face the audience. The original construction drawings and performance photographs below document the built stage; this model does not simulate its loads or certify its mechanics.</p>
+              </CsBody>
+              <div className="project-content-block">
+                {experiencePreviewsEnabled ? <ExperienceBoundary fallback={<p role="status">The interactive anatomy could not load. The original construction drawings and photographs remain below. <button type="button" onClick={()=>location.reload()}>Reload stage anatomy</button></p>}><Suspense fallback={<p role="status">Loading stage anatomy…</p>}><StageWorkshop /></Suspense></ExperienceBoundary> : <StageRotation />}
+              </div>
+            </CsSection>
+          }
         />
 
         {/* Summary section */}
@@ -99,14 +110,6 @@ export default function RevolvingStagePage() {
         {/* Interactive — stage rotation */}
 
         <CsExpandPreview>
-        <CsSection id="cs-rotate" label="Interactive" title={experiencePreviewsEnabled ? "Explore the Stage" : "Spin the Stage"}>
-          <CsBody>
-            <p>{experiencePreviewsEnabled ? "Follow the stage anatomy from its base to performance and disassembly." : "Explore a simplified browser model of the rotating platform."} Turning it shows how different scene zones can face the audience. The original construction drawings and performance photographs below document the built stage; this model does not simulate its loads or certify its mechanics.</p>
-          </CsBody>
-          <div className="project-content-block">
-            {experiencePreviewsEnabled ? <ExperienceBoundary fallback={<p role="status">The interactive anatomy could not load. The original construction drawings and photographs remain below. <button type="button" onClick={()=>location.reload()}>Reload stage anatomy</button></p>}><Suspense fallback={<p role="status">Loading stage anatomy…</p>}><StageWorkshop /></Suspense></ExperienceBoundary> : <StageRotation />}
-          </div>
-        </CsSection>
 
         {experiencePreviewsEnabled && <section id="cs-stage-story" className="wrap" style={{scrollMarginTop:100}}><DeferredStory project="stage" /></section>}
 

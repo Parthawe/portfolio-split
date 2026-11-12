@@ -38,16 +38,19 @@ export default function DnaPage() {
             { label: 'Role', value: 'Creator' },
             { label: 'Year', value: '2024' },
           ]}
+          openingContribution="I designed two fictional pharmaceutical packages, their inserts, and the act of choosing between them. The familiar packaging makes the choice about mortality feel like something you could hold."
+          openingContent={
+            <section className="cs-section" aria-label="Original speculative packaging">
+              <div className="wrap">
+                <div className="cs-img-grid project-image-grid--two">
+                  <div className="cs-img reveal"><img {...projectImageProps("/Assets/Projects/DNA/photos/boxes-closed.webp")} data-project-preview src="/Assets/Projects/DNA/photos/boxes-closed.webp" alt="Two speculative pharmaceutical boxes: Live 50+ Years More and Embrace Death" loading="lazy" /></div>
+                  <div className="cs-img reveal"><img {...projectImageProps("/Assets/Projects/DNA/photos/boxes-open.png")} data-project-preview src="/Assets/Projects/DNA/photos/boxes-open.png" alt="Open pharmaceutical boxes with inserts, cards, and pill packaging" loading="lazy" /></div>
+                </div>
+              </div>
+            </section>
+          }
         />
 
-        <section className="cs-section reveal">
-          <div className="wrap">
-            <div className="cs-img-grid project-image-grid--two">
-              <div className="cs-img reveal"><img {...projectImageProps("/Assets/Projects/DNA/photos/boxes-closed.webp")} data-project-preview src="/Assets/Projects/DNA/photos/boxes-closed.webp" alt="Two speculative pharmaceutical boxes: Live 50+ Years More and Embrace Death" loading="lazy" /></div>
-              <div className="cs-img reveal"><img {...projectImageProps("/Assets/Projects/DNA/photos/boxes-open.png")} data-project-preview src="/Assets/Projects/DNA/photos/boxes-open.png" alt="Open pharmaceutical boxes with inserts, cards, and pill packaging" loading="lazy" /></div>
-            </div>
-          </div>
-        </section>
 
         <CsSection id="cs-glimpse" label="Glimpse" title="Putting the choice in someone’s hands">
           <CsBody>

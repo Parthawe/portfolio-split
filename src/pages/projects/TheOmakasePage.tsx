@@ -22,6 +22,7 @@ export default function TheOmakasePage() {
   const [viewMode, setViewMode] = useState<'summary' | 'full'>('summary')
   const sections = viewMode === 'summary'
     ? [
+        { id: 'cs-play', label: 'Play' },
         { id: 'cs-summary', label: 'TL;DR' },
       ]
     : [
@@ -66,6 +67,8 @@ export default function TheOmakasePage() {
             { label: 'Role', value: 'Game designer + fabricator' },
           ]}
           showHeaderSummary={false}
+          openingContribution="I co-designed the game with Jane Liu and Shimeng Zhou. Jane and I built the cabinet and its two sets of color-changing controls so both players could read the action on one shared screen."
+          openingContent={<GameEmbed />}
         />
 
         <ProjectQuickSummary
@@ -93,9 +96,6 @@ export default function TheOmakasePage() {
             />
           </div>
         </section>
-
-        {/* Play the game */}
-        <GameEmbed />
 
         {/* Gameplay */}
         <section className="cs-section reveal" id="cs-gameplay">

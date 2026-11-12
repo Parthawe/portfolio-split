@@ -706,6 +706,23 @@ body.case-side-nav .project-main .project-header--visual.wrap,
   scroll-margin-top: calc(var(--nav-h) + 1rem);
 }
 
+.project-main .project-header--evidence-first .proj-visual-stage--still {
+  aspect-ratio: 16 / 9;
+}
+
+#main-content.project-main .project-opening-content .wrap {
+  width: 100%;
+}
+
+.project-main .project-opening-content > :is(.cs-section, .cs-slide, .cs-media-spotlight) {
+  padding-block: 0;
+  margin-block: 0;
+}
+
+.project-opening-content > [id] {
+  scroll-margin-top: calc(var(--nav-h) + 1rem);
+}
+
 .project-header--evidence-first .proj-visual-hero__media--interactive > * {
   height: auto;
 }

@@ -35,6 +35,16 @@ export default function OnBecomingPage() {
             { label: 'Year', value: '2024' },
             { label: 'Format', value: 'Written Essay' },
           ]}
+          openingContribution="I wrote this essay to trace a recurring design question across my software and installation work."
+          openingContent={
+            <CsSection id="cs-thread" label="02 &mdash; The Thread" title="Making the Invisible Tangible">
+              <CsBody>
+                <p>Every project is about taking something invisible and making it pass through the body.</p>
+                <p><a href="/enigma" className="project-text-link">Enigma</a> turns neural-network computation into cascading light. <a href="/sea-of-salt" className="project-text-link">Why the Sea is Salt</a> turns narrative consequence into grinding salt. <a href="/zentipay" className="project-text-link">ZentiPay</a> turns hidden fees into visible trust. <a href="/shuffle" className="project-text-link">Shuffle</a> turns tradeoffs into coupled motorized faders. <a href="/jugalbandi" className="project-text-link">Jugalbandi</a> turns inference into sound.</p>
+                <p>The medium changes. The question stays: how do I make someone understand through the body, not only the brain?</p>
+              </CsBody>
+            </CsSection>
+          }
         />
 
         {/* The Question */}
@@ -48,13 +58,6 @@ export default function OnBecomingPage() {
         <CsPullquote quote="How can I design a system that makes an invisible concept tangible enough that you can't help but understand it?" />
 
         {/* The Thread */}
-        <CsSection id="cs-thread" label="02 &mdash; The Thread" title="Making the Invisible Tangible">
-          <CsBody>
-            <p>Every project is about taking something invisible and making it pass through the body.</p>
-            <p><a href="/enigma" className="project-text-link">Enigma</a> turns neural-network computation into cascading light. <a href="/sea-of-salt" className="project-text-link">Why the Sea is Salt</a> turns narrative consequence into grinding salt. <a href="/zentipay" className="project-text-link">ZentiPay</a> turns hidden fees into visible trust. <a href="/shuffle" className="project-text-link">Shuffle</a> turns tradeoffs into coupled motorized faders. <a href="/jugalbandi" className="project-text-link">Jugalbandi</a> turns inference into sound.</p>
-            <p>The medium changes. The question stays: how do I make someone understand through the body, not only the brain?</p>
-          </CsBody>
-        </CsSection>
 
         {/* The Method */}
         <CsSection id="cs-method" label="03 &mdash; The Method" title="Medium as Meaning">

@@ -40,12 +40,12 @@ export default function AtpsPage() {
             { label: 'Role', value: 'Podcast Host' },
             { label: 'Platforms', value: 'Spotify, Apple Podcast, Google Podcast' },
           ]}
+          openingContribution="I hosted the conversations and designed the podcast identity, motion, and episode graphics."
+          openingContent={
+            <CsImage src="/Assets/Projects/ATPS/Desktop/1.jpg" alt="Original ArtTown Podcast Series artwork with microphone and episode covers" caption="Original series artwork. Audience totals shown in archived graphics are historical, not current analytics." />
+          }
         />
 
-        {/* Hero image */}
-        <CsImage src="/Assets/Projects/ATPS/Desktop/1.jpg" alt="Original ArtTown Podcast Series artwork with microphone and episode covers" caption="Original series artwork. Audience totals shown in archived graphics are historical, not current analytics." />
-
-        {/* Distribution */}
         <section className="cs-section reveal" id="cs-distribution">
           <div className="wrap">
             <p className="cs-section-label">Distribution</p>
@@ -60,6 +60,7 @@ export default function AtpsPage() {
             </div>
           </div>
         </section>
+
 
         {/* Overview */}
         <section className="cs-section reveal" id="cs-overview">

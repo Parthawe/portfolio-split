@@ -53,6 +53,21 @@ export default function DrowningPage() {
             { label: 'Year', value: '2024' },
             { label: 'Role', value: 'Set Designer' },
           ]}
+          openingContribution="I designed the greenhouse scale model, selected its materials, and made scene boards to compare the mood of the space under different conditions."
+          openingContent={
+            <CsSection id="cs-lighting" label="Interactive" title="Light Transforms the Space">
+              <CsBody>
+                <p>Compare the original model photograph with the scene boards. These are different views of the scenic study, rather than two frames of one lighting transition.</p>
+              </CsBody>
+              <div className="project-content-block">
+                <CsScreenExplorer format="landscape" label="Choose a Drowning scenic study" screens={[
+                  { title: 'The greenhouse model', label: 'Structure and planting', src: drowningImages.revealed, alt: 'Front view of the greenhouse scenic model with two figures', caption: 'The roof frame, dense planting, open doorway, and bare ground establish the enclosure.' },
+                  { title: 'Stephen enters', label: 'Scene 2 board', src: drowningImages.concept, alt: 'Scene 2 presentation board: Stephen enters while Pea is seated', caption: 'The original board describes stillness, dim light, and Stephen’s presence at the edge of the scene.' },
+                  { title: 'Pea’s breakdown', label: 'Scene 3 board', src: drowningImages.designDetail, alt: 'Scene 3 presentation board with a warm-lit model and shadow studies', caption: 'The board proposes deeper shadows and water-like reflections. It records a lighting intention, not a completed full-scale effect.' },
+                ]} />
+              </div>
+            </CsSection>
+          }
         />
 
         <CsMediaSpotlight
@@ -71,18 +86,6 @@ export default function DrowningPage() {
         </CsMediaSpotlight>
 
         {/* Interactive, early proof */}
-        <CsSection id="cs-lighting" label="Interactive" title="Light Transforms the Space">
-          <CsBody>
-            <p>Compare the original model photograph with the scene boards. These are different views of the scenic study, rather than two frames of one lighting transition.</p>
-          </CsBody>
-          <div className="project-content-block">
-            <CsScreenExplorer format="landscape" label="Choose a Drowning scenic study" screens={[
-              { title: 'The greenhouse model', label: 'Structure and planting', src: drowningImages.revealed, alt: 'Front view of the greenhouse scenic model with two figures', caption: 'The roof frame, dense planting, open doorway, and bare ground establish the enclosure.' },
-              { title: 'Stephen enters', label: 'Scene 2 board', src: drowningImages.concept, alt: 'Scene 2 presentation board: Stephen enters while Pea is seated', caption: 'The original board describes stillness, dim light, and Stephen’s presence at the edge of the scene.' },
-              { title: 'Pea’s breakdown', label: 'Scene 3 board', src: drowningImages.designDetail, alt: 'Scene 3 presentation board with a warm-lit model and shadow studies', caption: 'The board proposes deeper shadows and water-like reflections. It records a lighting intention, not a completed full-scale effect.' },
-            ]} />
-          </div>
-        </CsSection>
 
         {/* Overview */}
         <CsSection label="Overview" title="Abandoned Greenhouse">

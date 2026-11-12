@@ -44,20 +44,23 @@ export default function VjSoftwarePage(){return <>
           heroFraming="image"
           heroImage="/Assets/Projects/vj/photos/car-parking.png"
           heroAlt="Original VJ Parivar vehicle parking screen with availability and booking window"
+          openingContribution="I designed a parking flow that starts with a map and carries the chosen space into the booking and confirmation screens."
+          openingContent={
+            <CsSection id="cs-deliver" title="Make the booking state visible">
+              <CsScreenExplorer scrollPortrait label="Choose an original VJ parking screen" screens={[
+                {title:'Find the parking task',label:'Legal & Pay',src:asset('legal-pay.png'),alt:'Original Legal and Pay hub with parking entry and selection countdown',caption:'Scroll inside the viewer to inspect the complete original.',decision:{question:'Where does a resident enter the booking flow?',choice:'Expose parking within the Legal & Pay hub.',evidence:'The parking entry and countdown appear alongside other post-purchase tasks.',limit:'The countdown is a proposed urgency treatment; its effect and the fairness of the booking window were not evaluated.'}},
+                {title:'Explain availability and the window',label:'Parking landing',src:asset('car-parking.png'),alt:'Original parking page showing 50 total, 30 available and 20 booked spots plus priority-window explanation',caption:'The design presents availability before the selection action.',decision:{question:'What does someone need before choosing a space?',choice:'Show availability and explain when the selection window applies.',evidence:'Total, available and booked counts precede Select your spot now and the parking FAQs.',limit:'These are source screen values and proposed rules, not live inventory.'}},
+                {title:'Recover the booking afterwards',label:'Post-booking record',src:asset('post-possession.png'),alt:'Original confirmed vehicle spots, owner details, dimensions and legal-document download',caption:'The record keeps the selected spots and their details together.',decision:{question:'What remains after the transaction?',choice:'Keep both vehicle spots, owner context and the document download in one place.',evidence:'Inspect the four-wheeler and two-wheeler cards, spot number, dimensions and download notice.'}},
+              ]} />
+            </CsSection>
+          }
         />
 
 
         <CsSection id="cs-context" title="The decision starts with a place">
           <CsBody><p>My work focused on parking within VJ’s resident-services app. Choosing a space requires its location and dimensions, followed by a booking record the resident can find again. The original screens below show that sequence; adoption and task-completion results are not recorded.</p></CsBody>
         </CsSection>
-        <CsExpandPreview sectionIds={['cs-discover','cs-define','cs-develop','cs-deliver']} cta="Read the parking decisions" note="Inspect the original entry, map-selection and confirmed-booking screens.">
-        <CsSection id="cs-deliver" title="Make the booking state visible">
-          <CsScreenExplorer scrollPortrait label="Choose an original VJ parking screen" screens={[
-            {title:'Find the parking task',label:'Legal & Pay',src:asset('legal-pay.png'),alt:'Original Legal and Pay hub with parking entry and selection countdown',caption:'Scroll inside the viewer to inspect the complete original.',decision:{question:'Where does a resident enter the booking flow?',choice:'Expose parking within the Legal & Pay hub.',evidence:'The parking entry and countdown appear alongside other post-purchase tasks.',limit:'The countdown is a proposed urgency treatment; its effect and the fairness of the booking window were not evaluated.'}},
-            {title:'Explain availability and the window',label:'Parking landing',src:asset('car-parking.png'),alt:'Original parking page showing 50 total, 30 available and 20 booked spots plus priority-window explanation',caption:'The design presents availability before the selection action.',decision:{question:'What does someone need before choosing a space?',choice:'Show availability and explain when the selection window applies.',evidence:'Total, available and booked counts precede Select your spot now and the parking FAQs.',limit:'These are source screen values and proposed rules, not live inventory.'}},
-            {title:'Recover the booking afterwards',label:'Post-booking record',src:asset('post-possession.png'),alt:'Original confirmed vehicle spots, owner details, dimensions and legal-document download',caption:'The record keeps the selected spots and their details together.',decision:{question:'What remains after the transaction?',choice:'Keep both vehicle spots, owner context and the document download in one place.',evidence:'Inspect the four-wheeler and two-wheeler cards, spot number, dimensions and download notice.'}},
-          ]} />
-        </CsSection>
+        <CsExpandPreview sectionIds={['cs-discover','cs-define','cs-develop']} cta="Read the parking decisions" note="Inspect the original entry, map-selection and confirmed-booking screens.">
         <CsSection id="cs-define" title="Carry the chosen spot through payment">
           <figure className="service-evidence vj-system-overview"><EvidenceImage src={asset('all-screens-ui.png')} alt="Original complete VJ parking flow: onboarding, map selection, filters, payment and confirmation" /><figcaption>The original board connects wing/floor choice, a selected map space, filters, payment and confirmation. Open it to inspect every screen at its original resolution.</figcaption></figure>
           <CsBody><p>The map keeps a spatial choice visible through the price and payment steps. The final acknowledgment warns that confirmed spots cannot be changed later. That makes a comprehension and recovery test necessary before treating the flow as complete.</p></CsBody>

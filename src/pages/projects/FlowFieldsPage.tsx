@@ -37,6 +37,13 @@ export default function FlowFieldsPage() {
           ]}
           heroImage="/Assets/images/flow-fields.svg"
           heroAlt="Static illustration of a flow-field pattern."
+          openingContribution="I explored how a noise field can guide particles into coherent paths. This explanatory sketch makes the effect of those settings visible."
+          openingContent={
+            <CsSection id="cs-flow-demo" label="02 &mdash; Demonstration" title="Watch the paths accumulate">
+              <CsBody><p>This portfolio demonstration uses the existing noise-field canvas implementation. It illustrates the technique; it is not a recovered copy of the original 2024 sketch.</p><p>Start the animation, let the trails develop, then pause to inspect their direction. Move a pointer through the field to compare its undisturbed paths with local attraction.</p></CsBody>
+              <GenerativeCanvas flowOnly />
+            </CsSection>
+          }
         />
 
         <CsSection id="cs-glimpse" label="01 &mdash; Glimpse" title="Making a hidden field visible">
@@ -46,10 +53,6 @@ export default function FlowFieldsPage() {
           </CsBody>
         </CsSection>
 
-        <CsSection id="cs-flow-demo" label="02 &mdash; Demonstration" title="Watch the paths accumulate">
-          <CsBody><p>This portfolio demonstration uses the existing noise-field canvas implementation. It illustrates the technique; it is not a recovered copy of the original 2024 sketch.</p><p>Start the animation, let the trails develop, then pause to inspect their direction. Move a pointer through the field to compare its undisturbed paths with local attraction.</p></CsBody>
-          <GenerativeCanvas flowOnly />
-        </CsSection>
 
         <CsSection id="cs-learnings" label="03 &mdash; Learning" title="Three visual controls">
           <CsFeatureGrid features={[

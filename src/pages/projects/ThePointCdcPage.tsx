@@ -44,8 +44,10 @@ export default function ThePointCdcPage() {
             { label: 'Year', value: '2024' },
           ]}
           liveUrl="https://thepoint.org"
-          heroImage="/Assets/mockups/projects/the-point-cdc_16x9.webp"
-          heroAlt="The Point CDC project cover showing the community website and its interface direction"
+          heroImage="/Assets/Projects/ThePointCDC/photos/homepage-hero.png"
+          heroAlt="Redesigned homepage hero with grouped navigation and clear community entry points"
+          heroCaption="The redesign groups programs, WiFi access, and events into clearer entry points."
+          openingContribution="I synthesized the research, reorganized the navigation around community services, and designed the responsive pages and prototype handoff."
         />
 
         {/* Overview with label-rows */}

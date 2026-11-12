@@ -103,6 +103,7 @@ export default function OrgDashboardPage() {
             { label: 'Year', value: '2026' },
           ]}
           visualHeroMedia={<OrgDashboardArtifact />}
+          openingContribution="I designed the concept for a shared knowledge explorer and a separate action-review queue. The dashboard illustration shows how a reviewer could inspect the proposed action and its source."
         />
 
         <ProjectOverview

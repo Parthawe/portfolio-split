@@ -95,6 +95,7 @@ export default function MentraPage() {
         heroTone="mentra"
         visualSummary="I led design for the smart-glasses OS and companion app. We redesigned the home screen around launching MiniApps."
         openingMediaId={openingComparisonId}
+        openingContribution="I led design for MentraOS and the companion app. For this redesign, I moved MiniApps into the main area, kept glasses status visible, and gave running apps a dedicated control."
         visualHeroMedia={
           <div className="mentra-opening-comparison" role="group" aria-label="Mentra home screen before and after">
             <figure>

@@ -35,6 +35,15 @@ export default function ExecutiveLensPage() {
         ]}
         heroImage="/Assets/mockups/projects/executivelens_16x9.webp"
         heroAlt="ExecutiveLens project cover for meeting intelligence and decision tracking"
+        openingContribution="I designed the meeting review, connecting a summary claim to its transcript and giving the follow-up a clear owner. The replay uses sample meeting content."
+        openingContent={
+          <CsSection id="cs-demo" label="Prepared interaction" title="Check the source before following up">
+            <span id="cs-dashboard" className="project-decision-alias" />
+            <span id="cs-insights" className="project-decision-alias" />
+            <CsBody><p>Show the complete meeting, then check the proposed date, approval and owner. The open question remains unresolved rather than being turned into an invented decision.</p></CsBody>
+            <div className="project-content-block"><MeetingTimeline /></div>
+          </CsSection>
+        }
       />
       <CsSection id="cs-context" label="Problem and approach" title="A summary needs a source and a next step">
         <span id="cs-vision" className="project-decision-alias" />
@@ -72,12 +81,6 @@ export default function ExecutiveLensPage() {
         <p className="cs-caption"><a className="cs-text-link" href="/Assets/Projects/website-screenshot/screencapture-executivelens-ai-2026-03-25-13_34_30.webp" target="_blank" rel="noreferrer">Inspect the complete original website capture</a>. <a className="cs-text-link" href="https://www.executivelens.ai" target="_blank" rel="noreferrer">Product website</a> (current availability unverified).</p>
       </CsSection>
       <CsExpandPreview cta="Trace a decision to its source" note="A prepared meeting replay makes the citation and ownership decisions testable. It does not record meetings or run live AI.">
-        <CsSection id="cs-demo" label="Prepared interaction" title="Check the source before following up">
-          <span id="cs-dashboard" className="project-decision-alias" />
-          <span id="cs-insights" className="project-decision-alias" />
-          <CsBody><p>Show the complete meeting, then check the proposed date, approval and owner. The open question remains unresolved rather than being turned into an invented decision.</p></CsBody>
-          <div className="project-content-block"><MeetingTimeline /></div>
-        </CsSection>
         <CsSection id="cs-impact" label="Scope and evaluation" title="What the evidence establishes">
           <span id="cs-reflections" className="project-decision-alias" />
           <CsBody>

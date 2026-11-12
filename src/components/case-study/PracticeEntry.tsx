@@ -26,18 +26,26 @@ export default function PracticeEntry({ slug }: { slug: keyof typeof practiceEnt
   const project = getProject(slug)!
   const record = projectRecords[slug]
   const study = studyComparisons[slug]
+  const firstStudy = study?.items[0]
+  const example: { title: string; text: string; question?: string } | undefined = firstStudy
+    ? { title: firstStudy.title, text: [firstStudy.input, firstStudy.mapping, firstStudy.response].join(' '), question: firstStudy.question }
+    : 'example' in entry ? entry.example : undefined
   return <>
     <Helmet><title>{project.name} · Practice · Parth Pawar</title><meta name="description" content={entry.description} /></Helmet>
     <Nav />
     <main id="main-content" className="project-main practice-entry">
       <article className="wrap">
-        <Link to="/work" className="glass-action">Back to work</Link>
-        <a href={`https://designwhich.works/process/${encodeURIComponent(slug)}`} className="glass-action">References &amp; process ↗</a>
         <header>
           <h1>{project.name}</h1>
           <p>{entry.description}</p>
           <p className="practice-entry__context">Practice notes · {project.year} · NYU ITP</p>
         </header>
+        {example && <section className="practice-entry__example" aria-labelledby="practice-example-title">
+          <p className="practice-entry__context">Example from the notes</p>
+          <h2 id="practice-example-title">{example.title}</h2>
+          <p>{example.text}</p>
+          {example.question && <p>{example.question}</p>}
+        </section>}
         <section id={anchors.intro[0]} aria-label="Practice and source status">
           <h2>What I explored</h2>
           <p>{entry.focus}</p>
@@ -46,10 +54,13 @@ export default function PracticeEntry({ slug }: { slug: keyof typeof practiceEnt
           <p>{record.evidence}</p>
           <p>{entry.limitation}</p>
         </section>
+        <nav className="practice-entry__nav" aria-label="Project navigation">
+          <Link to="/work" className="glass-action">Back to work</Link>
+          <a href={`https://designwhich.works/process/${encodeURIComponent(slug)}`} className="glass-action">References &amp; process ↗</a>
+        </nav>
         {study && <details id={anchors.notes[0]} className="practice-entry__details" open={notesOpen} onToggle={event => setNotesOpen(event.currentTarget.open)}>
-          <summary>Read the study notes ({study.items.length})</summary>
-          <p>These descriptions organize the course notes. They are reading aids, not recovered prototypes or test results.</p>
-          {study.items.map(item => <section key={item.title}>
+          <summary>Read the other studies ({study.items.length - 1})</summary>
+          {study.items.slice(1).map(item => <section key={item.title}>
             <h3>{item.title}</h3>
             <p>{item.input} {item.mapping} {item.response}</p>
             <p><strong>Open question:</strong> {item.question}</p>

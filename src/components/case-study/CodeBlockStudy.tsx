@@ -9,7 +9,7 @@ export default function CodeBlockStudy(){
  const [selected,setSelected]=useState<Block>('container'),[enabled,setEnabled]=useState<Block[]>([...keys]),[message,setMessage]=useState(''),dark=useThemeMode()
  const toggle=(key:Block)=>{setSelected(key);if(key!=='body')setEnabled(old=>old.includes(key)?old.filter(item=>item!==key):[...old,key])}
  return <section className="project-study code-block-study" aria-label="Building blocks lesson">
- <header><h3>Build a page, inspect its structure</h3><button className="glass-action" onClick={()=>{setEnabled([...keys]);setSelected('container');setMessage('Lesson reset. All blocks restored.')}}>Reset blocks</button></header>
+ <header><h2>Build a page, inspect its structure</h2><button className="glass-action" onClick={()=>{setEnabled([...keys]);setSelected('container');setMessage('Lesson reset. All blocks restored.')}}>Reset blocks</button></header>
  <p>A browser lesson based on the original block grammar. This is a new teaching aid, not the original app or a tested learning outcome.</p>
  <div className="project-study-controls" role="group" aria-label="Page blocks">{keys.map(key=><button className="glass-action" key={key} aria-pressed={enabled.includes(key)} onClick={()=>toggle(key)}>{key[0].toUpperCase()+key.slice(1)}{key==='body'?' · base':enabled.includes(key)?' · on':' · off'}</button>)}</div>
  <p aria-live="polite">{explanations[selected]}</p>

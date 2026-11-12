@@ -104,6 +104,17 @@ export default function TypefacePage() {
             liveUrl={`${TYPEFACE_ASSET}/butlers-slice.zip`}
             liveLabel="Download family"
             liveDownload
+            openingContribution="I designed Butler’s Slice by carrying the angle of a physical cut through the letterforms, then refining the glyphs, spacing, and three supplied weights."
+            openingContent={
+              <section className="tf-tool-section" id="tf-playground">
+                <div className="tf-tool-intro">
+                  <p className="tf-section-kicker">Playground</p>
+                  <h2>Type into the specimen.</h2>
+                  <p>Switch weight and size. Click a glyph to inspect the character at display scale.</p>
+                </div>
+                <GlyphPlayground />
+              </section>
+            }
           />
         </div>
 
@@ -272,14 +283,6 @@ export default function TypefacePage() {
           </div>
         </section>
 
-        <section className="tf-tool-section" id="tf-playground">
-          <div className="tf-tool-intro">
-            <p className="tf-section-kicker">Playground</p>
-            <h2>Type into the specimen.</h2>
-            <p>Switch weight and size. Click a glyph to inspect the character at display scale.</p>
-          </div>
-          <GlyphPlayground />
-        </section>
 
         <section className="tf-tool-section" id="tf-editor">
           <div className="tf-tool-intro">
