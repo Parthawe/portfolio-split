@@ -88,7 +88,6 @@ const AccessibilityPage = lazy(() => import('./pages/AccessibilityPage'))
 const CategoryPage = lazy(() => import('./pages/CategoryPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
 const AfterHoursPage = lazy(() => import('./pages/AfterHoursPage'))
-const PerplexityPage = lazy(() => import('./pages/PerplexityPage'))
 
 // Project page components — auto-generated from registry
 const projectPages = projectRoutes.filter(project => projectSlugs.includes(project.slug)).map(p => ({
@@ -137,9 +136,8 @@ export default function App() {
           <Route path="/work" element={<WorkPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/accessibility" element={<AccessibilityPage />} />
-          {portfolio.pages.filter(page => !page.includes('/') && page !== 'after-hours' && page !== 'perplexity')
+          {portfolio.pages.filter(page => !page.includes('/'))
             .map(page => <Route key={page} path={`/${page}`} element={<CategoryPage />} />)}
-          {!isExperimental && <Route path="/perplexity" element={<PerplexityPage />} />}
           {/* Project pages — auto-generated from src/data/projects.ts */}
           {projectPages.map(({ slug, Component }) => (
             <Route key={slug} path={`/${slug}`} element={<Component />} />

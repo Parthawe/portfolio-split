@@ -1,26 +1,21 @@
 import assert from 'node:assert/strict'
-import { mkdir } from 'node:fs/promises'
-import { chromium } from '@playwright/test'
+import { mkdir, readFile } from 'node:fs/promises'
+import { chromium, expect } from '@playwright/test'
 
 const origin = process.env.PREVIEW_ORIGIN || 'https://parthawe.github.io'
 const base = `${origin}/portfolio-split`
 const screenshots = process.env.PREVIEW_SCREENSHOTS
 if (screenshots) await mkdir(screenshots, { recursive: true })
 const browser = await chromium.launch()
+const portfolios = JSON.parse(await readFile(new URL('../src/config/portfolios.json', import.meta.url), 'utf8'))
 const cases = {
   product: {
     heading: 'Designing product systems people trust.',
-    featured: ['mentra', 'transfi-project', 'raahi-project', 'clawed-chat'],
-    other: 'jugalbandi',
     caseStudy: ['mentra', 'Mentra'],
-    supporting: 'mentra-brand',
   },
   experimental: {
     heading: 'Design That Plays',
-    featured: ['jugalbandi', 'enigma', 'shuffle', 'sea-of-salt'],
-    other: 'mentra',
     caseStudy: ['jugalbandi', 'Jugalbandi'],
-    supporting: 'moniac-machine',
   },
 }
 
@@ -30,6 +25,13 @@ try {
   const directory = await index.text()
   for (const [variant, details] of Object.entries(cases)) {
     assert.ok(directory.includes(`/portfolio-split/${variant}/`))
+    const { featured, supporting, archive } = portfolios[variant]
+    const projects = [...featured, ...supporting, ...archive]
+    const listSlugs = locator => locator.evaluateAll(links => links.map(link => link.pathname.split('/').filter(Boolean).at(-1)))
+    await Promise.all(projects.map(async slug => {
+      const route = await fetch(`${base}/${variant}/${slug}/`, { method: 'HEAD' })
+      assert.equal(route.status, 200, slug)
+    }))
     for (const viewport of [{ width: 1440, height: 900 }, { width: 390, height: 844 }]) {
       const page = await browser.newPage({ viewport, reducedMotion: 'reduce' })
       const errors = []
@@ -44,10 +46,8 @@ try {
       assert.equal(home.status(), 200)
       await page.getByRole('heading', { level: 1, name: details.heading }).waitFor()
       assert.match(await page.locator('meta[name="robots"]').first().getAttribute('content'), /noindex/)
-      for (const slug of details.featured) {
-        assert.ok(await page.locator(`#works a[href$="/${slug}"]`).count(), slug)
-      }
-      assert.equal(await page.locator(`#works a[href$="/${details.other}"]`).count(), 0)
+      assert.deepEqual(await listSlugs(page.locator('#works .pcard')), featured)
+      assert.deepEqual(await listSlugs(page.locator('#homepage-project-archive .pcard')), [...supporting, ...archive])
       assert.ok(await page.evaluate(async () => { await document.fonts.ready; return [...document.fonts].some(font => font.status === 'loaded') }))
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1))
       await page.locator('.page-loader').waitFor({ state: 'detached' })
@@ -55,8 +55,36 @@ try {
 
       assert.equal((await page.goto(`${url}/work/`)).status(), 200)
       await page.getByRole('heading', { level: 1, name: 'Work', exact: true }).waitFor()
-      assert.ok(await page.locator(`main a[href$="/${details.supporting}"]`).count())
-      assert.equal(await page.locator(`main a[href$="/${details.other}"]`).count(), 0)
+      const cards = page.locator('#work-project-results .pcard')
+      assert.deepEqual(await listSlugs(cards), projects)
+      const first = await cards.nth(0).boundingBox()
+      const second = await cards.nth(1).boundingBox()
+      if (viewport.width > 540) {
+        assert.equal(first.y, second.y)
+        assert.ok(Math.abs(first.height - second.height) < 1)
+      } else {
+        assert.equal(first.x, second.x)
+        assert.ok(first.y < second.y)
+      }
+      const filters = page.getByRole('toolbar', { name: 'Filter projects', exact: true })
+      assert.equal(await filters.count(), 1)
+      assert.equal(await filters.evaluate(element => getComputedStyle(element).position), 'static')
+      const category = filters.getByRole('button').nth(1)
+      await category.click()
+      await expect.poll(() => cards.count()).toBeLessThan(projects.length)
+      assert.ok(await cards.count() > 0)
+      await filters.getByRole('button', { name: 'All', exact: true }).click()
+      await expect(cards).toHaveCount(projects.length)
+      assert.deepEqual(await listSlugs(cards), projects)
+      if (screenshots) await page.screenshot({ path: `${screenshots}/${variant}-work-${viewport.width}.png` })
+      assert.equal((await page.goto(`${url}/work/?view=index`)).status(), 200)
+      const rows = page.locator('a.work-library-row')
+      await rows.first().waitFor()
+      assert.deepEqual((await listSlugs(rows)).sort(), [...projects].sort())
+      assert.equal((await page.goto(`${url}/work/?view=timeline`)).status(), 200)
+      const timeline = page.locator('a.work-timeline-feature, a.work-timeline-support-row')
+      await timeline.first().waitFor()
+      assert.deepEqual((await listSlugs(timeline)).sort(), [...projects].sort())
       assert.equal((await page.goto(`${url}/about/`)).status(), 200)
       await page.getByRole('heading', { level: 1, name: 'About Parth Pawar' }).waitFor({ state: 'attached' })
 

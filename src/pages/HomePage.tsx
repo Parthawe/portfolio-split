@@ -1,14 +1,13 @@
 import { isExperimental, portfolio, sibling, siblingHome } from '../config/portfolio';
 import { useThemeMode } from '../hooks/useThemeMode';
 import ExperienceBoundary from '../components/ExperienceBoundary';
-import { useState, useEffect, lazy, Suspense, useRef, useMemo } from 'react';
+import { useState, useEffect, lazy, Suspense, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Nav from '../components/Nav'
 import ClientsMarquee from '../components/ClientsMarquee';
 import Footer from '../components/Footer';
 import ProjectCard from '../components/ProjectCard';
-import TextHighlight from '../components/TextHighlight';
 import FigmaSelect from '../components/FigmaSelect';
 import FigmaFrameLabel from '../components/FigmaFrameLabel';
 import { useDeferredMount } from '../hooks/useDeferredMount';
@@ -39,14 +38,6 @@ const disciplines = (isExperimental ? [
   { label: 'Brand & Visual', slug: 'brand-visual', link: '/brand-visual' },
   { label: 'Design for Good', slug: 'design-for-good', link: '/design-for-good' },
 ].filter(discipline => discipline.slug !== 'installations' && discipline.slug !== 'brand-visual'));
-
-function distributeArchiveProjects<T>(items: T[], columnCount: number) {
-  const columns = Array.from({ length: Math.max(1, columnCount) }, () => [] as T[]);
-  items.forEach((item, index) => {
-    columns[index % columns.length].push(item);
-  });
-  return columns;
-}
 
 const identityTabs = isExperimental ? [{
   id: 'who-i-am',
@@ -99,9 +90,6 @@ export default function HomePage() {
   const heroRef = useRef<HTMLElement>(null);
   const [disciplinesRef, disciplinesInView] = useInView<HTMLElement>(0.05, '180px 0px');
   const coarsePointer = useMediaQuery('(hover: none), (pointer: coarse)');
-  const flagshipSingleColumn = useMediaQuery('(max-width: 480px)');
-  const archiveSingleColumn = useMediaQuery('(max-width: 360px)');
-  const archiveTwoColumn = useMediaQuery('(max-width: 1100px)');
   const prefersReducedMotion = useMediaQuery('(prefers-reduced-motion: reduce)');
   const performanceDegraded = usePerformanceDegraded();
   const webglAvailable = useWebGLAvailable();
@@ -130,20 +118,7 @@ export default function HomePage() {
     delayMs: coarsePointer ? 220 : lowPowerDevice ? 400 : 350,
   });
   const mountDisciplineObjects = useDeferredMount(allowDecorative3D && disciplinesInView, { timeout: lowPowerDevice ? 2200 : 1400, delayMs: lowPowerDevice ? 360 : 150 });
-  const archiveProjects = homepageSelectedProjects;
-  const archiveColumnCount = archiveSingleColumn ? 1 : archiveTwoColumn ? 2 : 3;
-  const archiveColumns = useMemo(
-    () => distributeArchiveProjects(archiveProjects, archiveColumnCount),
-    [archiveProjects, archiveColumnCount]
-  );
   const activeIdentity = identityTabs.find(tab => tab.id === identityTab) ?? identityTabs[0];
-  const flagshipColumns = flagshipSingleColumn ? [featuredProjects] : [
-    featuredProjects.filter((_, index) => index === 0 || index === 2),
-    featuredProjects.filter((_, index) => index === 1 || index === 3),
-  ];
-  const getFlagshipCoverShape = (slug: string): 'portrait' | 'square' =>
-    slug === 'mentra' || slug === 'jugalbandi' ? 'portrait' : 'square';
-
 
   // Fetch the visible hero while its existing idle mount waits. Loading the
   // module does not create a renderer; constrained devices keep their fallback.
@@ -218,7 +193,7 @@ export default function HomePage() {
       </Helmet>
 
       <section
-        className={`wr-hero${isExperimental ? " wr-hero--plays" : ""}${heroSceneReady && !heroSceneUnavailable ? ' is-scene-ready' : ''}${heroSceneUnavailable ? ' wr-hero--no-scene' : ''}${heroWebOpen ? ' wr-hero--web-open' : ''}`}
+        className={`wr-hero wr-portfolio-hero${isExperimental ? " wr-hero--plays" : ""}${heroSceneReady && !heroSceneUnavailable ? ' is-scene-ready' : ''}${heroSceneUnavailable ? ' wr-hero--no-scene' : ''}${heroWebOpen ? ' wr-hero--web-open' : ''}`}
         id="hero"
         ref={heroRef}
         style={{ position: 'relative' }}
@@ -273,55 +248,48 @@ export default function HomePage() {
               {!isExperimental && <div className="reveal"><ClientsMarquee /></div>}
 
               <div className="wr-section-head">
-                <span className="wr-label">FLAGSHIP WORK</span>
-                <TextHighlight as="span" className="wr-section-highlight">Start with these four.</TextHighlight>
+                <h2 className="wr-section-highlight">Selected work</h2>
                 <Link to="/work" className="wr-arrow-btn figma-hover">View all work &rarr;<FigmaSelect /></Link>
               </div>
 
               <div className="wr-feat-grid">
-                {flagshipColumns.map((column, columnIndex) => (
-                  <div className="wr-feat-column" key={`flagship-column-${columnIndex}`}>
-                    {column.map((project) => {
-                      const index = featuredProjects.findIndex(item => item.slug === project.slug);
-                      const featuredInfo = [
-                        project.desc,
-                        project.summaryRole?.replace(/\.$/, ''),
-                        ...(project.summaryStats?.slice(0, 2).map(stat => `${stat.label} ${stat.value}`) ?? []),
-                      ]
-                        .filter(Boolean)
-                        .join(' / ');
-                      const hoverMedia = ['mentra', 'jugalbandi'].includes(project.slug) ? undefined : project.hoverMedia;
+                {featuredProjects.map((project) => {
+                  const featuredInfo = [
+                    project.desc,
+                    project.summaryRole?.replace(/\.$/, ''),
+                    ...(project.summaryStats?.slice(0, 2).map(stat => `${stat.label} ${stat.value}`) ?? []),
+                  ]
+                    .filter(Boolean)
+                    .join(' / ');
+                  const hoverMedia = ['mentra', 'jugalbandi'].includes(project.slug) ? undefined : project.hoverMedia;
 
-                      return (
-                        <div
-                          key={project.slug}
-                          className="wr-motion-item reveal"
-                          data-project={project.slug}
-                          style={{ transitionDelay: `${index * 0.06}s` }}
-                        >
-                          <ProjectCard
-                            slug={project.slug}
-                            name={project.name}
-                            image={project.image}
-                            hoverMediaSrc={hoverMedia?.src}
-                            hoverMediaKind={hoverMedia?.kind}
-                            hoverMediaAlt={hoverMedia?.alt}
-                            tag={project.tag}
-                            year={project.year}
-                            marqueeText={featuredInfo}
-                            marqueeSpeed={2}
-                            loading="lazy"
-                            deferUntilNearView
-                            preloadMargin={cardPreloadMargin}
-                            featured
-                            coverShape={getFlagshipCoverShape(project.slug)}
-                            nda={project.nda}
-                          />
-                        </div>
-                      );
-                    })}
-                  </div>
-                ))}
+                  return (
+                    <div
+                      key={project.slug}
+                      className="wr-motion-item"
+                      data-project={project.slug}
+                    >
+                      <ProjectCard
+                        slug={project.slug}
+                        name={project.name}
+                        image={project.image}
+                        hoverMediaSrc={hoverMedia?.src}
+                        hoverMediaKind={hoverMedia?.kind}
+                        hoverMediaAlt={hoverMedia?.alt}
+                        tag={project.tag}
+                        year={project.year}
+                        marqueeText={featuredInfo}
+                        marqueeSpeed={2}
+                        loading="lazy"
+                        deferUntilNearView
+                        preloadMargin={cardPreloadMargin}
+                        featured
+                        coverShape="wide"
+                        nda={project.nda}
+                      />
+                    </div>
+                  );
+                })}
               </div>
 
             </div>
@@ -399,47 +367,17 @@ export default function HomePage() {
             </div>
           </section>
 
-          <section className="wr-archive" style={{ position: 'relative' }}>
-            <FigmaFrameLabel name="Selected Archive" />
+          <section className="wr-archive" aria-labelledby="home-more-projects">
             <div className="wr-archive-inner">
               <div className="wr-section-head">
-                <div className="wr-section-title-group">
-                  <span className="wr-label">SELECTED ARCHIVE</span>
-                  <TextHighlight as="span" className="wr-section-highlight">
-                    More selected work
-                  </TextHighlight>
-                </div>
-                <div className="wr-section-actions">
-                  <Link to="/work" className="wr-arrow-btn figma-hover">Browse All &rarr;<FigmaSelect /></Link>
-                </div>
+                <h2 className="wr-section-highlight" id="home-more-projects">More projects</h2>
+                <Link to="/work" className="wr-arrow-btn figma-hover">Filter projects &rarr;<FigmaSelect /></Link>
               </div>
-
               <div className="wr-archive-grid" id="homepage-project-archive">
-                {archiveColumns.map((column, columnIndex) => (
-                  <div className="wr-archive-column" key={`home-archive-column-${columnIndex}`}>
-                    {column.map((p, rowIndex) => {
-                      const originalIndex = rowIndex * archiveColumnCount + columnIndex;
-                      const delay = columnIndex * 0.1 + rowIndex * 0.06;
-                      return (
-                        <div
-                          key={p.slug}
-                          className="wr-motion-item reveal"
-                          style={{ transitionDelay: `${delay}s` }}
-                          data-archive-index={originalIndex}
-                        >
-                          <ProjectCard deferUntilNearView preloadMargin={cardPreloadMargin} slug={p.slug} name={p.name} image={p.image} tag={p.tag} year={p.year} desc={p.desc} nda={p.nda} />
-                        </div>
-                      );
-                    })}
-                  </div>
+                {homepageSelectedProjects.map(project => (
+                  <ProjectCard key={project.slug} slug={project.slug} name={project.name} image={project.image}
+                    tag={project.tag} year={project.year} desc={project.desc} nda={project.nda} coverShape="wide" />
                 ))}
-              </div>
-
-              <div className="wr-archive-reveal">
-                <Link to="/work" className="wr-arrow-btn figma-hover wr-archive-reveal__button">
-                  Open full archive &rarr;
-                  <FigmaSelect />
-                </Link>
               </div>
             </div>
           </section>

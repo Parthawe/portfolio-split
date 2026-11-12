@@ -2676,3 +2676,80 @@ body.page-work.figma-chrome-enabled:not(.figma-rulers-off) { padding-left: 0; }
 @media (max-width: 900px) {
   .page-work .work-page-summary { justify-items: start; text-align: left; }
 }
+
+.page-work .work-page-header {
+  align-items: end;
+}
+
+.page-work .work-page-summary {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .65rem;
+}
+
+.page-work .work-page-summary .work-mobile-views {
+  margin-top: 0;
+}
+
+@media (max-width: 900px) {
+  .page-work .work-page-summary {
+    justify-content: flex-start;
+  }
+}
+
+.page-work .work-page-header > .work-filter-inline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .25rem;
+  width: fit-content;
+  max-width: 100%;
+  padding: .3rem;
+  box-shadow: none;
+}
+
+.page-work .work-project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.page-work .work-group--archive .work-project-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.page-work .work-project-grid .pcard {
+  min-width: 0;
+  margin: 0;
+}
+
+.page-work .work-project-grid .pcard-visual {
+  aspect-ratio: 16 / 10;
+}
+
+.page-work .work-group > h2 {
+  margin: 0 0 1rem;
+}
+
+@media (max-width: 900px) {
+  .page-work .work-group--archive .work-project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 540px) {
+  .page-work .work-group .work-project-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+
+.page-work .work-project-grid .pcard .pcard-name {
+  bottom: 3rem;
+}
+
+.page-work #work-project-results .work-group {
+  margin-top: clamp(1.5rem, 3vw, 2.5rem);
+}

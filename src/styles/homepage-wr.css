@@ -2291,3 +2291,62 @@ body.page-ready .wr-hero-stage {
     grid-area: 2 / 1;
   }
 }
+
+.wr-featured-v2-inner,
+.wr-archive-inner {
+  max-width: 1380px;
+  padding-inline: clamp(1.25rem, 4vw, 3rem);
+}
+
+.wr-feat-grid,
+.wr-archive-grid {
+  gap: clamp(1rem, 2vw, 1.75rem);
+}
+
+.wr-archive-grid {
+  max-width: none;
+}
+
+.wr-feat-grid [data-project] .pcard-visual,
+.wr-archive-grid .pcard-visual {
+  aspect-ratio: 16 / 10;
+}
+
+.wr-archive .wr-section-highlight {
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .wr-portfolio-hero:not(.wr-hero--plays, .wr-hero--web-open) {
+    height: clamp(39rem, 85svh, 44rem);
+    min-height: 0;
+  }
+
+  .wr-portfolio-hero.wr-hero--plays {
+    height: auto;
+    padding-inline: clamp(1.25rem, 4vw, 3rem);
+  }
+
+  .wr-portfolio-hero.wr-hero--plays .wr-hero-title {
+    max-width: none;
+  }
+}
+
+@media (max-width: 540px) {
+  .wr-feat-grid,
+  .wr-archive-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.wr-featured-v2 .wr-section-highlight {
+  margin: 0;
+}
+
+@media (max-width: 540px) {
+  .wr-featured-v2 .wr-section-head,
+  .wr-archive .wr-section-head {
+    align-items: flex-start;
+    text-align: left;
+  }
+}

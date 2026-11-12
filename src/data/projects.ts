@@ -149,6 +149,30 @@ export const NDA_PROJECT_SLUGS = [
 const defaultCardMockup = (slug: string) => `/Assets/mockups/projects/${slug}.webp`
 
 const catalog: Project[] = [
+  {
+    slug: 'after-hours',
+    name: 'After Hours',
+    image: '/Assets/preview-covers/after-hours.jpg',
+    cardMockup: '/Assets/preview-covers/after-hours.jpg',
+    cover16x9: '/Assets/preview-covers/after-hours.jpg',
+    tag: 'CREATIVE CODING',
+    year: '2026',
+    desc: 'An interactive, generative illustration of an endless workshop floor.',
+    category: 'creative',
+    page: () => import('../pages/AfterHoursPage'),
+  },
+  {
+    slug: 'perplexity',
+    name: 'Perplexity Motion Study',
+    image: '/Assets/preview-covers/perplexity.jpg',
+    cardMockup: '/Assets/preview-covers/perplexity.jpg',
+    cover16x9: '/Assets/preview-covers/perplexity.jpg',
+    tag: 'MOTION DESIGN',
+    year: '2026',
+    desc: 'An independent motion study for Perplexity’s product stories.',
+    category: 'brand',
+    page: () => import('../pages/PerplexityPage'),
+  },
   /* ── Featured (homepage hero grid) ── */
   {
     slug: 'mentra',
@@ -1696,7 +1720,6 @@ if (medimorphoProject) {
    Helper selectors
    ────────────────────────────────────────────────────────────────────── */
 
-const HOMEPAGE_SELECTED_ARCHIVE_COUNT = 8
 const WORK_PRIORITY = new Map(projectSlugs.map((slug, index) => [slug, index]))
 const WORK_SELECTED_SLUGS = new Set(portfolio.featured)
 
@@ -1738,7 +1761,6 @@ export const selectedWorkProjects = homeWorkListingProjects
 /** Homepage follow-on grid after flagship work */
 export const homepageSelectedProjects = homeWorkListingProjects
   .filter(p => !portfolio.featured.includes(p.slug))
-  .slice(0, HOMEPAGE_SELECTED_ARCHIVE_COUNT)
 
 /** Remaining visible work shown below the fold on /work */
 export const archiveWorkProjects = homeWorkListingProjects

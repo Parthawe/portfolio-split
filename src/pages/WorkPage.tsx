@@ -1,5 +1,5 @@
 import { isExperimental } from '../config/portfolio'
-import { useState, useEffect, useLayoutEffect, useRef, useCallback, useMemo } from 'react'
+import { useState, useEffect, useLayoutEffect, useCallback } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link, useSearchParams } from 'react-router-dom'
 import Nav from '../components/Nav'
@@ -13,15 +13,17 @@ import {
   archiveWorkProjects,
   filterProjectsByCategory,
   CATEGORIES,
+  visibleProjects,
   CATEGORY_LABELS,
   getProjectAccessLabel,
   type Project,
   type ProjectCategory,
 } from '../data/projects'
-import { useMediaQuery } from '../hooks/useMediaQuery'
 import '../styles/work-page.css'
 
 const filters = CATEGORIES
+  .filter(filter => filter.key === 'all' || filterProjectsByCategory(visibleProjects, filter.key as ProjectCategory).length)
+  .map(filter => isExperimental && filter.key === 'creative' ? { ...filter, label: 'Creative Technology' } : filter)
 const WORK_FILTER_EVENT = 'folio:set-work-filter'
 
 interface WorkFilterEventDetail {
@@ -52,14 +54,6 @@ type WorkViewMode = 'editorial' | 'library' | 'timeline'
 
 function countLabel(count: number, noun: string) {
   return `${count} ${noun}${count === 1 ? '' : 's'}`
-}
-
-function distributeProjects(projects: Project[], columnCount: number) {
-  const columns = Array.from({ length: Math.max(1, columnCount) }, () => [] as Project[])
-  projects.forEach((project, index) => {
-    columns[index % columns.length].push(project)
-  })
-  return columns
 }
 
 function getTimelineGroup(project: Project) {
@@ -119,11 +113,7 @@ export default function WorkPage() {
       return next
     })
   }, [setSearchParams])
-  const [footerVisible, setFooterVisible] = useState(false)
   const [libraryPreviewSlug, setLibraryPreviewSlug] = useState<string | null>(null)
-  const bottomNavRef = useRef<HTMLElement>(null)
-  const isSingleColumn = useMediaQuery('(max-width: 640px)')
-  const isTwoColumn = useMediaQuery('(max-width: 1180px)')
   const currentViewParam = searchParams.get('view')
   const viewMode: WorkViewMode =
     currentViewParam === 'library' || currentViewParam === 'index' || currentViewParam === 'playlist'
@@ -176,37 +166,6 @@ export default function WorkPage() {
   }, [activeFilter, viewMode])
 
   useEffect(() => {
-    let frameId = 0
-
-    const syncFooterVisibility = () => {
-      frameId = 0
-      const footer = document.querySelector('.footer')
-      if (!footer) return
-
-      const footerRect = footer.getBoundingClientRect()
-      const navRect = bottomNavRef.current?.getBoundingClientRect()
-      const navBottom = navRect?.bottom ?? window.innerHeight
-      const shouldHide = footerRect.top <= navBottom + 24
-      setFooterVisible(current => current === shouldHide ? current : shouldHide)
-    }
-
-    const requestSync = () => {
-      if (frameId) return
-      frameId = window.requestAnimationFrame(syncFooterVisibility)
-    }
-
-    requestSync()
-    window.addEventListener('scroll', requestSync, { passive: true })
-    window.addEventListener('resize', requestSync)
-
-    return () => {
-      if (frameId) window.cancelAnimationFrame(frameId)
-      window.removeEventListener('scroll', requestSync)
-      window.removeEventListener('resize', requestSync)
-    }
-  }, [])
-
-  useEffect(() => {
     const handleFilter = (event: Event) => {
       const customEvent = event as CustomEvent<WorkFilterEventDetail>
       const filterKey = customEvent.detail?.filterKey
@@ -227,34 +186,7 @@ export default function WorkPage() {
   const archiveProjects = isAll
     ? archiveWorkProjects
     : filterProjectsByCategory(archiveWorkProjects, activeFilter as ProjectCategory)
-  const selectedColumnCount = isSingleColumn ? 1 : isTwoColumn ? 2 : 3
-  const archiveColumnCount = isSingleColumn ? 2 : isTwoColumn ? 2 : 4
-  const selectedMasonryColumns = useMemo(
-    () => distributeProjects(editorialSelectedProjects, selectedColumnCount),
-    [editorialSelectedProjects, selectedColumnCount]
-  )
-  // Stable card shapes, placed into the shortest column instead of round-robin.
-  const archiveShapes = useMemo(() => new Map(archiveProjects.map((project, index) =>
-    [project.slug, index % 3 === 1 ? 'square' as const : 'portrait' as const]
-  )), [archiveProjects])
-  const archiveMasonryColumns = useMemo(() => {
-    const columns: Project[][] = Array.from({ length: archiveColumnCount }, () => [])
-    const heights = columns.map(() => 0)
-    for (const project of archiveProjects) {
-      const shortest = heights.indexOf(Math.min(...heights))
-      columns[shortest].push(project)
-      heights[shortest] += (archiveShapes.get(project.slug) === 'square' ? 1 : 1.25) + .08
-    }
-    return columns.filter(column => column.length > 0)
-  }, [archiveProjects, archiveColumnCount, archiveShapes])
-  const allWorkProjects = useMemo(() => {
-    const seen = new Set<string>()
-    return [...featuredProjects, ...selectedWorkProjects, ...archiveWorkProjects].filter(project => {
-      if (seen.has(project.slug)) return false
-      seen.add(project.slug)
-      return true
-    })
-  }, [])
+  const allWorkProjects = visibleProjects
   const timelineSections = allWorkProjects
     .map((project, index) => ({
       project,
@@ -290,7 +222,7 @@ export default function WorkPage() {
     {
       key: 'start-here',
       label: 'Start Here',
-      description: 'The four projects that explain the portfolio fastest: shipped systems, platform thinking, and range.',
+      description: 'The four featured projects.',
       projects: featuredProjects,
     },
     ...CATEGORIES
@@ -299,9 +231,9 @@ export default function WorkPage() {
         const category = filter.key as ProjectCategory
         return {
           key: category,
-          label: filter.label,
-          description: LIBRARY_SECTION_COPY[category],
-          projects: filterProjectsByCategory(allWorkProjects, category),
+          label: isExperimental && category === 'creative' ? 'Creative Technology' : filter.label,
+          description: isExperimental && category === 'creative' ? 'Experiments with code, physical interfaces, and responsive objects.' : LIBRARY_SECTION_COPY[category],
+          projects: archiveWorkProjects.filter(project => project.category === category),
         }
       })
       .filter(section => section.projects.length),
@@ -319,9 +251,9 @@ export default function WorkPage() {
   const libraryPreviewImage = libraryPreviewMedia?.src || libraryPreviewProject?.cover16x9 || libraryPreviewProject?.summaryImage || libraryPreviewProject?.image || ''
   const libraryPreviewAlt = libraryPreviewMedia?.alt || libraryPreviewProject?.summaryImageAlt || libraryPreviewProject?.name || ''
   // Loading priority belongs to this layout, not the registry's homepage order.
-  // Only the first card in each visible column competes for initial bandwidth.
+  // Only the first featured card competes for initial bandwidth.
   const renderCard = useCallback((project: Project, index: number) => (
-    <ProjectCardComponent key={project.slug} slug={project.slug} name={project.name} image={project.image} tag={project.tag} year={project.year} desc={project.desc} loading={index === 0 ? 'eager' : 'lazy'} nda={project.nda} tilt={false} />
+    <ProjectCardComponent key={project.slug} slug={project.slug} name={project.name} image={project.image} tag={project.tag} year={project.year} desc={project.desc} loading={index === 0 ? 'eager' : 'lazy'} nda={project.nda} tilt={false} coverShape="wide" />
   ), [])
 
   const handleFilterChange = useCallback((filterKey: 'all' | ProjectCategory) => {
@@ -490,57 +422,42 @@ export default function WorkPage() {
             <header className="work-page-header">
               <div className="work-page-intro">
                 <h1 className="work-page-title">Work</h1>
-                <a className="glass-action" href="https://designwhich.works/process">References &amp; process ↗</a>
-                <nav className="work-mobile-views glass-segments" aria-label="Work page views">
-                  {([['editorial', 'Editorial'], ['library', 'Index'], ['timeline', 'Arc']] as const).map(([view, label]) => <Link key={view} to={viewHref(view)} aria-current={viewMode === view ? 'page' : undefined}>{label}</Link>)}
-                </nav>
-              </div>
-              <div className="work-page-summary">
-                {isExperimental && <Link className="work-room-link glass-action" to="/project-experiences">Explore project experiences</Link>}
                 <p className="work-page-intro-copy">
                   {isExperimental ? "Instruments, installations, and experiments in physical interaction." : "Product design across wearables, payments, AI tools, and public services."}
                 </p>
               </div>
+              <div className="work-page-summary">
+                <nav className="work-mobile-views glass-segments" aria-label="Work page views">
+                  {([['editorial', 'Editorial'], ['library', 'Index'], ['timeline', 'Arc']] as const).map(([view, label]) => <Link key={view} to={viewHref(view)} aria-current={viewMode === view ? 'page' : undefined}>{label}</Link>)}
+                </nav>
+                <a className="glass-action" href="https://designwhich.works/process">References &amp; process ↗</a>
+                {isExperimental && <Link className="work-room-link glass-action" to="/project-experiences">Explore project experiences</Link>}
+              </div>
               {viewMode === 'editorial' ? (
-                <nav className="work-filter-inline surface-glass" aria-label="Filter projects inline" role="toolbar">
+                <nav className="work-filter-inline surface-glass" aria-label="Filter projects" role="toolbar">
                   {renderFilterButtons()}
                 </nav>
               ) : null}
             </header>
 
             {viewMode === 'editorial' ? (
-              <>
-                {editorialSelectedProjects.length > 0 && <section className="work-group work-group--selected" id="work-project-results" aria-label={isAll ? 'Selected projects' : `${CATEGORY_LABELS[activeFilter as ProjectCategory]} selected projects`}>
-                  <div className="work-group-head">
-                    <span className="mono-label work-group-label">Selected Work</span>
-                  </div>
-
-                  {editorialSelectedProjects.length ? (
-                    <div className="pcard-masonry">
-                      {selectedMasonryColumns.filter(column => column.length > 0).map((column, columnIndex) => (
-                        <div className="pcard-masonry__column" key={`selected-column-${columnIndex}`}>
-                          {column.map(renderCard)}
-                        </div>
-                      ))}
-                    </div>
-                  ) : null}
-                </section>}
-
-                {archiveProjects.length ? (
-                  <section className="work-group work-group--archive" id={editorialSelectedProjects.length ? undefined : 'work-project-results'} aria-label={isAll ? 'Archive projects' : `${CATEGORY_LABELS[activeFilter as ProjectCategory]} archive projects`}>
-                    <div className="work-group-head">
-                      <span className="mono-label work-group-label">Archive</span>
-                    </div>
-                    <div className="pcard-masonry">
-                      {archiveMasonryColumns.map((column, columnIndex) => (
-                        <div className="pcard-masonry__column" key={`archive-column-${columnIndex}`}>
-                          {column.map(project => <ProjectCardComponent key={project.slug} slug={project.slug} name={project.name} image={project.image} tag={project.tag} year={project.year} desc={project.desc} loading="lazy" nda={project.nda} tilt={false} coverShape={archiveShapes.get(project.slug)} />)}
-                        </div>
-                      ))}
-                    </div>
+              <div id="work-project-results">
+                {editorialSelectedProjects.length > 0 && (
+                  <section className="work-group work-group--selected" aria-labelledby="work-selected-title">
+                    <h2 className="mono-label work-group-label" id="work-selected-title">Selected work</h2>
+                    <div className="work-project-grid">{editorialSelectedProjects.map(renderCard)}</div>
                   </section>
-                ) : null}
-              </>
+                )}
+                {archiveProjects.length > 0 && (
+                  <section className="work-group work-group--archive" aria-labelledby="work-more-title">
+                    <h2 className="mono-label work-group-label" id="work-more-title">More projects</h2>
+                    <div className="work-project-grid">{archiveProjects.map(project => (
+                      <ProjectCardComponent key={project.slug} slug={project.slug} name={project.name} image={project.image}
+                        tag={project.tag} year={project.year} desc={project.desc} loading="lazy" nda={project.nda} coverShape="wide" />
+                    ))}</div>
+                  </section>
+                )}
+              </div>
             ) : viewMode === 'library' ? (
               <section className="work-library-shell" id="work-project-results" aria-label="Work library">
                 <div className="work-library-shell__head">
@@ -761,19 +678,12 @@ export default function WorkPage() {
         </div>
       </main>
 
-      {viewMode === 'editorial' ? (
-        <nav className={`work-bottom-nav surface-glass${footerVisible ? ' is-hidden' : ''}`} ref={bottomNavRef} aria-label="Filter projects" role="toolbar">
-          {renderFilterButtons()}
-        </nav>
-      ) : null}
       <div aria-live="polite" aria-atomic="true" className="sr-only">
         {viewMode === 'library'
           ? `Showing the ${librarySections.find(section => section.key === activeLibraryShelf)?.label || 'current'} library shelf`
           : viewMode === 'timeline'
             ? `Showing the ${timelineSections.find(section => section.key === activeTimelineYear)?.label || 'current'} arc section`
-          : activeFilter === 'all'
-            ? 'Showing selected and archive projects'
-            : `Showing ${CATEGORY_LABELS[activeFilter as ProjectCategory]} projects`}
+          : `Showing ${countLabel(editorialSelectedProjects.length + archiveProjects.length, 'project')}`}
       </div>
 
       <Footer />

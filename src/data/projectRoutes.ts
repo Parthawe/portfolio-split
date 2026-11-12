@@ -10,6 +10,7 @@ type ProjectRoute = {
  * publicly routable entries in projects.ts; the route QA checks every entry.
  */
 export const projectRoutes: ProjectRoute[] = [
+  { slug: 'perplexity', page: () => import('../pages/PerplexityPage') },
   { slug: 'mentra', page: () => import('../pages/projects/MentraPage') },
   { slug: 'mentra-miniapps', page: () => import('../pages/projects/MentraMiniAppsPage') },
   { slug: 'transfi-project', page: () => import('../pages/projects/TransfiPage') },
