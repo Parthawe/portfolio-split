@@ -10,7 +10,6 @@ import Footer from '../../components/Footer'
 import ProjectHeader from '../../components/case-study/ProjectHeader'
 import ProjectQuickSummary from '../../components/case-study/ProjectQuickSummary'
 import CsExpandPreview from '../../components/case-study/CsExpandPreview'
-import CsMediaSpotlight from '../../components/case-study/CsMediaSpotlight'
 import CsSection from '../../components/case-study/CsSection'
 import CsBody from '../../components/case-study/CsBody'
 import CsThanks from '../../components/case-study/CsThanks'
@@ -21,13 +20,13 @@ export default function JugalbandiPage() {
   const [viewMode, setViewMode] = useState<'summary' | 'full'>('summary')
   const sections = viewMode === 'summary'
     ? [
-        { id: 'cs-summary', label: 'TL;DR' },
         { id: 'cs-film', label: 'Film' },
+        { id: 'cs-summary', label: 'TL;DR' },
         { id: 'cs-overview', label: 'Overview' },
       ]
     : [
-        { id: 'cs-summary', label: 'TL;DR' },
         { id: 'cs-film', label: 'Film' },
+        { id: 'cs-summary', label: 'TL;DR' },
         { id: 'cs-overview', label: 'Overview' },
         { id: 'cs-background', label: 'Background' },
         { id: 'cs-instrument', label: 'The Instrument' },
@@ -74,9 +73,9 @@ export default function JugalbandiPage() {
           backLink="/work"
           categorySlug="creative-tech"
           backLabel="Back to Work"
-          tags={['Physical Computing', 'Music', 'Art Installation']}
+          tags={['Physical computing', 'Interaction design + fabrication']}
           title="Jugalbandi"
-          subtitle="A playable duet between human improvisation and a neural network expressed through acoustic machines"
+          subtitle="A musician improvises on Hexa-18. A neural network answers through robotic flute, harp, and rainsticks."
           info={[
             { label: 'Timeline', value: '2024' },
             { label: 'Role', value: 'Interaction designer + fabricator' },
@@ -84,24 +83,17 @@ export default function JugalbandiPage() {
             { label: 'Duration', value: '5 Months' },
           ]}
           showHeaderSummary={false}
+          heroFraming="image"
+          openingMediaId="cs-film"
+          heroCaption="Original performance recording"
+          visualHeroMedia={
+            <ExternalVideo
+              src="https://player.vimeo.com/video/996020149?title=0&byline=0&portrait=0"
+              title="Jugalbandi Performance"
+              playLabel="Play the duet"
+            />
+          }
         />
-
-        <CsMediaSpotlight
-          id="cs-film"
-          label="Watch first"
-          title="Hear the human and robotic duet"
-          lede="Follow one exchange: Hexa-18 flute calls the robotic flute, tanpura calls the harp, and tabla calls the rainsticks. The film records the original sound and mechanisms."
-          actionLabel="Play performance"
-          layout="stacked"
-        >
-          <ExternalVideo
-            src="https://player.vimeo.com/video/996020149?title=0&byline=0&portrait=0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-            title="Jugalbandi Performance"
-          />
-        </CsMediaSpotlight>
 
         <CsSection title="Follow a call and its answer">
           <CsBody><p>The performer plays Hexa-18. The separate acoustic instruments answer through air, plucked strings, and falling grains. These pairings follow the original project; synchronized sensor and actuator logs are not included.</p></CsBody>

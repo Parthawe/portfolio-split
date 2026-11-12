@@ -5,6 +5,7 @@ import { projectFilmCaptions } from '../data/projectFilmCaptions'
 type Props = IframeHTMLAttributes<HTMLIFrameElement> & {
   poster?: string
   fallbackLabel?: string
+  playLabel?: string
 }
 
 const filmPosters: Record<string, string> = {
@@ -18,17 +19,32 @@ const filmPosters: Record<string, string> = {
   '1010457989': 'making-of-time',
 }
 
-function LocalProjectFilm({ slug, title, watchUrl, poster, silent = false }: { slug: string; title: string; watchUrl: string; poster?: string; silent?: boolean }) {
+function LocalProjectFilm({ slug, title, watchUrl, poster, silent = false, playLabel }: { slug: string; title: string; watchUrl: string; poster?: string; silent?: boolean; playLabel?: string }) {
   const video = useRef<HTMLVideoElement>(null)
   const [failed, setFailed] = useState(false)
+  const [started, setStarted] = useState(false)
   const captions = projectFilmCaptions[slug]
   return (
     <div className="external-video local-project-film">
-      <video ref={video} controls playsInline muted={silent} preload="none" poster={poster || `/Assets/mockups/projects/${slug}_16x9.webp`}
-        aria-label={title} data-caption-status={captions ? 'automatic' : undefined} onError={() => setFailed(true)}>
-        <source src={`/Assets/films/${slug}.mp4`} type="video/mp4" onError={() => setFailed(true)} />
-        {captions && <track kind="captions" src={captions.src} srcLang={captions.language} label="Automatic captions" default />}
-      </video>
+      <div className="local-project-film__stage">
+        <video ref={video} controls playsInline muted={silent} preload="none" poster={poster || `/Assets/mockups/projects/${slug}_16x9.webp`}
+          aria-label={title} data-caption-status={captions ? 'automatic' : undefined} onError={() => setFailed(true)} onPlay={playLabel ? () => setStarted(true) : undefined}>
+          <source src={`/Assets/films/${slug}.mp4`} type="video/mp4" onError={() => setFailed(true)} />
+          {captions && <track kind="captions" src={captions.src} srcLang={captions.language} label="Automatic captions" default />}
+        </video>
+        {playLabel && !started && !failed && (
+          <button type="button" className="external-video__play local-project-film__play" onClick={() => {
+            const player = video.current
+            if (!player) return
+            void player.play().then(() => player.focus()).catch(() => {
+              if (player.error) setFailed(true)
+            })
+          }}>
+            <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z" fill="currentColor" /></svg>
+            {playLabel}
+          </button>
+        )}
+      </div>
       <div className="local-project-film__links">
         {silent && <span className="external-video-fallback">Silent film</span>}
         {captions && <a href={captions.src} download className="external-video-fallback" aria-label={`Download automatic captions for ${title}`}>Automatic captions ↓</a>}
@@ -99,7 +115,7 @@ function VimeoPlayer({ src, title = 'Project film', poster, ...props }: Props) {
 }
 
 /** Prefer the local final edit; external-only films load on request. */
-export default function ExternalVideo({ poster, fallbackLabel = 'Open media', ...props }: Props) {
+export default function ExternalVideo({ poster, fallbackLabel = 'Open media', playLabel, ...props }: Props) {
   if (props.src?.startsWith('https://player.vimeo.com/video/')) {
     const url = new URL(props.src)
     const id = url.pathname.split('/').pop() || ''
@@ -107,7 +123,7 @@ export default function ExternalVideo({ poster, fallbackLabel = 'Open media', ..
     if (film) {
       const hash = url.searchParams.get('h')
       const watchUrl = `https://vimeo.com/${id}${hash ? `/${hash}` : ''}`
-      return <LocalProjectFilm key={film.slug} slug={film.slug} title={props.title || 'Project film'} watchUrl={watchUrl} poster={poster} silent={film.silent} />
+      return <LocalProjectFilm key={film.slug} slug={film.slug} title={props.title || 'Project film'} watchUrl={watchUrl} poster={poster} silent={film.silent} playLabel={playLabel} />
     }
     return <VimeoPlayer key={props.src} {...props} poster={poster} />
   }

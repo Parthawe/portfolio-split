@@ -12,11 +12,6 @@ export const mentraDecisionChapters: SlideChapter[] = [
   { id: 'decision-recovery', title: 'Make waiting and recovery legible', slides: ['500:3981', '500:3980'].map(slide) },
   { id: 'decision-results', title: 'Separate first-use and runtime results', slides: ['329:8449', '329:8363', '500:3979'].map(slide) },
 ]
-export const mentraQuickProof: SlideChapter = {
-  id: 'cs-design-proof',
-  title: 'Give apps the home screen',
-  slides: [slide('6:28341')],
-}
 export const mentraDecisions: Record<string, ScreenDecision> = {
   '97:5038': { question: 'How does a new wearer reach a connected device?', choice: 'Give setup its own sequence before everyday app use.', evidence: 'Follow the setup screens in order, then compare the separate pairing sequence on the next slide.' },
   '77:2532': { question: 'When can the wearer move past pairing?', choice: 'Treat connection as a first-use task with its own screens.', evidence: 'Inspect the pairing progression rather than inferring connection from the home screen.', limit: 'These are source designs; this slide alone does not demonstrate pairing reliability.' },

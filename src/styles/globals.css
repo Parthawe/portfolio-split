@@ -94,7 +94,9 @@
 .external-video > .external-video__poster { pointer-events: none; }
 .external-video__play { z-index: 1; }
 .external-video__status { z-index: 2; }
-.local-project-film > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.local-project-film__stage,
+.local-project-film__stage > video { position: absolute; inset: 0; width: 100%; height: 100%; }
+.local-project-film__stage > video { object-fit: contain; }
 .local-project-film__links { position: absolute; inset: 0.5rem 0.5rem auto auto; z-index: 5; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.4rem; max-width: calc(100% - 1rem); }
 .local-project-film__links .external-video-fallback { position: static; }
 .local-project-film__links span.external-video-fallback { text-decoration: none; }

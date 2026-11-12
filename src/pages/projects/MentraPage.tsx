@@ -11,19 +11,22 @@ import BottomNav from '../../components/case-study/BottomNav'
 import NextProject from '../../components/case-study/NextProject'
 import CaseStudySlides from '../../components/case-study/CaseStudySlides'
 import { mentraSlideChapters } from '../../data/caseStudySlides'
-import { mentraDecisionChapters, mentraDecisions, mentraQuickProof } from '../../data/productDecisionStories'
+import { mentraDecisionChapters, mentraDecisions } from '../../data/productDecisionStories'
 import { settleAnchor } from '../../utils/settleAnchor'
+
+const openingComparisonId = 'cs-design-proof'
 
 export default function MentraPage() {
   const location = useLocation()
   const [viewMode, setViewMode] = useState<'summary' | 'full'>('summary')
   const [sourceOpen, setSourceOpen] = useState(false)
+  const openingSections = [
+    { id: openingComparisonId, label: 'Before and after' },
+    { id: 'cs-summary', label: 'Quick read' },
+  ]
   const sections = viewMode === 'summary'
-    ? [
-        { id: 'cs-summary', label: 'Quick read' },
-        { id: mentraQuickProof.id, label: 'Design decision' },
-      ]
-    : [{ id: 'cs-summary', label: 'Quick read' }, ...mentraDecisionChapters.map(chapter => ({ id: chapter.id, label: ({ 'decision-first-use': 'First use', 'decision-runtime': 'Runtime', 'decision-recovery': 'Recovery', 'decision-results': 'Results' } as Record<string,string>)[chapter.id] })), { id: 'source-presentation', label: 'Original deck' }]
+    ? openingSections
+    : [...openingSections, ...mentraDecisionChapters.map(chapter => ({ id: chapter.id, label: ({ 'decision-first-use': 'First use', 'decision-runtime': 'Runtime', 'decision-recovery': 'Recovery', 'decision-results': 'Results' } as Record<string,string>)[chapter.id] })), { id: 'source-presentation', label: 'Original deck' }]
 
   const handleViewModeChange = (nextMode: 'summary' | 'full') => {
     if (nextMode === viewMode) return
@@ -37,9 +40,7 @@ export default function MentraPage() {
 
     if (mentraSlideChapters.some(chapter => chapter.id === targetId) || targetId === 'source-presentation') setSourceOpen(true)
 
-    if (targetId === mentraQuickProof.id) {
-      setViewMode('summary')
-    } else if (targetId !== 'cs-summary' && targetId !== 'project-overview') {
+    if (targetId !== openingComparisonId && targetId !== 'cs-summary' && targetId !== 'project-overview') {
       setViewMode('full')
     }
 
@@ -79,7 +80,7 @@ export default function MentraPage() {
         backLink="/work"
         categorySlug="ai"
         backLabel="Back to work"
-        tags={['AI wearables', 'Head of Design', '0→1 product', 'Launch website']}
+        tags={['AI wearables', 'Head of Design']}
         title="Mentra"
         subtitle="Designing the OS, companion app, MiniApp Store, and launch site for AI smart glasses"
         info={[
@@ -89,13 +90,26 @@ export default function MentraPage() {
           { label: 'Platform', value: 'Wearable OS, mobile, web' },
         ]}
         liveUrl="https://mentraglass.com"
-        heroImage="/Assets/images/mentra/render-camera-detail.webp"
-        heroAlt="Mentra Glass, AI smart glasses with camera detail and Mentra logo"
         heroExperience="visual"
+        heroFraming="image"
         heroTone="mentra"
-        visualSummary="The product system that makes AI glasses usable after unboxing."
-        visualHeroImage="/Assets/mockups/projects/mentra_16x9.webp"
-        visualHeroAlt="Mentra generated cover showing the AI glasses product system and companion app"
+        visualSummary="I led design for the smart-glasses OS and companion app. We redesigned the home screen around launching MiniApps."
+        openingMediaId={openingComparisonId}
+        visualHeroMedia={
+          <div className="mentra-opening-comparison" role="group" aria-label="Mentra home screen before and after">
+            <figure>
+              <figcaption><span>Before</span>Device controls first</figcaption>
+              <img data-project-preview src="/Assets/images/mentra/deck/home-before.png" width="313" height="712"
+                alt="The original home screen has a large glasses control panel above separate lists of active and inactive apps." decoding="async" />
+            </figure>
+            <figure>
+              <figcaption><span>After</span>MiniApps first</figcaption>
+              <img data-project-preview src="/Assets/images/mentra/deck/home-after.png" width="342" height="725"
+                alt="The redesigned home screen keeps glasses status at the top, with a grid of MiniApps and a runtime control at the bottom." decoding="async" />
+            </figure>
+          </div>
+        }
+        heroCaption="Device status stays visible. The app grid takes the main area, and running apps have a dedicated control at the bottom."
         liveLabel="Open Mentra"
         showHeaderSummary={false}
       />
@@ -109,11 +123,6 @@ export default function MentraPage() {
           title="Project overview"
           proofLimit={0}
         />
-
-        {viewMode === 'summary' && <CaseStudySlides
-          chapters={[mentraQuickProof]}
-          decisions={mentraDecisions}
-        />}
 
         <CsExpandPreview
           sectionIds={[...mentraDecisionChapters.map(chapter => chapter.id), ...mentraSlideChapters.map(chapter => chapter.id), 'source-presentation']}

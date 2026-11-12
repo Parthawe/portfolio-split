@@ -689,6 +689,100 @@ body.case-side-nav .project-main .project-header--visual.wrap,
 .project-main .study-explorer__question p { margin: 6px 0 0; }
 .project-main .study-explorer__note { max-width: 72ch; color: var(--ink-70); font-size: 14px; margin-top: 14px; }
 .project-main .proj-generated-caption { margin: 12px 0 0; max-width: 72ch; color: var(--ink-70); font: 400 14px/1.6 var(--sans); }
+
+.project-main .project-header--evidence-first .proj-visual-hero {
+  gap: 0;
+}
+
+.project-header--evidence-first .proj-visual-hero__copy {
+  margin-bottom: clamp(1rem, 3vw, 1.75rem);
+}
+
+.project-main .project-header--evidence-first .proj-visual-stage {
+  aspect-ratio: auto;
+  height: auto;
+  min-height: 0;
+  border-radius: var(--case-hero-radius);
+  scroll-margin-top: calc(var(--nav-h) + 1rem);
+}
+
+.project-header--evidence-first .proj-visual-hero__media--interactive > * {
+  height: auto;
+}
+
+.mentra-opening-comparison {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 21rem));
+  justify-content: center;
+  justify-items: center;
+  gap: clamp(0.65rem, 4vw, 3rem);
+  padding: clamp(0.85rem, 3vw, 2rem);
+  background: color-mix(in srgb, var(--surface) 94%, var(--project-color));
+  border: 1px solid var(--ink-08);
+  border-radius: inherit;
+}
+
+.mentra-opening-comparison figure {
+  width: min(100%, 16rem);
+  min-width: 0;
+  margin: 0;
+}
+
+.mentra-opening-comparison figcaption {
+  display: grid;
+  gap: 0.15rem;
+  margin-bottom: 0.65rem;
+  color: var(--ink);
+  font: 500 var(--text-sm)/1.3 var(--sans);
+  text-align: center;
+}
+
+.mentra-opening-comparison figcaption span {
+  color: var(--ink-70);
+  font: 400 var(--text-xs)/1.3 var(--mono);
+}
+
+.project-main .mentra-opening-comparison img {
+  height: clamp(16rem, 82vw, 24rem);
+  width: 100%;
+  border-radius: 0;
+  object-fit: contain;
+  cursor: zoom-in;
+}
+
+.project-header--evidence-first .local-project-film {
+  position: relative;
+  background: transparent;
+}
+
+.project-header--evidence-first .local-project-film__stage {
+  position: relative;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  border-radius: var(--case-hero-radius);
+  background: var(--overlay-heavy);
+}
+
+.project-header--evidence-first .local-project-film__links {
+  position: static;
+  justify-content: flex-start;
+  max-width: none;
+}
+
+.project-main .proj-visual-stage .local-project-film__stage > video {
+  object-fit: contain;
+}
+
+.external-video__play.local-project-film__play {
+  inset: 50% auto auto 50%;
+  translate: -50% -50%;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0.6rem 1rem;
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
 @media (max-width: 640px) {
   .project-main .study-explorer__flow { grid-template-columns: 1fr; gap: 20px; }
   .project-main .study-explorer__choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }

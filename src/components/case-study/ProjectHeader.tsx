@@ -44,6 +44,7 @@ interface ProjectHeaderProps {
   visualHeroImage?: string
   visualHeroAlt?: string
   visualHeroMedia?: ReactNode
+  openingMediaId?: string
   liveLabel?: string
   liveDownload?: boolean | string
   visualBriefMode?: 'combined' | 'split'
@@ -103,6 +104,7 @@ export default function ProjectHeader({
   visualHeroImage,
   visualHeroAlt,
   visualHeroMedia,
+  openingMediaId,
   liveLabel = 'Visit Live Site',
   liveDownload,
   visualBriefMode = 'combined',
@@ -230,22 +232,27 @@ export default function ProjectHeader({
       'wrap',
       'project-header',
       'project-header--visual',
+      openingMediaId ? 'project-header--evidence-first' : '',
       heroFraming === 'image' ? 'project-header--image' : '',
       heroTone ? `project-header--${slugClass(heroTone)}` : '',
       project?.category ? `project-header--cat-${project.category}` : '',
       currentSlug ? `project-header--project-${slugClass(currentSlug)}` : '',
     ].filter(Boolean).join(' ')
 
+    const readingLinks = (
+      <nav className="proj-reading-links" aria-label="Project navigation">
+        <Link className="glass-action" to={backLink}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 5-7 7 7 7M3 12h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>{backLabel}</Link>
+        <div className="proj-reading-destinations">
+          {project && <a className="glass-action" href={`https://designwhich.works/process/${encodeURIComponent(currentSlug)}`}>References &amp; process ↗</a>}
+          <a className="glass-action" href="#project-overview">{readingPath ? 'Overview' : 'Project overview'}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 14 7 7 7-7M12 3v18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
+          {readingPath && readingPath.id !== openingMediaId && <a href={`#${readingPath.id}`} onClick={event => followProjectSection(event, readingPath.id)} className="proj-reading-evidence glass-action">{readingPath.label}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 14 7 7 7-7M12 3v18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>}
+        </div>
+      </nav>
+    )
+
     return (
       <div className={visualClasses}>
-        <nav className="proj-reading-links" aria-label="Project navigation">
-          <Link className="glass-action" to={backLink}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 5-7 7 7 7M3 12h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>{backLabel}</Link>
-          <div className="proj-reading-destinations">
-            {project && <a className="glass-action" href={`https://designwhich.works/process/${encodeURIComponent(currentSlug)}`}>References &amp; process ↗</a>}
-            <a className="glass-action" href="#project-overview">{readingPath ? 'Overview' : 'Project overview'}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 14 7 7 7-7M12 3v18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
-            {readingPath && <a href={`#${readingPath.id}`} onClick={event => followProjectSection(event, readingPath.id)} className="proj-reading-evidence glass-action">{readingPath.label}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 14 7 7 7-7M12 3v18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>}
-          </div>
-        </nav>
+        {!openingMediaId && readingLinks}
         <section className="proj-visual-hero hero-anim hero-anim-1" aria-label={`${title} project introduction`}>
           <div className="proj-visual-hero__copy">
             <h1 className={`proj-visual-title proj-visual-title--${titleLength}`}>{visualTitle}</h1>
@@ -276,7 +283,7 @@ export default function ProjectHeader({
             </div>
           </div>
 
-          <div className="proj-visual-stage">
+          <div className="proj-visual-stage" id={openingMediaId}>
             {heroFraming === 'panel' && <div className="proj-visual-hero__chrome" aria-hidden="true">
               <span />
               <span />
@@ -301,6 +308,8 @@ export default function ProjectHeader({
           </div>
           {heroCaption && <p className="proj-generated-caption">{heroCaption}</p>}
         </section>
+
+        {openingMediaId && readingLinks}
 
         <section id="project-overview" tabIndex={-1} className={`proj-visual-brief proj-visual-brief--${visualBriefMode} hero-anim hero-anim-2`} aria-label={`${title} project overview`}>
           {showHeaderSummary && (visualBriefMode === 'combined' ? (
