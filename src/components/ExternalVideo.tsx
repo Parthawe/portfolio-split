@@ -49,16 +49,16 @@ function LocalProjectFilm({ slug, title, watchUrl, poster, silent = false, playL
             {playLabel}
           </button>
         )}
+        {failed && <div className="external-video__status" role="status">
+          This video could not load. {fallbackName} or retry here.
+          <button type="button" onClick={() => { setFailed(false); video.current?.load() }}>Reload film</button>
+        </div>}
       </div>
       <div className="local-project-film__links">
         {(silentExcerpt || silent) && <span className="external-video-fallback">{silentExcerpt ? 'Original footage · silent excerpt' : 'Silent film'}</span>}
         {captions && <a href={captions.src} download className="external-video-fallback" aria-label={`Download automatic captions for ${title}`}>Automatic captions ↓</a>}
         <a href={fallbackUrl} target="_blank" rel="noreferrer" className="external-video-fallback" aria-label={`${fallbackLabel} in a separate tab`}>{fallbackName} ↗</a>
       </div>
-      {failed && <div className="external-video__status" role="status">
-        This video could not load. {fallbackName} or retry here.
-        <button type="button" onClick={() => { setFailed(false); video.current?.load() }}>Reload film</button>
-      </div>}
     </div>
   )
 }
