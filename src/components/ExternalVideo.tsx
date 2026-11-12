@@ -51,7 +51,11 @@ function LocalProjectFilm({ slug, title, watchUrl, poster, silent = false, playL
         )}
         {failed && <div className="external-video__status" role="status">
           This video could not load. {fallbackName} or retry here.
-          <button type="button" onClick={() => { setFailed(false); video.current?.load() }}>Reload film</button>
+          <button type="button" onClick={() => {
+            setStarted(false)
+            setFailed(false)
+            video.current?.load()
+          }}>Reload film</button>
         </div>}
       </div>
       <div className="local-project-film__links">
