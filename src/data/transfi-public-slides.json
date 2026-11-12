@@ -1,0 +1,44 @@
+[
+  {
+    "id": "cs-public-story",
+    "title": "Product and payment flows",
+    "slides": [
+      {
+        "id": "6:6779",
+        "src": "/Assets/case-study-slides/transfi/slide-6-6779.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Scope and payment journey · Order Summary Order status Order details Order ID 2RG684GR7G27TFG2DD3GH7G2D4 Delivering to 0xafc55a44bb1076FA26a0Fc8E72aD411451370711 Summar",
+        "text": "Order Summary\nOrder status\nOrder details\nOrder ID\n2RG684GR7G27TFG2DD3GH7G2D4\nDelivering to\n0xafc55a44bb1076FA26a0Fc8E72aD411451370711\nSummary :\nQuote updates in 10s\n1 BTC =\n$ 35,673\nYou get\n0.0925 BTC\nYour Amount\n$ 300\nNetwork fee\r\n$ 0.22\nProcessing fee\n$ 11.78\nHide fees\nTotal You Pay\n$ 312\nOrder Status\nOrder Placed\n22.4.2022, 10:11:20\nPayment completed\nPayment completed with Credit Card\nProcessing transaction\nWe’re purchasing your crypto. This takes between a few minutes and a few hours. Thanks for your patience.\nCrypto Delivered to wallet\nPlease check your wallet for the delivery\nYou may close this at anytime as it may take upto several mintues.\nFor more help, click here.\nView your transaction on Blockchain explorer\nBuy Again\nGo to Trade History\nPowered by \nHello Raj!\nOrder History\nProfile\nBuy Crypto\nSell Crypto\nSettings\nHelp Center\nAbout TransFi\nOur Policies\nTerms and conditions\nPrivacy policy\nAML/KYC policy\nCookie policy\nLogout\njoe@transfi.com\nPowered by \nTrade History\nBuy \nSell\nEthereum\nMetamask - 22/4/2022, 10: 11 PM\nTransaction successful\n$200\n0.0299 ETH\n Credit Card\nEthereum\nMetamask - 22/4/2022, 10: 11 PM\nTransaction in progress\n$200\n0.0299 ETH\nEthereum\nMetamask - 22/4/2022, 10: 11 PM\nTransaction Failed !\n$200\n0.0299 ETH\nRetry Order\nEthereum\nMetamask - 22/4/2022, 10: 11 PM\nTransaction Pending\n$200\n0.0299 ETH\nContiune\nEthereum\nMetamask - 22/4/2022, 10: 11 PM\nTransaction successful\n$200\n0.0299 ETH\n Credit Card\nEthereum\nMetamask - 22/4/2022, 10: 11 PM\nTransaction Expired!\n$200\n0.0299 ETH\nShow More\nPowered by \nConfirm your order\nPayment Method :\nCredit Card\nWallet Address :\n0xafc55a44bb1076FA26a0Fc8E72aD411451370711\nSummary :\nQuote updates in 10s\n1 BTC =\n$ 35,673\nYou Get\n0.0925 BTC\nYour Amount\n$ 298.71\nNetwork fees\r\n+ $ 1.29\nProcessing fees\n+ $ 12\nHide fees\nTotal You Pay\n$ 312\nThis Price is Guaranteed for next 15 mins\nPay Now : $312\nPowered by \nOrder Summary\nOrder status\nOrder details\nOrdered\nPayment\nSuccessful\nProcessing\nDelivering\nProcessing transaction\nWe’re purchasing your crypto. This takes between a few minutes and a few hours. Thanks for your patience.\nYou may close this at anytime as it may take upto several mintues.\nFor more help, click here.\nView your transaction on Blockchain explorer\nBuy Again\nGo to Trade History\nPowered by \nOrder Summary\nOrder status\nOrder details\nOrdered\nPayment\nSuccessful\nProcessing\nDelivering\nProcessing transaction\nWe’re purchasing your crypto. This takes between a few minutes and a few hours. Thanks for your patience.\nYou may close this at anytime as it may take upto several mintues.\nFor more help, click here.\nView your transaction on Blockchain explorer\nBuy Again\nGo to Trade History\nPowered by \nWallet address\nEthereum wallet address\nPlease paste your wallet address here\n0xafc55a44bb1076FA26a0Fc8E72aD411451370711\nor Scan your wallet address\nScan\nDo you want to save this wallet address\nNickName For Wallet\nETH Wallet\nor Choose your saved wallet address\nWallet Address NickName 1\n0xafc55a44bb1076FA...\nCoinBase\nWallet Address NickName 1\n0xafc55a44bb1076FA...\nGlow\nShow more Address\nContinue\nPowered by \nPayment Methods\nPlease select your payment method\nPayment Methods:\nDebit Card\nPrice guarantee for 15:00 minutes\nAvailable between 60 - 1000 EUR\n4% Processing fees\nCredit Card\nPrice guarantee for 15:00 minutes\nAvailable between 60 - 1000 EUR\n4% Processing fees\nSEPA Bank Transfer\n1 to 3 business days\nAvailable between 130 - 50000 EUR\n1% Processing fees\nContinue\nPowered by \nTrade History\nBuy \nSell\nEthereum\nMe",
+        "textTruncated": true,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=6-6779"
+      }
+    ]
+  },
+  {
+    "id": "cs-process",
+    "title": "Original checkout designs",
+    "slides": [
+      {
+        "id": "6:9052",
+        "src": "/Assets/case-study-slides/transfi/slide-6-9052.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Checkout design · Before After Buy Crypto Sell Crypto I want to Pay 1000 RM MYR I want to Buy 0.130 ETH Summary Estimated Value You get ~ 0.130 ETH for RM 100",
+        "text": "Before\nAfter\nBuy Crypto\nSell Crypto\nI want to Pay\n1000\nRM\nMYR\nI want to Buy\n0.130\nETH\nSummary\nEstimated Value\nYou get ~ 0.130 ETH for RM 1000.00\n0.130 @ as low as RM62,802.85\r\r\nNetwork fees\nProcessing fees\n\rRM 1000\nRM 0.22\n\ras low as RM 12.00\nBuy Ethereum\nPowered by \nChoose buy or sell",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=6-9052"
+      },
+      {
+        "id": "6:9184",
+        "src": "/Assets/case-study-slides/transfi/slide-6-9184.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Checkout design · Before After Wallet address Ethereum wallet address Please paste your wallet address here 0xafc55a44bb1076FA26a0Fc8E72aD411451370711 or Scan",
+        "text": "Before\nAfter\nWallet address\nEthereum wallet address\nPlease paste your wallet address here\n0xafc55a44bb1076FA26a0Fc8E72aD411451370711\nor Scan your wallet address\nScan\nDo you want to save this wallet address\nNickName For Wallet\nETH Wallet\nor Choose your saved wallet address\nCoinbase WALLET\n0xafc55a44bb1076FA...\nCoinBase\nGlow First\nWallet\n0xafc55a44bb1076FA...\nGlow\nShow more Address\nContinue\nPowered by \nWallet Address",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=6-9184"
+      }
+    ]
+  }
+]

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title desc">
+  <title id="title">MediMorpho multilingual care concept</title>
+  <desc id="desc">A premium abstract healthcare interpretation interface connecting patient expression to a shared clinical recap.</desc>
+  <defs>
+    <linearGradient id="bg" x1="120" y1="0" x2="1490" y2="900" gradientUnits="userSpaceOnUse"><stop stop-color="#160925"/><stop offset=".52" stop-color="#57068c"/><stop offset="1" stop-color="#9b56ba"/></linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(1340 160) rotate(142) scale(740 600)" gradientUnits="userSpaceOnUse"><stop stop-color="#8df0d3" stop-opacity=".44"/><stop offset="1" stop-color="#8df0d3" stop-opacity="0"/></radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="24" stdDeviation="30" flood-color="#0d0618" flood-opacity=".42"/></filter>
+  </defs>
+  <rect width="1600" height="900" rx="40" fill="url(#bg)"/><rect width="1600" height="900" rx="40" fill="url(#glow)"/>
+  <g opacity=".14" stroke="#fff"><path d="M0 126h1600M0 774h1600"/><path d="M112 0v900M1488 0v900"/></g>
+  <g fill="#fff">
+    <text x="112" y="105" font-family="Arial, Helvetica, sans-serif" font-size="21" font-weight="700" letter-spacing="4">MEDIMORPHO</text>
+    <text x="112" y="145" font-family="Arial, Helvetica, sans-serif" font-size="15" opacity=".66" letter-spacing="2.5">MULTILINGUAL CARE SYSTEM</text>
+  </g>
+  <g transform="translate(116 220)" filter="url(#shadow)">
+    <rect width="550" height="300" rx="38" fill="#fff" fill-opacity=".97"/>
+    <circle cx="66" cy="66" r="26" fill="#57068c"/><path d="M56 66h20M66 56v20" stroke="#fff" stroke-width="3.5" stroke-linecap="round"/>
+    <text x="112" y="64" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#1a0b2c" letter-spacing="1.5">PATIENT EXPRESSION</text>
+    <text x="112" y="92" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#1a0b2c" opacity=".5">Recognize language, meaning, and uncertainty.</text>
+    <rect x="46" y="140" width="450" height="16" rx="8" fill="#1a0b2c" fill-opacity=".76"/>
+    <rect x="46" y="178" width="390" height="12" rx="6" fill="#1a0b2c" fill-opacity=".14"/>
+    <rect x="46" y="205" width="426" height="12" rx="6" fill="#1a0b2c" fill-opacity=".1"/>
+    <rect x="46" y="246" width="118" height="34" rx="17" fill="#e7d8f0"/><rect x="176" y="246" width="118" height="34" rx="17" fill="#dbf7ef"/>
+  </g>
+  <path d="M690 370h160" fill="none" stroke="#8df0d3" stroke-width="4" stroke-linecap="round" stroke-dasharray="4 13"/><circle cx="770" cy="370" r="34" fill="#8df0d3"/><path d="M758 370h24M770 358v24" stroke="#1a0b2c" stroke-width="3" stroke-linecap="round"/>
+  <g transform="translate(874 220)" filter="url(#shadow)">
+    <rect width="610" height="418" rx="38" fill="#150923" fill-opacity=".84" stroke="#fff" stroke-opacity=".2"/>
+    <circle cx="66" cy="66" r="26" fill="#8df0d3"/><path d="M56 66h20M66 56v20" stroke="#1a0b2c" stroke-width="3.5" stroke-linecap="round"/>
+    <text x="112" y="64" font-family="Arial, Helvetica, sans-serif" font-size="16" font-weight="700" fill="#fff" letter-spacing="1.5">SHARED CLINICAL RECAP</text>
+    <text x="112" y="92" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#fff" opacity=".5">Plain language, clinician context, and next steps.</text>
+    <rect x="46" y="140" width="510" height="112" rx="22" fill="#fff" fill-opacity=".07"/>
+    <text x="72" y="175" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#8df0d3" letter-spacing="1.4">LIVE INTERPRETATION</text>
+    <g transform="translate(72 212)" fill="#8df0d3"><rect width="8" height="18" rx="4"/><rect x="17" y="-12" width="8" height="42" rx="4"/><rect x="34" y="4" width="8" height="10" rx="4"/><rect x="51" y="-18" width="8" height="54" rx="4"/><rect x="68" y="-5" width="8" height="28" rx="4"/><rect x="85" y="6" width="8" height="8" rx="4"/><rect x="102" y="-10" width="8" height="38" rx="4"/></g>
+    <rect x="46" y="280" width="510" height="86" rx="22" fill="#fff" fill-opacity=".07"/>
+    <circle cx="84" cy="323" r="13" fill="#8df0d3"/><path d="M79 323l4 4 7-9" fill="none" stroke="#1a0b2c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="112" y="310" width="284" height="12" rx="6" fill="#fff" fill-opacity=".72"/><rect x="112" y="338" width="360" height="9" rx="4.5" fill="#fff" fill-opacity=".16"/>
+  </g>
+  <g transform="translate(112 716)" fill="#fff"><text font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="700" letter-spacing="1.9">UNDERSTAND BEFORE YOU ACT</text><text y="30" font-family="Arial, Helvetica, sans-serif" font-size="13" opacity=".55" letter-spacing="1.5">LANGUAGE ID · LIVE TRANSCRIPTION · TRANSLATION · RECAP</text></g>
+</svg>

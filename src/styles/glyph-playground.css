@@ -1,0 +1,271 @@
+/* ══════════════════════════════════════
+   Glyph Playground — interactive type tester
+   ══════════════════════════════════════ */
+
+.glyph-playground {
+  padding: 0;
+  margin-bottom: var(--space-12);
+}
+
+/* ── Controls ── */
+.gp-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--ink-06);
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+}
+.gp-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+.gp-control-group:first-child {
+  flex: 1;
+  min-width: 200px;
+}
+.gp-label {
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--ink-40);
+}
+.gp-input {
+  font-family: var(--display-heading);
+  font-size: var(--text-base);
+  padding: 0.5rem 0.75rem;
+  border: 1px solid var(--ink-08);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.gp-input:focus {
+  border-color: var(--ink-30);
+}
+
+/* Weight tabs */
+.gp-weight-tabs {
+  display: flex;
+  gap: 0;
+  border: 1px solid var(--ink-08);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.gp-weight-tab {
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  padding: 0.4rem 0.75rem;
+  background: transparent;
+  border: none;
+  color: var(--ink-40);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.gp-weight-tab:not(:last-child) {
+  border-right: 1px solid var(--ink-08);
+}
+.gp-weight-tab.active {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* Slider */
+.gp-slider {
+  width: 120px;
+  accent-color: var(--ink);
+}
+
+/* Toggle button */
+.gp-toggle-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--ink-08);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-50);
+  transition: border-color 0.2s;
+}
+.gp-toggle-btn:hover { border-color: var(--ink-15); }
+.gp-toggle-switch {
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 2px 6px;
+  border-radius: 3px;
+  background: var(--ink-06);
+  color: var(--ink-40);
+}
+.gp-toggle-btn.active .gp-toggle-switch {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* ── Preview ── */
+.gp-preview {
+  padding: 3rem 2rem;
+  border: 1px solid var(--ink-06);
+  border-radius: var(--radius);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin-bottom: 1.5rem;
+}
+.gp-preview-text {
+  margin: 0;
+  line-height: 1.15;
+  letter-spacing: 0;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.gp-glyph {
+  cursor: pointer;
+  transition: color 0.15s;
+  position: relative;
+}
+.gp-glyph:hover {
+  color: var(--project-color, var(--ink));
+}
+.gp-glyph.active {
+  color: var(--project-color, var(--ink));
+}
+.gp-glyph.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--project-color, var(--ink));
+  border-radius: 1px;
+}
+
+/* ── Glyph detail ── */
+.gp-glyph-detail {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  border: 1px solid var(--ink-06);
+  border-radius: var(--radius);
+  margin-bottom: 1.5rem;
+  background: var(--surface);
+}
+.gp-glyph-large {
+  font-size: clamp(6rem, 15vw, 12rem);
+  line-height: 1;
+  color: var(--ink);
+}
+.gp-glyph-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+.gp-glyph-char {
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  color: var(--ink-40);
+}
+.gp-glyph-name {
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wider);
+  color: var(--ink-30);
+}
+
+/* ── Sample text buttons ── */
+.gp-samples {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+.gp-sample {
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--ls-wide);
+  padding: 0.35rem 0.75rem;
+  border: 1px solid var(--ink-06);
+  border-radius: var(--radius-pill);
+  background: transparent;
+  color: var(--ink-40);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.gp-sample:hover {
+  border-color: var(--ink-15);
+  color: var(--ink);
+}
+
+/* ── Alphabet grid ── */
+.gp-alphabet {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.gp-alphabet-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+}
+.gp-alphabet-char {
+  font-size: clamp(1.8rem, 4vw, 3rem);
+  line-height: 1.3;
+  width: calc(100% / 13);
+  text-align: center;
+  cursor: pointer;
+  color: var(--ink-50);
+  transition: color 0.15s, transform 0.2s;
+  padding: 0.25rem 0;
+}
+.gp-alphabet-char:hover {
+  color: var(--project-color, var(--ink));
+  transform: scale(1.15);
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .gp-controls { flex-direction: column; }
+  .gp-slider { width: 100%; }
+  .gp-glyph-detail { flex-direction: column; gap: 1rem; text-align: center; }
+  .gp-alphabet-char { width: calc(100% / 9); }
+}
+@media (max-width: 480px) {
+  .gp-preview { padding: 2rem 1rem; }
+  .gp-alphabet-char { width: calc(100% / 7); font-size: 1.5rem; }
+}
+
+/* ── Dark mode ── */
+[data-theme="dark"] .gp-weight-tab.active { background: var(--ink); color: var(--bg); }
+[data-theme="dark"] .gp-toggle-btn.active .gp-toggle-switch { background: var(--ink); color: var(--bg); }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .gp-glyph,
+  .gp-alphabet-char,
+  .gp-weight-tab,
+  .gp-toggle-btn,
+  .gp-sample,
+  .gp-input {
+    transition: none;
+  }
+  .gp-alphabet-char:hover {
+    transform: none;
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "created": "2026-10-05",
+  "assets": [
+    {
+      "file": "feeling-patterns-materials.webp",
+      "tool": "ChatGPT built-in image generation",
+      "purpose": "Conceptual material illustration; not prototype documentation",
+      "prompt": "Use case: illustration-story. Create one landscape 3:2 editorial illustration for a design portfolio page called Feeling Patterns, about touch as communication. A carefully composed material study: charcoal neoprene swatch with a clean slit exposing a tiny flat vibration disc, off-white knitted cuff, a fine strand of conductive silver thread, a small copper fabric pressure pad. Tactile, precise, restrained, arranged on warm pale grey paper with natural soft side lighting. High-end material editorial still life with slight illustrated quality, not a purported photograph of a completed historical prototype. No people, hands, screens, text, logos, arrows, gradients, neon, decorative clutter or fake technical labels. Show material texture and construction details, generous breathing room, crop all objects safely within frame. This is a newly generated conceptual illustration, not documentary evidence."
+    },
+    {
+      "file": "hypercinema-viewpoints.webp",
+      "tool": "ChatGPT built-in image generation",
+      "purpose": "Conceptual viewpoints illustration; not installation documentation",
+      "prompt": "Use case: stylized-concept. A landscape 3:2 editorial paper maquette illustration for a design portfolio course archive about Hypercinema: three thin matte off-white projection planes, arranged as a shallow open triptych, each catching a fragment of the SAME single burnt-orange circular shape, so the circle is only whole from one viewing position. Architectural paper model on a warm light grey surface, crisp handcrafted edges, directional afternoon light, restrained orange and graphite accents, high-quality editorial still life. No people, screens with UI, text, logos, cables, neon, futuristic technology, gradients, stock-photo room. This is explicitly a contemporary conceptual illustration of viewpoints and fragmented narrative, not an image of an actual historical installation. The physical paper model should feel thoughtful and simple, with generous breathing room and compelling shadows."
+    }
+  ]
+}

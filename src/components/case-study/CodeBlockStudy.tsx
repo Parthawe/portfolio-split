@@ -1,0 +1,20 @@
+import { useState } from 'react'
+import { useThemeMode } from '../../hooks/useThemeMode'
+import art from './code-block-art.json'
+import '../jugalbandi-anatomy/anatomy-ink.css'
+const keys=['body','container','padding','image','text','button'] as const
+type Block=typeof keys[number]
+const explanations:Record<Block,string>={body:'Body is the base of the page. Every other element lives inside it.',container:'The container groups related content. It gives the image, text and button a shared boundary.',padding:'Padding adds space inside the container, separating its edge from its contents.',image:'The image block places visual content inside the container.',text:'The text block supplies a heading or description. The live preview uses readable HTML.',button:'The button is an action inside the same group. Try it in the page preview.'}
+export default function CodeBlockStudy(){
+ const [selected,setSelected]=useState<Block>('container'),[enabled,setEnabled]=useState<Block[]>([...keys]),[message,setMessage]=useState(''),dark=useThemeMode()
+ const toggle=(key:Block)=>{setSelected(key);if(key!=='body')setEnabled(old=>old.includes(key)?old.filter(item=>item!==key):[...old,key])}
+ return <section className="project-study code-block-study" aria-label="Building blocks lesson">
+ <header><h3>Build a page, inspect its structure</h3><button className="glass-action" onClick={()=>{setEnabled([...keys]);setSelected('container');setMessage('Lesson reset. All blocks restored.')}}>Reset blocks</button></header>
+ <p>A browser lesson based on the original block grammar. This is a new teaching aid, not the original app or a tested learning outcome.</p>
+ <div className="project-study-controls" role="group" aria-label="Page blocks">{keys.map(key=><button className="glass-action" key={key} aria-pressed={enabled.includes(key)} onClick={()=>toggle(key)}>{key[0].toUpperCase()+key.slice(1)}{key==='body'?' · base':enabled.includes(key)?' · on':' · off'}</button>)}</div>
+ <p aria-live="polite">{explanations[selected]}</p>
+ <div className="code-block-study__views"><figure className="iso" data-theme={dark?'dark':'light'}><svg className="iso-svg" viewBox="0 0 760 540" role="img" aria-label={`Isometric block anatomy; visible blocks: ${enabled.join(', ')}`}>{keys.filter(key=>enabled.includes(key)&&(key==='body'||key==='container'||enabled.includes('container'))).map(key=><g key={key} data-block={key} data-selected={key===selected?true:undefined} dangerouslySetInnerHTML={{__html:art[key]}}/>)}</svg><figcaption>Anatomy of the current page. The selected block is emphasized.</figcaption></figure>
+ <div><span>Live page preview</span><div className="code-block-preview" style={{padding:enabled.includes('padding')?24:0,border:enabled.includes('container')?'1px solid var(--ink-30)':'none'}}>{enabled.includes('container')?<>{enabled.includes('image')&&<div className="code-block-preview__image" aria-label="Example image block">Image</div>}{enabled.includes('text')&&<><h4>Your first page</h4><p>Image, text and an action belong to one container.</p></>}{enabled.includes('button')&&<button className="glass-action" onClick={()=>setMessage('The button belongs to the container. You activated its example action.')}>Try the action</button>}</>:<p>Add the container to hold its child blocks.</p>}</div><pre aria-label="Generated HTML structure">{`<body>\n${enabled.includes('container')?`  <section${enabled.includes('padding')?' style="padding:24px"':''}>\n${enabled.includes('image')?'    <img alt="Example image" />\n':''}${enabled.includes('text')?'    <h1>Your first page</h1>\n':''}${enabled.includes('button')?'    <button>Try the action</button>\n':''}  </section>\n`:''}</body>`}</pre></div></div><p role="status">{message}</p>
+ <details><summary className="glass-action">Original block grammar</summary><img data-project-preview loading="lazy" src="/Assets/Projects/CodeforBuild/photos/block-system-guide.png" alt="Original block guide for body, container, padding, image, icons, button and text" style={{maxWidth:'100%',height:'auto'}}/></details>
+ </section>
+}

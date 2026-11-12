@@ -1,0 +1,21 @@
+.practice-entry { padding-top: clamp(120px, 14vw, 180px); }
+.practice-entry article { max-width: 820px; padding-bottom: clamp(64px, 8vw, 112px); }
+.practice-entry header { margin: 36px 0 40px; }
+.practice-entry h1 { font: 400 clamp(36px, 6vw, 64px)/1.08 var(--serif); letter-spacing: -.025em; text-wrap: balance; }
+.practice-entry h2 { font: 400 clamp(24px, 3vw, 30px)/1.2 var(--serif); margin: 32px 0 12px; }
+.practice-entry h3 { font: 500 18px/1.4 var(--sans); margin: 24px 0 8px; }
+.practice-entry p, .practice-entry li { font: 400 16px/1.7 var(--sans); max-width: 70ch; }
+.practice-entry p { margin: 12px 0; }
+.practice-entry li + li { margin-top: 8px; }
+.practice-entry ul { padding-left: 22px; }
+.practice-entry__context { color: var(--ink-70); }
+.practice-entry__details { margin-top: 32px; border-block: 1px solid var(--ink-15); padding: 16px 0; }
+.practice-entry__details summary { cursor: pointer; min-height: 44px; display: list-item; align-content: center; }
+.practice-entry__details section + section { margin-top: 24px; }
+.practice-entry__link { display: flex; flex-direction: column; gap: 4px; padding: 16px 0; text-decoration: none; border-bottom: 1px solid var(--ink-15); }
+.practice-entry__link span:first-child { text-decoration: underline; text-underline-offset: .2em; }
+.practice-entry__link span:last-child { color: var(--ink-70); font-size: 15px; }
+.practice-entry :focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+
+.practice-entry :is(section[id], details[id], ul[id], .practice-entry__anchor) { scroll-margin-top: 110px; }
+.practice-entry__anchor { display:block; }

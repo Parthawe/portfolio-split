@@ -1,0 +1,36 @@
+.screen-decision { width:100%; min-width:0; color:var(--ink); padding-block:16px 8px; }
+.screen-decision dl { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; margin:0; }
+.screen-decision dl > div { min-width:0; }
+.screen-decision dt { font:500 13px/1.5 var(--sans); color:var(--ink-70); margin-bottom:7px; }
+.screen-decision dd { font:400 15px/1.65 var(--sans); margin:0; max-width:65ch; text-wrap:pretty; }
+.screen-decision__limit { margin:16px 0 0; font:400 13px/1.65 var(--sans); color:var(--ink-70); max-width:76ch; }
+.case-study-slide figcaption:has(.screen-decision) { flex-wrap:wrap; }
+.case-study-slide__source-actions { display:flex; align-items:flex-start; justify-content:space-between; gap:16px; width:100%; }
+.case-study-slide__source-actions > a { flex-shrink:0; }
+.cs-screen-explorer .screen-decision dl,.cs-screen-strip--portrait .screen-decision dl { grid-template-columns:1fr; gap:14px; }
+.mentra-source-archive { padding-block:32px; scroll-margin-top:110px; }
+.mentra-source-archive > summary { cursor:pointer; padding-block:16px; min-height:44px; font:500 18px/1.5 var(--sans); }
+.mentra-source-archive > p { max-width:70ch; font:400 16px/1.7 var(--sans); }
+.mentra-source-archive .case-study-slides .wrap { width:100%; padding-inline:0; }
+.project-main--mentra-miniapps .cs-screen-strip--portrait .cs-screen-strip__rail img { width:100%; height:clamp(440px,65svh,650px); object-fit:contain; }
+.project-decision-alias { display:block; scroll-margin-top:110px; }
+@media(max-width:700px) {
+ .screen-decision dl { grid-template-columns:1fr; gap:16px; }
+ .screen-decision dl > div { display:grid; grid-template-columns:100px minmax(0,1fr); gap:12px; }
+ .screen-decision dt { margin:0; }
+ .screen-decision dd { font-size:15px; }
+ .case-study-slide__source-actions { flex-wrap:wrap; }
+}
+.case-study-slide__source-actions > a { min-height:44px; padding-block:12px; }
+
+.case-study-slides__chapter-head:not(:has(> p)) { grid-template-columns:minmax(0,1fr); margin-bottom:20px; }
+.case-study-slides__chapter-head:not(:has(> p)) h2 { max-width:32ch; margin-bottom:8px; font-size:clamp(24px,2.6vw,32px); }
+/* Wide website captures read as a spread, with their choices above the image. */
+.project-main.project-main--executivelens .cs-screen-explorer { display:block; }
+.project-main.project-main--executivelens .cs-screen-explorer__choices { grid-template-columns:repeat(2,minmax(0,1fr)); margin-bottom:20px; }
+.project-main.project-main--executivelens .cs-screen-explorer--landscape .cs-screen-explorer__image { height:auto; aspect-ratio:3456 / 1800; padding:0; border:0; border-radius:0; background:transparent; }
+.project-main.project-main--executivelens .cs-screen-explorer .screen-decision dl { grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+@media(max-width:700px) {
+ .project-main.project-main--executivelens .cs-screen-explorer .screen-decision dl { grid-template-columns:1fr; gap:16px; }
+ .project-main.project-main--executivelens .cs-screen-explorer__choices { grid-template-columns:1fr; }
+}

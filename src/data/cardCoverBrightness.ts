@@ -1,0 +1,36 @@
+// Static cover luminance sampled with the same 64px canvas formula used by
+// getImageBrightness. scripts/work-loading-qa.mjs verifies text contrast against
+// the actual images, so a changed cover cannot silently keep an incorrect tone.
+export const cardCoverBrightness: Readonly<Record<string, number>> = {
+  "/Assets/mockups/projects/mentra_4x5.webp": 211.6674782714934,
+  "/Assets/mockups/projects/transfi-project_4x5.webp": 128.00631738281373,
+  "/Assets/mockups/projects/clawed-chat_4x5.webp": 41.515933105468534,
+  "/Assets/mockups/projects/raahi-project_4x5.webp": 49.905511718750006,
+  "/Assets/mockups/projects/zentipay_4x5.webp": 113.23777539062651,
+  "/Assets/mockups/projects/executivelens_4x5.webp": 244.47846191406182,
+  "/Assets/mockups/projects/mentra-miniapps_4x5.webp": 96.09481982421872,
+  "/Assets/mockups/projects/jugalbandi_4x5.webp": 52.630085937500084,
+  "/Assets/mockups/projects/shuffle_4x5.webp": 226.14798852540122,
+  "/Assets/mockups/projects/ibm_1x1.webp": 155.40000708007588,
+  "/Assets/mockups/projects/the-point-cdc_4x5.webp": 202.21271289062048,
+  "/Assets/mockups/projects/cuetv_4x5.webp": 34.97762939453148,
+  "/Assets/mockups/projects/making-of-time_1x1.webp": 182.42687524414322,
+  "/Assets/mockups/projects/mentra-brand_4x5.webp": 214.54707080079623,
+  "/Assets/mockups/projects/moniac-machine_4x5.webp": 211.72651806640823,
+  "/Assets/mockups/projects/sea-of-salt_1x1.webp": 77.67236816406161,
+  "/Assets/mockups/projects/sculpture_4x5.webp": 25.821414306641376,
+  "/Assets/mockups/projects/typeface_4x5.webp": 115.02611596680013,
+  "/Assets/mockups/projects/vj-software_1x1.webp": 184.57822680663995,
+  "/Assets/mockups/projects/office-of-diversity_4x5.webp": 89.9993874511653,
+  "/Assets/mockups/projects/enigma_1x1.webp": 18.6727666015625,
+  "/Assets/mockups/projects/the-omakase_4x5.webp": 70.94682983398376,
+  "/Assets/Projects/MediMorpho/nyu-langone-building-clear.webp": 142.05540405273283,
+  "/Assets/mockups/projects/ai-voice_1x1.webp": 92.9468388671831,
+  "/Assets/mockups/projects/code-for-build_4x5.webp": 184.87932763671728,
+  "/Assets/mockups/projects/black-hole_4x5.webp": 176.3434443359377,
+  "/Assets/mockups/projects/revolving-stage_1x1.webp": 34.61589550781244,
+  "/Assets/Projects/dumb-waiter/photos/card-4x5.jpg": 71.10499926757815,
+  "/Assets/mockups/projects/drowning_4x5.webp": 88.42216088867002,
+  "/Assets/mockups/projects/tedx_1x1.webp": 8.915075683594678,
+  "/Assets/mockups/projects/vishwaconclave_4x5.webp": 87.67202270507724
+}

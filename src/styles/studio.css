@@ -1,0 +1,518 @@
+/* ══════════════════════════════════════════════════════════
+   Design Studio — Illustrator-style editor chrome
+   ══════════════════════════════════════════════════════════ */
+
+:root {
+  --st-bg: #2D2D2D;
+  --st-chrome: #1E1E1E;
+  --st-chrome-hover: #2A2A2A;
+  --st-chrome-active: #353535;
+  --st-border: #3A3A3A;
+  --st-text: #D4D4D4;
+  --st-text-muted: #888;
+  --st-accent: #E85D26;
+  --st-selection: #4A90D9;
+  --st-input-bg: #2A2A2A;
+}
+
+/* ── Page layout ──────────────────────────────────────── */
+
+.studio-page {
+  position: fixed;
+  inset: 0;
+  display: grid;
+  grid-template-rows: 32px 1fr 48px;
+  background: var(--st-bg);
+  color: var(--st-text);
+  font-family: var(--sans);
+  font-size: 12px;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.studio-main {
+  display: grid;
+  grid-template-columns: 44px 1fr 220px;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* ── Menu bar ─────────────────────────────────────────── */
+
+.studio-menubar {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--st-chrome);
+  border-bottom: 1px solid var(--st-border);
+  padding: 0 8px;
+  -webkit-app-region: drag;
+}
+
+.studio-menu-logo {
+  margin-right: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.studio-menu-group {
+  position: relative;
+}
+
+.studio-menu-trigger {
+  background: none;
+  border: none;
+  color: var(--st-text);
+  font: inherit;
+  font-size: 12px;
+  padding: 6px 10px;
+  cursor: pointer;
+  border-radius: 3px;
+  -webkit-app-region: no-drag;
+}
+
+.studio-menu-trigger:hover,
+.studio-menu-trigger--open {
+  background: var(--st-chrome-hover);
+}
+
+.studio-menu-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: var(--st-chrome);
+  border: 1px solid var(--st-border);
+  border-radius: 4px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  padding: 4px 0;
+  z-index: 100;
+}
+
+.studio-menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 6px 16px;
+  background: none;
+  border: none;
+  color: var(--st-text);
+  font: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.studio-menu-item:hover {
+  background: var(--st-selection);
+  color: #fff;
+}
+
+.studio-menu-shortcut {
+  color: var(--st-text-muted);
+  font-size: 11px;
+  margin-left: 24px;
+}
+
+.studio-menu-item:hover .studio-menu-shortcut {
+  color: rgba(255,255,255,0.7);
+}
+
+.studio-menu-sep {
+  height: 1px;
+  background: var(--st-border);
+  margin: 4px 8px;
+}
+
+/* ── Toolbar ──────────────────────────────────────────── */
+
+.studio-toolbar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 6px 4px;
+  background: var(--st-chrome);
+  border-right: 1px solid var(--st-border);
+  gap: 2px;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.studio-toolbar::-webkit-scrollbar { display: none; }
+
+.studio-toolbar-sep {
+  width: 24px;
+  height: 1px;
+  background: var(--st-border);
+  margin: 4px 0;
+}
+
+.studio-tool {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  border: none;
+  background: none;
+  color: var(--st-text);
+  cursor: pointer;
+  transition: background 0.1s, color 0.1s;
+}
+
+.studio-tool:hover {
+  background: var(--st-chrome-hover);
+}
+
+.studio-tool--active {
+  background: var(--st-chrome-active);
+  color: #fff;
+  box-shadow: inset 0 0 0 1px var(--st-selection);
+}
+
+/* ── Canvas container ─────────────────────────────────── */
+
+.studio-canvas-container {
+  position: relative;
+  overflow: hidden;
+  background: var(--st-bg);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 20px 20px;
+  cursor: default;
+}
+
+.studio-canvas-container canvas {
+  display: block;
+}
+
+/* ── Properties panel ─────────────────────────────────── */
+
+.studio-properties {
+  background: var(--st-chrome);
+  border-left: 1px solid var(--st-border);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--st-border) transparent;
+}
+
+.studio-props-tabs {
+  display: flex;
+  border-bottom: 1px solid var(--st-border);
+}
+
+.studio-props-tab {
+  flex: 1;
+  padding: 8px;
+  background: none;
+  border: none;
+  color: var(--st-text-muted);
+  font: inherit;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  border-bottom: 2px solid transparent;
+}
+
+.studio-props-tab:hover { color: var(--st-text); }
+.studio-props-tab.active {
+  color: #fff;
+  border-bottom-color: var(--st-accent);
+}
+
+.studio-props-content {
+  padding: 8px;
+}
+
+.studio-props-section {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--st-border);
+}
+
+.studio-props-section:last-child { border-bottom: none; }
+
+.studio-props-title {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--st-text-muted);
+  margin-bottom: 8px;
+}
+
+.studio-props-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.studio-props-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4px;
+}
+
+.studio-props-grid label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 10px;
+  color: var(--st-text-muted);
+}
+
+.studio-props-grid input[type="number"],
+.studio-props-row input[type="number"],
+.studio-props-row input[type="text"],
+.studio-props-row select {
+  width: 100%;
+  background: var(--st-input-bg);
+  border: 1px solid var(--st-border);
+  border-radius: 3px;
+  color: var(--st-text);
+  font: inherit;
+  font-size: 11px;
+  padding: 3px 5px;
+  outline: none;
+}
+
+.studio-props-grid input[type="number"]:focus,
+.studio-props-row input:focus,
+.studio-props-row select:focus {
+  border-color: var(--st-selection);
+}
+
+.studio-props-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 6px;
+  font-size: 11px;
+}
+
+.studio-props-row > span {
+  width: 40px;
+  flex-shrink: 0;
+  color: var(--st-text-muted);
+}
+
+.studio-props-row input[type="color"] {
+  width: 24px;
+  height: 24px;
+  border: 1px solid var(--st-border);
+  border-radius: 3px;
+  padding: 0;
+  cursor: pointer;
+  background: none;
+}
+
+.studio-props-hex {
+  width: 70px !important;
+  flex-shrink: 0;
+}
+
+.studio-props-small {
+  width: 48px !important;
+  flex-shrink: 0;
+}
+
+.studio-props-empty {
+  padding: 24px 8px;
+  text-align: center;
+  color: var(--st-text-muted);
+  font-size: 11px;
+}
+
+/* ── Layers ───────────────────────────────────────────── */
+
+.studio-layers {
+  padding: 0;
+}
+
+.studio-layer {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+  padding: 5px 8px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--st-border);
+  color: var(--st-text);
+  font: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  text-align: left;
+}
+
+.studio-layer:hover { background: var(--st-chrome-hover); }
+
+.studio-layer--active {
+  background: var(--st-chrome-active);
+  color: #fff;
+}
+
+.studio-layer-icon {
+  width: 16px;
+  text-align: center;
+  color: var(--st-text-muted);
+  font-size: 12px;
+}
+
+.studio-layer-name {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.studio-layer-vis {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--st-text-muted);
+  cursor: pointer;
+  font-size: 10px;
+  border-radius: 3px;
+}
+
+.studio-layer-vis:hover { background: var(--st-chrome-hover); }
+
+/* ── Status bar ───────────────────────────────────────── */
+
+.studio-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background: var(--st-chrome);
+  border-top: 1px solid var(--st-border);
+  font-size: 11px;
+}
+
+.studio-status-left {
+  display: flex;
+  gap: 16px;
+}
+
+.studio-status-tool {
+  color: var(--st-text-muted);
+}
+
+.studio-status-coords {
+  color: var(--st-text-muted);
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
+.studio-status-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.studio-status-btn {
+  width: 22px;
+  height: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--st-border);
+  border-radius: 3px;
+  color: var(--st-text);
+  cursor: pointer;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.studio-status-btn:hover { background: var(--st-chrome-hover); }
+
+.studio-status-fit {
+  width: auto;
+  padding: 0 6px;
+  font-size: 10px;
+}
+
+.studio-status-slider {
+  width: 80px;
+  height: 3px;
+  appearance: none;
+  background: var(--st-border);
+  border-radius: 2px;
+  outline: none;
+}
+
+.studio-status-slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--st-text);
+  cursor: pointer;
+}
+
+.studio-status-pct {
+  width: 36px;
+  text-align: right;
+  color: var(--st-text-muted);
+  font-family: var(--mono);
+  font-size: 10px;
+}
+
+/* ── Mobile fallback ──────────────────────────────────── */
+
+.studio-mobile {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg);
+  padding: 2rem;
+}
+
+.studio-mobile-inner {
+  text-align: center;
+  max-width: 400px;
+}
+
+.studio-mobile-inner h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 1rem;
+}
+
+.studio-mobile-inner p {
+  color: var(--ink-50);
+  margin-bottom: 0.5rem;
+  line-height: 1.6;
+}
+
+.studio-mobile-link {
+  display: inline-block;
+  margin-top: 1.5rem;
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ── Disable portfolio global styles inside studio ────── */
+
+.studio-page .grain,
+.studio-page .dot-grid,
+.studio-page .cursor-dot,
+.studio-page .cursor-ring {
+  display: none !important;
+}

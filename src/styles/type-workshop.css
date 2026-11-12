@@ -1,0 +1,70 @@
+.type-workshop { min-height: 100vh; padding: var(--space-6); background: var(--bg); color: var(--ink); }
+.tw-header { max-width: 1120px; margin: 0 auto var(--space-8); display: flex; align-items: center; flex-wrap: wrap; gap: var(--space-6); }
+.tw-header > div { flex: 1; min-width: 220px; }
+.tw-header h1 { font-family: var(--tf-slice); font-size: clamp(32px, 5vw, 64px); font-weight: 400; margin: var(--space-2) 0; }
+
+.tw-kicker { font: 12px var(--mono); color: var(--ink-60); }
+.tw-editor .wrap { max-width: 1120px; padding: 0; }
+.tw-editor:not(.tw-editor--workshop) .wrap { padding-inline: var(--space-6); }
+.tw-specimen { margin-bottom: var(--space-6); }
+.tw-specimen > label { display: block; font: 12px var(--mono); margin-bottom: var(--space-2); }
+.tw-specimen > input:not([type=range]) { width: 100%; padding: 12px; min-height: 44px; background: var(--surface); border: 1px solid var(--ink-20); border-radius: var(--radius-sm); color: var(--ink); }
+.tw-preview { min-height: 160px; max-height: 330px; overflow: auto; padding-block: 12px; border-bottom: 1px solid var(--ink-15); margin-bottom: var(--space-4); }
+.tw-preview svg { display: block; overflow: visible; }
+.tw-editor .ge-controls { gap: 16px; padding: 16px; border-color: var(--ink-20); }
+.tw-editor .ge-label { color: var(--ink-60); }
+.tw-editor .ge-char-input { min-height: 44px; width: 64px; }
+.tw-editor button { min-height: 44px; }
+.tw-editor .ge-weight-tab, .tw-editor .ge-toggle { color: var(--ink); text-transform: none; font-size: 12px; }
+.tw-editor .ge-weight-tab.active { color: var(--bg); }
+.tw-action { border: 1px solid var(--ink-20); padding: 10px 14px; background: var(--surface); color: var(--ink); border-radius: var(--radius-sm); font: 12px var(--mono); cursor: pointer; }
+.tw-action:disabled { opacity: .5; cursor: default; }
+.tw-editor .ge-canvas-wrap { min-height: 0; background: var(--surface); border-color: var(--ink-20); }
+.tw-editor .tw-svg { display: block; width: 100%; height: clamp(300px, 42vh, 500px); touch-action: none; }
+.tw-editor .ge-handle { cursor: move; }
+.tw-editor .ge-handle:focus, .tw-editor .ge-handle[aria-pressed=true] { stroke: var(--ink); stroke-width: 5; filter: none; outline: none; }
+.tw-coordinates { display: flex; flex-wrap: wrap; align-items: center; gap: 16px; padding: 12px; font: 12px var(--mono); }
+.tw-coordinates label { display: flex; align-items: center; gap: 8px; }
+.tw-coordinates input { width: 96px; min-height: 44px; border: 1px solid var(--ink-20); border-radius: var(--radius-sm); padding: 8px; background: var(--surface); color: var(--ink); }
+.tw-editor .ge-chars { border-color: var(--ink-20); }
+.tw-editor .ge-char-btn { flex: 0 0 44px; min-height: 44px; color: var(--ink); }
+.tw-editor .ge-hint { color: var(--ink-60); line-height: 1.6; text-transform: none; }
+.tw-state { min-height: 320px; display: grid; place-content: center; gap: 16px; padding: 24px; border: 1px solid var(--ink-20); }
+.tw-status { min-height: 24px; margin-top: 12px; font: 12px var(--mono); color: var(--ink-60); }
+.tw-footer { max-width: 1120px; margin: 24px auto; font-size: 14px; line-height: 1.6; color: var(--ink-60); }
+@media (max-width: 540px) { .type-workshop { padding: 20px 16px; } .tw-header { gap: 16px; } .tw-editor .ge-controls { padding: 12px; gap: 12px; } .tw-editor .tw-svg { height: 340px; } }
+@media (prefers-reduced-motion: reduce) { .tw-editor *, .tw-editor *::before, .tw-editor *::after { transition: none; animation: none; } }
+.type-workshop .glyph-editor > .wrap { max-width: 1120px; width: 100%; margin-inline: auto; }
+.tw-specimen input.portfolio-slider { width: min(100%, 320px); }
+.tw-editor .ge-toggle[aria-pressed=true] { background: var(--ink); color: var(--bg); }
+.tw-editor button:focus-visible, .tw-editor input:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.tw-toolbar { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-bottom:16px; }
+.tw-toolbar > label { display:flex; align-items:center; gap:12px; }
+.tw-tool-row { display:flex; flex-wrap:wrap; gap:8px; }
+.tw-toolbar .ge-char-input { font-size:24px; text-align:center; background:var(--surface); color:var(--ink); border:1px solid var(--ink-20); }
+.tw-workspace { display:grid; grid-template-columns:minmax(0,1fr) 260px; border-block:1px solid var(--ink-20); }
+.tw-artifact { min-width:0; }
+.tw-editor .tw-svg { height:clamp(360px,60vh,660px); }
+.tw-inspector { padding:20px; border-inline-start:1px solid var(--ink-20); }
+.tw-inspector-content { display:grid; gap:16px; color:var(--ink); }
+.tw-inspector-content select { width:100%; min-height:44px; background:var(--surface); color:var(--ink); border:1px solid var(--ink-20); padding:8px; font:inherit; }
+.tw-inspector-content .tw-coordinates { padding:0; gap:8px; }
+.tw-inspector-content summary { min-height:44px; cursor:pointer; }
+.tw-specimen { margin-top:24px; }
+.tw-specimen p { font-size:14px; color:var(--ink-60); }
+.tw-editor .tw-preview { min-height:360px; height:60vh; display:flex; align-items:center; margin:0; padding:24px; border:0; }
+.tw-mobile-inspect { display:none; }
+.tw-header { margin-bottom:24px; }
+.tw-header h1 { font-size:clamp(32px,4vw,48px); }
+.tw-editor .ge-canvas-wrap { border:0; }
+.tw-svg:focus-visible { outline:2px solid var(--ink); outline-offset:-4px; }
+@media(max-width:680px) { .tw-workspace { grid-template-columns:1fr; } .tw-inspector { display:none; } .tw-mobile-inspect { display:block; } .tw-editor .tw-svg { height:clamp(300px,52svh,470px); } .tw-editor .tw-preview { height:52svh; min-height:300px; } .tw-toolbar { gap:8px; } .tw-toolbar button { padding:8px 12px; } }
+
+.tw-editor .tw-action { border:1px solid var(--ink-20); border-radius:var(--radius-sm); }
+.tw-specimen > input:not([type=range]) { margin-bottom:16px; }
+.tw-inspector-content .ge-hint { font-size:14px; text-align:start; }
+
+.tw-inspector-preview { position:sticky; top:0; z-index:1; height:140px; background:var(--bg); border-bottom:1px solid var(--ink-20); margin-bottom:16px; }
+.tw-inspector-preview svg { width:100%; height:100%; display:block; }
+.tw-inspector-content .tw-check { display:flex; gap:12px; align-items:center; min-height:44px; font-size:14px; line-height:1.5; }
+.tw-check input { flex:0 0 20px; width:20px; height:20px; }

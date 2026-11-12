@@ -1,0 +1,44 @@
+.original-interface { color:var(--ink); }
+.original-interface > header { margin-bottom:28px; max-width:74ch; }
+.original-interface-label { font:12px var(--mono); text-transform:uppercase; letter-spacing:.04em; color:var(--ink-60); }
+.original-interface > header h2 { font:400 clamp(28px,4vw,46px)/1.2 var(--serif); margin:12px 0 16px; }
+.original-interface p { line-height:1.7; color:var(--ink-70); }
+.original-interface h3 { font:600 19px/1.4 var(--sans); margin:0 0 10px; }
+.original-interface :is(a,button,summary):focus-visible { outline:2px solid var(--ink); outline-offset:4px; }
+.original-interface-live { display:flex; align-items:center; justify-content:space-between; gap:24px; border-block:1px solid var(--ink-15); padding:24px 0; }
+.original-interface-live p { margin:0; max-width:66ch; }
+.original-interface-live a { display:inline-flex; align-items:center; justify-content:center; min-height:48px; flex-shrink:0; color:var(--bg); background:var(--ink); padding:12px 20px; border-radius:5px; text-decoration:none; }
+.original-interface-figma { margin-top:36px; }
+.original-interface-flow-tabs { display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; }
+.original-interface-flow-tabs button,.original-interface-player-tools button { min-height:44px; padding:10px 16px; background:transparent; border:1px solid var(--ink-20); border-radius:5px; color:var(--ink); cursor:pointer; font:14px var(--sans); }
+.original-interface-flow-tabs button[aria-pressed=true] { background:var(--ink); color:var(--bg); }
+.original-interface-player { background:var(--ink-06); border:1px solid var(--ink-15); padding:36px; display:flex; gap:48px; align-items:center; justify-content:center; margin:22px 0; }
+.original-interface-player > img { max-width:380px; max-height:640px; width:50%; object-fit:contain; }
+.original-interface-player > div { max-width:36ch; }
+.original-interface-player .prototype-primary { min-height:48px; cursor:pointer; }
+.original-interface-player.is-open { display:block; padding:0; height:760px; max-height:85vh; }
+.original-interface-player iframe { width:100%; height:100%; border:0; display:block; }
+.original-interface-player-tools { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-bottom:20px; }
+.original-interface-player-tools p { width:100%; font-size:14px; }
+.original-interface-figma > a { color:var(--ink); display:inline-block; padding-block:12px; min-height:44px; }
+.original-interface-study { border-top:1px solid var(--ink-15); margin-top:40px; padding-top:20px; }
+.original-interface-study > summary { cursor:pointer; padding-block:12px; }
+.original-interface-study > summary span { font-size:12px; color:var(--ink-60); margin-left:16px; }
+@media(max-width:640px) { .original-interface-live { align-items:start; flex-direction:column; }.original-interface-live a { width:100%; }.original-interface-player { padding:20px; gap:20px; flex-direction:column; }.original-interface-player > img { width:auto; max-width:100%; max-height:520px; }.original-interface-study > summary span { display:block; margin:8px 0 0; } }
+.prototype-page .original-interface-live a { color:var(--bg); }
+.original-interface .prototype-primary { background:var(--ink); color:var(--bg); border:1px solid var(--ink); border-radius:5px; padding:12px 20px; font:14px var(--sans); }
+
+.original-interface-context { margin:24px 0; }
+.original-interface-context img { display:block; width:100%; max-height:560px; object-fit:contain; background:var(--ink-06); border:1px solid var(--ink-15); }
+.original-interface-context figcaption { font-size:13px; color:var(--ink-60); line-height:1.6; padding-top:12px; }
+.prototype-page > footer > .draft-review-nav { width:100%; margin:0; border:0; padding:0; }
+@media(max-width:640px){.original-interface-player > img { width:100%; max-width:360px; max-height:640px; }}
+
+/* Crop excess preview whitespace without changing the underlying design or embed. */
+.original-interface-player > .original-interface-poster { width:50%; max-width:380px; max-height:460px; overflow:hidden; flex-shrink:0; }
+.original-interface-poster img { display:block; width:100%; height:auto; }
+.original-interface-launch { max-width:36ch; }
+@media(max-width:640px){.original-interface-player > .original-interface-poster { width:100%; max-width:360px; max-height:420px; }.original-interface-launch { order:-1; width:100%; }}
+
+.original-interface-handoff { display:flex; flex-wrap:wrap; align-items:center; gap:12px; margin-top:16px; }
+.original-interface-handoff .glass-action, .original-interface-live .glass-action { min-height:44px; font:inherit; cursor:pointer; }

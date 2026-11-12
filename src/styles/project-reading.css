@@ -1,0 +1,754 @@
+/* Reading improvements scoped to project detail pages. */
+.project-main .proj-reading-links {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  padding: 1rem 0 1.5rem;
+  color: #fff;
+}
+.project-main .proj-reading-links a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 44px;
+  color: inherit;
+  font: 500 0.9375rem/1.4 var(--sans);
+  text-decoration: none;
+}
+
+.project-main .project-header--visual .proj-visual-hero { gap: 2rem; padding-top: 0; }
+.project-main .project-header--visual .proj-visual-title {
+  max-width: 23ch;
+  margin: 0;
+  font-size: clamp(2.5rem, 5.2vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+.project-main .proj-reading-deck {
+  max-width: 58ch;
+  margin: 1.25rem 0 0;
+  color: inherit;
+  font: 400 clamp(1.125rem, 1.7vw, 1.5rem)/1.5 var(--sans);
+  text-wrap: pretty;
+}
+.project-main .proj-visual-actions { margin-top: 1.5rem; }
+.project-main .project-header--visual .proj-visual-tag {
+  min-height: auto;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  backdrop-filter: none;
+  color: inherit;
+  font-size: 0.875rem;
+}
+.project-main .proj-visual-hero__tags { gap: 0.5rem 1rem; }
+.project-main .proj-reading-summary { grid-column: 1; display: grid; gap: 1.5rem; }
+.project-main .proj-reading-summary strong { display: block; margin-bottom: 0.5rem; font-size: 0.9375rem; font-weight: 600; color: inherit; }
+.project-main #project-overview,
+.project-main .project-story__content { scroll-margin-top: calc(var(--nav-h, 72px) + 24px); }
+.project-main .cs-section { scroll-margin-top: calc(var(--nav-h, 72px) + 24px); }
+.project-main .cs-body > p { max-width: 70ch; line-height: 1.75; }
+.project-main .project-story__prompt {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: calc(100% - 2 * var(--pad, 48px));
+  max-width: 1280px;
+  height: auto;
+  min-height: 0;
+  margin: 2rem auto 4rem;
+  padding: 2rem 0;
+  overflow: visible;
+  border: 0;
+  border-top: 1px solid var(--ink-15);
+  border-bottom: 1px solid var(--ink-15);
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.project-main .project-story__copy { max-width: 65ch; }
+.project-main .project-story__copy h2 { margin: 0; color: var(--ink); font: 500 clamp(1.5rem, 2.5vw, 2rem)/1.2 var(--sans); letter-spacing: -0.02em; }
+.project-main .project-story__copy p { margin: 0.75rem 0 0; color: var(--ink-70); font: 400 1rem/1.65 var(--sans); }
+.project-main .project-story__prompt .cs-expand-preview-btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 0.75rem;
+  max-width: 100%;
+  min-height: 48px;
+  padding: 0.875rem 1.25rem;
+  border: 1px solid var(--ink);
+  border-radius: 8px;
+  background: var(--ink);
+  color: var(--bg);
+  box-shadow: none;
+  font: 500 1rem/1.4 var(--sans);
+  text-transform: none;
+  letter-spacing: 0;
+  white-space: normal;
+  cursor: pointer;
+}
+.project-main .project-story__prompt .cs-expand-preview-btn:hover { background: var(--bg); color: var(--ink); transform: none; }
+.project-main :is(.proj-reading-links a, .project-story button):focus-visible { outline: 2px solid currentColor; outline-offset: 5px; }
+@media (max-width: 767px) {
+  .project-main .proj-reading-links { padding-bottom: 1rem; gap: 0.25rem 1rem; }
+  .project-main .proj-reading-links a { font-size: 0.875rem; }
+  .project-main .project-header--visual .proj-visual-title { font-size: clamp(2.25rem, 9vw, 3.5rem); }
+  .project-main .proj-visual-actions { flex-direction: column; align-items: flex-start; gap: 1.25rem; }
+  .project-main .proj-reading-deck { margin-top: 1rem; font-size: 1.125rem; }
+  .project-main .project-header--visual .proj-visual-hero { gap: 1.5rem; }
+  .project-main .project-story__prompt { width: calc(100% - 2rem); flex-direction: column; align-items: stretch; gap: 1.5rem; margin: 1.5rem auto 3rem; }
+  .project-main .project-story__prompt .cs-expand-preview-btn { align-self: flex-start; }
+}
+
+/* Image-led disclosure for projects; keep the story itself deferred until opened. */
+.project-main .project-story__prompt--image {
+  display: grid;
+  place-items: center;
+  justify-content: center;
+  isolation: isolate;
+  height: clamp(20rem, 42vw, 32rem);
+  padding: 1.5rem;
+  overflow: hidden;
+  border: 0;
+  border-radius: 12px;
+  background: var(--surface);
+}
+.project-story__preview-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(8px);
+  transform: scale(1.05);
+  pointer-events: none;
+}
+.project-story__prompt--image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: color-mix(in srgb, var(--bg) 35%, transparent);
+  pointer-events: none;
+}
+.project-main .project-story__prompt--image .cs-expand-preview-btn {
+  align-self: center;
+}
+
+/* Project reading controls stay available to keyboard users. */
+.project-main .cs-bottom-nav.is-hidden { visibility: hidden; }
+.project-main .cs-bottom-nav:focus-within:not(.is-hidden):not(.is-before-hero) { opacity: 1; }
+.project-main :is(.cs-img img, [data-project-preview] img) { cursor: zoom-in; }
+.project-main [data-project-preview] img:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.project-image-preview .lightbox-close { min-width: 44px; min-height: 44px; }
+.project-image-preview { flex-direction: column; gap: 1rem; padding: 64px 20px 24px; }
+.project-image-preview > img { max-height: calc(100dvh - 240px); }
+.project-image-preview .lightbox-caption { position: static; transform: none; margin: 0; width: min(90vw, 65ch); max-height: 18dvh; overflow-y: auto; color: var(--text-on-dark); }
+.project-image-preview .lightbox-caption p { margin: 0 0 0.5rem; }
+.project-image-preview .lightbox-caption a { display: inline-flex; align-items: center; min-height: 44px; color: inherit; text-underline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .project-image-preview, .project-image-preview img { transition: none; }
+}
+
+/* Reference-led project reading flow: one column, steady type, quiet guides. */
+body:has(.project-main) {
+  --project-reading-width: 1040px;
+  --project-reading-gutter: var(--page-inline-inset);
+}
+body:has(.project-main) .nav {
+  padding-inline: max(var(--project-reading-gutter), calc((100% - var(--project-reading-width)) / 2), calc(var(--ruler-inline-offset, 0px) + .75rem));
+}
+.project-main {
+  --project-body-type: 1rem;
+  --project-section-type: clamp(1.5rem, 2.4vw, 2rem);
+  --case-section-space: clamp(2.5rem, 5vw, 4rem);
+}
+.project-main:has(.project-header--visual), .project-main.project-main--mentra-visual {
+  background: var(--bg);
+}
+.project-main::before, .project-main:has(.project-header--visual)::before, [data-theme="dark"] .project-main::before {
+  inset: 0;
+  width: min(var(--project-reading-width), calc(100% - 2 * var(--project-reading-gutter)));
+  height: auto;
+  margin-inline: auto;
+  transform: none;
+  border-inline: 1px solid var(--ink-06);
+  border-radius: 0;
+  background: linear-gradient(to right, var(--ink-04) 1px, transparent 1px);
+  background-size: 25% 100%;
+  opacity: 1;
+  filter: none;
+}
+.project-main .wrap,
+.project-main:has(.project-header--visual) .project-header--visual.wrap,
+body.case-side-nav .project-main .project-header--visual.wrap,
+.project-main.project-main--mentra-visual :is(#cs-context, #cs-impact) .wrap {
+  width: min(var(--project-reading-width), calc(100% - 2 * var(--project-reading-gutter)));
+  max-width: var(--project-reading-width);
+  margin-inline: auto;
+  padding-inline: 0;
+}
+.project-main .project-header--visual .proj-visual-title {
+  max-width: 24ch;
+  font-size: clamp(2.2rem, 4.3vw, 3.5rem);
+  color: var(--ink);
+}
+.project-main .proj-reading-links,
+.project-main .proj-reading-deck,
+.project-main .project-header--visual .proj-visual-tag { color: var(--ink); }
+.project-main .proj-reading-deck { font-size: 1.125rem; max-width: 62ch; margin-top: 0.875rem; }
+.project-main .project-header--visual .proj-visual-hero { gap: 1.75rem; padding-top: 1.25rem; }
+.project-main .project-header--visual .proj-visual-hero__copy { color: var(--ink); }
+.project-main .proj-visual-brief {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-block: 2rem;
+}
+.project-main .proj-reading-summary { max-width: 72ch; gap: 1rem; }
+.project-main .proj-visual-brief .proj-visual-brief__facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  width: 100%;
+  padding: 0;
+}
+.project-main .proj-visual-brief .proj-visual-brief__facts > div {
+  grid-column: auto;
+  grid-row: auto;
+}
+:root .project-main .proj-visual-brief :is(dt, dd, p, span, strong),
+:root .project-main:has(.project-header--visual) .proj-visual-brief :is(dt, dd, p, span, strong) {
+  color: var(--ink);
+}
+.project-main .proj-visual-brief .proj-visual-brief__copy,
+.project-main .proj-visual-brief .proj-visual-brief__facts dd {
+  max-width: 72ch;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+.project-main .proj-visual-brief dt { font-size: 0.8125rem; }
+.proj-timeline-details { margin-top: 0.5rem; }
+.proj-timeline-details summary { min-height: 44px; padding-block: 0.65rem; cursor: pointer; font-size: 0.875rem; text-decoration: underline; text-underline-offset: 3px; }
+.project-main .cs-section:nth-child(n),
+.project-main.project-main--mentra-visual :is(#cs-context, #cs-impact) {
+  background: transparent;
+  color: var(--ink);
+  padding-block: var(--case-section-space);
+}
+.project-main .cs-section .cs-section-grid,
+.project-main.project-main--mentra-visual :is(#cs-context, #cs-impact, #cs-challenges, #cs-os) .cs-section-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+}
+.project-main .cs-section .cs-section-head,
+.project-main.project-main--mentra-visual :is(#cs-context, #cs-impact) .cs-section-head {
+  position: static;
+  padding: 0;
+  text-align: left;
+}
+.project-main .cs-section .cs-section-title,
+.project-main.project-main--mentra-visual :is(#cs-context, #cs-impact, #cs-challenges, #cs-os) .cs-section-title,
+.project-main .cs-quick-summary .cs-quick-summary-title {
+  max-width: 34ch;
+  margin: 0;
+  color: var(--ink);
+  font: 500 var(--project-section-type)/1.25 var(--sans);
+  letter-spacing: -0.025em;
+  text-align: left;
+  text-wrap: pretty;
+}
+.project-main .cs-section-content { min-width: 0; }
+.project-main .cs-section-content > :is(.cs-body, .cs-body-lg, p) { max-width: 72ch; }
+.project-main :is(.cs-body, .cs-body-lg) > p,
+.project-main.project-main--mentra-visual #cs-context .cs-mentra-problem-copy {
+  max-width: 72ch;
+  margin: 0 0 1rem;
+  color: var(--ink-70);
+  font: 400 1rem/1.7 var(--sans);
+  letter-spacing: 0;
+  text-align: left;
+  text-wrap: pretty;
+}
+.project-main .cs-quick-summary { margin-block: 1rem 2.5rem; padding-block: 1rem; }
+.project-main .cs-quick-summary-top { margin-bottom: 1.25rem; }
+.project-main .cs-quick-summary-card { padding-block: 0.75rem; }
+.project-main .cs-quick-summary-card p { font-size: 1rem; line-height: 1.65; max-width: 72ch; }
+.project-main .cs-quick-summary-quote { margin: 2rem 0 0; text-align: left; }
+.project-main .cs-quick-summary-quote p { margin-inline: 0; font-size: 1.25rem; max-width: 52ch; }
+.project-main .cs-quick-summary-quote cite { font-size: 0.875rem; }
+.project-main .cs-section .cs-feature-grid { margin-top: 1.5rem; gap: 1.5rem; }
+.project-main .cs-feature-card-title { font-size: 1rem; line-height: 1.45; }
+.project-main .cs-feature-card-desc { font-size: 1rem; line-height: 1.65; }
+.project-main.project-main--mentra-visual .cs-mentra-hypothesis { margin-block: 1.5rem; padding-block: 1rem; }
+.project-main.project-main--mentra-visual .cs-mentra-hypothesis p { font-size: 1.125rem; line-height: 1.5; }
+.project-main.project-main--mentra-visual .cs-mentra-impact-grid { gap: 1.5rem; }
+.project-main.project-main--mentra-visual .cs-mentra-impact-grid article { min-height: 0; padding: 1rem 0; background: transparent; }
+.project-main.project-main--mentra-visual .cs-mentra-impact-grid strong { font-size: 2.25rem; }
+.project-main.project-main--mentra-visual .cs-mentra-impact-grid :is(p, span),
+.project-main.project-main--mentra-visual .cs-mentra-impact-note { color: var(--ink-70); font-size: 1rem; line-height: 1.65; }
+.project-main .project-story__prompt {
+  width: min(var(--project-reading-width), calc(100% - 2 * var(--project-reading-gutter)));
+  margin-block: 1.5rem 3rem;
+}
+.project-main .project-story__prompt--image { height: clamp(16rem, 30vw, 23rem); }
+@media (max-width: 640px) {
+  .project-main .proj-visual-brief .proj-visual-brief__facts { grid-template-columns: 1fr; gap: 1rem; }
+  .project-main .cs-feature-card { grid-template-columns: 1fr; gap: 0.5rem; }
+  .project-main .cs-quick-summary-top { align-items: start; gap: 1rem; }
+  .project-main .cs-quick-summary-toggle { flex-wrap: wrap; }
+  .project-main::before { background-size: 50% 100%; }
+}
+
+.project-main.project-main--mentra-visual {
+  --mentra-type-body: 1rem;
+  --mentra-type-heading: var(--project-section-type);
+  --mentra-type-display: clamp(2.2rem, 4.3vw, 3.5rem);
+}
+.project-main:has(.project-header--visual)::after { content: none; }
+:root .project-main:has(.project-header--visual) .project-header--visual :is(.proj-visual-title, .proj-visual-project-name, .proj-visual-live) {
+  color: var(--ink);
+  text-shadow: none;
+}
+.project-main .proj-visual-live { border-color: var(--ink-30); background: var(--ink-04); }
+.project-main .proj-visual-live:hover { background: var(--ink-08); }
+
+/* Public NDA previews use the same hierarchy as open project chapters. */
+.project-main .cs-section :is(.cs-nda-story-title, .cs-nda-process-title) {
+  max-width: 34ch;
+  margin: 0;
+  font: 500 var(--project-section-type)/1.25 var(--sans);
+  letter-spacing: -0.025em;
+}
+.project-main .cs-section :is(.cs-nda-story-lede, .cs-nda-process-intro, .cs-nda-story-row-copy, .cs-nda-process-why) {
+  max-width: 72ch;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+.project-main .cs-nda-process-layout {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2rem;
+}
+.project-main .cs-nda-process-list { max-width: 72ch; }
+.project-main .cs-nda-process-move { font-size: 1.125rem; line-height: 1.4; }
+.project-main .cs-nda-process-visuals { min-width: 0; }
+.project-main .cs-nda-story-head { margin-bottom: 0; }
+.project-main .cs-nda-image-card figcaption {
+  position: static;
+  width: auto;
+  margin: 0;
+  padding: 0.75rem 1rem;
+  border: 0;
+  background: transparent;
+  color: var(--ink-70);
+  font: 400 0.875rem/1.5 var(--sans);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.project-main .cs-nda-process-num { color: var(--ink-70); }
+
+/* Apply the reading rhythm to older and bespoke project chapters too. */
+.project-main .cs-nda-story-grid { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+.project-main .cs-nda-image-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }
+.project-main .cs-nda-image-card--hero { grid-column: 1 / -1; }
+.project-main .cs-nda-image-card img { width: 100%; height: auto; object-fit: contain; }
+.project-main :is(.cs-body, .cs-body-lg) :is(ul, ol) {
+  max-width: 72ch;
+  padding-left: 1.25rem;
+  font-size: var(--project-body-type);
+  line-height: 1.7;
+  color: var(--ink-70);
+}
+.project-main :is(.cs-body, .cs-body-lg) li + li { margin-top: 0.5rem; }
+.project-main :is(.cs-label-row-val, .cs-step-desc) { font-size: 1rem; line-height: 1.7; }
+.project-main :is(.cs-img-caption, .cs-nda-process-visual figcaption) {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--ink-70);
+  text-transform: none;
+  letter-spacing: 0;
+}
+.project-main .proj-visual-brief__facts dd { overflow-wrap: anywhere; }
+.project-main img[role="button"] { cursor: zoom-in; }
+.project-main img[role="button"]:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.project-main :is(.cs-section-title, .cs-nda-story-title, .cs-quick-summary-title) { overflow-wrap: break-word; }
+@media (max-width: 640px) {
+  .project-main .cs-nda-image-gallery { grid-template-columns: minmax(0, 1fr); }
+  .project-main .cs-feature-card-desc { grid-column: 1; }
+  .project-main .cs-quick-summary-top { flex-direction: column; }
+}
+.project-main .cs-section .cs-display {
+  max-width: 36ch;
+  margin-block: 0 1.25rem;
+  font: 500 var(--project-section-type)/1.25 var(--sans);
+  letter-spacing: -0.025em;
+  text-align: left;
+  text-wrap: pretty;
+}
+.project-main .wrap > .project-overview.wrap { width: 100%; }
+.project-main .project-overview .proj-overview-grid { grid-template-columns: minmax(0, 1fr); gap: 1.5rem; }
+.project-main .project-overview .proj-overview-card { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+.project-main .project-overview .proj-overview-index { display: none; }
+.project-main .project-overview .proj-overview-label { font-size: 1rem; }
+.project-main .project-overview .proj-desc { max-width: 72ch; font-size: 1rem; line-height: 1.7; }
+
+/* Project typography: stable prose, quieter labels, and readable captions. */
+.project-main {
+  --project-label-type: 0.875rem;
+  --project-body-leading: 1.7;
+}
+.project-main :is(.cs-section-title, .cs-display, .cs-quick-summary-title, .cs-nda-story-title, .cs-nda-process-title) {
+  text-wrap: pretty;
+  overflow-wrap: break-word;
+}
+.project-main :is(.cs-step-title, .cs-feature-card-title, .cs-info-card-title) {
+  font-family: var(--sans);
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+.project-main :is(.cs-callout p, .cs-step-desc, .cs-info-card-desc, .cs-label-row-val) {
+  max-width: 72ch;
+  font-size: var(--project-body-type);
+  line-height: var(--project-body-leading);
+  text-wrap: pretty;
+}
+.project-main :is(.cs-label-row-key, .cs-credit-role, .cs-stat-label, .cs-quick-summary-label, .cs-nda-story-row-label) {
+  font-family: var(--sans);
+  font-size: var(--project-label-type);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-70);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.project-main :is(.cs-img-caption, .cs-caption, .cs-nda-image-card figcaption, .cs-nda-process-visual figcaption) {
+  font-family: var(--sans);
+  font-size: var(--project-label-type);
+  font-weight: 400;
+  line-height: 1.6;
+  text-wrap: pretty;
+}
+.project-main .proj-reading-deck { text-wrap: pretty; line-height: 1.6; }
+.project-main .cs-body :is(a, strong, em) { font-size: inherit; }
+.project-main.project-main--raahi :is(.raahi-research-brief, .raahi-research-questions, .raahi-study-boundary) span,
+.project-main.project-main--raahi .raahi-decision-ledger__head {
+  font-family: var(--sans);
+  font-size: var(--project-label-type);
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--ink-70);
+  letter-spacing: 0;
+  text-transform: none;
+}
+.project-main.project-main--raahi :is(.raahi-research-brief, .raahi-research-questions, .raahi-study-boundary, .raahi-decision-ledger article) p {
+  font-size: var(--project-body-type);
+  line-height: var(--project-body-leading);
+  color: var(--ink-70);
+  text-wrap: pretty;
+}
+.project-main.project-main--raahi .raahi-decision-ledger article p:last-child { font-weight: 500; color: var(--ink); }
+
+/* Static hero artwork is also a lightbox trigger; override the decorative
+   media wrapper's inherited pointer-events without changing custom players. */
+.project-main .proj-visual-hero__media:not(.proj-visual-hero__media--interactive) > img[role="button"] {
+  pointer-events: auto;
+  cursor: zoom-in;
+}
+
+/* Start with the project's actual evidence; keep the overview within reach. */
+.project-main .proj-reading-destinations {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.25rem 1.5rem;
+}
+
+.project-main .cs-feature-card :is(h3, p) { margin: 0; }
+.project-main .cs-image-unavailable {
+  display: grid;
+  align-content: center;
+  gap: 0.75rem;
+  min-height: 12rem;
+  padding: 1.5rem;
+  background: var(--ink-04);
+  color: var(--ink);
+  font: 400 1rem/1.6 var(--sans);
+}
+.project-main .cs-image-unavailable p { margin: 0; max-width: 65ch; }
+.project-main .cs-image-unavailable a { color: inherit; text-underline-offset: 0.25em; }
+.project-main :is(.cs-img-full, .cs-feature-grid) { scroll-margin-top: calc(var(--nav-h, 72px) + 24px); }
+@media (max-width: 640px) {
+  .project-main .proj-reading-links { align-items: flex-start; }
+  .project-main .proj-reading-destinations { justify-content: flex-start; gap: 0.25rem 1rem; }
+  .project-main .proj-reading-links > a { flex: 0 0 100%; }
+}
+.project-main .cs-img-full { margin: 0; }
+.project-main > .cs-img-full,
+.project-main > .project-story > .project-story__content > .cs-img-full {
+  width: min(var(--project-reading-width), calc(100% - 2 * var(--project-reading-gutter)));
+  margin-inline: auto;
+}
+.project-main .cs-img-full + .cs-body { margin-top: 2.5rem; }
+.project-main .cs-body > h3 {
+  margin: 0 0 0.75rem;
+  color: var(--ink);
+  font: 500 1.125rem/1.4 var(--sans);
+}
+.project-main .cs-nda-proof-pill .cs-caption {
+  max-width: 40ch;
+  margin: 0.5rem 0 0;
+  color: var(--ink-70);
+}
+/* A chapter is readable as soon as it opens. The separate blurred-image
+   story preview remains unchanged; only reading-content entrances are removed. */
+.project-main .reveal,
+.project-main .reveal.visible {
+  opacity: 1;
+  transform: none;
+  filter: none;
+  transition: none;
+}
+.project-main .cs-step :is(h3, p) { margin: 0; }
+
+/* Readable controls for the project demonstrations. */
+.project-main .project-demo-controls { display: flex; flex-wrap: wrap; gap: 8px; margin: 16px 0; }
+.project-main .project-demo-controls button,
+.project-main .project-meeting-demo button { min-height: 44px; padding: 10px 14px; border: 1px solid var(--ink-15); border-radius: 6px; background: var(--bg); color: var(--ink); font: inherit; font-size: 14px; cursor: pointer; }
+.project-main .project-demo-controls button[aria-pressed="true"] { background: var(--ink); color: var(--bg); }
+.project-main .project-demo-controls button:focus-visible,
+.project-main .project-meeting-demo button:focus-visible,
+.project-main .project-meeting-demo li:focus { outline: 2px solid var(--project-color); outline-offset: 3px; }
+.project-main .project-generative-demo,
+.project-main .project-meeting-demo { max-width: 1040px; margin: 24px auto; color: var(--ink); font-size: 16px; line-height: 1.6; }
+.project-main .project-meeting-demo { border: 1px solid var(--ink-15); }
+.project-main .project-meeting-demo header { padding: 24px; border-bottom: 1px solid var(--ink-15); }
+.project-main .project-meeting-demo h3 { margin: 0; font-size: 24px; font-weight: 500; }
+.project-main .project-meeting-demo h4 { margin: 0 0 20px; font-size: 18px; font-weight: 600; }
+.project-main .project-meeting-demo h5 { margin: 24px 0 4px; font-size: 16px; font-weight: 600; }
+.project-main .project-meeting-demo p { margin: 8px 0 16px; color: var(--ink); }
+.project-main .project-meeting-demo__columns { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.project-main .project-meeting-demo__columns section { padding: 24px; min-width: 0; }
+.project-main .project-meeting-demo__columns section + section { border-left: 1px solid var(--ink-15); }
+.project-main .project-meeting-demo__transcript { list-style: none; padding: 0; margin: 0; max-height: 620px; overflow: auto; }
+.project-main .project-meeting-demo__transcript li { padding: 12px; margin: 4px; border-bottom: 1px solid var(--ink-12); }
+.project-main .project-meeting-demo__transcript li[data-source] { background: var(--ink-06); }
+.project-main .project-meeting-demo__transcript span { font-weight: 600; }
+@media (max-width: 640px) {
+  .project-main .project-meeting-demo__columns { grid-template-columns: minmax(0, 1fr); }
+  .project-main .project-meeting-demo__columns section + section { border-left: 0; border-top: 1px solid var(--ink-15); }
+  .project-main .project-meeting-demo header, .project-main .project-meeting-demo__columns section { padding: 16px; }
+}
+
+.project-main .mentra-miniapps-card figcaption p { margin: 8px 0 0; font-size: 16px; line-height: 1.6; color: var(--ink); }
+
+/* Project screen explorer: interaction-driven expansion, no background animation. */
+.project-main .cs-screen-explorer { display: grid; grid-template-columns: minmax(220px, .8fr) minmax(0, 1.2fr); gap: 32px; align-items: start; margin-block: 32px; }
+.project-main .cs-screen-explorer__choices { display: grid; gap: 8px; }
+.project-main .cs-screen-explorer__choices button { display: grid; grid-template-columns: 24px 1fr 16px; align-items: center; gap: 16px; padding: 20px 16px; text-align: left; min-height: 84px; border: 1px solid var(--ink-15); border-radius: 8px; background: var(--bg); color: var(--ink); cursor: pointer; transition: background-color 160ms ease, border-color 160ms ease; }
+.project-main .cs-screen-explorer__choices button[aria-pressed="true"] { background: var(--bg-alt); border-color: var(--ink-50); }
+.project-main .cs-screen-explorer__choices button:hover { border-color: var(--ink-50); }
+.project-main .cs-screen-explorer__choices strong { display: block; font: 500 18px/1.4 var(--sans); }
+.project-main .cs-screen-explorer__choices small { display: block; margin-top: 4px; font: 14px/1.5 var(--sans); color: var(--ink-70); }
+.project-main .cs-screen-explorer__number { font-size: 14px; color: var(--ink-50); }
+.project-main .cs-screen-explorer__preview { margin: 0; min-width: 0; }
+.project-main .cs-screen-explorer__image { position: relative; height: 520px; display: grid; place-items: center; padding: 16px; border: 1px solid var(--ink-15); border-radius: 8px; background: var(--bg-alt); overflow: hidden; }
+.project-main .cs-screen-explorer__image img { display: block; height: 100%; width: 100%; object-fit: contain; min-height: 0; }
+.project-main .cs-screen-explorer__loading { position: absolute; color: var(--ink-70); font-size: 14px; }
+.project-main .cs-screen-explorer figcaption { padding-top: 20px; min-height: 150px; font-size: 16px; line-height: 1.6; color: var(--ink); }
+.project-main .cs-screen-explorer figcaption strong { font-weight: 500; font-size: 20px; }
+.project-main .cs-screen-explorer figcaption p { margin: 8px 0 12px; }
+.project-main .cs-screen-explorer figcaption a { color: var(--ink); }
+.project-main .cs-screen-explorer button:focus-visible, .project-main .cs-screen-explorer a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+@media (max-width: 640px) {
+  .project-main .cs-screen-explorer { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .project-main .cs-screen-explorer__choices { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project-main .cs-screen-explorer__choices button { grid-template-columns: 1fr 12px; padding: 12px; gap: 6px; }
+  .project-main .cs-screen-explorer__number { display: none; }
+  .project-main .cs-screen-explorer__choices strong { font-size: 16px; }
+  .project-main .cs-screen-explorer__choices small { font-size: 13px; }
+  .project-main .cs-screen-explorer__image { height: 420px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-main .cs-screen-explorer__choices button { transition: none; }
+}
+.project-main .mentra-miniapps-system__head h2 { font-size: clamp(24px, 3vw, 32px); line-height: 1.2; letter-spacing: -.025em; font-weight: 500; max-width: 32ch; }
+
+/* One frame owns the outer guides and all project reading containers.
+   The ID specificity supersedes legacy per-project width overrides. */
+#main-content.project-main {
+  --project-frame: min(var(--project-reading-width), calc(100% - 2 * var(--project-reading-gutter)));
+}
+#main-content.project-main .wrap {
+  box-sizing: border-box;
+  width: var(--project-frame);
+  max-width: var(--project-reading-width);
+  margin-inline: auto;
+  padding-inline: 0;
+}
+#main-content.project-main .wrap .wrap { width: 100%; max-width: 100%; }
+#main-content.project-main :is(.cs-slide, .cs-media) {
+  box-sizing: border-box;
+  width: var(--project-frame);
+  max-width: var(--project-reading-width);
+  margin-inline: auto;
+  padding-inline: 0;
+}
+#main-content.project-main :is(.wrap, .cs-section-content) :is(.cs-slide, .cs-media),
+#main-content.project-main :is(.cs-slide, .cs-media) .wrap {
+  width: 100%; max-width: 100%; padding-inline: 0;
+}
+#main-content.project-main .cs-nda-process-list,
+#main-content.project-main .cs-nda-process-visuals { width: 100%; max-width: 100%; margin-inline: 0; }
+#main-content.project-main .cs-nda-process-visual { margin-inline: 0; }
+#main-content.project-main :is(.cs-section-content, .cs-nda-process-body, .cs-nda-process-shift-col) { min-width: 0; overflow-wrap: break-word; }
+#main-content.project-main .cs-nda-process-shift { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); }
+@media (max-width: 640px) {
+  #main-content.project-main .cs-nda-process-shift { grid-template-columns: minmax(0, 1fr); }
+  #main-content.project-main .cs-nda-process-shift-arrow { justify-self: center; }
+}
+#main-content.project-main .cs-nda-process-visual img { width: 100%; height: auto; aspect-ratio: auto; }
+/* Keep project navigation quiet; selection is shown by its surface and border. */
+#main-content.project-main .cs-bottom-nav :is(.cs-bnav-link, .cs-bnav-action, .cs-bnav-live, .cs-bnav-menu-link) {
+  font-weight: 400;
+}
+
+/* Retire old full-bleed escapes inside the shared reading frame. */
+#main-content.project-main :is(.cuetv-refresh-grid, .ibm-diagram-stack, .point-board-stack, .cs-img-full--point-board, .vj-board-stack, .cs-img-full--vj-board, .ballah-wide-shot, .ballah-wide-grid, .cs-flow-diagram--horizontal) {
+  box-sizing: border-box;
+  width: 100%; max-width: 100%; margin-inline: 0; padding-inline: 0; transform: none;
+}
+#main-content.project-main > .cs-pullquote,
+#main-content.project-main > .cs-credits,
+#main-content.project-main .project-story__content > .cs-credits,
+#main-content.project-main .project-story__content > .cs-pullquote,
+#main-content.project-main.typeface-page > :is(.tf-section, .tf-specimen-section, .tf-image-stage, .tf-split-section, .tf-image-grid) {
+  width: var(--project-frame); max-width: var(--project-reading-width); margin-inline: auto; box-sizing: border-box;
+}
+#main-content.project-main.typeface-page .project-story__content > :is(.tf-section, .tf-specimen-section, .tf-image-stage, .tf-split-section, .tf-image-grid) {
+  width: var(--project-frame); max-width: var(--project-reading-width); margin-inline: auto; box-sizing: border-box;
+}
+#main-content.project-main.typeface-page .project-story__content > :is(.tf-tool-section, .tf-download-section),
+#main-content.project-main .project-story__content > .nda-inline,
+#main-content.project-main > .nda-inline {
+  width: var(--project-frame); max-width: var(--project-reading-width); margin-inline: auto; box-sizing: border-box;
+}
+
+/* Evidence notes sit with the overview; their detail stays optional. */
+.project-main .project-record {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 12px 32px;
+  padding-block: 18px;
+  border-block: 1px solid var(--ink-15);
+  color: var(--ink-70);
+  font: 400 14px/1.6 var(--sans);
+}
+.project-main .project-record > span { color: var(--ink); }
+.project-main .project-record details { flex: 1; min-width: min(240px, 100%); }
+.project-main .project-record summary { cursor: pointer; min-height: 44px; display: list-item; list-style-position: inside; }
+.project-main .project-record p { max-width: 72ch; margin: 0 0 8px; }
+.project-main .project-record summary:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.project-main .study-explorer { margin-block: 24px; color: var(--ink); }
+.project-main .study-explorer__intro { max-width: 65ch; margin-bottom: 20px; }
+.project-main .study-explorer__choices { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.project-main .study-explorer__choices button {
+  font: 400 15px/1.4 var(--sans);
+  padding: 12px 16px;
+  min-height: 44px;
+  border: 1px solid var(--ink-30);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--ink);
+  cursor: pointer;
+}
+.project-main .study-explorer__choices button[aria-pressed="true"] { color: var(--bg); background: var(--ink); border-color: var(--ink); }
+.project-main .study-explorer__choices button:hover { border-color: var(--ink); }
+.project-main .study-explorer__choices button:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+.project-main .study-explorer__reading { padding-block: 24px; border-block: 1px solid var(--ink-15); }
+.project-main .study-explorer__reading h3 { margin: 0 0 24px; font: 400 24px/1.3 var(--sans); }
+.project-main .study-explorer__flow { list-style: none; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; padding: 0; margin: 0; }
+.project-main .study-explorer__flow li { min-width: 0; border-top: 2px solid var(--ink-30); padding-top: 12px; }
+.project-main .study-explorer__flow span { color: var(--ink-70); font-size: 14px; }
+.project-main .study-explorer__flow p { margin: 8px 0 0; }
+.project-main .study-explorer__question { margin-top: 28px; max-width: 72ch; }
+.project-main .study-explorer__question strong { font-weight: 500; }
+.project-main .study-explorer__question p { margin: 6px 0 0; }
+.project-main .study-explorer__note { max-width: 72ch; color: var(--ink-70); font-size: 14px; margin-top: 14px; }
+.project-main .proj-generated-caption { margin: 12px 0 0; max-width: 72ch; color: var(--ink-70); font: 400 14px/1.6 var(--sans); }
+@media (max-width: 640px) {
+  .project-main .study-explorer__flow { grid-template-columns: 1fr; gap: 20px; }
+  .project-main .study-explorer__choices { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .project-main .study-explorer__choices button { text-align: left; }
+  .project-main .project-record { display: block; }
+  .project-main .project-record details { margin-top: 8px; }
+}
+
+/* Project content is readable immediately; only the intentional story preview blurs. */
+.project-main .project-header .hero-anim {
+  animation: none;
+  opacity: 1;
+  filter: none;
+  transform: none;
+}
+.project-main .project-evidence-links { width: var(--project-frame); max-width: var(--project-reading-width); margin: 48px auto; }
+.project-main .project-evidence-links h2 { font: 400 24px/1.3 var(--sans); margin-bottom: 24px; }
+.project-main .project-evidence-links > div { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px; }
+.project-main .project-evidence-links a { display: grid; grid-template-columns: 112px minmax(0, 1fr); align-items: center; gap: 20px; padding-block: 20px; border-block: 1px solid var(--ink-15); color: var(--ink); text-decoration: none; }
+.project-main .project-evidence-links img { width: 112px; height: 84px; object-fit: cover; border-radius: 8px; }
+.project-main .project-evidence-links strong { display: block; font: 400 20px/1.3 var(--sans); margin-bottom: 8px; }
+.project-main .project-evidence-links a span span { color: var(--ink-70); font: 400 14px/1.6 var(--sans); }
+.project-main .project-evidence-links a:hover strong { text-decoration: underline; text-underline-offset: 4px; }
+.project-main .project-evidence-links a:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }
+@media(max-width: 640px) { .project-main .project-evidence-links > div { grid-template-columns: 1fr; } }
+
+/* Wide packaging artifacts keep their proportions instead of using a phone frame. */
+.project-main .cs-screen-explorer--landscape .cs-screen-explorer__image { height: auto; aspect-ratio: 4 / 3; }
+.project-main .cs-screen-explorer { scroll-margin-top: 100px; }
+.project-main .cs-screen-explorer figcaption a { font-weight: 400; }
+
+/* Original phone screens need enough height for their UI text to remain legible. */
+.project-main--mentra-miniapps .cs-screen-explorer__image { height: min(820px, 85svh); padding: 0; border: 0; background: transparent; }
+.project-main--mentra-miniapps .cs-screen-explorer__choices { position: sticky; top: 112px; }
+.cs-screen-explorer__image button { min-height: 44px; padding: 10px 16px; }
+@media (max-width: 768px) {
+  .project-main--mentra-miniapps .cs-screen-explorer__choices { position: static; }
+  .project-main--mentra-miniapps .cs-screen-explorer__image { height: auto; aspect-ratio: 419 / 909; max-height: none; }
+}
+
+/* Keep action sizes in the navigation system; reserve width for evidence. */
+.project-main .proj-reading-links a.glass-action { min-height: 44px; padding: .55rem .85rem; font: 500 .8rem/1.25 var(--sans); }
+.project-main .proj-visual-brief .proj-visual-brief__facts { grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); }
+.project-main--office-diversity .proj-visual-hero__media img { object-fit: contain; transform: none; height: auto; max-height: 640px; }
+.project-main--vj .proj-visual-hero__media { max-height: 620px; }
+.project-main--vj .proj-visual-hero__media img { object-fit: contain; height: 620px; max-width: 100%; transform: none; }
+#main-content.project-main--raahi .raahi-overview-proof { max-width: min(600px, var(--project-frame)); }
+.project-main--raahi .raahi-overview-proof img { max-height: 900px; object-fit: contain; width: 100%; }
+.project-main--raahi :is(.raahi-research-grid,.raahi-ia-stack) img { object-fit: contain; max-height: 520px; width: auto; max-width: 100%; margin-inline: auto; }
+.project-main--raahi .raahi-ia-kiosk img { max-width: 251px; }
+.project-main--raahi .raahi-phone-row .cs-img { display: flex; flex-direction: column; align-items: center; }
+.project-main--raahi .raahi-phone-row img { max-height: 560px; width: auto; max-width: 100%; object-fit: contain; }
+.project-main--raahi .raahi-research-grid>div:nth-child(-n+2) img { max-width: 419px; }
+.project-main--raahi .raahi-research-blueprint img { max-width: 564px; }
+.project-main:has(.project-header--project-jugalbandi) .cs-media-spotlight-grid--stacked { display: flex; flex-direction: column; gap: 1rem; }
+.project-main:has(.project-header--project-jugalbandi) .cs-media-spotlight-frame { width: 100%; }
+.project-main:has(.project-header--project-jugalbandi) .cs-label-row { grid-template-columns: minmax(110px, .25fr) minmax(0,1fr); }
+@media(max-width:767px) { .project-main .proj-visual-brief .proj-visual-brief__facts { grid-template-columns: 1fr; } .project-main--vj .proj-visual-hero__media img { height: auto; max-height: 500px; } }
+
+.project-main--vj .project-header--project-vj-software .proj-visual-stage { aspect-ratio: auto; height: 620px; min-height: 0; }
+@media(max-width:767px) { .project-main--vj .project-header--project-vj-software .proj-visual-stage { height: 480px; } .project-main--vj .project-header--project-vj-software .proj-visual-hero__media img { height: 480px; } }
+/* The reading gutter already clears the ruler; do not shift the whole body too. */
+body.figma-chrome-enabled:not(.figma-rulers-off):has(.project-main) { padding-left: 0; }

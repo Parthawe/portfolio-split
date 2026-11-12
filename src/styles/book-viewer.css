@@ -1,0 +1,325 @@
+/* ================================================
+   BOOK VIEWER, premium flipbook
+   ================================================ */
+
+.book-viewer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 1rem 1rem 4rem;
+}
+
+/* ── Stage, the desk surface ── */
+.book-stage {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  padding: 2rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(
+    135deg,
+    rgba(0, 0, 0, 0.015) 0%,
+    rgba(0, 0, 0, 0.03) 50%,
+    rgba(0, 0, 0, 0.012) 100%
+  );
+  box-shadow:
+    0 1px 0 rgba(0, 0, 0, 0.02),
+    0 4px 24px rgba(0, 0, 0, 0.03);
+}
+
+/* ── Flipbook wrapper ── */
+.book-flip-wrapper {
+  position: relative;
+  filter: drop-shadow(0 16px 50px rgba(0, 0, 0, 0.14))
+          drop-shadow(0 6px 16px rgba(0, 0, 0, 0.1));
+  border-radius: var(--radius);
+  overflow: visible;
+}
+
+.book-flipbook {
+  border-radius: 6px;
+}
+
+/* ── Page ── */
+.book-page {
+  background: var(--surface);
+  overflow: hidden;
+  position: relative;
+}
+.book-page-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+.book-page-num {
+  position: absolute;
+  bottom: 12px;
+  right: 16px;
+  font-family: var(--mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: rgba(0, 0, 0, 0.18);
+  background: rgba(255, 255, 255, 0.8);
+  padding: 3px 10px;
+  border-radius: 6px;
+  pointer-events: none;
+  backdrop-filter: blur(6px);
+}
+
+/* ── Controls ── */
+.book-controls {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+.book-ctrl-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius-pill, 999px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: var(--surface, #fff);
+  color: var(--ink, #1a1a1a);
+  cursor: pointer;
+  font-family: var(--mono, monospace);
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: opacity 0.25s, transform 0.25s;
+}
+.book-ctrl-btn:hover:not(:disabled) {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.15);
+  transform: scale(1.04);
+}
+.book-ctrl-btn:disabled {
+  opacity: 0.2;
+  cursor: default;
+}
+
+.book-page-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  min-width: 120px;
+}
+.book-page-indicator {
+  font-family: var(--mono, monospace);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink, #1a1a1a);
+}
+.book-page-hint {
+  font-family: var(--mono, monospace);
+  font-size: 9px;
+  color: var(--ink-40, rgba(0, 0, 0, 0.25));
+  letter-spacing: 0.04em;
+}
+
+/* ── Loading ── */
+.book-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 10rem 8rem;
+  color: var(--ink-40, rgba(0, 0, 0, 0.4));
+  font-family: var(--mono, monospace);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+.book-loading-sub {
+  font-size: 10px;
+  color: var(--ink-40, rgba(0, 0, 0, 0.25));
+  text-transform: none;
+  letter-spacing: 0.02em;
+}
+.book-loading-spinner {
+  width: 36px;
+  height: 36px;
+  border: 2px solid rgba(0, 0, 0, 0.06);
+  border-top-color: var(--ink, #1a1a1a);
+  border-radius: 50%;
+  animation: bookSpin 0.7s linear infinite;
+}
+@keyframes bookSpin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Full-page preloader ── */
+.book-preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  background: var(--bg, #fafaf8);
+  transition: opacity 0.5s ease-out;
+}
+.book-preloader--done {
+  opacity: 0;
+  pointer-events: none;
+}
+.book-preloader-ring {
+  transform: rotate(-90deg);
+}
+.book-preloader-ring circle {
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+}
+.book-preloader-track {
+  stroke: var(--ink-06, rgba(0, 0, 0, 0.06));
+}
+.book-preloader-fill {
+  stroke: var(--ink, #1a1a1a);
+  transition: stroke-dashoffset 0.3s ease-out;
+}
+.book-preloader-pct {
+  font-family: var(--mono, monospace);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  color: var(--ink, #1a1a1a);
+}
+.book-preloader-label {
+  font-family: var(--mono, monospace);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-40, rgba(0, 0, 0, 0.35));
+}
+
+/* ── Book content reveal ── */
+.book-main--hidden {
+  opacity: 0;
+}
+.book-main--revealed {
+  animation: bookReveal 0.6s ease-out both;
+}
+@keyframes bookReveal {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Preloader dark mode */
+[data-theme="dark"] .book-preloader {
+  background: var(--bg, #111);
+}
+[data-theme="dark"] .book-preloader-track {
+  stroke: rgba(255, 255, 255, 0.06);
+}
+[data-theme="dark"] .book-preloader-fill {
+  stroke: var(--ink, #edede8);
+}
+
+/* ── Dark mode ── */
+[data-theme="dark"] .book-stage {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.02) 0%, rgba(255, 255, 255, 0.035) 50%, rgba(255, 255, 255, 0.015) 100%);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.02), 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+[data-theme="dark"] .book-flip-wrapper {
+  filter: drop-shadow(0 16px 50px rgba(0, 0, 0, 0.45)) drop-shadow(0 6px 16px rgba(0, 0, 0, 0.35));
+}
+[data-theme="dark"] .book-ctrl-btn {
+  border-color: rgba(255, 255, 255, 0.08);
+  background: var(--bg, #111);
+  color: var(--ink, #edede8);
+}
+[data-theme="dark"] .book-ctrl-btn:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+[data-theme="dark"] .book-page {
+  background: var(--surface);
+}
+[data-theme="dark"] .book-page-num {
+  color: rgba(255, 255, 255, 0.25);
+  background: rgba(0, 0, 0, 0.5);
+}
+[data-theme="dark"] .book-loading-spinner {
+  border-color: rgba(255, 255, 255, 0.06);
+  border-top-color: var(--ink);
+}
+
+/* ── Book page hero ── */
+.book-hero {
+  text-align: center;
+  padding: clamp(7rem, 14vw, 11rem) var(--pad, 1.5rem) clamp(2rem, 4vw, 3rem);
+}
+.book-hero-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-40, rgba(0, 0, 0, 0.35));
+  margin-bottom: 1.25rem;
+}
+.book-hero-title {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: 0;
+  color: var(--ink, #1a1a1a);
+  margin: 0 0 1.25rem;
+}
+.book-hero-subtitle {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-40, rgba(0, 0, 0, 0.45));
+  max-width: 32rem;
+  margin: 0 auto;
+}
+.book-section {
+  max-width: 1800px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .book-viewer { padding: 0.75rem 0.5rem 2.5rem; }
+  .book-stage { padding: 1rem; }
+  .book-controls { gap: 1.5rem; }
+  .book-ctrl-btn { padding: 10px 20px; font-size: 11px; }
+}
+@media (max-width: 480px) {
+  .book-viewer { padding: 0.5rem 0.25rem 2rem; }
+  .book-stage { padding: 0.5rem; }
+  .book-controls { gap: 1rem; }
+  .book-ctrl-btn { padding: 8px 16px; font-size: 10px; }
+  .book-ctrl-btn span { display: none; }
+  .book-page-info { min-width: 80px; }
+  .book-page-indicator { font-size: 12px; }
+}
+
+.book-hero.wrap { display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: end; gap: 2rem; text-align: left; padding-top: 8rem; }
+.book-hero-subtitle { margin: 0; max-width: 56ch; color: var(--ink-60); }
+.book-hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; }
+.book-reading-hint { text-align: center; margin: 0 1rem 1.5rem; font-size: .82rem; color: var(--ink-60); }
+.book-stage { width: 100%; min-height: 18rem; background: transparent; border: 0; box-shadow: none; }
+.book-viewer:focus-visible { outline: 2px solid var(--ink); outline-offset: -4px; }
+.book-page-info select { max-width: 100%; padding: .5rem; color: var(--ink); background: var(--bg); border: 1px solid var(--ink-10); border-radius: 6px; min-height: 44px; font: inherit; }
+@media(max-width: 700px) {
+  .book-hero.wrap { grid-template-columns: minmax(0, 1fr); }
+  .book-hero-title { font-size: clamp(2.4rem, 10vw, 4rem); }
+  .book-controls { gap: .5rem; width: 100%; justify-content: center; }
+}
+.book-mobile-page { width: 100%; max-width: 38rem; }
+.book-mobile-page img { width: 100%; height: auto; display: block; object-fit: contain; background: var(--surface); }
+@media(max-width: 699px) { .book-stage { padding: .5rem; min-height: 0; } }

@@ -1,0 +1,20 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="1000" fill="#F4EEE4"/>
+  <rect x="54" y="54" width="1492" height="892" rx="36" fill="#EFE4D2" stroke="#C7A983" stroke-width="2"/>
+  <path d="M123 689C197 617 272 604 370 637C471 672 538 746 645 739C773 731 834 592 963 586C1089 580 1168 711 1287 717C1370 721 1444 681 1498 631V946H123V689Z" fill="#CBA27C"/>
+  <path d="M99 599C186 535 252 513 346 542C437 571 503 649 625 659C737 668 799 563 920 545C1055 524 1150 641 1275 662C1375 679 1452 654 1533 583" stroke="#9E7857" stroke-width="18" stroke-linecap="round"/>
+  <path d="M91 454C175 390 248 375 349 413C450 451 522 533 654 530C772 527 841 421 957 410C1096 396 1174 500 1305 510C1406 518 1480 486 1543 434" stroke="#E6D8C3" stroke-width="22" stroke-linecap="round"/>
+  <path d="M111 316C205 267 298 260 410 307C507 348 578 424 689 426C808 429 878 347 1000 332C1136 314 1221 390 1333 392C1421 393 1489 364 1546 326" stroke="#D7B895" stroke-width="14" stroke-linecap="round"/>
+  <circle cx="1183" cy="243" r="89" fill="#DCC7AE" fill-opacity="0.65"/>
+  <circle cx="1289" cy="293" r="42" fill="#F8F3EA" fill-opacity="0.8"/>
+  <circle cx="392" cy="233" r="67" fill="#E7D9C8" fill-opacity="0.78"/>
+  <circle cx="481" cy="275" r="28" fill="#F8F3EA" fill-opacity="0.8"/>
+  <g opacity="0.55">
+    <path d="M341 786C388 757 425 752 471 771" stroke="#F8F3EA" stroke-width="8" stroke-linecap="round"/>
+    <path d="M838 782C891 754 936 753 986 776" stroke="#F8F3EA" stroke-width="8" stroke-linecap="round"/>
+    <path d="M1049 702C1092 680 1131 681 1172 700" stroke="#F8F3EA" stroke-width="8" stroke-linecap="round"/>
+  </g>
+  <rect x="114" y="110" width="212" height="84" rx="18" fill="#F8F3EA" fill-opacity="0.88" stroke="#D7B895"/>
+  <text x="146" y="150" fill="#7A5C44" font-family="Georgia, serif" font-size="30" letter-spacing="0.08em">SEA OF SALT</text>
+  <text x="146" y="176" fill="#9E7857" font-family="monospace" font-size="14" letter-spacing="0.2em">KINETIC DATA INSTALLATION</text>
+</svg>

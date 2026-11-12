@@ -1,0 +1,209 @@
+/* Fintech hero: a restrained ring of rotating global-currency coins. */
+.ch--fintech {
+  --fiat-gold: #e5aa29;
+  --fiat-amber: #a85d08;
+}
+
+.ch--fintech .ch-3d--side {
+  top: calc(var(--nav-h) + clamp(2.2rem, 4vh, 3rem));
+  right: -0.6rem;
+  width: clamp(22rem, 34vw, 29rem);
+  max-width: 44%;
+}
+
+.ch--fintech:has(.ch-3d--side) .ch-copy {
+  padding-right: clamp(22rem, 40vw, 36rem);
+}
+
+.ch--fintech .ch-3d--side,
+.ch--fintech .ch-3d--side * {
+  pointer-events: none !important;
+}
+
+.fintech-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+  isolation: isolate;
+}
+
+.fintech-stage::before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  inset: 19%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    color-mix(in srgb, var(--fiat-gold) 17%, transparent),
+    color-mix(in srgb, var(--fiat-amber) 5%, transparent) 46%,
+    transparent 72%
+  );
+  filter: blur(30px);
+  opacity: 0.8;
+}
+
+.fintech-coin-orbit {
+  position: relative;
+  z-index: 1;
+  width: 108%;
+  aspect-ratio: 1;
+  margin: -4% 0 0 -4%;
+  transform-style: preserve-3d;
+  filter: drop-shadow(0 1.8rem 2.25rem rgba(73, 39, 3, 0.24));
+}
+
+.fintech-coin-orbit__canvas {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1;
+}
+
+.fintech-coin-orbit__canvas canvas {
+  position: absolute !important;
+  inset: 0;
+  width: 100% !important;
+  height: 100% !important;
+  background: transparent !important;
+}
+
+.fintech-coin-caption {
+  position: absolute;
+  z-index: 2;
+  right: 50%;
+  bottom: 0;
+  margin: 0;
+  translate: 50% 0;
+  font-family: var(--mono);
+  font-size: clamp(0.52rem, 0.66vw, 0.62rem);
+  font-weight: 600;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--ink-40);
+}
+
+.fintech-coin-caption::before {
+  content: '';
+  display: inline-block;
+  width: 0.42rem;
+  height: 0.42rem;
+  margin-right: 0.48rem;
+  border-radius: 50%;
+  background: var(--fiat-gold);
+  box-shadow: 0 0 0 0.2rem color-mix(in srgb, var(--fiat-gold) 13%, transparent);
+  vertical-align: -0.02rem;
+}
+
+/* DOM fallback for touch devices and reduced GPU environments. */
+.fintech-coin-fallback {
+  position: absolute;
+  inset: 7%;
+  animation: fintech-ring-turn 32s linear infinite;
+}
+
+.fintech-coin-fallback__coin {
+  --fiat-radius: clamp(5.2rem, 13vw, 7.2rem);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: clamp(3.8rem, 10vw, 5.5rem);
+  aspect-ratio: 1;
+  border: 0.2rem solid #9d5c0b;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 35% 28%, #fff0a8 0 5%, transparent 24%),
+    radial-gradient(circle at 42% 38%, #f6c74f, #d48a13 62%, #8b4906 100%);
+  box-shadow:
+    inset 0 0 0 0.15rem rgba(255, 238, 157, 0.72),
+    inset -0.38rem -0.42rem 0.7rem rgba(91, 42, 0, 0.28),
+    0 0.65rem 1rem rgba(67, 33, 1, 0.25);
+  color: #fff0ac;
+  transform:
+    translate(-50%, -50%)
+    rotate(var(--fiat-angle))
+    translateY(calc(var(--fiat-radius) * -1))
+    rotate(calc(var(--fiat-angle) * -1));
+}
+
+.fintech-coin-fallback__coin:nth-child(even) {
+  background:
+    radial-gradient(circle at 34% 26%, #fff5bc 0 4%, transparent 23%),
+    radial-gradient(circle at 42% 38%, #ffd768, #bd7010 68%, #723601 100%);
+}
+
+.fintech-coin-fallback__coin b {
+  font-family: Arial, sans-serif;
+  font-size: clamp(1.65rem, 4vw, 2.45rem);
+  line-height: 1;
+  text-shadow: 0 0.12rem 0.16rem rgba(74, 33, 0, 0.32);
+}
+
+@keyframes fintech-ring-turn {
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 900px) {
+  .ch--fintech .ch-3d--side {
+    top: calc(var(--nav-h) + 1.5rem);
+    right: 0;
+    width: min(18rem, 47vw);
+    max-width: none;
+  }
+
+  .ch--fintech:has(.ch-3d--side) .ch-copy {
+    padding-right: 0;
+    padding-top: clamp(13.4rem, 48vw, 16rem);
+  }
+
+  .fintech-coin-orbit {
+    width: 114%;
+    margin: -7% 0 0 -7%;
+  }
+
+  .fintech-coin-fallback__coin {
+    --fiat-radius: clamp(4.3rem, 13vw, 5.7rem);
+  }
+}
+
+@media (max-width: 480px) {
+  .ch--fintech .ch-3d--side {
+    right: auto;
+    left: 50%;
+    width: min(16rem, 67vw);
+    translate: -50% 0;
+  }
+
+  .ch--fintech:has(.ch-3d--side) .ch-copy {
+    padding-top: clamp(14.4rem, 62vw, 15.6rem);
+  }
+
+  .fintech-coin-orbit {
+    width: 110%;
+    margin: -5% 0 0 -5%;
+  }
+
+  .fintech-coin-caption {
+    display: none;
+  }
+
+  .fintech-coin-fallback__coin {
+    --fiat-radius: clamp(4rem, 18vw, 4.8rem);
+    width: clamp(3.1rem, 14vw, 3.75rem);
+  }
+
+  .fintech-coin-fallback__coin b {
+    font-size: clamp(1.35rem, 7vw, 1.75rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fintech-coin-orbit,
+  .fintech-coin-orbit__canvas,
+  .fintech-coin-fallback {
+    animation: none !important;
+    transition: none !important;
+  }
+}

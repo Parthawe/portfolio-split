@@ -1,0 +1,436 @@
+/* ============================================
+   Parth Pawar, Portfolio
+   Light · type-driven · restrained
+   ============================================ */
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/Assets/fonts/general-sans-400.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/Assets/fonts/general-sans-500.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/Assets/fonts/general-sans-600.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'General Sans';
+  src: url('/Assets/fonts/general-sans-700.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nikolas';
+  src: url('/Assets/fonts/nikolas.woff2') format('woff2'),
+       url('/Assets/fonts/nikolas.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* --- Tokens --- */
+:root {
+  color-scheme: light;
+  --bg:       #FAFAF8;
+  --bg-alt:   #F2F1EE;
+  --surface:  #FFFFFF;
+  --ink:      #1A1A1A;
+  --ink-70:   rgba(26,26,26,0.7);
+  /* Shared muted text colors retain enough contrast for small labels on the
+     page and white card surfaces. Lower opacity tokens remain decorative. */
+  --ink-40:   rgba(26,26,26,0.64); /* WCAG AA: ~5.1:1 on #FAFAF8 */
+  --ink-30:   rgba(26,26,26,0.61); /* WCAG AA: ~4.7:1 on #FAFAF8 */
+  --ink-15:   rgba(26,26,26,0.15);
+  --ink-12:   rgba(26,26,26,0.12);
+  --ink-08:   rgba(26,26,26,0.08);
+  --ink-06:   rgba(26,26,26,0.06);
+  --ink-04:   rgba(26,26,26,0.04);
+
+  --display:  'Nikolas', 'General Sans';
+  --display-heading: 'Nikolas', 'General Sans';
+  --serif:    'Nikolas', 'General Sans';
+  /* Readable serif for small text — Nikolas is a display face and gets hard to
+     read below ~1.5rem, so small titles/labels/quotes/captions use this
+     screen-legible serif stack instead. Reserve --serif (Nikolas) for large headings. */
+  --serif-read: 'Charter', 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --sans:     'General Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --mono:     'General Sans', 'SF Pro Text', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --body:     var(--sans);
+  --ff-sans:  var(--sans);
+  --ff-mono:  var(--mono);
+
+  --accent:       #f5f5f5;
+  --accent-hi:    #a8b8d8;
+  --accent-hi-70: rgba(168, 184, 216, 0.7);
+  --accent-hi-50: rgba(168, 184, 216, 0.5);
+  --accent-hi-30: rgba(168, 184, 216, 0.3);
+  --accent-hi-15: rgba(168, 184, 216, 0.15);
+  --accent-hi-08: rgba(168, 184, 216, 0.08);
+  --accent-hi-05: rgba(168, 184, 216, 0.05);
+  --footer-dark:  rgb(28, 28, 28);
+
+  --ink-50:   rgba(26,26,26,0.66); /* WCAG AA: ~5.5:1 on #FAFAF8 */
+
+  /* Spacing utilities */
+  --gutter:   clamp(1.25rem, 4vw, 3rem);
+
+  /* Type scale */
+  --text-2xs:  0.6875rem;   /* 11px, smallest readable */
+  --text-xs:   0.75rem;     /* 12px, captions, tags */
+  --text-sm:   0.8125rem;   /* 13px, secondary text */
+  --text-base: 1rem;        /* 16px, body */
+  --text-lg:   1.125rem;    /* 18px, emphasized body */
+  --text-xl:   1.5rem;      /* 24px */
+  --text-2xl:  2rem;        /* 32px */
+  --text-3xl:  3rem;        /* 48px */
+  --text-hero: clamp(3.5rem, 8vw, 6rem);
+
+  /* Letter spacing scale */
+  --ls-tight:  -0.02em;     /* display headings */
+  --ls-normal: -0.01em;     /* headings */
+  --ls-body:   0;           /* body text */
+  --ls-wide:   0.06em;      /* labels, tags, uppercase */
+  --ls-wider:  0.08em;      /* small mono labels */
+  --ls-widest: 0.1em;      /* section labels */
+
+  /* Line-height scale */
+  --lh-display: 1.05;    /* hero/display headings */
+  --lh-tight:   1.15;    /* subheadings, card titles */
+  --lh-base:    1.65;    /* body text */
+  --lh-relaxed: 1.75;    /* long-form reading */
+
+  /* Radius scale — squircle, not circular */
+  --radius-sm:   4px;
+  --radius:      8px;
+  --radius-lg:   12px;
+  --radius-pill: 10px;
+
+  /* Button padding scale */
+  --btn-sm:   0.35rem 0.75rem;
+  --btn-md:   0.5rem 1.1rem;
+  --btn-lg:   0.75rem 1.5rem;
+
+  /* Spacing */
+  --nav-h:    56px;
+  --w:        1120px;
+  --max-w:    1200px;
+  --narrow:   720px;
+  --pad:      clamp(1.25rem, 4vw, 3rem);
+  --chrome-inline: clamp(1.5rem, 3.3vw, 4rem);
+  --chrome-block: clamp(1.1rem, 1.65vw, 2rem);
+  --ruler-size: 30px;
+  --ruler-inline-offset: var(--ruler-size);
+  --ruler-block-offset: var(--ruler-size);
+
+  /* Easing */
+  --ease-out: cubic-bezier(0,0,0.3,1);
+  --ease-out-quart: cubic-bezier(0.25,1,0.5,1);
+  --ease-out-quint: cubic-bezier(0.22,1,0.36,1);
+  --ease-out-expo: cubic-bezier(0.16,1,0.3,1);
+  --ease-spring: var(--ease-out-expo);
+  --ease-in-out: cubic-bezier(0.4,0,0.2,1);
+  --motion-ease: var(--ease-out-expo);
+  --motion-fast: 180ms;
+  --motion-base: 360ms;
+  --motion-slow: 620ms;
+  --motion-stagger: 70ms;
+
+  /* Z-index scale */
+  --z-base: 0;
+  --z-raised: 1;
+  --z-sticky: 10;
+  --z-nav: 20;
+  --z-overlay: 50;
+  --z-modal: 100;
+  --z-toast: 200;
+  --z-cursor: 9999;
+
+  /* Figma selection */
+  --select-blue: #4D9EFF;
+  --select-handle: 6px;
+
+  /* Status colors */
+  --green: #34C759;
+  --error: #E55555;
+  --error-light: #FFEEEE;
+  --error-dark: #CC3333;
+
+  /* Spotlight colors */
+  --spotlight-light-start: #e8ecf8;
+  --spotlight-light-end: #c8cee4;
+  --spotlight-dark-start: #2a2d38;
+  --spotlight-dark-end: #1e2028;
+  --spotlight-text-dark: #e0e2ea;
+
+  --project-color: var(--ink);
+
+  /* Spacing scale */
+  --space-1: 0.25rem;   /* 4px */
+  --space-2: 0.5rem;    /* 8px */
+  --space-3: 0.75rem;   /* 12px */
+  --space-4: 1rem;      /* 16px */
+  --space-5: 1.5rem;    /* 24px */
+  --space-6: 2rem;      /* 32px */
+  --space-8: 3rem;      /* 48px */
+  --space-10: 4rem;     /* 64px */
+  --space-12: 6rem;     /* 96px */
+
+  /* Transition durations */
+  --dur-fast: 0.15s;
+  --dur-base: 0.25s;
+  --dur-slow: 0.4s;
+  --dur-slower: 0.7s;
+
+  /* Shadow elevation */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.04), 0 1px 2px rgba(0, 0, 0, 0.02);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12), 0 2px 8px rgba(0, 0, 0, 0.06);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.06);
+
+  /* Glass surfaces */
+  --glass-subtle-bg: rgba(255, 255, 255, 0.42);
+  --glass-subtle-border: rgba(0, 0, 0, 0.05);
+  --glass-subtle-shadow: 0 1px 2px rgba(0, 0, 0, 0.03), 0 6px 20px rgba(0, 0, 0, 0.025);
+  --glass-subtle-blur: blur(14px) saturate(1.45);
+  --glass-subtle-highlight: rgba(255, 255, 255, 0.45);
+
+  --glass-default-bg: rgba(255, 255, 255, 0.56);
+  --glass-default-border: rgba(0, 0, 0, 0.06);
+  --glass-default-shadow: 0 1px 3px rgba(0, 0, 0, 0.04), 0 10px 28px rgba(0, 0, 0, 0.035);
+  --glass-default-blur: blur(20px) saturate(1.8);
+  --glass-default-highlight: rgba(255, 255, 255, 0.62);
+
+  --glass-strong-bg: rgba(255, 255, 255, 0.72);
+  --glass-strong-border: rgba(0, 0, 0, 0.08);
+  --glass-strong-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), 0 16px 40px rgba(0, 0, 0, 0.05);
+  --glass-strong-blur: blur(28px) saturate(1.95);
+  --glass-strong-highlight: rgba(255, 255, 255, 0.78);
+
+  --glass-bg: var(--glass-default-bg);
+  --glass-border: var(--glass-default-border);
+  --glass-shadow: var(--glass-default-shadow);
+  --glass-blur: var(--glass-default-blur);
+  --glass-highlight: var(--glass-default-highlight);
+
+  /* Overlays */
+  --overlay-dark: rgba(0, 0, 0, 0.35);
+  --overlay-light: rgba(255, 255, 255, 0.55);
+  --overlay-heavy: rgba(0, 0, 0, 0.92);
+
+  /* Glass scrolled state */
+  --glass-scrolled: rgba(255, 255, 255, 0.8);
+  --glass-scrolled-border: rgba(0, 0, 0, 0.09);
+  --glass-scrolled-shadow: 0 2px 8px rgba(0,0,0,0.05), 0 12px 34px rgba(0,0,0,0.045);
+
+  /* Card overlay text */
+  --text-on-dark: #fff;
+  --text-on-dark-90: rgba(255, 255, 255, 0.9);
+  --text-on-dark-70: rgba(255, 255, 255, 0.7);
+  --text-on-dark-50: rgba(255, 255, 255, 0.5);
+  --text-on-dark-06: rgba(255, 255, 255, 0.06);
+
+  /* Micro font sizes (below text-2xs) */
+  --text-micro: 0.625rem;    /* 10px, hero labels */
+  --text-nano: 0.5625rem;    /* 9px, ruler ticks */
+}
+
+/* --- Dark mode tokens --- */
+[data-theme="dark"] {
+  --bg:       #111110;
+  --bg-alt:   #1A1918;
+  --surface:  #222220;
+  --ink:      #EDEDEC;
+  --ink-70:   rgba(237,237,236,0.7);
+  --ink-50:   rgba(237,237,236,0.62); /* WCAG AA on #222220 cards */
+  --ink-40:   rgba(237,237,236,0.56); /* WCAG AA on #222220 cards */
+  --ink-30:   rgba(237,237,236,0.52); /* WCAG AA on #222220 cards */
+  --ink-15:   rgba(237,237,236,0.15);
+  --ink-12:   rgba(237,237,236,0.12);
+  --ink-08:   rgba(237,237,236,0.08);
+  --ink-06:   rgba(237,237,236,0.06);
+  --ink-04:   rgba(237,237,236,0.04);
+  color-scheme: dark;
+
+  /* Shadow elevation, dark */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.15), 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 2px 8px rgba(0, 0, 0, 0.3), 0 1px 3px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.4), 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.4), 0 4px 12px rgba(0, 0, 0, 0.2);
+
+  /* Glass surfaces, dark */
+  --glass-subtle-bg: rgba(28, 28, 28, 0.44);
+  --glass-subtle-border: rgba(255, 255, 255, 0.07);
+  --glass-subtle-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.18);
+  --glass-subtle-blur: blur(16px) saturate(1.35);
+  --glass-subtle-highlight: rgba(255, 255, 255, 0.08);
+
+  --glass-default-bg: rgba(30, 30, 30, 0.6);
+  --glass-default-border: rgba(255, 255, 255, 0.08);
+  --glass-default-shadow: 0 1px 3px rgba(0, 0, 0, 0.22), 0 12px 32px rgba(0, 0, 0, 0.18);
+  --glass-default-blur: blur(22px) saturate(1.5);
+  --glass-default-highlight: rgba(255, 255, 255, 0.1);
+
+  --glass-strong-bg: rgba(34, 34, 32, 0.76);
+  --glass-strong-border: rgba(255, 255, 255, 0.1);
+  --glass-strong-shadow: 0 2px 8px rgba(0, 0, 0, 0.28), 0 18px 42px rgba(0, 0, 0, 0.24);
+  --glass-strong-blur: blur(30px) saturate(1.6);
+  --glass-strong-highlight: rgba(255, 255, 255, 0.12);
+
+  --glass-bg: var(--glass-default-bg);
+  --glass-border: var(--glass-default-border);
+  --glass-shadow: var(--glass-default-shadow);
+  --glass-blur: var(--glass-default-blur);
+  --glass-highlight: var(--glass-default-highlight);
+
+  /* Glass scrolled, dark */
+  --glass-scrolled: rgba(32, 32, 30, 0.82);
+  --glass-scrolled-border: rgba(255, 255, 255, 0.11);
+  --glass-scrolled-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 14px 36px rgba(0,0,0,0.24);
+}
+
+/* OS preference fallback when JS is disabled */
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme]) {
+    --bg:       #111110;
+    --bg-alt:   #1A1918;
+    --surface:  #222220;
+    --ink:      #EDEDEC;
+    --ink-70:   rgba(237,237,236,0.7);
+    --ink-50:   rgba(237,237,236,0.62);
+    --ink-40:   rgba(237,237,236,0.56);
+    --ink-30:   rgba(237,237,236,0.52);
+    --ink-15:   rgba(237,237,236,0.15);
+    --ink-12:   rgba(237,237,236,0.12);
+    --ink-08:   rgba(237,237,236,0.08);
+    --ink-06:   rgba(237,237,236,0.06);
+    --ink-04:   rgba(237,237,236,0.04);
+    color-scheme: dark;
+    --glass-subtle-bg: rgba(28, 28, 28, 0.44);
+    --glass-subtle-border: rgba(255, 255, 255, 0.07);
+    --glass-subtle-shadow: 0 1px 2px rgba(0, 0, 0, 0.2), 0 8px 24px rgba(0, 0, 0, 0.18);
+    --glass-subtle-blur: blur(16px) saturate(1.35);
+    --glass-subtle-highlight: rgba(255, 255, 255, 0.08);
+    --glass-default-bg: rgba(30, 30, 30, 0.6);
+    --glass-default-border: rgba(255, 255, 255, 0.08);
+    --glass-default-shadow: 0 1px 3px rgba(0, 0, 0, 0.22), 0 12px 32px rgba(0, 0, 0, 0.18);
+    --glass-default-blur: blur(22px) saturate(1.5);
+    --glass-default-highlight: rgba(255, 255, 255, 0.1);
+    --glass-strong-bg: rgba(34, 34, 32, 0.76);
+    --glass-strong-border: rgba(255, 255, 255, 0.1);
+    --glass-strong-shadow: 0 2px 8px rgba(0, 0, 0, 0.28), 0 18px 42px rgba(0, 0, 0, 0.24);
+    --glass-strong-blur: blur(30px) saturate(1.6);
+    --glass-strong-highlight: rgba(255, 255, 255, 0.12);
+    --glass-bg: var(--glass-default-bg);
+    --glass-border: var(--glass-default-border);
+    --glass-shadow: var(--glass-default-shadow);
+    --glass-blur: var(--glass-default-blur);
+    --glass-highlight: var(--glass-default-highlight);
+  }
+}
+
+/* Dark mode element overrides */
+[data-theme="dark"] .grain {
+  mix-blend-mode: soft-light;
+  opacity: 0.12;
+}
+[data-theme="dark"] .dot-grid {
+  background-image: radial-gradient(circle, rgba(237,237,236,0.05) 1px, transparent 1px);
+}
+/* The nav bar itself stays transparent in all themes — individual pills and
+   buttons carry their own glass surfaces, so no full-width overlay is needed. */
+/* Footer is always dark, no theme override needed */
+[data-theme="dark"] .footer {
+  background: var(--footer-dark);
+  color: var(--accent);
+}
+[data-theme="dark"] :focus-visible {
+  outline-color: rgba(237,237,236,0.65);
+}
+/* Subtle brightness reduction only on project/content images — not logos or brand assets */
+[data-theme="dark"] :is(.pcard-visual, .cs-img, .cs-img-full, .cs-slide, .proj-hero-img) img {
+  filter: brightness(0.92);
+}
+/* Dark mode: elevate cards with stronger borders since shadows are invisible on dark bg */
+[data-theme="dark"] .pcard,
+[data-theme="dark"] .pcard-text,
+[data-theme="dark"] .cs-feature-card,
+[data-theme="dark"] .cs-stat-card,
+[data-theme="dark"] .cs-quote-card,
+[data-theme="dark"] .cs-details,
+[data-theme="dark"] .cs-swatch {
+  border-color: var(--ink-12);
+  box-shadow: var(--shadow-md);
+}
+[data-theme="dark"] .pcard:hover,
+[data-theme="dark"] .pcard-text:hover,
+[data-theme="dark"] .cs-feature-card:hover {
+  border-color: var(--ink-15);
+  box-shadow: var(--shadow-hover);
+}
+
+/* --- Theme toggle --- */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius);
+  border: 1px solid var(--ink-08);
+  color: var(--ink-40);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+  flex-shrink: 0;
+  background: none;
+  padding: 0;
+  /* Touch target: visual 36px, but padding ensures 44px hit area */
+  position: relative;
+}
+.theme-toggle::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: var(--radius-lg);
+}
+.theme-toggle:hover {
+  color: var(--ink);
+  border-color: var(--ink-15);
+  background: var(--ink-04);
+}
+.theme-toggle svg {
+  width: 16px;
+  height: 16px;
+}
+.theme-icon-moon { display: block; }
+.theme-icon-sun { display: none; }
+[data-theme="dark"] .theme-icon-moon { display: none; }
+[data-theme="dark"] .theme-icon-sun { display: block; }
+.theme-toggle svg {
+  transition: transform var(--dur-slow) var(--ease-spring), opacity var(--dur-base);
+}
+.theme-toggle:active svg {
+  transform: rotate(90deg) scale(0.8);
+}
+.theme-toggle--mobile { display: none; margin-right: 1rem; }
+@media (max-width: 768px) {
+  .theme-toggle--mobile { display: flex; }
+}
+
+/* Resolve against the body-level ruler preference before descendants inherit it. */
+body { --page-inline-inset: max(var(--chrome-inline), calc(var(--ruler-inline-offset, 0px) + .75rem)); }

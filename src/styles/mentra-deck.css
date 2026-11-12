@@ -1,0 +1,30 @@
+/* Original Mentra deck assets stay uncropped and readable. */
+.project-main--mentra-visual .mentra-deck-comparison .cs-img-full img {
+  max-height: 540px;
+  object-fit: contain;
+}
+.project-main--mentra-visual .mentra-deck-explorations {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.project-main--mentra-visual .mentra-deck-explorations .cs-img-full img {
+  max-height: 440px;
+  object-fit: contain;
+}
+.project-main--mentra-visual .mentra-deck-explorations .cs-img-full,
+.project-main--mentra-visual .mentra-deck-comparison .cs-img-full { margin: 0; min-width: 0; }
+@media (max-width: 600px) {
+  .project-main--mentra-visual .mentra-deck-explorations {
+    grid-template-columns: repeat(3, minmax(240px, 75%));
+    overflow-x: auto;
+    scroll-snap-type: x proximity;
+    padding-bottom: 12px;
+  }
+  .project-main--mentra-visual .mentra-deck-explorations > figure { scroll-snap-align: start; }
+}
+.project-main--mentra-visual :is(.mentra-deck-comparison, .mentra-deck-explorations) .cs-img-caption {
+  color: #505652;
+  opacity: 1;
+}
+[data-theme="dark"] .project-main--mentra-visual :is(.mentra-deck-comparison, .mentra-deck-explorations) .cs-img-caption {
+  color: #c3c9c5;
+}

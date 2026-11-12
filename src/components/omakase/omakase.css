@@ -1,0 +1,51 @@
+.om-arcade { color:var(--ink); width:100%; }
+.om-intro { display:flex; gap:32px; align-items:start; margin:16px 0 28px; }
+.om-intro > p:first-child { font:400 clamp(26px,3vw,40px)/1.15 var(--serif); flex:1; margin:0; }
+.om-intro > p:last-child { flex:1; max-width:48ch; line-height:1.65; margin:0; color:var(--ink-70); }
+.om-cabinet { max-width:1100px; margin:auto; padding:0 16px; background:#b99566; border:1px solid #8d704b; border-radius:5px 5px 2px 2px; color:#241b12; }
+.om-marquee { min-height:100px; display:flex; align-items:center; justify-content:space-between; gap:20px; padding:22px 20px; border-bottom:2px solid #8d704b; }
+.om-marquee strong { font:800 clamp(23px,4vw,52px)/1.1 var(--mono); letter-spacing:-.055em; }
+.om-marquee small { font:11px var(--mono); max-width:8ch; }
+.om-bezel { padding:22px 22px 30px; background:#c9a978; }
+.om-screen { position:relative; aspect-ratio:16/9; background:#191716; border:9px solid #242424; border-radius:4px; overflow:hidden; }
+.om-screen iframe,.om-screen > img { position:absolute; inset:0; width:100%; height:100%; border:0; object-fit:cover; }
+.om-start { position:absolute; inset:0; display:flex; justify-content:end; align-items:center; flex-direction:column; gap:10px; padding:30px 12px; background:linear-gradient(transparent 30%,#000d); color:#fff; }
+.om-start button { min-height:48px; padding:12px 22px; background:#f4eee4; color:#211b15; border:1px solid #fff; border-radius:4px; cursor:pointer; font:600 16px var(--sans); }
+.om-start > span { font:12px var(--sans); }
+.om-control-deck { display:grid; grid-template-columns:1fr 1fr; gap:32px; padding:26px 30px 20px; border-top:3px solid #ead2ad; border-bottom:8px solid #947249; background:#d7b98a; }
+.om-player h2 { font:500 12px var(--mono); text-transform:uppercase; margin:0 0 18px; }
+.om-keys { display:grid; grid-template-columns:repeat(4,42px); gap:8px 12px; }
+.om-keys kbd { display:grid; place-items:center; width:42px; height:36px; border-radius:50%; background:#eeeae0; border:3px solid #9b9a91; border-bottom:5px solid #73756f; color:#1c1c1c; font:600 14px var(--mono); }
+.om-player p { font:12px/1.8 var(--sans); margin:14px 0 0; }
+.om-player p kbd { font-weight:700; }
+.om-cabinet-footer { display:flex; justify-content:space-between; gap:20px; font:10px/1.6 var(--mono); padding:12px 16px; }
+.om-session { margin:20px 0 28px; }
+.om-session > p { font-size:14px; line-height:1.6; min-height:2em; color:var(--ink-70); }
+.om-session > div { display:flex; flex-wrap:wrap; gap:8px; }
+.om-session :is(button,a) { display:inline-flex; align-items:center; min-height:44px; padding:10px 15px; border:1px solid var(--ink-20); background:transparent; border-radius:4px; color:var(--ink); font:14px var(--sans); cursor:pointer; text-decoration:none; }
+.om-arcade :is(button,a,summary):focus-visible { outline:2px solid currentColor; outline-offset:4px; }
+.om-arcade details { border-top:1px solid var(--ink-15); padding:18px 0; }
+.om-arcade summary { cursor:pointer; padding:8px 0; }
+.om-rules p { line-height:1.75; max-width:82ch; }
+.om-arcade a { color:inherit; }
+.om-evidence > div { display:grid; grid-template-columns:1fr 1fr; gap:24px; margin-top:20px; }
+.om-evidence figure { margin:0; }
+.om-evidence img { width:100%; height:320px; object-fit:contain; background:var(--ink-06); }
+.om-evidence figcaption { font-size:13px; line-height:1.6; margin-top:12px; color:var(--ink-70); }
+.om-exit { position:absolute; z-index:2; top:16px; right:16px; min-height:44px; padding:10px 16px; color:#fff; background:#242424; border:1px solid #888; border-radius:4px; cursor:pointer; }
+.om-cabinet:fullscreen { width:100vw; max-width:none; height:100vh; padding:12px; overflow:auto; background:#191716; }
+.om-cabinet:fullscreen .om-marquee,.om-cabinet:fullscreen .om-control-deck,.om-cabinet:fullscreen .om-cabinet-footer { display:none; }
+.om-cabinet:fullscreen .om-bezel { background:transparent; height:100%; padding:0; display:grid; place-items:center; }
+.om-cabinet:fullscreen .om-screen { width:min(calc((100vh - 24px)*16/9),100%); max-height:100%; border:0; }
+@media(max-width:600px) { .om-intro { flex-direction:column; gap:14px; }.om-cabinet{padding:0 7px}.om-marquee{min-height:68px;padding:16px 6px;gap:8px}.om-marquee small{font-size:9px}.om-bezel{padding:10px 5px 16px}.om-screen{border-width:5px}.om-start{padding:12px 4px;gap:5px}.om-start button{font-size:14px;padding:10px 12px}.om-start > span{font-size:10px}.om-control-deck{padding:18px 12px;gap:15px}.om-keys{grid-template-columns:repeat(4,30px);gap:7px}.om-keys kbd{width:30px;height:28px;font-size:12px}.om-cabinet-footer{font-size:9px;padding:10px 5px}.om-evidence > div{grid-template-columns:1fr} }
+
+/* The photographed plywood cabinet surrounds an undistorted hosted game. */
+.om-cabinet { position:relative; border-inline-width:10px; border-bottom-width:18px; background:#b99566; box-shadow:inset 0 0 0 1px #ead2ad; }
+.om-marquee { border:1px solid #8d704b; margin-top:12px; background:#dfc69e; }
+.om-bezel { border-inline:2px solid #8d704b; }
+.om-control-deck { position:relative; box-shadow:inset 0 2px 0 #f5dfbd; }
+.om-control-deck::before,.om-control-deck::after { content:'';position:absolute;width:5px;height:5px;border:1px solid #6d5840;border-radius:50%;top:9px;background:#b4b0a3; }
+.om-control-deck::before {left:9px}.om-control-deck::after {right:9px}
+.om-keys kbd { box-sizing:border-box; height:42px; aspect-ratio:1; border-radius:50%; box-shadow:0 3px 0 #605b51,inset 0 2px 2px #fff9; }
+.om-cabinet-footer { min-height:42px; align-items:center; }
+@media(max-width:600px){.om-cabinet{border-inline-width:5px;border-bottom-width:12px}.om-keys{grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}.om-keys kbd{width:100%;height:auto;aspect-ratio:1;min-width:0;font-size:11px}.om-control-deck{gap:16px;padding-inline:8px}.om-player{min-width:0}}

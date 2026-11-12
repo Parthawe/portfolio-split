@@ -1,0 +1,814 @@
+@font-face {
+  font-family: 'Butlers Slice';
+  src: url("/Assets/Projects/Typeface/butlers-slice/Butler's_Slice-UltraLight.woff2") format('woff2'),
+       url("/Assets/Projects/Typeface/butlers-slice/Butler's_Slice-UltraLight.woff") format('woff');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Butlers Slice';
+  src: url("/Assets/Projects/Typeface/butlers-slice/Butler's_Slice.woff2") format('woff2'),
+       url("/Assets/Projects/Typeface/butlers-slice/Butler's_Slice.woff") format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Butlers Slice';
+  src: url("/Assets/Projects/Typeface/butlers-slice/Butler's_Slice-Bold.woff2") format('woff2'),
+       url("/Assets/Projects/Typeface/butlers-slice/Butler's_Slice-Bold.woff") format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.typeface-page {
+  --project-color: oklch(0.56 0.19 252);
+  --tf-bg: oklch(0.975 0.006 85);
+  --tf-panel: oklch(0.992 0.005 85);
+  --tf-panel-strong: oklch(0.185 0.012 260);
+  --tf-line: oklch(0.82 0.012 85 / 0.72);
+  --tf-muted: oklch(0.48 0.015 260);
+  --tf-slice: 'Butlers Slice', 'General Sans', serif;
+  background: var(--tf-bg);
+  color: var(--ink);
+}
+
+.typeface-page::before {
+  opacity: 0.42;
+}
+
+.typeface-page .project-header--typeface .proj-visual-title {
+  max-width: min(100%, 72rem);
+  gap: clamp(1rem, 2vw, 1.5rem);
+}
+
+.typeface-page .project-header--typeface .proj-visual-title__name {
+  color: rgba(250, 253, 251, 0.98);
+  font-family: var(--tf-slice);
+  font-size: clamp(4.5rem, 11vw, 10.5rem);
+  font-weight: 400;
+  line-height: 0.82;
+  letter-spacing: 0;
+}
+
+.typeface-page .project-header--typeface .proj-visual-title__deck {
+  max-width: 42ch;
+  color: rgba(250, 253, 251, 0.76);
+  font-family: var(--sans);
+  font-size: clamp(1.15rem, 1.8vw, 1.55rem);
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+.tf-specimen-section,
+.tf-section,
+.tf-split-section,
+.tf-tool-section,
+.tf-download-section {
+  width: min(100% - clamp(2rem, 7vw, 8rem), 1480px);
+  margin-inline: auto;
+}
+
+.tf-specimen-section {
+  padding: clamp(1rem, 3vw, 2.5rem) 0 clamp(3rem, 7vw, 6rem);
+}
+
+.tf-hero-shell {
+  display: grid;
+  gap: clamp(1.5rem, 3vw, 2.25rem);
+}
+
+.tf-kicker-row,
+.tf-specimen-footer,
+.tf-section-kicker,
+.tf-card-label,
+.tf-metric span,
+.tf-feature-card span,
+.tf-weight-row span,
+.tf-weight-row em,
+.tf-download-link,
+.tf-primary-download,
+.tf-back-link,
+.tf-toolbar-group > span,
+.tf-image-grid figcaption {
+  font-family: var(--mono);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+}
+
+.tf-kicker-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: var(--text-2xs);
+  color: var(--ink-40);
+}
+
+.tf-kicker-row > * {
+  min-height: 2rem;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--ink-08);
+  border-radius: var(--radius-pill);
+  padding: 0.42rem 0.75rem;
+  background: var(--tf-panel);
+}
+
+.tf-back-link {
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.tf-back-link:hover {
+  border-color: var(--project-color);
+  color: var(--project-color);
+}
+
+.tf-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 380px);
+  gap: clamp(2rem, 5vw, 5rem);
+  align-items: end;
+}
+
+.tf-hero h1,
+.tf-section h2,
+.tf-split-copy h2,
+.tf-tool-intro h2,
+.tf-download-section h2 {
+  margin: 0;
+  color: var(--ink);
+  letter-spacing: 0;
+}
+
+.tf-hero h1 {
+  font-family: var(--tf-slice);
+  font-size: clamp(4.5rem, 11.5vw, 13rem);
+  font-weight: 400;
+  line-height: 0.9;
+  text-wrap: balance;
+  overflow-wrap: normal;
+  hyphens: none;
+}
+
+.tf-lede {
+  max-width: 34rem;
+  margin: 0;
+  color: var(--ink-70);
+  font-size: clamp(1.15rem, 1.7vw, 1.7rem);
+  line-height: 1.42;
+}
+
+.tf-font-card {
+  display: grid;
+  gap: 1.25rem;
+  border: 1px solid var(--ink-08);
+  border-radius: 8px;
+  padding: 1.1rem;
+  background: var(--tf-panel-strong);
+  color: oklch(0.95 0.006 85);
+  box-shadow: 0 20px 70px oklch(0.15 0.012 260 / 0.14);
+}
+
+.tf-font-card > div {
+  display: grid;
+  gap: 0.25rem;
+  border-bottom: 1px solid oklch(1 0 0 / 0.1);
+  padding-bottom: 1rem;
+}
+
+.tf-card-label {
+  font-size: 1rem;
+  color: oklch(0.78 0.012 260);
+}
+
+.tf-font-card strong {
+  font-size: 1.12rem;
+  font-weight: 600;
+}
+
+.tf-download-link,
+.tf-primary-download {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: var(--text-xs);
+  font-weight: 700;
+}
+
+.tf-download-link {
+  background: oklch(0.95 0.008 85);
+  color: var(--tf-panel-strong);
+}
+
+.tf-live-specimen {
+  overflow: hidden;
+  border: 1px solid var(--ink-08);
+  border-radius: 10px;
+  background:
+    linear-gradient(90deg, var(--ink-04) 1px, transparent 1px),
+    linear-gradient(0deg, var(--ink-04) 1px, transparent 1px),
+    var(--tf-panel);
+  background-size: 52px 52px;
+  box-shadow: inset 0 1px 0 oklch(1 0 0 / 0.68);
+}
+
+.tf-specimen-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  border-bottom: 1px solid var(--ink-08);
+  padding: 0.85rem;
+  background: oklch(0.965 0.006 85 / 0.78);
+  backdrop-filter: blur(10px);
+}
+
+.tf-toolbar-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.tf-toolbar-group > span {
+  font-size: 1rem;
+  color: var(--ink-40);
+}
+
+.tf-chip-row {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.tf-chip-row button {
+  min-height: 44px;
+  border: 1px solid var(--ink-06);
+  border-radius: 6px;
+  padding: 0.35rem 0.7rem;
+  background: var(--surface);
+  color: var(--ink-60);
+  font-family: var(--sans);
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.tf-chip-row button:hover {
+  border-color: var(--project-color);
+  color: var(--ink);
+}
+
+.tf-chip-row button.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.tf-specimen-word {
+  margin: 0;
+  padding: clamp(4rem, 10vw, 9rem) clamp(1rem, 5vw, 5rem) clamp(3.2rem, 8vw, 7rem);
+  color: var(--ink);
+  font-size: clamp(5rem, 18vw, 19rem);
+  line-height: 0.8;
+  letter-spacing: -0.025em;
+  overflow-wrap: anywhere;
+}
+
+.tf-specimen-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  border-top: 1px solid var(--ink-08);
+  padding: 0.85rem 1rem;
+  color: var(--ink-40);
+  font-size: var(--text-2xs);
+}
+
+.tf-section {
+  padding: clamp(4rem, 8vw, 8rem) 0;
+}
+
+.tf-section-head {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.24fr) minmax(0, 0.76fr);
+  gap: clamp(1rem, 4vw, 5rem);
+  align-items: start;
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+
+.tf-section-kicker {
+  margin: 0;
+  color: var(--project-color);
+  font-size: var(--text-xs);
+  font-weight: 700;
+}
+
+.tf-section h2,
+.tf-split-copy h2,
+.tf-tool-intro h2,
+.tf-download-section h2 {
+  max-width: 13ch;
+  font-family: var(--tf-slice);
+  font-size: clamp(3.2rem, 9vw, 10rem);
+  font-weight: 400;
+  line-height: 0.86;
+}
+
+.tf-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border: 1px solid var(--ink-08);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.tf-metric {
+  min-height: 13rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: clamp(1rem, 2vw, 1.6rem);
+  background: var(--tf-panel);
+}
+
+.tf-metric:not(:last-child) {
+  border-right: 1px solid var(--ink-08);
+}
+
+.tf-metric span,
+.tf-feature-card span,
+.tf-image-grid figcaption,
+.tf-weight-row em,
+.tf-weight-row span {
+  font-size: var(--text-2xs);
+  color: var(--ink-40);
+  font-style: normal;
+}
+
+.tf-metric strong {
+  color: var(--ink);
+  font-size: clamp(2rem, 4vw, 4.3rem);
+  font-weight: 600;
+  line-height: 0.95;
+}
+
+.tf-metric p,
+.tf-feature-card p,
+.tf-split-copy p,
+.tf-tool-intro p,
+.tf-download-section p {
+  margin: 0;
+  color: var(--ink-60);
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  line-height: 1.55;
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+.tf-image-stage,
+.tf-image-grid {
+  width: min(100% - clamp(2rem, 7vw, 8rem), 1480px);
+  margin-inline: auto;
+}
+
+.tf-image-stage {
+  padding: 0 0 clamp(4rem, 8vw, 8rem);
+}
+
+.tf-image-stage img,
+.tf-image-grid img {
+  width: 100%;
+  display: block;
+  border: 1px solid var(--ink-08);
+  border-radius: 8px;
+  background: var(--surface);
+  object-fit: cover;
+}
+
+.tf-image-stage img {
+  aspect-ratio: 16 / 9;
+}
+
+.tf-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  overflow: hidden;
+  border: 1px solid var(--ink-08);
+  border-radius: 8px;
+  background: var(--ink-08);
+}
+
+.tf-feature-card {
+  display: grid;
+  align-content: start;
+  gap: 1rem;
+  min-height: 17rem;
+  padding: clamp(1.15rem, 2vw, 1.7rem);
+  background: var(--tf-panel);
+}
+
+.tf-feature-card h3 {
+  margin: 0;
+  color: var(--ink);
+  font-size: clamp(1.25rem, 1.6vw, 1.65rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.tf-split-section {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.65fr);
+  gap: clamp(2rem, 4vw, 5rem);
+  align-items: center;
+  padding: clamp(4rem, 8vw, 8rem) 0;
+  border-top: 1px solid var(--ink-08);
+  border-bottom: 1px solid var(--ink-08);
+}
+
+/* A split section nested inside a tf-section inherits the parent's width —
+   without this it gets the page-width formula applied twice and collapses. */
+.tf-section .tf-split-section {
+  width: 100%;
+  margin-inline: 0;
+  padding-bottom: 0;
+  border-bottom: 0;
+  border-top: 0;
+}
+
+.tf-split-copy {
+  display: grid;
+  gap: 1.4rem;
+}
+
+.tf-weight-stack {
+  display: grid;
+  border: 1px solid var(--ink-08);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--surface);
+}
+
+.tf-weight-row {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr) 4rem;
+  align-items: baseline;
+  gap: 1rem;
+  border-bottom: 1px solid var(--ink-08);
+  padding: 1rem 1.2rem;
+}
+
+.tf-weight-row:last-child {
+  border-bottom: 0;
+}
+
+.tf-weight-row strong {
+  font-family: var(--tf-slice);
+  color: var(--ink);
+  font-size: clamp(3rem, 7vw, 7rem);
+  line-height: 0.85;
+  font-weight: 400;
+}
+
+.tf-image-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.4rem);
+  padding: clamp(4rem, 8vw, 8rem) 0;
+}
+
+.tf-image-grid figure {
+  display: grid;
+  gap: 0.6rem;
+  margin: 0;
+}
+
+.tf-image-grid img {
+  aspect-ratio: 4 / 3;
+}
+
+.tf-glyph-board {
+  display: grid;
+  gap: 0;
+  overflow: hidden;
+  border: 1px solid var(--ink-08);
+  border-radius: 8px;
+  background: var(--tf-panel);
+}
+
+.tf-glyph-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(2.4rem, 1fr));
+  border-bottom: 1px solid var(--ink-08);
+}
+
+.tf-glyph-row:last-child {
+  border-bottom: 0;
+}
+
+.tf-glyph-row span {
+  font-family: var(--tf-slice);
+  min-height: clamp(3.2rem, 5vw, 5.5rem);
+  display: grid;
+  place-items: center;
+  border-right: 1px solid var(--ink-04);
+  color: var(--ink-70);
+  font-size: clamp(1.75rem, 4vw, 4rem);
+  line-height: 1;
+}
+
+.tf-glyph-row span:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.tf-tool-section {
+  padding: clamp(4rem, 8vw, 8rem) 0;
+}
+
+.tf-tool-intro {
+  display: grid;
+  justify-items: start;
+  gap: clamp(0.75rem, 1.6vw, 1.25rem);
+  margin-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+
+.tf-tool-intro p {
+  max-width: 42rem;
+}
+
+.typeface-page .glyph-playground,
+.typeface-page .glyph-editor {
+  margin-bottom: 0;
+}
+
+.typeface-page .glyph-playground > .wrap,
+.typeface-page .glyph-editor > .wrap {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+
+.typeface-page .gp-controls,
+.typeface-page .ge-controls,
+.typeface-page .gp-preview,
+.typeface-page .gp-glyph-detail,
+.typeface-page .ge-canvas-wrap,
+.typeface-page .ge-chars {
+  border-color: var(--ink-08);
+  border-radius: 8px;
+  background-color: var(--tf-panel);
+}
+
+.typeface-page .gp-input,
+.typeface-page .gp-preview-text,
+.typeface-page .gp-glyph-large,
+.typeface-page .gp-alphabet-char,
+.typeface-page .ge-char-input,
+.typeface-page .ge-info-char,
+.typeface-page .ge-char-btn {
+  font-family: var(--tf-slice);
+}
+
+.typeface-page .ge-canvas-wrap {
+  border-radius: 0;
+}
+
+.typeface-page .ge-chars {
+  border-radius: 0 0 8px 8px;
+}
+
+.tf-download-section {
+  min-height: 76vh;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  justify-items: center;
+  gap: 1.2rem;
+  padding: clamp(5rem, 10vw, 10rem) 0;
+  text-align: center;
+}
+
+.tf-download-section h2 {
+  max-width: 9ch;
+  font-size: clamp(4.2rem, 14vw, 15rem);
+}
+
+.tf-download-section p {
+  max-width: 48rem;
+}
+
+.tf-primary-download {
+  min-width: min(100%, 22rem);
+  margin-top: 1rem;
+  border: 1px solid var(--ink);
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.tf-primary-download:hover,
+.tf-download-link:hover {
+  transform: translateY(-1px);
+}
+
+@media (min-width: 1024px) {
+  body.case-side-nav .typeface-page > :is(
+    .tf-specimen-section,
+    .tf-section,
+    .tf-split-section,
+    .tf-tool-section,
+    .tf-download-section,
+    .tf-image-stage,
+    .tf-image-grid
+  ) {
+    width: min(calc(100% - clamp(2rem, 7vw, 8rem) - 16rem), 1320px);
+    margin-left: clamp(1rem, 5.5vw, 5rem);
+    margin-right: auto;
+  }
+}
+
+body.site-tools-open .typeface-page > :is(
+  .tf-specimen-section,
+  .tf-section,
+  .tf-split-section,
+  .tf-tool-section,
+  .tf-download-section,
+  .tf-image-stage,
+  .tf-image-grid
+) {
+  width: min(100% - 2rem, 960px);
+  margin-inline: auto;
+}
+
+body.site-tools-open .typeface-page :is(.tf-hero-grid, .tf-section-head, .tf-split-section, .tf-tool-intro) {
+  grid-template-columns: minmax(0, 1fr);
+  gap: clamp(1rem, 3vw, 2rem);
+}
+
+body.site-tools-open .typeface-page :is(.tf-section h2, .tf-split-copy h2, .tf-tool-intro h2, .tf-download-section h2) {
+  max-width: min(12ch, 100%);
+  font-size: clamp(2.4rem, 7vw, 5.5rem);
+}
+
+body.site-tools-open .typeface-page :is(.tf-lede, .tf-split-copy p, .tf-tool-intro p, .tf-download-section p) {
+  max-width: min(44rem, 100%);
+}
+
+body.site-tools-open .typeface-page .tf-split-section figure {
+  max-width: min(38rem, 100%);
+}
+
+body.site-tools-open .typeface-page .tf-feature-grid,
+body.site-tools-open .typeface-page .tf-metric-grid,
+body.site-tools-open .typeface-page .tf-image-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+[data-theme="dark"] .typeface-page {
+  --tf-bg: oklch(0.16 0.01 260);
+  --tf-panel: oklch(0.205 0.012 260);
+  --tf-panel-strong: oklch(0.925 0.008 85);
+  --tf-line: oklch(0.38 0.016 260 / 0.72);
+}
+
+[data-theme="dark"] .tf-font-card {
+  color: oklch(0.18 0.012 260);
+}
+
+[data-theme="dark"] .tf-card-label {
+  color: oklch(0.4 0.014 260);
+}
+
+[data-theme="dark"] .tf-download-link {
+  background: oklch(0.17 0.012 260);
+  color: oklch(0.94 0.008 85);
+}
+
+@media (max-width: 1100px) {
+  .tf-hero-grid,
+  .tf-split-section,
+  .tf-tool-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .tf-font-card {
+    max-width: 440px;
+  }
+
+  .tf-section-head {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 820px) {
+  .tf-specimen-section,
+  .tf-section,
+  .tf-split-section,
+  .tf-tool-section,
+  .tf-download-section,
+  .tf-image-stage,
+  .tf-image-grid {
+    width: min(100% - 1.5rem, 1480px);
+  }
+
+  .tf-hero h1 {
+    font-size: clamp(4.2rem, 21vw, 8rem);
+  }
+
+  .tf-specimen-word {
+    font-size: clamp(4.2rem, 24vw, 9rem);
+  }
+
+  .tf-metric-grid,
+  .tf-feature-grid,
+  .tf-image-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tf-metric:not(:last-child) {
+    border-right: 0;
+    border-bottom: 1px solid var(--ink-08);
+  }
+
+  .tf-weight-row {
+    grid-template-columns: 1fr;
+    gap: 0.45rem;
+  }
+
+  .tf-glyph-row {
+    grid-template-columns: repeat(auto-fit, minmax(2rem, 1fr));
+  }
+}
+
+@media (max-width: 520px) {
+  .typeface-page .project-header--typeface .proj-visual-title__name {
+    font-size: clamp(3.75rem, 19vw, 6.5rem);
+  }
+
+  .tf-specimen-toolbar,
+  .tf-specimen-footer {
+    display: grid;
+  }
+
+  .tf-chip-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .tf-chip-row button {
+    width: 100%;
+  }
+
+  .tf-live-specimen {
+    border-radius: 8px;
+  }
+
+  .tf-specimen-word {
+    padding-inline: 0.85rem;
+    letter-spacing: -0.015em;
+    font-size: clamp(3.7rem, 22vw, 6.6rem);
+  }
+
+  .typeface-page .gp-preview {
+    overflow-x: hidden;
+  }
+
+  .typeface-page .gp-preview-text {
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .typeface-page .ge-char-btn {
+    flex-basis: calc(100% / 8);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tf-primary-download:hover,
+  .tf-download-link:hover {
+    transform: none;
+  }
+}
+
+/* Keep the display font in specimens; the case study uses the site’s reading type. */
+.typeface-page :is(.tf-section h2,.tf-split-copy h2,.tf-tool-intro h2,.tf-download-section h2,.tf-feature-card h3){font-family:var(--serif);font-weight:400;letter-spacing:-.025em}
+.typeface-page :is(.tf-split-copy p,.tf-feature-card p,.tf-download-section p,.tf-tool-intro p,.tf-metric p){font-family:var(--sans);font-size:clamp(16px,1.2vw,18px);line-height:1.75}
+.typeface-page .proj-visual-title__deck {color:var(--ink-70)}
+.tf-specimen-input {display:grid;gap:8px;margin:24px 0;font:13px var(--sans);color:var(--ink-70)}
+.tf-specimen-input input {font:16px var(--sans);padding:12px;border:1px solid var(--ink-20);background:var(--ink-04);color:var(--ink);border-radius:var(--radius-sm);width:100%;box-sizing:border-box}
+.tf-specimen-word {white-space:normal;overflow-wrap:anywhere;word-break:normal;font-size:clamp(52px,9vw,140px);line-height:1.18;min-height:1.2em;font-synthesis:none}
+.tf-font-status{font:12px/1.6 var(--sans);color:var(--ink-70)}
+.tf-download-section h2 {font-size:clamp(34px,5vw,64px)}
+.tf-primary-download.glass-action {font:14px var(--sans);min-height:44px;padding:10px 16px;border-radius:var(--radius-sm)}

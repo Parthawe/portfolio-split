@@ -1,0 +1,61 @@
+/* ================================================
+   BACKWARDS COMPAT, old class names still in HTML
+   ================================================ */
+/* Hero v2 classes from index.html, remap to new hero */
+/* CTA v2 from existing pages, restyle as new CTA */
+.cta-v2 {
+  padding: var(--space-12) 0;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  background: var(--bg);
+}
+.cta-v2-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.cta-v2-headline {
+  font-family: var(--sans);
+  font-size: var(--text-base);
+  font-weight: 400;
+  color: var(--ink-40);
+  margin-bottom: var(--space-3);
+}
+.cta-v2-btn {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 300;
+  color: var(--ink);
+  text-decoration: underline;
+  text-decoration-color: var(--ink-15);
+  text-underline-offset: 6px;
+  transition: text-decoration-color 0.4s var(--ease-spring), letter-spacing 0.4s;
+  background: none;
+  border: none;
+  padding: 0;
+  border-radius: 0;
+  box-shadow: none;
+  display: inline;
+}
+.cta-v2-btn:hover {
+  text-decoration-color: var(--ink);
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+/* SVG arrow hidden by default, shown on landing page CTAs via lp- selectors */
+.cta-v2-btn svg { display: none; }
+.cta-v2-inner:has(.lp-cta-headline) .cta-v2-btn svg {
+  display: inline-block !important;
+  margin-left: var(--space-2);
+  vertical-align: middle;
+  transition: transform 0.25s;
+}
+.cta-v2-inner:has(.lp-cta-headline) .cta-v2-btn:hover svg {
+  transform: translate(3px, -3px);
+}
+
+@media (max-width: 480px) {
+  .cta-v2 { padding: var(--space-8) 0; }
+  .cta-v2-btn { font-size: clamp(1.2rem, 5vw, 1.8rem); }
+}

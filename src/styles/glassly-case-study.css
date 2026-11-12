@@ -1,0 +1,19 @@
+.glassly-case-section { padding-block: clamp(36px, 5vw, 72px); scroll-margin-top: 100px; }
+.glassly-case-section + .glassly-case-section { border-top: 1px solid var(--ink-10); }
+.glassly-case-section h2 { margin-bottom: 20px; font-size: clamp(28px, 3vw, 42px); }
+.glassly-case-intro { max-width: 65ch; margin-bottom: 28px; line-height: 1.65; }
+.project-main.project-main--glassly :is(.glassly-case-section, .proj-visual-hero) img { filter: none; }
+.glassly-case-section .cs-img-full { margin-block: 24px; }
+.project-main--glassly .glassly-case-section .cs-img-full img { width: 100%; height: auto; max-height: none; object-fit: contain; }
+.glassly-case-note { color: var(--ink-60); font-size: 14px; line-height: 1.6; margin-block: 16px; }
+.glassly-case-demo > img { display: block; width: 100%; height: auto; }
+.glassly-case-actions { display: flex; gap: 20px; align-items: center; flex-wrap: wrap; padding-block: 20px; }
+.glassly-case-actions :is(button,a), .glassly-case-demo__unload { min-height: 44px; padding: 12px 18px; }
+.glassly-case-actions button, .glassly-case-demo__unload { background: #004dfc; color: white; border: 0; border-radius: 6px; font: inherit; cursor: pointer; }
+.glassly-case-demo__frame { position: relative; margin-bottom: 68px; background: #061633; }
+.glassly-case-demo iframe { display: block; width: 100%; border: 0; }
+.glassly-case-demo__loading { position: absolute; inset: 0; overflow: hidden; color: white; }
+.glassly-case-demo__loading img { width: 100%; opacity: .6; }
+.glassly-case-demo__loading p { position: absolute; top: 24px; left: 24px; margin: 0; background: #061633; padding: 12px; }
+.glassly-case-demo__unload { position: absolute; top: 100%; margin-top: 12px; }
+.glassly-case-actions :is(button,a):focus-visible, .glassly-case-demo__unload:focus-visible { outline: 2px solid var(--ink); outline-offset: 4px; }

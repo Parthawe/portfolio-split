@@ -1,0 +1,268 @@
+/* ══════════════════════════════════════
+   Glyph Editor — interactive vector point editor
+   ══════════════════════════════════════ */
+
+.glyph-editor {
+  padding: 0;
+  margin-bottom: var(--space-12);
+}
+
+/* ── Controls bar ── */
+.ge-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 1.5rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--surface);
+  border: 1px solid var(--ink-06);
+  border-radius: var(--radius) var(--radius) 0 0;
+}
+.ge-control-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+.ge-label {
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--ink-40);
+}
+
+/* Character input */
+.ge-char-input {
+  font-family: var(--display-heading);
+  font-size: 1.5rem;
+  width: 3rem;
+  text-align: center;
+  padding: 0.25rem;
+  border: 1px solid var(--ink-08);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.2s;
+}
+.ge-char-input:focus {
+  border-color: var(--ink-30);
+}
+
+/* Weight tabs */
+.ge-weight-tabs {
+  display: flex;
+  border: 1px solid var(--ink-08);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+}
+.ge-weight-tab {
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  background: transparent;
+  border: none;
+  color: var(--ink-40);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.ge-weight-tab:not(:last-child) {
+  border-right: 1px solid var(--ink-08);
+}
+.ge-weight-tab.active {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* View toggles */
+.ge-toggles {
+  display: flex;
+  gap: 0.35rem;
+}
+.ge-toggle {
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid var(--ink-08);
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--ink-30);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.ge-toggle.active {
+  background: var(--ink-06);
+  color: var(--ink);
+  border-color: var(--ink-15);
+}
+
+/* Reset button */
+.ge-reset {
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  padding: 0.35rem 0.75rem;
+  border: 1px solid #F24822;
+  border-radius: var(--radius-sm);
+  background: transparent;
+  color: #F24822;
+  cursor: pointer;
+  margin-left: auto;
+  transition: background 0.2s;
+}
+.ge-reset:hover {
+  background: #F24822;
+  color: #fff;
+}
+
+/* ── Canvas area ── */
+.ge-canvas-wrap {
+  border-left: 1px solid var(--ink-06);
+  border-right: 1px solid var(--ink-06);
+  background:
+    radial-gradient(circle at 1px 1px, var(--ink-04) 1px, transparent 0);
+  background-size: 20px 20px;
+  min-height: 400px;
+  position: relative;
+}
+.ge-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--mono);
+  font-size: var(--text-sm);
+  color: var(--ink-30);
+}
+.ge-canvas {
+  position: relative;
+  width: 100%;
+}
+.ge-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: 550px;
+  touch-action: none;
+  cursor: crosshair;
+}
+
+/* Draggable handles */
+.ge-handle {
+  cursor: grab;
+  transition: transform 0.1s;
+}
+.ge-handle:hover {
+  filter: brightness(1.1);
+}
+.ge-handle:active {
+  cursor: grabbing;
+}
+
+/* Info overlay */
+.ge-info {
+  position: absolute;
+  bottom: 1rem;
+  right: 1.25rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  font-family: var(--mono);
+  pointer-events: none;
+}
+.ge-info-char {
+  font-family: var(--display-heading);
+  font-size: 2rem;
+  color: var(--ink-15);
+  line-height: 1;
+}
+.ge-info-unicode {
+  font-size: var(--text-2xs);
+  color: var(--ink-20);
+  letter-spacing: 0.06em;
+}
+.ge-info-points {
+  font-size: var(--text-2xs);
+  color: var(--ink-15);
+}
+
+/* ── Character picker grid ── */
+.ge-chars {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  border: 1px solid var(--ink-06);
+  border-top: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+}
+.ge-char-btn {
+  flex: 0 0 calc(100% / 26);
+  min-width: 0;
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  color: var(--ink-40);
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--ink-04);
+  border-bottom: 1px solid var(--ink-04);
+  cursor: pointer;
+  transition: color 0.15s, background 0.15s;
+}
+.ge-char-btn:hover {
+  color: var(--ink);
+  background: var(--ink-04);
+}
+.ge-char-btn.active {
+  color: var(--ink);
+  background: var(--ink-06);
+  font-weight: 600;
+}
+
+/* Hint */
+.ge-hint {
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-20);
+  text-align: center;
+  margin-top: 1rem;
+  letter-spacing: 0.04em;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .ge-controls { flex-direction: column; align-items: stretch; }
+  .ge-reset { margin-left: 0; }
+  .ge-char-btn { flex: 0 0 calc(100% / 13); }
+  .ge-svg { max-height: 400px; }
+}
+@media (max-width: 480px) {
+  .ge-char-btn { flex: 0 0 calc(100% / 10); font-size: 1rem; }
+  .ge-controls { padding: 1rem; gap: 1rem; }
+  .ge-svg { max-height: 300px; }
+}
+
+/* ── Dark mode ── */
+[data-theme="dark"] .ge-weight-tab.active { background: var(--ink); color: var(--bg); }
+
+/* ── Reduced motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .ge-handle,
+  .ge-weight-tab,
+  .ge-toggle,
+  .ge-char-btn,
+  .ge-reset,
+  .ge-char-input {
+    transition: none;
+  }
+}

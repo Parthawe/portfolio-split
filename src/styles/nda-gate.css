@@ -1,0 +1,408 @@
+/* ========================================
+   Case study access gate
+   ======================================== */
+
+.nda-inline {
+  --nda-accent: var(--project-color, #2d76ff);
+  width: min(640px, calc(100vw - 2rem));
+  margin: clamp(3rem, 6vw, 5rem) auto;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--ink-08);
+  border-top: 2px solid var(--nda-accent);
+  border-radius: var(--radius);
+  background: color-mix(in srgb, var(--surface) 92%, var(--bg));
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 14px 38px rgba(0, 0, 0, 0.045);
+}
+
+.nda-inline-preview {
+  position: relative;
+  min-height: 15rem;
+  margin: calc(clamp(1.25rem, 3vw, 2rem) * -1) calc(clamp(1.25rem, 3vw, 2rem) * -1) 1.5rem;
+  padding: clamp(1.5rem, 4vw, 2.75rem) clamp(1.25rem, 4vw, 2.75rem) 4.5rem;
+  overflow: hidden;
+  border-bottom: 1px solid var(--ink-08);
+  background: color-mix(in srgb, var(--bg) 68%, var(--surface));
+}
+
+.nda-inline-preview > span {
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--nda-accent) 62%, var(--ink));
+}
+
+.project-main .nda-inline-preview h2 {
+  max-width: 34ch;
+  margin: 0.7rem 0 1rem;
+  font-family: var(--sans);
+  font-size: var(--project-section-type, clamp(1.5rem, 2.5vw, 2rem));
+  font-weight: 400;
+  line-height: 1.25;
+  letter-spacing: -0.025em;
+  color: var(--ink);
+  text-wrap: balance;
+}
+
+.nda-inline-preview p {
+  max-width: 52ch;
+  margin: 0 0 0.75rem;
+  font-size: clamp(0.98rem, 1.5vw, 1.15rem);
+  line-height: 1.55;
+  color: var(--ink-70);
+}
+
+.nda-inline-preview p + p {
+  color: var(--ink-40);
+}
+
+.nda-inline-preview-fade {
+  position: absolute;
+  inset: 42% 0 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, transparent, color-mix(in srgb, var(--surface) 94%, var(--bg)) 82%);
+}
+
+.nda-inline-inner {
+  display: grid;
+  gap: clamp(1.35rem, 3vw, 1.8rem);
+  min-width: 0;
+}
+
+.nda-inline--compact {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: clamp(1rem, 2vw, 1.35rem);
+}
+
+.nda-inline--compact .nda-inline-preview {
+  margin: calc(clamp(1rem, 2vw, 1.35rem) * -1) calc(clamp(1rem, 2vw, 1.35rem) * -1) 1.25rem;
+}
+
+.nda-inline--compact .nda-access-stack {
+  grid-template-columns: minmax(12rem, 0.72fr) minmax(18rem, 1.28fr);
+  gap: clamp(1rem, 2vw, 1.5rem);
+  align-items: start;
+}
+
+.nda-inline--compact .nda-inline-form--code {
+  padding: 0 clamp(1rem, 2vw, 1.5rem) 0 0;
+  border-right: 1px solid var(--ink-08);
+  border-bottom: 0;
+}
+
+.nda-inline-text,
+.nda-access-stack {
+  min-width: 0;
+}
+
+.nda-inline-text {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.medimorpho-access--gate .nda-inline-text {
+  display: none;
+}
+
+.nda-field > span,
+.nda-request-kicker {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  font-weight: 650;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.nda-inline-title {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 600;
+  line-height: 1.12;
+  letter-spacing: 0;
+  color: var(--ink);
+}
+
+.nda-inline-desc {
+  max-width: 52ch;
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 1rem;
+  color: var(--ink-70);
+  line-height: 1.6;
+}
+
+.nda-access-stack {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.5rem;
+}
+
+.nda-inline-form {
+  width: 100%;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.85rem;
+}
+
+.nda-inline-form--code {
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--ink-08);
+}
+
+.nda-request-intro {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 0.15rem;
+}
+
+.nda-request-kicker {
+  color: color-mix(in srgb, var(--nda-accent) 52%, var(--ink));
+}
+
+.nda-request-intro h3 {
+  margin: 0;
+  font-family: var(--sans);
+  font-size: 1.15rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: var(--ink);
+}
+
+.nda-request-intro p {
+  max-width: 52ch;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--ink-70);
+}
+
+.nda-field {
+  display: grid;
+  gap: 0.45rem;
+  min-width: 0;
+}
+
+.nda-field > span {
+  color: var(--ink-40);
+}
+
+.nda-input {
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid var(--ink-08);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--surface) 86%, var(--bg));
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.nda-input:focus {
+  border-color: color-mix(in srgb, var(--nda-accent) 62%, var(--ink-30));
+  background: var(--bg);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--nda-accent) 10%, transparent);
+}
+
+.nda-input::placeholder {
+  color: var(--ink-30);
+}
+
+.nda-textarea {
+  min-height: 96px;
+  max-height: 12rem;
+  resize: vertical;
+  line-height: 1.45;
+}
+
+.nda-request-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  width: 100%;
+  min-width: 0;
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--ink);
+  border-radius: var(--radius-sm);
+  background: var(--ink);
+  color: var(--bg);
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.2s, background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.nda-request-submit:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.08);
+}
+
+.nda-request-submit:focus-visible,
+.nda-input:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--nda-accent) 68%, var(--ink));
+  outline-offset: 3px;
+}
+
+.nda-request-submit--secondary {
+  border-color: color-mix(in srgb, var(--nda-accent) 32%, var(--ink-12));
+  background: color-mix(in srgb, var(--nda-accent) 8%, var(--surface));
+  color: color-mix(in srgb, var(--nda-accent) 38%, var(--ink));
+}
+
+.nda-request-submit--secondary:hover {
+  background: color-mix(in srgb, var(--nda-accent) 15%, var(--surface));
+  color: var(--ink);
+}
+
+.nda-inline-confirmation {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  color: var(--ink-40);
+  line-height: 1.5;
+}
+
+.nda-request-helper {
+  margin: -0.15rem 0 0;
+  font-size: 1rem;
+  line-height: 1.45;
+  color: var(--ink-40);
+  text-align: center;
+}
+
+.nda-unlocked-section {
+  background: var(--bg);
+}
+
+.nda-unlocked-inner {
+  min-width: 0;
+}
+
+.nda-empty-reviewer {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.85rem;
+  border: 1px dashed var(--ink-12);
+  border-radius: var(--radius-sm);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+}
+
+.nda-empty-reviewer span {
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  font-weight: 700;
+  letter-spacing: var(--ls-wider);
+  text-transform: uppercase;
+  color: var(--ink-50);
+}
+
+.nda-empty-reviewer p {
+  margin: 0;
+  font-size: var(--text-sm);
+  line-height: 1.5;
+  color: var(--ink-50);
+}
+
+@media (max-width: 640px) {
+  .nda-inline {
+    width: 100%;
+    max-width: 100%;
+    margin: var(--space-8) auto;
+    padding: 1rem;
+    border-radius: 0.85rem;
+  }
+
+  .nda-inline-title {
+    font-size: clamp(1.25rem, 6vw, 1.55rem);
+  }
+
+  .nda-inline-preview {
+    min-height: 13rem;
+    margin: -1rem -1rem 1.2rem;
+    padding: 1.25rem 1rem 3.75rem;
+  }
+
+  .nda-inline--compact {
+    margin: 0;
+  }
+
+  .nda-inline-inner,
+  .nda-access-stack,
+  .nda-inline-form {
+    gap: 1rem;
+  }
+
+  .nda-inline--compact .nda-inline-form--code {
+    padding-bottom: 1rem;
+  }
+
+  .nda-request-intro p,
+  .nda-request-helper {
+    font-size: 0.9rem;
+  }
+
+  .nda-input,
+  .nda-request-submit {
+    min-height: 48px;
+  }
+}
+
+@media (max-width: 920px) {
+  .nda-inline--compact .nda-access-stack {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .nda-inline--compact .nda-inline-form--code {
+    padding: 0 0 1.25rem;
+    border-right: 0;
+    border-bottom: 1px solid var(--ink-08);
+  }
+}
+
+[data-theme="dark"] .nda-inline {
+  border-color: var(--ink-08);
+  border-top-color: var(--nda-accent);
+  box-shadow: none;
+}
+
+/* One compact continuation point; request details expand only when needed. */
+.nda-inline { border: 1px solid var(--ink-15); box-shadow: none; background: transparent; padding: clamp(1rem, 2.5vw, 1.75rem); }
+.nda-inline .nda-inline-inner { gap: 1rem; }
+.nda-inline .nda-inline-title { font: 500 1.5rem/1.3 var(--sans); margin: 0; }
+.nda-inline .nda-inline-desc { margin: .5rem 0 0; }
+.nda-inline .nda-access-stack { display: grid; grid-template-columns: minmax(0,1fr); gap: 1rem; }
+.nda-inline .nda-inline-form--code { display: flex; flex-wrap: wrap; align-items: end; gap: .75rem; border: 0; padding: 0; }
+.nda-inline .nda-inline-form--code .nda-field { flex: 1 1 180px; }
+.nda-inline .nda-inline-confirmation { flex-basis: 100%; }
+.nda-request-disclosure>summary { cursor: pointer; width: fit-content; }
+.nda-request-disclosure[open]>summary { margin-bottom: 1rem; }
+
+/* Keep floating reading controls clear of an active access form. */
+.project-main:has(.nda-access-stack:focus-within) #cs-bottom-nav {
+  visibility: hidden;
+  pointer-events: none;
+}
+.nda-inline .nda-inline-form--request { padding-top: 1rem; border-top: 1px solid var(--ink-15); }
+.nda-inline { container-type: inline-size; }
+.nda-inline .nda-inline-form--code .nda-field { max-width: 380px; }
+.nda-inline .nda-request-submit { width: auto; min-height: 44px; padding: .55rem .85rem; border: 1px solid var(--ink-20); border-radius: 10px; background: var(--bg); color: var(--ink); font: 500 .8rem/1.25 var(--sans); text-transform: none; letter-spacing: 0; box-shadow: none; }
+.nda-inline .nda-request-submit:hover { background: var(--ink-04); }
+.nda-inline .nda-inline-form--code .nda-request-submit { flex: 0 0 auto; }
+@container (min-width: 700px) {
+  .nda-inline .nda-inline-inner { grid-template-columns: minmax(0,.8fr) minmax(0,1.2fr); gap: 2rem; align-items: start; }
+}

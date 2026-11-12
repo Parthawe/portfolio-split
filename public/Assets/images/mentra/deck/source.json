@@ -1,0 +1,36 @@
+{
+  "source": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE",
+  "retrieved": "2026-10-04",
+  "assets": [
+    {
+      "file": "home-before.png",
+      "nodeId": "6:28355",
+      "type": "node export"
+    },
+    {
+      "file": "home-after.png",
+      "nodeId": "6:28378",
+      "type": "node export"
+    },
+    {
+      "file": "active-strip.png",
+      "nodeId": "34:2281",
+      "type": "original image fill"
+    },
+    {
+      "file": "bottom-drawer.png",
+      "nodeId": "34:2298",
+      "type": "original image fill"
+    },
+    {
+      "file": "status-cards.png",
+      "nodeId": "34:2302",
+      "type": "original image fill"
+    },
+    {
+      "file": "miniapps-handheld.png",
+      "nodeId": "517:6500",
+      "type": "node export"
+    }
+  ]
+}

@@ -1,0 +1,1188 @@
+/* ================================================
+   PORTFOLIO GRAVEYARD, painterly Ghibli atmosphere
+   ================================================ */
+
+.gy-page {
+  --gy-ground-color: #5A7B3A;
+  --gy-ground-deep: #4A6830;
+  position: relative;
+  min-height: 100vh;
+  /* Earthy ground extends from below the atmosphere to the footer */
+  background: linear-gradient(
+    180deg,
+    var(--gy-ground-color) 0%,
+    var(--gy-ground-deep) 100%
+  );
+  overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════
+   CSS CUSTOM PROPERTIES (light defaults)
+   ══════════════════════════════════════ */
+.gy-atmo {
+  --gy-trunk: #5C4033;
+  --gy-trunk-dark: #4A3428;
+  --gy-leaf-1: #3A6B28;
+  --gy-leaf-2: #2D5A1E;
+  --gy-leaf-3: #4A7B35;
+  --gy-leaf-hi: #6A9B50;
+  --gy-hill-far: #8BAF6A;
+  --gy-hill-mid: #6B8F4A;
+  --gy-hill-front: #5A7B3A;
+  --gy-bird-color: rgba(60, 50, 40, 0.3);
+}
+
+/* ══════════════════════════════════════
+   ATMOSPHERE CONTAINER
+   ══════════════════════════════════════ */
+.gy-atmo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 85vh;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Sky gradient, warm golden hour ── */
+.gy-sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #5B9BD5 0%,
+    #7BB8D9 12%,
+    #9DCCE5 25%,
+    #BFE0D8 38%,
+    #E0EECC 50%,
+    #FDE8C8 62%,
+    #F5D4A0 75%,
+    #EFC088 85%,
+    #E8B070 100%
+  );
+}
+
+/* Warm golden color wash overlay */
+.gy-color-wash {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 80% 20%,
+    rgba(255, 220, 150, 0.2) 0%,
+    rgba(255, 200, 120, 0.08) 40%,
+    transparent 70%
+  );
+  z-index: 1;
+}
+
+/* ══════════════════════════════════════
+   SUN, flat paper-cut style
+   ══════════════════════════════════════ */
+.gy-sun {
+  position: absolute;
+  top: 3%;
+  right: 10%;
+  width: clamp(80px, 14vw, 140px);
+  height: clamp(80px, 14vw, 140px);
+  z-index: 2;
+  transition: transform 1.2s ease-in-out, opacity 1s ease-in-out;
+}
+[data-theme="dark"] .gy-sun {
+  transform: translateY(80px) scale(0.6);
+  opacity: 0;
+  pointer-events: none;
+}
+.gy-sun-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(2px 3px 0 rgba(180, 140, 60, 0.15));
+}
+
+/* ══════════════════════════════════════
+   MOON, flat paper-cut crescent
+   ══════════════════════════════════════ */
+.gy-moon {
+  position: absolute;
+  top: 5%;
+  right: 14%;
+  width: clamp(55px, 9vw, 90px);
+  height: clamp(55px, 9vw, 90px);
+  z-index: 2;
+  transform: translateY(60px) scale(0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 1.2s ease-in-out, opacity 1s ease-in-out 0.3s;
+}
+[data-theme="dark"] .gy-moon {
+  transform: translateY(0) scale(1);
+  opacity: 1;
+}
+.gy-moon-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(2px 3px 0 rgba(0, 0, 0, 0.25));
+}
+/* The shadow circle matches the dark sky background to carve out crescent */
+.gy-moon-shadow-circle {
+  transition: fill 0.6s;
+}
+
+/* ══════════════════════════════════════
+   STARS, hidden in light, visible in dark
+   ══════════════════════════════════════ */
+.gy-stars {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 1s ease-in-out 0.5s;
+}
+[data-theme="dark"] .gy-stars {
+  opacity: 1;
+}
+.gy-star {
+  position: absolute;
+  border-radius: 50%;
+  background: #fff;
+  animation: gy-twinkle ease-in-out infinite alternate;
+}
+.gy-star--bright {
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.7);
+}
+@keyframes gy-twinkle {
+  0%, 100% { opacity: 0.1; }
+  50% { opacity: 1; }
+}
+
+/* Shooting stars */
+.gy-shooting-star {
+  position: absolute;
+  top: 15%;
+  left: 20%;
+  width: 2px;
+  height: 2px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 0 4px #fff, -40px 0 6px rgba(255,255,255,0.4), -80px 0 4px rgba(255,255,255,0.1);
+  animation: gy-shoot 8s ease-in infinite;
+  animation-delay: 3s;
+  opacity: 0;
+}
+.gy-shooting-star--2 {
+  top: 25%;
+  left: 60%;
+  animation-delay: 11s;
+  animation-duration: 10s;
+}
+@keyframes gy-shoot {
+  0%   { opacity: 0; transform: translate(0, 0) rotate(-35deg); }
+  2%   { opacity: 1; }
+  8%   { opacity: 0; transform: translate(300px, 180px) rotate(-35deg); }
+  100% { opacity: 0; }
+}
+
+/* ══════════════════════════════════════
+   FIREFLIES, dark mode only
+   ══════════════════════════════════════ */
+.gy-fireflies {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  opacity: 0;
+  transition: opacity 1s ease-in-out 0.5s;
+}
+[data-theme="dark"] .gy-fireflies {
+  opacity: 1;
+}
+.gy-firefly {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(200, 255, 150, 0.8);
+  box-shadow: 0 0 8px rgba(200, 255, 150, 0.6), 0 0 16px rgba(200, 255, 150, 0.3);
+  animation: gy-float ease-in-out infinite alternate;
+}
+@keyframes gy-float {
+  0%   { opacity: 0; transform: translateY(0) translateX(0); }
+  30%  { opacity: 0.9; }
+  50%  { opacity: 0.4; transform: translateY(-18px) translateX(12px); }
+  70%  { opacity: 0.8; }
+  100% { opacity: 0; transform: translateY(-35px) translateX(-10px); }
+}
+
+/* ══════════════════════════════════════
+   CLOUDS, flat paper-cut style
+   ══════════════════════════════════════ */
+.gy-cloud {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.55);
+  animation: gy-drift linear infinite;
+  will-change: transform;
+  filter: drop-shadow(1px 2px 0 rgba(0, 0, 0, 0.04));
+  z-index: 3;
+}
+.gy-cloud--1 { top: 6%;  width: clamp(110px, 20vw, 240px); animation-duration: 55s; animation-delay: -8s; }
+.gy-cloud--2 { top: 16%; width: clamp(80px, 14vw, 170px);  animation-duration: 70s; animation-delay: -25s; }
+.gy-cloud--3 { top: 3%;  width: clamp(120px, 22vw, 270px); animation-duration: 45s; animation-delay: -2s; }
+.gy-cloud--4 { top: 22%; width: clamp(70px, 12vw, 140px);  animation-duration: 80s; animation-delay: -40s; }
+
+@keyframes gy-drift {
+  from { transform: translateX(-280px); }
+  to   { transform: translateX(calc(100vw + 280px)); }
+}
+
+/* ══════════════════════════════════════
+   LIGHT RAYS, light mode only
+   ══════════════════════════════════════ */
+.gy-light-rays {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  overflow: hidden;
+  transition: opacity 1s ease-in-out;
+}
+[data-theme="dark"] .gy-light-rays {
+  opacity: 0;
+  pointer-events: none;
+}
+.gy-ray {
+  position: absolute;
+  top: -20%;
+  right: 5%;
+  width: 120px;
+  height: 140%;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 230, 160, 0.12) 0%,
+    rgba(255, 220, 140, 0.06) 40%,
+    rgba(255, 210, 120, 0.02) 70%,
+    transparent 100%
+  );
+  transform: rotate(25deg);
+  transform-origin: top center;
+  animation: gy-ray-sway 12s ease-in-out infinite alternate;
+  filter: blur(10px);
+}
+.gy-ray--1 { right: 8%;  width: 100px; animation-delay: 0s; }
+.gy-ray--2 { right: 16%; width: 70px;  animation-delay: -3s; opacity: 0.7; }
+.gy-ray--3 { right: 2%;  width: 140px; animation-delay: -6s; opacity: 0.5; }
+.gy-ray--4 { right: 22%; width: 50px;  animation-delay: -9s; opacity: 0.4; }
+
+@keyframes gy-ray-sway {
+  from { transform: rotate(22deg); opacity: 0.7; }
+  to   { transform: rotate(28deg); opacity: 1; }
+}
+
+/* ══════════════════════════════════════
+   BIRDS, light mode only
+   ══════════════════════════════════════ */
+.gy-birds {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  transition: opacity 1s ease-in-out;
+}
+[data-theme="dark"] .gy-birds {
+  opacity: 0;
+}
+.gy-bird {
+  position: absolute;
+  animation: gy-bird-fly 20s linear infinite;
+}
+@keyframes gy-bird-fly {
+  from { transform: translateX(0); }
+  to   { transform: translateX(60px); }
+}
+
+/* ══════════════════════════════════════
+   TREES, blurred + sketchy for hand-drawn watercolor
+   ══════════════════════════════════════ */
+.gy-tree {
+  position: absolute;
+  bottom: 12%;
+  z-index: 8;
+  filter: blur(1.5px) url(#sketchy);
+  opacity: 0.85;
+}
+
+/* Large tree, left side, framing */
+.gy-tree--1 {
+  left: -6%;
+  bottom: 8%;
+  height: clamp(260px, 45vh, 420px);
+  filter: blur(1px);
+  opacity: 0.9;
+  z-index: 12;
+}
+
+/* Medium tree, right side */
+.gy-tree--2 {
+  right: -3%;
+  bottom: 10%;
+  height: clamp(200px, 35vh, 340px);
+  filter: blur(1.5px);
+  opacity: 0.85;
+  z-index: 11;
+}
+
+/* Small tree, background center-left */
+.gy-tree--3 {
+  left: 20%;
+  bottom: 18%;
+  height: clamp(100px, 18vh, 180px);
+  filter: blur(3px);
+  opacity: 0.55;
+  z-index: 6;
+}
+
+/* Large tree, far right background */
+.gy-tree--4 {
+  right: 18%;
+  bottom: 15%;
+  height: clamp(150px, 28vh, 260px);
+  filter: blur(2.5px);
+  opacity: 0.5;
+  z-index: 6;
+}
+
+/* Small tree, left mid */
+.gy-tree--5 {
+  left: 8%;
+  bottom: 16%;
+  height: clamp(90px, 15vh, 150px);
+  filter: blur(2px);
+  opacity: 0.6;
+  z-index: 7;
+}
+
+/* ══════════════════════════════════════
+   BUSHES, ground-level vegetation
+   ══════════════════════════════════════ */
+.gy-bushes {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35%;
+  z-index: 13;
+  pointer-events: none;
+}
+.gy-bush {
+  position: absolute;
+  bottom: 10%;
+  filter: blur(2px) url(#sketchy);
+}
+.gy-bush--1 {
+  left: -2%;
+  width: clamp(80px, 14vw, 160px);
+  opacity: 0.8;
+}
+.gy-bush--2 {
+  right: 2%;
+  width: clamp(60px, 10vw, 120px);
+  bottom: 14%;
+  opacity: 0.7;
+}
+.gy-bush--3 {
+  left: 30%;
+  width: clamp(70px, 12vw, 140px);
+  bottom: 12%;
+  opacity: 0.5;
+  filter: blur(3px);
+}
+
+/* ══════════════════════════════════════
+   HILLS, 3 layers for depth
+   ══════════════════════════════════════ */
+.gy-hills-wrap {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  z-index: 9;
+}
+.gy-hill {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+.gy-hill--far {
+  height: 100%;
+  filter: blur(4px) url(#sketchy);
+  opacity: 0.6;
+}
+.gy-hill--mid {
+  height: 75%;
+  filter: blur(2px) url(#sketchy);
+  opacity: 0.8;
+}
+.gy-hill--front {
+  height: 55%;
+  filter: blur(0.5px) url(#sketchy);
+}
+
+/* ══════════════════════════════════════
+   WILDFLOWERS, scattered color dots
+   ══════════════════════════════════════ */
+.gy-flowers {
+  position: absolute;
+  bottom: 8%;
+  left: 0;
+  right: 0;
+  height: 25%;
+  z-index: 14;
+}
+.gy-flower {
+  position: absolute;
+  border-radius: 50%;
+  animation: gy-flower-sway 4s ease-in-out infinite alternate;
+  filter: blur(0.5px);
+  opacity: 0.7;
+}
+@keyframes gy-flower-sway {
+  from { transform: translateX(-1px); }
+  to   { transform: translateX(1px); }
+}
+
+/* ══════════════════════════════════════
+   MIST, ground fog layer
+   ══════════════════════════════════════ */
+.gy-mist {
+  position: absolute;
+  bottom: 15%;
+  left: -10%;
+  right: -10%;
+  height: 20%;
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    rgba(255, 255, 255, 0.18) 0%,
+    rgba(255, 255, 255, 0.08) 40%,
+    transparent 70%
+  );
+  filter: blur(20px);
+  z-index: 15;
+  animation: gy-mist-drift 20s ease-in-out infinite alternate;
+}
+@keyframes gy-mist-drift {
+  from { transform: translateX(-3%); }
+  to   { transform: translateX(3%); }
+}
+
+/* ── Atmospheric fade into ground, smooth blend ── */
+.gy-atmo-fade {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(90, 123, 58, 0.15) 30%,
+    rgba(90, 123, 58, 0.5) 55%,
+    var(--gy-ground-color, #5A7B3A) 80%,
+    var(--gy-ground-color, #5A7B3A) 100%
+  );
+  z-index: 30;
+}
+
+/* ══════════════════════════════════════
+   HERO
+   ══════════════════════════════════════ */
+.gy-hero {
+  text-align: center;
+  padding: clamp(8rem, 16vw, 13rem) var(--pad, 1.5rem) clamp(3rem, 6vw, 5rem);
+  position: relative;
+  z-index: 31;
+}
+.gy-hero-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-40);
+  margin-bottom: 1.5rem;
+}
+.gy-hero-title {
+  font-family: var(--serif);
+  font-size: clamp(3.5rem, 12vw, 8rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin: 0 0 1.5rem;
+}
+.gy-hero-title em {
+  font-style: italic;
+  color: var(--ink-30);
+}
+.gy-hero-subtitle {
+  font-family: var(--sans);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink-50);
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* ══════════════════════════════════════
+   TOMBSTONE GRID
+   ══════════════════════════════════════ */
+.gy-section {
+  padding: 0 0 4rem;
+  position: relative;
+  z-index: 31;
+}
+.gy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+  gap: 2.5rem 1.5rem;
+}
+
+/* ═══════════════════════════════════
+   TOMBSTONE, actual gravestone
+   ═══════════════════════════════════ */
+.gy-tomb {
+  --gy-soil: #7B6B58;
+  --gy-soil-dark: #6A5A48;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* The stone itself, textured, rounded top, clickable */
+.gy-tomb-stone {
+  position: relative;
+  width: 100%;
+  cursor: pointer;
+  /* Stone texture: warm grey with subtle noise */
+  background:
+    linear-gradient(175deg, #D8D0C4 0%, #C8BFB0 35%, #BDB4A5 60%, #B0A898 100%);
+  border-radius: 48% 48% 4px 4px / 18% 18% 2px 2px;
+  overflow: hidden;
+  transition: transform 0.4s var(--ease-in-out), box-shadow 0.4s;
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.08),
+    inset 0 2px 4px rgba(255, 255, 255, 0.15),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.08);
+  filter: url(#sketchy);
+}
+.gy-tomb:hover .gy-tomb-stone {
+  transform: translateY(-3px);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.12),
+    inset 0 2px 4px rgba(255, 255, 255, 0.15),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.08);
+}
+/* Weathered look for dead stones */
+.gy-tomb--dead .gy-tomb-stone,
+.gy-tomb--archived .gy-tomb-stone {
+  background:
+    linear-gradient(175deg, #CCC5B8 0%, #BBB4A5 35%, #ADA698 60%, #9E978A 100%);
+}
+.gy-tomb--alive .gy-tomb-stone {
+  background:
+    linear-gradient(175deg, #E0D8CC 0%, #D4CCc0 35%, #C8C0B4 60%, #BCB4A8 100%);
+}
+
+/* Moss creep at base of stone */
+.gy-tomb-moss {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 18px;
+  background: linear-gradient(0deg,
+    rgba(75, 100, 50, 0.22) 0%,
+    rgba(85, 110, 55, 0.1) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+}
+
+/* Cracks, subtle weathering on dead stones */
+.gy-tomb-crack {
+  position: absolute;
+  top: 15%;
+  left: 32%;
+  width: 35%;
+  height: 70%;
+  border-left: 1px solid rgba(0, 0, 0, 0.06);
+  transform: rotate(15deg);
+  pointer-events: none;
+  z-index: 1;
+}
+.gy-tomb-crack::before {
+  content: '';
+  position: absolute;
+  top: 40%;
+  left: 0;
+  width: 50%;
+  height: 30%;
+  border-top: 1px solid rgba(0, 0, 0, 0.04);
+  transform: rotate(-25deg);
+}
+.gy-tomb-crack--2 {
+  left: 58%;
+  top: 25%;
+  transform: rotate(-10deg);
+  border-left-color: rgba(0, 0, 0, 0.04);
+}
+
+/* Soil mound at base */
+.gy-tomb-soil {
+  position: relative;
+  width: 110%;
+  margin-top: -6px;
+  z-index: 1;
+  transition: transform 0.5s var(--ease-in-out);
+}
+.gy-tomb-soil--dug {
+  transform: translateY(6px) scaleY(0.7);
+}
+.gy-tomb-soil-svg {
+  width: 100%;
+  height: 28px;
+  display: block;
+  filter: url(#sketchy);
+}
+.gy-tomb-ground-flower {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #E87B7B;
+  top: 4px;
+  left: 20%;
+  opacity: 0.6;
+}
+.gy-tomb-ground-flower--2 {
+  left: 55%;
+  width: 4px;
+  height: 4px;
+  background: #E9C46A;
+}
+.gy-tomb-ground-flower--3 {
+  left: 78%;
+  width: 3px;
+  height: 3px;
+  background: #D4A5E5;
+}
+
+/* ── Engraved inscription, carved into stone ── */
+.gy-tomb-inscription {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 1.75rem 1.25rem 2rem;
+  gap: 4px;
+}
+
+.gy-tomb-symbol {
+  font-size: 1rem;
+  /* Engraved look: dark inset + light highlight */
+  color: rgba(80, 70, 60, 0.35);
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.3);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.gy-tomb-era {
+  font-family: var(--serif-read);
+  font-size: clamp(1.1rem, 2.2vw, 1.35rem);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  /* Engraved text effect */
+  color: rgba(60, 50, 40, 0.55);
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.4);
+  margin: 0;
+  line-height: 1.25;
+}
+
+.gy-tomb-year {
+  font-family: var(--serif);
+  font-size: clamp(1.4rem, 2.8vw, 1.8rem);
+  font-weight: 300;
+  /* Deep engraving for year */
+  color: rgba(60, 50, 40, 0.4);
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.35);
+  letter-spacing: 0.05em;
+  line-height: 1.2;
+}
+
+/* Decorative rule, engraved line */
+.gy-tomb-rule-engrave {
+  width: 50px;
+  height: 1px;
+  background: rgba(60, 50, 40, 0.12);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+  margin: 6px 0 8px;
+}
+
+.gy-tomb-epitaph {
+  font-family: var(--serif-read);
+  font-size: 0.75rem;
+  font-style: italic;
+  color: rgba(70, 60, 50, 0.4);
+  text-shadow:
+    0 1px 0 rgba(255, 255, 255, 0.25);
+  line-height: 1.55;
+  margin: 0;
+  max-width: 220px;
+}
+
+.gy-tomb-lifespan {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: rgba(70, 60, 50, 0.35);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.25);
+  margin-top: 6px;
+}
+.gy-tomb-lifespan-dash {
+  color: rgba(70, 60, 50, 0.2);
+}
+
+.gy-tomb-platform {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(70, 60, 50, 0.3);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.2);
+  margin-top: 4px;
+}
+
+/* ── Unearthed details, revealed on click ── */
+.gy-tomb-details {
+  width: 90%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--ease-in-out), opacity 0.4s, padding 0.3s;
+  opacity: 0;
+  padding: 0;
+}
+.gy-tomb-details--open {
+  max-height: 350px;
+  opacity: 1;
+  padding: 12px 0 0;
+}
+.gy-tomb-desc {
+  font-family: var(--sans);
+  font-size: 0.78rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 0 10px;
+  text-align: center;
+}
+.gy-tomb-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.gy-tomb-tag {
+  font-family: var(--mono);
+  font-size: 8px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  padding: 3px 8px;
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+.gy-tomb-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+  border: none;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--ink, #1a1a1a);
+  transition: color 0.25s, background 0.25s, border-color 0.25s, transform 0.25s;
+}
+.gy-tomb-cta:hover {
+  background: #fff;
+}
+.gy-tomb-cta svg {
+  transition: transform 0.2s;
+}
+.gy-tomb-cta:hover svg {
+  transform: translate(2px, -2px);
+}
+
+/* ══════════════════════════════════════
+   CLOSING EPITAPH
+   ══════════════════════════════════════ */
+.gy-epitaph {
+  text-align: center;
+  padding: 3rem var(--pad, 1.5rem) 5rem;
+  position: relative;
+  z-index: 31;
+}
+.gy-epitaph-text {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+  font-style: italic;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.7;
+  max-width: 500px;
+  margin: 0 auto 1rem;
+}
+.gy-epitaph-sig {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.3);
+}
+
+/* ══════════════════════════════════════
+   IFRAME PREVIEW OVERLAY
+   ══════════════════════════════════════ */
+.gy-preview-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  animation: gy-fade-in 0.3s ease-out;
+}
+@keyframes gy-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.gy-preview-chrome {
+  width: 100%;
+  max-width: 1200px;
+  height: 85vh;
+  border-radius: 12px;
+  overflow: hidden;
+  background: var(--ink, #1a1a1a);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  animation: gy-slide-up 0.35s var(--ease-in-out);
+}
+@keyframes gy-slide-up {
+  from { transform: translateY(24px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+.gy-preview-bar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  background: #2a2a2a;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  flex-shrink: 0;
+}
+.gy-preview-bar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.gy-preview-dots {
+  display: flex;
+  gap: 5px;
+}
+.gy-preview-dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  opacity: 0.6;
+}
+.gy-preview-era {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.gy-preview-url-bar {
+  flex: 1;
+  text-align: center;
+}
+.gy-preview-url-bar span {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: rgba(255, 255, 255, 0.3);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 4px 16px;
+  border-radius: 6px;
+  display: inline-block;
+}
+.gy-preview-close {
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: 4px 10px;
+  cursor: pointer;
+  transition: color 0.2s, background 0.2s, opacity 0.2s;
+}
+.gy-preview-close:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: rgba(255, 255, 255, 0.7);
+}
+.gy-preview-iframe {
+  flex: 1;
+  width: 100%;
+  border: none;
+  background: #fff;
+}
+
+/* ══════════════════════════════════════
+   DARK MODE, moonlit graveyard
+   ══════════════════════════════════════ */
+[data-theme="dark"] .gy-page {
+  --gy-ground-color: #0E1A0E;
+  --gy-ground-deep: #0A140A;
+}
+[data-theme="dark"] .gy-atmo {
+  --gy-trunk: #2A2018;
+  --gy-trunk-dark: #1E1610;
+  --gy-leaf-1: #1A3518;
+  --gy-leaf-2: #142A12;
+  --gy-leaf-3: #203820;
+  --gy-leaf-hi: #2A4828;
+  --gy-hill-far: #1A2A18;
+  --gy-hill-mid: #142214;
+  --gy-hill-front: #0E1A0E;
+  --gy-bird-color: rgba(200, 200, 220, 0.15);
+}
+
+[data-theme="dark"] .gy-sky {
+  background: linear-gradient(
+    180deg,
+    #050810 0%,
+    #0A0F20 12%,
+    #0E1430 28%,
+    #141838 42%,
+    #1A1840 55%,
+    #201548 68%,
+    #181230 82%,
+    #121020 100%
+  );
+}
+[data-theme="dark"] .gy-color-wash {
+  background: radial-gradient(
+    ellipse at 85% 15%,
+    rgba(180, 200, 255, 0.06) 0%,
+    rgba(140, 160, 220, 0.03) 40%,
+    transparent 70%
+  );
+}
+[data-theme="dark"] .gy-cloud {
+  color: rgba(255, 255, 255, 0.06);
+  filter: drop-shadow(1px 2px 0 rgba(0, 0, 0, 0.15));
+}
+
+[data-theme="dark"] .gy-mist {
+  background: radial-gradient(
+    ellipse at 50% 80%,
+    rgba(100, 120, 180, 0.08) 0%,
+    rgba(80, 100, 160, 0.03) 40%,
+    transparent 70%
+  );
+}
+
+[data-theme="dark"] .gy-bush { opacity: 0.4; }
+
+/* Dark mode tombstone flowers */
+[data-theme="dark"] .gy-tomb-ground-flower { opacity: 0.3; }
+
+/* Dark mode flower dots */
+[data-theme="dark"] .gy-flower { opacity: 0.25; }
+
+/* Hero text */
+[data-theme="dark"] .gy-hero-label { color: rgba(255, 255, 255, 0.25); }
+[data-theme="dark"] .gy-hero-title { color: rgba(255, 255, 255, 0.85); }
+[data-theme="dark"] .gy-hero-title em { color: rgba(255, 255, 255, 0.25); }
+[data-theme="dark"] .gy-hero-subtitle { color: rgba(255, 255, 255, 0.35); }
+
+/* Tombstones, dark mode: darker stone with lighter engravings */
+[data-theme="dark"] .gy-tomb {
+  --gy-soil: #3A3228;
+  --gy-soil-dark: #2E2820;
+}
+[data-theme="dark"] .gy-tomb-stone {
+  background: linear-gradient(175deg, #4A4440 0%, #3E3A36 35%, #363230 60%, #2E2C28 100%);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.06),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.2);
+}
+[data-theme="dark"] .gy-tomb:hover .gy-tomb-stone {
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.5),
+    inset 0 2px 4px rgba(255, 255, 255, 0.06),
+    inset 0 -3px 6px rgba(0, 0, 0, 0.2);
+}
+[data-theme="dark"] .gy-tomb--dead .gy-tomb-stone,
+[data-theme="dark"] .gy-tomb--archived .gy-tomb-stone {
+  background: linear-gradient(175deg, #3E3A36 0%, #343230 35%, #2E2C28 60%, #262420 100%);
+}
+[data-theme="dark"] .gy-tomb--alive .gy-tomb-stone {
+  background: linear-gradient(175deg, #525048 0%, #484640 35%, #3E3C38 60%, #363430 100%);
+}
+[data-theme="dark"] .gy-tomb-moss {
+  background: linear-gradient(0deg, rgba(40, 70, 30, 0.2) 0%, transparent 100%);
+}
+[data-theme="dark"] .gy-tomb-symbol {
+  color: rgba(200, 195, 185, 0.3);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
+}
+[data-theme="dark"] .gy-tomb-era {
+  color: rgba(200, 195, 185, 0.5);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+[data-theme="dark"] .gy-tomb-year {
+  color: rgba(200, 195, 185, 0.35);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+[data-theme="dark"] .gy-tomb-rule-engrave {
+  background: rgba(200, 195, 185, 0.1);
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, 0.3);
+}
+[data-theme="dark"] .gy-tomb-epitaph {
+  color: rgba(200, 195, 185, 0.3);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+[data-theme="dark"] .gy-tomb-lifespan {
+  color: rgba(200, 195, 185, 0.25);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+}
+[data-theme="dark"] .gy-tomb-platform {
+  color: rgba(200, 195, 185, 0.2);
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+[data-theme="dark"] .gy-tomb-crack {
+  border-left-color: rgba(0, 0, 0, 0.15);
+}
+[data-theme="dark"] .gy-tomb-crack::before {
+  border-top-color: rgba(0, 0, 0, 0.1);
+}
+[data-theme="dark"] .gy-tomb-desc { color: rgba(255, 255, 255, 0.5); }
+[data-theme="dark"] .gy-tomb-tag { color: rgba(255, 255, 255, 0.35); background: rgba(255, 255, 255, 0.06); }
+
+[data-theme="dark"] .gy-epitaph-text { color: rgba(255, 255, 255, 0.35); }
+[data-theme="dark"] .gy-epitaph-sig { color: rgba(255, 255, 255, 0.2); }
+
+/* Remove dark nav overlay on graveyard, let it blend with the sky */
+[data-theme="dark"] .page-graveyard .nav-left-pill {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: none;
+}
+[data-theme="dark"] .page-graveyard .nav.scrolled .nav-left-pill {
+  background: rgba(10, 15, 30, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+[data-theme="dark"] .page-graveyard .nav-right > .theme-toggle {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.06);
+  box-shadow: none;
+}
+[data-theme="dark"] .page-graveyard .nav.scrolled .nav-right > .theme-toggle {
+  background: rgba(10, 15, 30, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════ */
+/* ── Tablet (900px) ── */
+@media (max-width: 900px) {
+  .gy-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1.25rem;
+  }
+  .gy-tree--3,
+  .gy-tree--4,
+  .gy-tree--5 { display: none; }
+  .gy-bush--3 { display: none; }
+  .gy-hero {
+    padding-top: clamp(6rem, 14vw, 10rem);
+  }
+}
+
+/* ── Mobile (600px) ── */
+@media (max-width: 600px) {
+  .gy-grid {
+    grid-template-columns: 1fr;
+    max-width: 280px;
+    margin: 0 auto;
+    gap: 2.5rem;
+  }
+  .gy-hero {
+    padding-top: calc(var(--nav-h) + 4rem);
+    padding-bottom: 2rem;
+  }
+  .gy-hero-title {
+    font-size: clamp(2.5rem, 14vw, 4rem);
+  }
+  .gy-hero-subtitle {
+    font-size: 0.9rem;
+  }
+  .gy-tomb-soil {
+    width: 100%;
+  }
+  .gy-tomb-inscription {
+    padding: 1.25rem 1rem 1.5rem;
+  }
+  .gy-tomb-era {
+    font-size: 1.05rem;
+  }
+  .gy-tomb-year {
+    font-size: 1.3rem;
+  }
+  .gy-epitaph {
+    padding: 2rem var(--pad, 1.5rem) 3rem;
+  }
+  .gy-preview-overlay { padding: 0; }
+  .gy-preview-chrome { height: 100vh; max-width: 100%; border-radius: 0; }
+  .gy-preview-era { display: none; }
+  .gy-atmo { height: 55vh; }
+  .gy-tree--1 { height: clamp(140px, 30vh, 220px); }
+  .gy-tree--2 { height: clamp(110px, 24vh, 180px); }
+  .gy-bush--1,
+  .gy-bush--2 { display: none; }
+}

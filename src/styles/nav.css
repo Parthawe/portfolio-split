@@ -1,0 +1,556 @@
+/* ================================================
+   NAVIGATION, Dia-style: left pill + right CTA
+   ================================================ */
+.nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: var(--z-toast);
+  display: flex;
+  align-items: flex-start;
+  pointer-events: none;
+  --nav-edge-inset: var(--page-inline-inset);
+  --nav-block-inset: max(var(--chrome-block), calc(var(--ruler-block-offset, 0px) + 0.75rem));
+  padding: var(--nav-block-inset) var(--nav-edge-inset) var(--chrome-block);
+}
+
+.nav-inner {
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  pointer-events: none;
+}
+
+/* ── Left pill, logo + nav links grouped together ── */
+.nav-left-pill {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-1) var(--space-2);
+  border-radius: var(--radius-pill);
+  transition: background var(--dur-slow), border-color var(--dur-slow), box-shadow var(--dur-slow), transform var(--dur-slow) var(--ease-in-out);
+  pointer-events: auto;
+}
+
+.nav-logo {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-pill);
+  transition: opacity var(--dur-base), background var(--dur-base);
+}
+.nav-logo:hover {
+  opacity: 0.6;
+  background: var(--ink-04);
+}
+
+/* extends .pill-link from base.css */
+.nav-pill-link {
+  padding: 0.45rem 0.85rem;
+  display: inline-grid;
+  place-items: center;
+}
+/* Reserve the active label's width without changing the inactive type weight. */
+.nav-pill-link__label,
+.nav-pill-link::after {
+  grid-area: 1 / 1;
+}
+.nav-pill-link::after {
+  content: attr(data-label);
+  font-weight: 600;
+  visibility: hidden;
+  pointer-events: none;
+}
+.nav-pill-link:focus-visible,
+.nav-logo:focus-visible,
+.nav-cta:focus-visible {
+  outline: 2px solid var(--ink-40);
+  outline-offset: 2px;
+}
+
+/* ── Right side, theme toggle + CTA button ── */
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  pointer-events: auto;
+}
+
+.nav-canvas-panel {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  min-height: 40px;
+  padding: 0.25rem;
+  border-radius: var(--radius-pill);
+  pointer-events: auto;
+  transition: background var(--dur-base), border-color var(--dur-base), box-shadow var(--dur-base);
+}
+
+.nav-canvas-panel--easter {
+  transform-origin: right center;
+  animation: nav-easter-tools-in var(--dur-base) var(--ease-out) both;
+}
+
+@keyframes nav-easter-tools-in {
+  from { opacity: 0; transform: translateX(0.45rem) scale(0.96); }
+  to { opacity: 1; transform: translateX(0) scale(1); }
+}
+
+.nav-easter-toggle {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: var(--radius-pill);
+  color: var(--ink-40);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  transition: color var(--dur-base), background var(--dur-base), border-color var(--dur-base), box-shadow var(--dur-base), transform var(--dur-base);
+}
+
+.nav-easter-toggle:hover,
+.nav-easter-toggle--active {
+  color: var(--ink);
+  --surface-glass-bg: color-mix(in srgb, var(--glass-subtle-bg) 84%, var(--select-blue) 10%);
+  --surface-glass-border: color-mix(in srgb, var(--select-blue) 26%, var(--ink-12));
+  background: var(--surface-glass-bg);
+  border-color: var(--surface-glass-border);
+}
+
+.nav-easter-toggle--active {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--select-blue) 22%, transparent);
+}
+
+.nav-easter-toggle:focus-visible {
+  outline: 2px solid var(--select-blue);
+  outline-offset: 2px;
+}
+
+.nav-theme-wrap {
+  display: flex;
+}
+
+.nav-mobile-theme {
+  display: none;
+}
+
+/* Desktop theme toggle in nav-right */
+.nav-right > .theme-toggle:not(.nav-mobile-theme) {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-pill);
+  color: var(--ink-40);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--dur-base), background var(--dur-base), border-color var(--dur-base);
+}
+.nav-right > .theme-toggle:not(.nav-mobile-theme):hover {
+  color: var(--ink);
+  --surface-glass-bg: color-mix(in srgb, var(--glass-subtle-bg) 84%, var(--ink-04) 16%);
+  --surface-glass-border: var(--ink-12);
+  background: var(--surface-glass-bg);
+  border-color: var(--surface-glass-border);
+}
+
+.nav-grid-toggle {
+  min-width: 2.35rem;
+  height: 2rem;
+  border: 0;
+  border-radius: calc(var(--radius-pill) - 0.2rem);
+  background: transparent;
+  color: var(--ink-40);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.36rem;
+  transition: color var(--dur-base), background var(--dur-base), box-shadow var(--dur-base), transform var(--dur-base);
+  padding: 0 0.58rem;
+  flex-shrink: 0;
+  font-family: var(--mono);
+  font-size: var(--text-2xs);
+  font-weight: 500;
+  letter-spacing: var(--ls-wide);
+  text-transform: uppercase;
+}
+
+.nav-grid-toggle svg {
+  flex: 0 0 auto;
+}
+
+.nav-grid-toggle span {
+  line-height: 1;
+}
+
+.nav-right > .ambient-ui {
+  position: relative;
+}
+.nav-right > .ambient-ui .ambient-toggle {
+  border-radius: var(--radius-pill);
+}
+.nav-grid-toggle:hover {
+  color: var(--ink);
+  background: var(--ink-04);
+}
+.nav-grid-toggle--active {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--surface) 72%, var(--select-blue) 12%);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--select-blue) 28%, transparent);
+}
+
+.nav-grid-toggle:focus-visible {
+  outline: 2px solid var(--select-blue);
+  outline-offset: 2px;
+}
+
+@media (max-width: 1100px) {
+  .nav-grid-toggle span {
+    display: none;
+  }
+
+  .nav-grid-toggle {
+    width: 2rem;
+    min-width: 2rem;
+    padding: 0;
+  }
+}
+@media (max-width: 768px) {
+  .nav-canvas-panel { display: none; }
+  .nav-easter-toggle { display: none; }
+  .ambient-ui { display: none; }
+  .nav-theme-wrap { display: none; }
+
+  .nav-mobile-theme {
+    display: flex;
+    width: 44px;
+    height: 44px;
+    border-radius: var(--radius-pill);
+    color: var(--ink);
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+  }
+}
+
+/* Desktop CTA, pill button style */
+.nav-cta {
+  font-family: var(--sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--ink);
+  text-decoration: none;
+  padding: var(--btn-md);
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--ink-08);
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
+  transition: color var(--dur-base), background var(--dur-base), border-color var(--dur-base), box-shadow var(--dur-base), transform var(--dur-base);
+  white-space: nowrap;
+}
+/* Arrow after CTA text */
+.nav-cta::after {
+  content: ' ↗';
+  font-size: 0.85em;
+  opacity: 0.5;
+  transition: opacity var(--motion-base) var(--motion-ease), transform var(--motion-base) var(--motion-ease);
+  display: inline-block;
+}
+.nav-cta:hover::after { opacity: 1; transform: translate(2px, -2px); }
+
+.nav-cta:hover {
+  background: var(--ink);
+  color: var(--surface);
+  border-color: var(--ink);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+body.nav-on-dark .nav-left-pill.surface-glass,
+body.nav-on-dark .nav-canvas-panel.surface-glass,
+body.nav-on-dark .nav-easter-toggle.surface-glass,
+body.nav-on-dark .nav-theme-wrap .theme-toggle.surface-glass,
+body.nav-on-dark .nav-right > .ambient-ui .ambient-toggle.surface-glass,
+body.nav-on-dark .nav-right > .ambient-ui .ambient-note.surface-glass {
+  --surface-glass-bg: rgba(236, 248, 250, 0.12);
+  --surface-glass-border: rgba(236, 248, 250, 0.18);
+  --surface-glass-shadow: 0 14px 40px rgba(0, 0, 0, 0.22);
+  --surface-glass-highlight: rgba(255, 255, 255, 0.16);
+  color: rgba(247, 252, 253, 0.78);
+}
+
+body.nav-on-dark .nav-logo,
+body.nav-on-dark .nav-pill-link,
+body.nav-on-dark .nav-grid-toggle,
+body.nav-on-dark .nav-easter-toggle,
+body.nav-on-dark .nav-right > .theme-toggle,
+body.nav-on-dark .nav-right > .ambient-ui .ambient-toggle,
+body.nav-on-dark .nav-right > .ambient-ui .ambient-note {
+  color: rgba(247, 252, 253, 0.78);
+}
+
+body.nav-on-dark .nav-pill-link.active {
+  color: #102434;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.16);
+}
+
+body.nav-on-dark .nav-pill-link:hover,
+body.nav-on-dark .nav-logo:hover,
+body.nav-on-dark .nav-grid-toggle:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+body.nav-on-dark .nav-easter-toggle:hover,
+body.nav-on-dark .nav-easter-toggle--active {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+body.nav-on-dark .nav-grid-toggle--active {
+  color: rgba(255, 255, 255, 0.96);
+  background: rgba(255, 255, 255, 0.18);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+body.nav-on-dark .nav-cta {
+  color: #102434;
+  border-color: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.2);
+}
+
+body.nav-on-dark .nav-toggle {
+  color: #f7fcfd;
+  background: #102434;
+}
+
+/* ── Scrolled state, more opaque glass ── */
+.nav.scrolled .nav-left-pill {
+  --surface-glass-bg: var(--glass-scrolled);
+  --surface-glass-border: var(--glass-scrolled-border);
+  --surface-glass-shadow: var(--glass-scrolled-shadow);
+}
+.nav.scrolled :is(.nav-canvas-panel, .nav-easter-toggle, .nav-right > .theme-toggle, .nav-right > .ambient-ui .ambient-toggle, .nav-right > .ambient-ui .ambient-note) {
+  --surface-glass-bg: var(--glass-scrolled);
+  --surface-glass-border: var(--glass-scrolled-border);
+  --surface-glass-shadow: var(--glass-scrolled-shadow);
+}
+
+/* ── Deep scroll — compact + stronger glass ── */
+.nav.scrolled-deep .nav-left-pill {
+  transform: none;
+  --surface-glass-blur: blur(20px) saturate(1.6);
+}
+.nav.scrolled-deep :is(.nav-canvas-panel, .nav-easter-toggle, .nav-right > .theme-toggle, .nav-right > .ambient-ui .ambient-toggle, .nav-right > .ambient-ui .ambient-note) {
+  --surface-glass-blur: blur(18px) saturate(1.55);
+}
+.nav.scrolled-deep .nav-cta {
+  transform: none;
+}
+
+/* ── Mobile toggle ── */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 44px;
+  height: 44px;
+  padding: var(--space-3);
+  cursor: pointer;
+  background: var(--bg);
+  color: var(--ink);
+  border: 1px solid var(--ink-15);
+  border-radius: var(--radius-sm, 8px);
+  margin-right: 0;
+}
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 1.5px;
+  background: currentColor;
+  border-radius: 1px;
+  transition: transform var(--motion-base) var(--motion-ease), opacity var(--motion-fast);
+  transform-origin: center;
+}
+.nav-toggle.open span:nth-child(1) {
+  transform: translateY(3.75px) rotate(45deg);
+}
+.nav-toggle.open span:nth-child(2) {
+  transform: translateY(-3.75px) rotate(-45deg);
+}
+
+/* ── Mobile overlay ── */
+.mobile-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 199;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--dur-slow);
+  --surface-glass-bg: color-mix(in srgb, var(--bg) 96%, transparent);
+  --surface-glass-blur: blur(40px) saturate(1.5);
+  border: none;
+  box-shadow: none;
+}
+.mobile-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-nav-links {
+  text-align: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.mobile-nav-links li {
+  margin-bottom: var(--space-2);
+}
+.mobile-nav-links a {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: 300;
+  letter-spacing: var(--ls-tight);
+  color: var(--ink);
+  transition: opacity var(--dur-base);
+  display: inline-block;
+  padding: var(--space-1) 0;
+  text-decoration: none;
+}
+.mobile-nav-links a:hover {
+  opacity: 0.4;
+}
+
+/* ── Dark mode ──
+   Pills stay near-transparent like the original design (the full-width
+   .nav.scrolled band is gone); a backdrop blur keeps the labels readable
+   over scrolled content without adding a visible surface. */
+[data-theme="dark"] .nav-left-pill.surface-glass,
+[data-theme="dark"] .nav-canvas-panel.surface-glass,
+[data-theme="dark"] .nav-easter-toggle.surface-glass,
+[data-theme="dark"] .nav-theme-wrap .theme-toggle.surface-glass,
+[data-theme="dark"] .nav-mobile-theme.surface-glass,
+[data-theme="dark"] .nav-right > .ambient-ui .ambient-toggle.surface-glass,
+[data-theme="dark"] .nav-right > .ambient-ui .ambient-note.surface-glass {
+  --surface-glass-bg: transparent;
+  --surface-glass-border: var(--ink-08);
+  --surface-glass-shadow: none;
+  background: transparent;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .nav-pill-link:hover {
+  background: var(--ink-08);
+}
+[data-theme="dark"] .nav-pill-link.active {
+  background: var(--ink-12);
+  box-shadow: var(--shadow-sm);
+  color: var(--ink);
+}
+[data-theme="dark"] .nav-right > .theme-toggle:hover {
+  color: var(--ink);
+  --surface-glass-bg: color-mix(in srgb, var(--glass-subtle-bg) 82%, var(--ink-08) 18%);
+  background: var(--surface-glass-bg);
+}
+[data-theme="dark"] .nav-cta {
+  border-color: var(--ink-12);
+  background: var(--surface);
+  color: var(--ink);
+  box-shadow: var(--shadow-sm);
+}
+[data-theme="dark"] .nav-cta:hover {
+  background: var(--ink);
+  color: var(--bg);
+  border-color: var(--ink);
+}
+[data-theme="dark"] .mobile-overlay {
+  --surface-glass-bg: color-mix(in srgb, var(--bg) 96%, transparent);
+}
+
+/* Responsive handled in responsive.css */
+
+/* ── Work tab expansion: the three Work views surface in the pill while
+   you're on /work, so the modes are discoverable before you find the
+   in-page switcher ── */
+.nav-work-views {
+  display: flex;
+  align-items: center;
+  gap: 0.05rem;
+  margin-left: 0.15rem;
+  padding-left: 0.5rem;
+  border-left: 1px solid var(--ink-10);
+  animation: nav-work-views-in 360ms var(--motion-ease) both;
+}
+
+@keyframes nav-work-views-in {
+  from { opacity: 0; transform: translate3d(-6px, 0, 0); filter: blur(2px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+
+.nav-work-view {
+  padding: 0.32rem 0.55rem;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink-50);
+  white-space: nowrap;
+  transition: color var(--motion-fast) var(--motion-ease), background var(--motion-fast) var(--motion-ease);
+}
+
+.nav-work-view:hover {
+  color: var(--ink);
+}
+
+.nav-work-view.is-active {
+  color: var(--ink);
+  background: var(--ink-08);
+}
+
+body.nav-on-dark .nav-work-view {
+  color: rgba(247, 252, 253, 0.6);
+}
+
+body.nav-on-dark .nav-work-view:hover,
+body.nav-on-dark .nav-work-view.is-active {
+  color: rgba(247, 252, 253, 0.95);
+}
+
+body.nav-on-dark .nav-work-view.is-active {
+  background: rgba(247, 252, 253, 0.12);
+}
+
+/* The pill runs out of room on smaller screens; the in-page switcher
+   still covers view changes there. */
+@media (max-width: 860px) {
+  .nav-work-views {
+    display: none;
+  }
+}
+
+/* Shared chrome edges follow the case-study frame, including ruler mode. */
+body:has(.project-main) .nav {
+  --nav-edge-inset: max(var(--chrome-inline), calc((100vw - var(--project-reading-width, 1040px)) / 2), calc(var(--ruler-inline-offset, 0px) + .75rem));
+}
+.nav-work-view { text-transform: none; letter-spacing: 0; }

@@ -1,0 +1,182 @@
+/* Glass is confined to controls. Content surfaces keep their authored styling. */
+.glass-segments {
+  --control-ink: var(--ink);
+  --control-surface: var(--bg);
+  display: inline-flex;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 3px;
+  padding: 3px;
+  color: var(--control-ink);
+  background: color-mix(in srgb, var(--control-surface) 82%, transparent);
+  border: 1px solid color-mix(in srgb, var(--control-ink) 16%, transparent);
+  border-radius: 13px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+.glass-segments > :is(button, a), .glass-action {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .55rem .85rem;
+  border: 1px solid transparent;
+  border-radius: 10px;
+  background: transparent;
+  color: inherit;
+  font: 500 .8rem/1.25 var(--sans);
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 140ms ease, box-shadow 140ms ease, transform 140ms ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.glass-segments > :is(button, a):is([aria-pressed="true"], [aria-current="page"]),
+.physical-world .glass-segments > button[aria-pressed="true"],
+[data-prototype] .glass-segments > button[aria-pressed="true"] {
+  color: var(--control-ink);
+  background: color-mix(in srgb, var(--control-surface) 92%, var(--control-ink) 8%);
+  border-color: color-mix(in srgb, var(--control-ink) 20%, transparent);
+  box-shadow: inset 0 1px 0 color-mix(in srgb, white 30%, transparent), 0 1px 3px #00000012;
+}
+.glass-segments > :is(button, a):hover, .glass-action:hover {
+  background: color-mix(in srgb, currentColor 8%, transparent);
+}
+.glass-segments > :is(button, a):active, .glass-action:active { transform: scale(.97); }
+.glass-segments > :is(button, a):focus-visible, .glass-action:focus-visible,
+.compact-sheet a:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+.glass-segments > button:disabled { opacity: .45; cursor: default; transform: none; }
+.glass-action {
+  background: color-mix(in srgb, var(--bg) 90%, transparent);
+  border-color: color-mix(in srgb, currentColor 18%, transparent);
+}
+.physical-world .glass-segments {
+  --control-ink: var(--world-ink);
+  --control-surface: var(--world-bg);
+}
+.physical-world .glass-segments > button {
+  background: transparent;
+  color: var(--world-ink);
+  border-color: transparent;
+  border-radius: 10px;
+}
+.physical-world > header .physical-world-actions { align-items: center; gap: .5rem; }
+.physical-world > header .glass-action { min-width: 90px; border-radius: 10px; color: var(--world-ink); background: var(--world-bg); }
+.physical-world .jugalbandi-instruments.glass-segments { margin: 0 1rem .75rem; padding: 3px; }
+[data-prototype] .prototype-tabs.glass-segments {
+  --control-ink: var(--proto-ink);
+  --control-surface: var(--proto-bg);
+  width: fit-content;
+  max-width: calc(100% - 2rem);
+  margin: 1rem;
+  padding: 3px;
+  gap: 3px;
+  border: 1px solid var(--proto-rule);
+}
+[data-prototype] .prototype-tabs.glass-segments > button { background: transparent; border-color: transparent; color: var(--proto-ink); border-radius: 10px; }
+[data-prototype] .prototype-split .prototype-tabs.glass-segments { margin: 0 0 1rem; max-width: 100%; }
+.shuffle-object .shuffle-views.glass-segments { --control-ink: var(--shuffle-ink); --control-surface: var(--shuffle-surface); padding: 3px; gap: 3px; }
+.shuffle-object .glass-segments > button { border-radius: 10px; background: transparent; border-color: transparent; }
+.shuffle-object .glass-segments > button[aria-pressed="true"] { background: color-mix(in srgb, var(--shuffle-surface) 92%, var(--shuffle-ink) 8%); border-color: color-mix(in srgb, var(--shuffle-ink) 20%, transparent); }
+.nav-work-views.glass-segments { padding: 3px; gap: 3px; animation: none; }
+.nav-work-views.glass-segments > a { min-height: 36px; padding: .4rem .6rem; }
+
+.compact-sheet-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 12px;
+  padding-bottom: max(12px, env(safe-area-inset-bottom));
+  background: #00000045;
+}
+.compact-sheet {
+  width: min(100%, 480px);
+  max-height: min(75dvh, 640px);
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px 16px;
+  border: 1px solid color-mix(in srgb, var(--ink) 18%, transparent);
+  border-radius: 22px;
+  background: color-mix(in srgb, var(--bg) 96%, transparent);
+  color: var(--ink);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 12px 36px #00000025;
+  animation: compact-sheet-enter 180ms ease-out both;
+}
+.compact-sheet-handle { width: 32px; height: 4px; margin: 0 auto 8px; border-radius: 2px; background: var(--ink-30); }
+.compact-sheet > header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 8px; }
+.compact-sheet h2 { margin: 0; font: 500 .95rem/1.4 var(--sans); letter-spacing: normal; }
+.compact-sheet-content { overflow-y: auto; overscroll-behavior: contain; padding: 4px; }
+.compact-sheet .mobile-nav-links { text-align: left; }
+.compact-sheet .mobile-nav-links li { margin: 0; }
+.compact-sheet .mobile-nav-links a { display: flex; align-items: center; min-height: 64px; padding: 10px 12px; font: 400 1.65rem/1.25 var(--serif); border-bottom: 1px solid var(--ink-15); }
+.compact-sheet .mobile-nav-links li:last-child a { border-bottom: 0; }
+.compact-sheet .cs-bnav-menu-list { display: grid; gap: 4px; }
+.compact-sheet .cs-bnav-menu-link { display: flex; gap: 1rem; align-items: center; min-height: 48px; padding: 10px 12px; border-radius: 9px; font: 400 .9rem/1.4 var(--sans); color: var(--ink); text-decoration: none; }
+.compact-sheet .cs-bnav-menu-link > span { opacity: .65; font-size: .75rem; font-variant-numeric: tabular-nums; }
+.compact-sheet .cs-bnav-menu-link:is(:hover, .active) { background: var(--ink-08); }
+@keyframes compact-sheet-enter { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+/* Keep the current chapter reachable while the reader pauses. */
+.project-main .cs-bottom-nav--side.is-idle:not(.is-hidden):not(:hover):not(:focus-within):not(:has([aria-expanded="true"])) {
+  opacity: .75;
+  transform: none;
+  pointer-events: auto;
+}
+.project-main .cs-bottom-nav--side:has([aria-expanded="true"]) { opacity: 1; transform: none; }
+@media (max-width: 860px) { .nav-work-views.glass-segments { display: none; } }
+@media (max-width: 680px) {
+  .physical-world > header .physical-world-actions { flex-wrap: nowrap; }
+  .physical-world > header .glass-segments { flex: 1; }
+  .physical-world > header .glass-segments > button { flex: 1; padding-inline: .5rem; }
+  .physical-world > header .glass-action { flex: 0 0 auto; min-width: 76px; }
+  .project-main .cs-bottom-nav--side.is-idle:not(.is-hidden):not(:hover):not(:focus-within):not(:has([aria-expanded="true"])) { opacity: .85; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .compact-sheet { animation: none; }
+  .project-main .cs-bottom-nav--side, .project-main .cs-bnav-menu { transition: none; }
+  .glass-segments > :is(button, a), .glass-action { transition: none; transform: none; }
+}
+@media (prefers-reduced-transparency: reduce) {
+  .glass-segments, .glass-action, .compact-sheet { background: var(--control-surface, var(--bg)); backdrop-filter: none; -webkit-backdrop-filter: none; }
+}
+html.is-low-power-device :is(.glass-segments, .compact-sheet) { backdrop-filter: none; -webkit-backdrop-filter: none; }
+@media (forced-colors: active) {
+  .glass-segments, .glass-action, .compact-sheet { background: Canvas; color: CanvasText; border: 1px solid CanvasText; backdrop-filter: none; -webkit-backdrop-filter: none; }
+  .glass-segments > :is(button, a):is([aria-pressed="true"], [aria-current="page"]), .physical-world .glass-segments > button[aria-pressed="true"], [data-prototype] .glass-segments > button[aria-pressed="true"] { background: Highlight; color: HighlightText; border-color: Highlight; box-shadow: none; }
+  .compact-sheet .cs-bnav-menu-link.active { outline: 1px solid Highlight; }
+}
+
+.compact-sheet-grab { min-height: 44px; display: grid; place-items: center; touch-action: none; cursor: grab; margin: -8px -16px 0; }
+.compact-sheet-grab:active { cursor: grabbing; }
+.compact-sheet-grab .compact-sheet-handle { margin: 0; }
+.physical-world > header .physical-world-actions { flex-wrap: wrap; }
+.physical-world > header .undo-reset { min-width: 0; }
+
+.hero-scene-status { position: absolute; bottom: 1rem; right: var(--chrome-inline, 1rem); max-width: calc(100% - 2rem); z-index: 2; color: var(--ink-70); font: 400 .8rem/1.5 var(--sans); }
+.hero-scene-status button { min-height: 44px; margin-left: .5rem; padding: .5rem .75rem; border: 1px solid var(--ink-15); border-radius: 8px; background: var(--bg); color: var(--ink); cursor: pointer; }
+.hero-scene-status button:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+@media (max-width: 680px) { .physical-world > header .undo-reset { flex-basis: 100%; } }
+
+.object-loading-preview { flex-direction: column; gap: 1rem; }
+.object-loading-preview img { width: min(75%, 440px); max-height: 70%; object-fit: contain; border-radius: 8px; }
+
+.work-mobile-views.glass-segments { display: none; }
+@media (max-width: 860px) { .work-mobile-views.glass-segments { display: inline-flex; margin: .75rem 0; } }
+@media (max-width: 860px) {
+  .page-work .work-page-header .work-filter-inline {
+    display: flex;
+    flex-wrap: nowrap;
+    max-width: 100%;
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
+  }
+  .page-work .work-page-header .work-filter-inline > button { flex: 0 0 auto; min-height: 44px; font-size: .875rem; }
+}
+.physical-world-loading:not(.object-loading-preview) { flex-wrap: wrap; align-content: center; gap: .5rem; }

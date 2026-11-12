@@ -1,0 +1,58 @@
+import CsSection from './CsSection'
+import CsBody from './CsBody'
+import { EvidenceImage } from './CsScreenStrip'
+import '../../styles/raahi-service-study.css'
+
+const assets='/Assets/Projects/Raahi/service-2026/'
+const sources=[
+ {name:'Pune Metro project profile',href:'https://www.punemetrorail.org/project-profile',fact:'The operator lists the Vanaz–Ramwadi and PCMC–Swargate station sequences and marks open stations.',decision:'Use the operator’s current names and order. Keep unverified stops out of boardable choices.',limit:'No live departures or coordinates are provided.'},
+ {name:'Aqua Line feeder table',href:'https://www.punemetrorail.org/download/Pune_Metro_AquaLine.pdf',fact:'The operator publishes feeder connections from Metro stations into surrounding neighbourhoods.',decision:'Build the Vanaz–Bavdhan and Ramwadi–Kharadi handoffs from named feeder references.',limit:'The PDF shows no effective date. Published frequencies and fare bands are not current quotes.'},
+ {name:'Accessibility facilities',href:'https://www.punemetrorail.org/download/commuters_guide/Facilities-available-for-PWD.pdf',fact:'Pune Metro documents lifts, lowered counters, tactile paths, ramps and assistance.',decision:'Make assistance visible and keep accessibility information separate from routing guarantees.',limit:'This is a facilities description, not a lift-uptime feed or physical access audit.'},
+ {name:'One Pune Card',href:'https://www.punemetrorail.org/one-pune-card',fact:'The operator documents entry/exit validation and card-balance update steps.',decision:'Separate route selection, payment, validation and payment recovery in the proposed service.',limit:'Raahi cannot issue operator-valid tickets or accept cards.'},
+]
+const stages=[
+ {stage:'Before leaving',rider:'Choose a destination and compare connections.',front:'Phone: saved places, mode sequence and a clear estimate label.',back:'Normalize the dated operator references; calculate a proposed itinerary locally.',owner:'Raahi prototype',failure:'No route in coverage → explain the limit and offer Google Maps.'},
+ {stage:'At the stop',rider:'Find the next leg without entering personal details.',front:'Kiosk: language choice, two-stop planner, visible assistance and a demo receipt.',back:'Keep the kiosk route and receipt in a separate in-memory session.',owner:'Station operator in a future service',failure:'End session or reload → remove the kiosk selections and receipt.'},
+ {stage:'Boarding',rider:'Confirm the route and understand ticket validity.',front:'Phone or receipt: route identity and an explicit demo restriction.',back:'Future operator payment and validator services would authorize travel.',owner:'Transit operator; not connected',failure:'Payment or scan fails → retain the itinerary and direct to staffed assistance.'},
+ {stage:'On the bus',rider:'Recognize the next stop and prepare to leave.',front:'Vehicle display: next stop first, following stop, sequence and transfer cue.',back:'Prototype position advances manually. A future adapter would validate vehicle telemetry.',owner:'Fleet control in a future service',failure:'Position becomes stale → suppress arrival predictions and show the route plus staff guidance.'},
+ {stage:'Transfer and arrive',rider:'Find the next mode, then finish the trip.',front:'Consistent stop names across screens; Google Maps for external directions.',back:'The personal app stores completion locally and derives activity and insights.',owner:'Rider controls local data',failure:'Missed stop → re-plan from a known stop; no automatic fare or refund promise.'},
+]
+const screenshots=[
+ {file:'mobile-home.png',label:'Phone planner',alt:'Working Raahi phone planner greeting the fictional demo rider Aditi'},
+ {file:'kiosk.png',label:'Station kiosk',alt:'Working kiosk with Ramwadi to EON route choices, language controls and a separate session'},
+ {file:'bus.png',label:'Inside the bus',alt:'Working bus display emphasizing the next stop and the route sequence'},
+ {file:'mobile-ticket.png',label:'Demo QR ticket',alt:'Demo QR ticket from the Raahi browser app, clearly marked not valid for travel'},
+]
+
+export default function RaahiServiceStudy(){return <>
+ <CsSection id="cs-pune-evidence" title="Ground the service in Pune">
+  <CsBody><p>The original project is a 2022 service concept. This 2026 extension adds secondary research and a working browser implementation. The table separates operator evidence from the design decisions it informs. Sources were checked on 31 October 2026; they do not establish rider outcomes.</p></CsBody>
+  <div className="raahi-evidence-register">{sources.map(source=><article key={source.href}><h3><a href={source.href} target="_blank" rel="noopener noreferrer">{source.name}</a></h3><p>{source.fact}</p><dl><div><dt>Design response</dt><dd>{source.decision}</dd></div><div><dt>Limit</dt><dd>{source.limit}</dd></div></dl></article>)}</div>
+ </CsSection>
+ <CsSection id="cs-service-journey" title="Design for the handoffs">
+  <CsBody><p>A route planner is one part of this service. A rider may move from a personal phone to a shared kiosk, a vehicle display and a staffed help point. The design carries the destination and the next action across those boundaries.</p><p>The working scenario follows a fictional rider, Aditi, from Vanaz towards EON IT Park using the Aqua corridor and a published feeder connection. Estimated timing and demo fares are separate from operator facts. This is a scenario for testing, not an observed rider journey.</p></CsBody>
+  <ol className="raahi-journey-strip">{stages.map(item=><li key={item.stage}><h3>{item.stage}</h3><p>{item.rider}</p></li>)}</ol>
+  <div className="raahi-service-questions"><h3>Questions for field research</h3><ul><li>Where does a rider lose the connection between the route they chose and the vehicle they need?</li><li>Can a first-time rider recognize the transfer and ask for assistance in their preferred language?</li><li>Can a shared kiosk clear personal traces without losing the route information a rider needs to carry?</li></ul><p>No new interviews, observations or participant outcomes are claimed here.</p></div>
+ </CsSection>
+ <CsSection id="cs-service-blueprint" title="A blueprint from planning to arrival">
+  <CsBody><p>This proposed blueprint connects visible touchpoints to backstage responsibilities. Operator payment, validation and vehicle telemetry are future integrations, not services implemented by this prototype.</p></CsBody>
+  <div className="raahi-blueprint-scroll" tabIndex={0} role="region" aria-label="Service blueprint; scroll horizontally for all stages"><table className="raahi-blueprint"><caption>Proposed service responsibilities and recovery paths</caption><thead><tr><th scope="col">Layer</th>{stages.map(item=><th key={item.stage} scope="col">{item.stage}</th>)}</tr></thead><tbody>{([
+   ['Rider action','rider'],['Visible touchpoint','front'],['Backstage activity','back'],['Responsible actor','owner'],['Recovery path','failure'],
+  ] as const).map(([label,key])=><tr key={key}><th scope="row">{label}</th>{stages.map(item=><td key={item.stage}>{item[key]}</td>)}</tr>)}</tbody></table></div>
+  <a className="raahi-study-download" href={assets+'service-blueprint.csv'} download>Download the service blueprint (CSV)</a>
+ </CsSection>
+ <CsSection id="cs-service-architecture" title="Keep data authority visible">
+  <div className="raahi-architecture" role="group" aria-label="Implemented service data flow"><ol><li><strong>Operator references</strong><span>Dated station sequences and selected feeder stops</span></li><li><strong>Normalized network</strong><span>Source flags; approximate positions; explicit coverage</span></li><li><strong>Local route engine</strong><span>Estimated legs; optional demo connectors</span></li><li><strong>Three surfaces</strong><span>Personal app, isolated kiosk and display rehearsal</span></li><li><strong>External directions</strong><span>Named places passed to Google Maps on request</span></li></ol><p>The working prototype is behind owner-only ChatGPT access. These public mockups do not grant application access.</p></div>
+  <div className="raahi-architecture-contracts"><article><h3>Personal data</h3><p>Profile, saved places, tickets and completed journeys stay in the personal browser’s storage. Backup, restore and erase actions give the rider control. The demo identity changes to Aditi while custom names are preserved.</p></article><article><h3>Shared-terminal data</h3><p>Kiosk selections and receipts stay in a separate in-memory session. Ending the session or reloading clears it. A kiosk receipt never enters the personal app’s wallet.</p></article><article><h3>Operational data</h3><p>There is no live GPS, fare collection or validator connection. A future provider adapter would need effective dates, freshness checks, failure states and operator authorization before it could replace the rehearsal controls.</p></article></div>
+ </CsSection>
+ <CsSection id="cs-service-mockups" title="One route language across the screens">
+  <figure className="raahi-system-mockup"><EvidenceImage src={assets+'service-mockup.png'} alt="Concept mockups of a Raahi phone demo QR ticket, station kiosk and bus display"/><figcaption>Concept hardware compositions using captures from the working browser prototype. These are proposed touchpoints, not photographs of installed equipment.</figcaption></figure>
+  <div className="raahi-surface-evidence">{screenshots.map(screen=><figure key={screen.file}><a href={assets+screen.file} target="_blank" rel="noopener noreferrer"><img src={assets+screen.file} alt={screen.alt} loading="lazy" decoding="async" /></a><figcaption>{screen.label} · Open the full capture</figcaption></figure>)}</div>
+  <CsBody><p>The kiosk prioritizes a large destination selector and one planning action. English, Marathi and Hindi labels can be rehearsed; translations still need human review. The vehicle display gives the next stop the strongest type hierarchy, followed by the next connection. Its controls simulate progress rather than imply tracking.</p></CsBody>
+ </CsSection>
+ <CsSection id="cs-service-validation" title="What the prototype proves, and what comes next">
+  <CsBody><p>The implementation makes route comparison, saved places, persistent journeys, unique demo QR tickets, a separate kiosk receipt and manual next-stop progression testable. Software checks and responsive inspections establish that those flows run; they do not establish service usability or operational readiness.</p></CsBody>
+  <div className="raahi-study-plan"><h3>Proposed next study</h3><p>Recruit a mix of frequent commuters, first-time transfer riders and people who use mobility or language assistance. Test on a phone, a full-size kiosk mockup and a display viewed from a bus seat.</p><ol><li>Compare two connections and explain why you chose one. Record task completion, time and route-selection errors.</li><li>Find the feeder and identify the transfer stop. Record wrong-stop choices and requests for help.</li><li>Use the kiosk in a preferred language, request assistance and end the session. Check reach, privacy and translation comprehension.</li><li>Recognize the next stop under glare, motion and noise. Test with the visual display and announcement together.</li><li>Recover from no route, stale location and a rejected ticket. Check whether the proposed recovery action is understood.</li></ol><p>These are planned measures. No participant count, success rate or impact improvement has been established.</p></div>
+  <a className="raahi-study-download" href={assets+'service-design-notes.md'} download>Download the research and service-design notes</a>
+ </CsSection>
+</>}

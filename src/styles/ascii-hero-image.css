@@ -1,0 +1,59 @@
+/* Only the selected illustration is replaced; its existing slot stays intact. */
+.ascii-hero-image > :is(img, canvas) {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.ascii-hero-image__canvas { opacity: 0; }
+.ascii-hero-image[data-ascii-ready="true"] > .ascii-hero-image__canvas { opacity: 1; }
+.ascii-hero-image[data-ascii-ready="true"] > .ascii-hero-image__fallback { visibility: hidden; }
+.artifact-ux-research__render.ascii-hero-image,
+.hero-artifact--ux-research:hover .artifact-ux-research__render.ascii-hero-image { filter: none; }
+
+/* Keep the glyph grid on the pixel plane so individual characters stay sharp. */
+.category-hero-artifact:has(.ascii-hero-image),
+.hero-artifact--ux-research:has(.ascii-hero-image),
+.artifact-ux-research:has(.ascii-hero-image),
+.artifact-ux-research__render.ascii-hero-image {
+  transform: none !important;
+  animation: none;
+  filter: none;
+}
+.hero-artifact--ux-research:has(.ascii-hero-image)::before { display: none; }
+.ascii-hero-image__live { position: absolute; inset: 0; color: #222620; opacity: 0; overflow: hidden; }
+.ascii-hero-image[data-ascii-ready="true"] .ascii-hero-image__live { opacity: .94; }
+.ascii-hero-image__live table { border: 0; border-collapse: collapse; background: transparent; }
+.ascii-hero-image__live td { padding: 0; border: 0; font-weight: 600; }
+[data-theme="dark"] .ascii-hero-image__live { color: #dddcd3; }
+.ascii-hero-image__live { cursor: grab !important; touch-action: none; }
+.ascii-hero-image[data-dragging="true"] .ascii-hero-image__live { cursor: grabbing !important; }
+.ascii-hero-image:focus-visible { outline: 2px solid var(--select-blue); outline-offset: 3px; }
+.category-ascii-artifact { position: relative; width: 100%; aspect-ratio: 1; }
+.category-ascii-artifact__object { position: absolute; inset: 0; display: block; width: 100%; height: 100%; pointer-events: auto; }
+.category-ascii-artifact .ascii-hero-image__unavailable { display: grid; place-items: center; height: 100%; color: var(--ink-70); font: 400 1rem var(--sans); }
+.ch-3d--side:has(.category-ascii-artifact),
+.ch-3d--side:has(.category-ascii-artifact) * { pointer-events: auto !important; }
+
+/* Dark ink in light mode; retain the luminous glyphs on dark surfaces. */
+.ascii-hero-image__live {
+  filter: brightness(.6);
+  transition: opacity 180ms ease, filter 180ms ease;
+}
+.ascii-hero-image__live span {
+  text-shadow: none;
+}
+[data-theme="dark"] .ascii-hero-image__live { filter: brightness(1.75); }
+[data-theme="dark"] .ascii-hero-image__live span { text-shadow: 0 1px 2px currentColor; }
+.ascii-hero-image[data-ascii-ready="true"]:is(:hover, :focus-visible, [data-dragging="true"]) .ascii-hero-image__live {
+  opacity: 1;
+  filter: brightness(.68);
+}
+[data-theme="dark"] .ascii-hero-image:is(:hover, :focus-visible, [data-dragging="true"]) .ascii-hero-image__live {
+  filter: brightness(2);
+}
+@media (prefers-reduced-motion: reduce) {
+  .ascii-hero-image__live { transition: none; }
+}

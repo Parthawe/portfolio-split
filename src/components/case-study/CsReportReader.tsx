@@ -1,0 +1,16 @@
+import { useRef, useState } from 'react'
+import { EvidenceImage, type EvidenceScreen } from './CsScreenStrip'
+import { scrollEvidenceViewport } from './evidenceKeyboard'
+export default function CsReportReader({ chapters, original, label = 'Original report', continueHref = '#cs-impact', originalLabel = 'Open complete original report' }: { chapters: EvidenceScreen[]; original?: string; label?: string; continueHref?: string; originalLabel?: string }) {
+  const [page, setPage] = useState(0), [zoom, setZoom] = useState(1)
+  const dialog = useRef<HTMLDialogElement>(null), viewport = useRef<HTMLDivElement>(null), trigger = useRef<HTMLButtonElement>(null)
+  const select = (next: number) => { setPage(next); setZoom(1); viewport.current?.scrollTo({ top: 0, left: 0 }); dialog.current?.querySelector('.cs-report-reader__viewport')?.scrollTo({ top: 0 }) }
+  const controls = (fullscreen = false) => <div className="evidence-controls"><label>Chapter <select aria-label={fullscreen ? 'Fullscreen report chapter' : 'Report chapter'} value={page} onChange={e => select(Number(e.target.value))}>{chapters.map((chapter, i) => <option key={chapter.src} value={i}>{i + 1}. {chapter.label}</option>)}</select></label><div><button type="button" className="glass-action" aria-label="Zoom out" disabled={zoom <= 1} onClick={() => setZoom(value => Math.max(1,value-.25))}>−</button><output aria-live="polite">{Math.round(zoom*100)}%</output><button type="button" className="glass-action" aria-label="Zoom in" disabled={zoom >= 3} onClick={() => setZoom(value => Math.min(3,value+.25))}>+</button></div><div><button type="button" className="glass-action" disabled={page === 0} onClick={() => select(page - 1)}>Previous</button><span aria-live="polite">{page + 1} / {chapters.length}</span><button type="button" className="glass-action" disabled={page === chapters.length - 1} onClick={() => select(page + 1)}>Next</button></div></div>
+  return <section className="cs-report-reader" aria-label={`${label} reader`}>
+    {controls()}
+    <a className="glass-action" href={continueHref}>Continue case study</a>
+    <div ref={viewport} className="cs-report-reader__viewport" style={{'--report-zoom': zoom} as React.CSSProperties} tabIndex={0} onKeyDown={scrollEvidenceViewport} aria-label={`${chapters[page].label}, scroll within chapter`}><EvidenceImage key={page} {...chapters[page]} zoomable={false} /></div>
+    <div className="evidence-controls"><button ref={trigger} type="button" className="glass-action" onClick={() => dialog.current?.showModal()}>Fullscreen reader</button><a className="glass-action" href={original ?? chapters[page].src} target="_blank" rel="noreferrer">{originalLabel}<span className="sr-only"> in a new tab</span></a></div>
+    <dialog ref={dialog} onClose={() => trigger.current?.focus()} aria-label={`${label} fullscreen reader`} className="cs-report-reader__dialog"><button type="button" className="glass-action" onClick={() => dialog.current?.close()}>Close reader</button>{controls(true)}<div className="cs-report-reader__viewport" style={{'--report-zoom': zoom} as React.CSSProperties} tabIndex={0} onKeyDown={scrollEvidenceViewport} aria-label="Fullscreen report image"><EvidenceImage key={page} {...chapters[page]} zoomable={false} /></div></dialog>
+  </section>
+}

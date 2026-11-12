@@ -1,0 +1,38 @@
+.arttown-archive { max-width: 1040px; margin: auto; color: var(--ink); }
+.arttown-player { padding: 24px 0; border-block: 1px solid var(--ink-20); margin-bottom: 24px; }
+.arttown-player h2 { font-family: var(--serif); font-size: clamp(22px,3vw,36px); line-height: 1.3; max-width: 34ch; margin: 12px 0 24px; }
+.arttown-player audio { width: 100%; max-width: 680px; }
+.arttown-player p,.arttown-archive footer { color: var(--ink-60); font-size: 14px; line-height: 1.6; }
+.arttown-archive > label { display: block; margin-bottom: 12px; }
+.arttown-archive > input { width: 100%; min-height: 48px; padding: 12px; border: 1px solid var(--ink-20); background: var(--surface); color: var(--ink); border-radius: var(--radius-sm); }
+.arttown-results { display: grid; }
+.arttown-results button { display: grid; grid-template-columns: 130px 1fr 140px; gap: 24px; text-align: left; padding: 20px 12px; border: 0; border-bottom: 1px solid var(--ink-20); color: var(--ink); background: transparent; cursor: pointer; }
+.arttown-results button[aria-pressed=true] { background: var(--ink-06); }
+.arttown-results span { font: 12px/1.6 var(--mono); color: var(--ink-60); }
+.arttown-results strong { line-height: 1.5; font-weight: 500; }
+.arttown-archive :is(button,input,a):focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+.arttown-archive footer { margin-top: 24px; }
+@media(max-width:640px) { .arttown-results button { grid-template-columns: 1fr; gap: 8px; padding: 20px 0; } }
+.arttown-archive { display:grid; grid-template-columns:minmax(260px,.8fr) minmax(0,1.2fr); gap:40px; align-items:start; }
+.arttown-player { position:sticky; top:24px; margin:0; }
+.arttown-player h2 { font-size:clamp(22px,2.5vw,30px); }
+.arttown-browse { min-width:0; }
+.arttown-browse > label { display:block; margin-block:16px 8px; }
+.arttown-browse :is(input,select) { width:100%; min-height:48px; padding:12px; background:var(--surface); color:var(--ink); border:1px solid var(--ink-20); border-radius:var(--radius-sm); font:inherit; }
+.arttown-archive button { min-height:44px; color:var(--ink); border:1px solid var(--ink-20); background:var(--surface); padding:12px; cursor:pointer; }
+.arttown-results button { grid-template-columns:1fr; gap:8px; background:transparent; border:0; border-bottom:1px solid var(--ink-20); }
+.arttown-archive footer { grid-column:1/-1; }
+.arttown-player summary { cursor:pointer; min-height:44px; padding-block:12px; }
+@media(max-width:680px) { .arttown-archive { grid-template-columns:1fr; gap:24px; } .arttown-player { position:static; padding-top:16px; } .arttown-player h2 { margin-bottom:12px; } }
+.arttown-mobile-player { display:none; }
+@media(max-width:680px) { .arttown-archive { padding-bottom:84px; } .arttown-mobile-player { display:flex; align-items:center; gap:8px; position:fixed; inset:auto 12px max(12px,env(safe-area-inset-bottom)); z-index:20; background:var(--bg); border:1px solid var(--ink-20); border-radius:12px; padding:8px; } .arttown-mobile-player span { flex:1; min-width:0; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; font-size:14px; } }
+.arttown-queue { display:flex; flex-wrap:wrap; gap:8px; align-items:center; margin-block:16px; }
+.arttown-queue label { display:flex; align-items:center; flex-wrap:wrap; gap:8px; }
+.arttown-queue select { min-height:44px; background:var(--surface); color:var(--ink); padding:8px; border:1px solid var(--ink-20); }
+
+.arttown-artwork img { width:100%; height:auto; display:block; margin-block:12px; }
+.arttown-artwork summary { font-size:14px; }
+
+.arttown-artwork { margin:0 0 24px; }
+.arttown-artwork img { margin:0; aspect-ratio:1440/719; object-fit:contain; }
+.arttown-artwork figcaption { font-size:12px; line-height:1.6; color:var(--ink-60); margin-top:8px; }

@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: var(--bg);
+  --color-bg-alt: var(--bg-alt);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-ink-70: var(--ink-70);
+  --color-ink-50: var(--ink-50);
+  --color-ink-40: var(--ink-40);
+  --color-ink-30: var(--ink-30);
+  --color-ink-15: var(--ink-15);
+  --color-ink-08: var(--ink-08);
+  --color-ink-06: var(--ink-06);
+  --color-ink-04: var(--ink-04);
+  --color-accent: var(--accent-hi);
+  --color-error: var(--error);
+  --color-green: var(--green);
+}
+
+@layer base {
+  @import "./tokens.css";
+  @import "./reset.css";
+  @import "./base.css";
+}
+
+@layer components {
+  @import "./nav.css";
+  @import "./hero.css";
+  @import "./footer.css";
+  @import "./cta.css";
+}
+
+@import "./interactions.css";
+@import "./display-type.css";
+@import "./responsive.css";
+
+.external-video-fallback {
+  position: absolute;
+  inset: 0.5rem 0.5rem auto auto;
+  z-index: 5;
+  padding: 0.4rem 0.65rem;
+  border-radius: 0.4rem;
+  background: var(--bg);
+  color: var(--ink);
+  font: 0.75rem/1.5 var(--sans);
+  text-decoration: underline;
+}
+
+.external-video {
+  position: absolute;
+  inset: 0;
+  background: #17191c;
+  color: #fff;
+}
+.external-video > iframe,
+.external-video > .external-video__poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+}
+.external-video__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 3.5rem 1rem;
+  border: 0;
+  background: rgba(0, 0, 0, 0.62);
+  color: #fff;
+  font: 500 1rem/1.5 var(--sans);
+  cursor: pointer;
+}
+.external-video__play span { max-width: 28ch; }
+.external-video__play:hover { background: rgba(0, 0, 0, 0.75); }
+.external-video__play:focus-visible { outline: 3px solid #fff; outline-offset: -6px; }
+.external-video__status {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 0.75rem;
+  background: #17191c;
+  color: #fff;
+  font: 0.875rem/1.5 var(--sans);
+}
+.external-video__status button { margin-left: 0.75rem; text-decoration: underline; }
+.external-video-fallback { min-height: 44px; display: inline-flex; align-items: center; }
+.cs-media-spotlight-frame:has(.external-video) .cs-media-spotlight-action { display: none; }
+
+.external-video > .external-video__poster { pointer-events: none; }
+.external-video__play { z-index: 1; }
+.external-video__status { z-index: 2; }
+.local-project-film > video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.local-project-film__links { position: absolute; inset: 0.5rem 0.5rem auto auto; z-index: 5; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 0.4rem; max-width: calc(100% - 1rem); }
+.local-project-film__links .external-video-fallback { position: static; }
+.local-project-film__links span.external-video-fallback { text-decoration: none; }

@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="title desc">
+  <title id="title">MediMorpho multilingual care concept</title>
+  <desc id="desc">Abstract multilingual conversation cards connected through a calm healthcare interpretation system.</desc>
+  <defs>
+    <linearGradient id="bg" x1="60" y1="0" x2="730" y2="1000" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1a0b2c"/><stop offset=".5" stop-color="#57068c"/><stop offset="1" stop-color="#8d4aad"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(650 180) rotate(125) scale(430 500)" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#a7f3df" stop-opacity=".42"/><stop offset="1" stop-color="#a7f3df" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="180%"><feDropShadow dx="0" dy="22" stdDeviation="26" flood-color="#0d0618" flood-opacity=".38"/></filter>
+  </defs>
+  <rect width="800" height="1000" rx="36" fill="url(#bg)"/>
+  <rect width="800" height="1000" rx="36" fill="url(#glow)"/>
+  <g opacity=".18" stroke="#fff"><path d="M0 178h800M0 822h800"/><path d="M108 0v1000M692 0v1000"/></g>
+  <g fill="#fff">
+    <text x="76" y="106" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" letter-spacing="3.4">MEDIMORPHO</text>
+    <text x="76" y="146" font-family="Arial, Helvetica, sans-serif" font-size="14" opacity=".68" letter-spacing="2">MULTILINGUAL CARE SYSTEM</text>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="76" y="238" width="482" height="194" rx="30" fill="#fff" fill-opacity=".96"/>
+    <circle cx="130" cy="292" r="22" fill="#57068c"/>
+    <path d="M122 292h16M130 284v16" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+    <rect x="172" y="270" width="260" height="15" rx="7.5" fill="#1a0b2c" fill-opacity=".85"/>
+    <rect x="172" y="304" width="326" height="11" rx="5.5" fill="#1a0b2c" fill-opacity=".18"/>
+    <rect x="172" y="329" width="278" height="11" rx="5.5" fill="#1a0b2c" fill-opacity=".12"/>
+    <rect x="172" y="370" width="105" height="31" rx="15.5" fill="#e7d8f0"/>
+    <rect x="288" y="370" width="105" height="31" rx="15.5" fill="#dbf7ef"/>
+  </g>
+  <g filter="url(#shadow)">
+    <rect x="242" y="492" width="482" height="194" rx="30" fill="#160a25" fill-opacity=".84" stroke="#fff" stroke-opacity=".2"/>
+    <circle cx="298" cy="548" r="22" fill="#8df0d3"/>
+    <path d="M290 548h16M298 540v16" stroke="#1a0b2c" stroke-width="3" stroke-linecap="round"/>
+    <rect x="340" y="526" width="260" height="15" rx="7.5" fill="#fff" fill-opacity=".88"/>
+    <rect x="340" y="560" width="326" height="11" rx="5.5" fill="#fff" fill-opacity=".22"/>
+    <rect x="340" y="585" width="246" height="11" rx="5.5" fill="#fff" fill-opacity=".13"/>
+    <g transform="translate(340 627)" fill="#8df0d3"><rect width="7" height="20" rx="3.5"/><rect x="14" y="-8" width="7" height="36" rx="3.5"/><rect x="28" y="4" width="7" height="12" rx="3.5"/><rect x="42" y="-14" width="7" height="48" rx="3.5"/><rect x="56" y="-3" width="7" height="26" rx="3.5"/><rect x="70" y="7" width="7" height="6" rx="3.5"/></g>
+  </g>
+  <path d="M182 450C182 487 205 504 235 518" fill="none" stroke="#8df0d3" stroke-width="4" stroke-linecap="round" stroke-dasharray="3 12"/>
+  <g transform="translate(78 782)">
+    <circle cx="16" cy="16" r="16" fill="#8df0d3"/>
+    <path d="M10 16h12M16 10v12" stroke="#1a0b2c" stroke-width="2.5" stroke-linecap="round"/>
+    <text x="52" y="13" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" fill="#fff" letter-spacing="1.7">UNDERSTAND</text>
+    <text x="52" y="34" font-family="Arial, Helvetica, sans-serif" font-size="13" fill="#fff" opacity=".62" letter-spacing="1.5">BEFORE YOU ACT</text>
+  </g>
+  <g fill="none" stroke="#fff" stroke-opacity=".5"><circle cx="676" cy="826" r="44"/><circle cx="676" cy="826" r="62" opacity=".35"/></g>
+  <path d="M655 826h42M676 805v42" stroke="#fff" stroke-width="3" stroke-linecap="round"/>
+</svg>

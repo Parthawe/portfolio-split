@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="application-name" content="Parth Pawar" />
+    <meta name="apple-mobile-web-app-title" content="Parth Pawar" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="author" content="Parth Pawar" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
+    <!--
+      CSP notes: jsdelivr + wasm-unsafe-eval + blob workers are for the
+      MediaPipe hand tracker; storage.googleapis.com hosts its model files.
+      supabase.co is comments, api.elevenlabs.io is optional agent TTS,
+      player.vimeo.com is case-study embeds; Figma hosts the original prototype.
+      Same-origin frames allow sandboxed generated-page previews. img-src
+      https: covers the TransFi/Cargo external image CDNs. frame-ancestors is not enforceable
+      via <meta>, so it is intentionally absent.
+    -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' blob: https://www.googletagmanager.com https://cdn.jsdelivr.net 'wasm-unsafe-eval'; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' https://api.fontshare.com; font-src 'self' data: https://api.fontshare.com https://cdn.fontshare.com; img-src 'self' data: blob: https:; media-src 'self' blob: https://anchor.fm https://d3ctxlq1ktw2nl.cloudfront.net; frame-src 'self' https://itch.io/embed-upload/11124779 https://player.vimeo.com https://www.figma.com https://embed.figma.com; connect-src 'self' https://www.googletagmanager.com https://www.google-analytics.com https://region1.google-analytics.com https://analytics.google.com https://*.supabase.co https://api.elevenlabs.io https://cdn.jsdelivr.net https://storage.googleapis.com https://api.fontshare.com; object-src 'none'; base-uri 'self'; form-action 'self'" />
+    <meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#111110" media="(prefers-color-scheme: dark)" />
+    <link rel="preload" href="/Assets/fonts/general-sans-400.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/Assets/fonts/nikolas.woff2" as="font" type="font/woff2" crossorigin />
+    <!-- These weights size the visible navigation and cover labels. Discover
+         them before delayed route styles can paint fallback text. -->
+    <link rel="preload" href="/Assets/fonts/general-sans-500.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/Assets/fonts/general-sans-600.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="icon" type="image/svg+xml" href="/Assets/favicon.svg" />
+    <link rel="icon" type="image/x-icon" sizes="any" href="/Assets/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/Assets/apple-touch-icon.png" />
+    <link rel="mask-icon" href="/Assets/safari-pinned-tab.svg" color="#111110" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Parth Pawar</title>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

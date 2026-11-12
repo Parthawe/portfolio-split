@@ -1,0 +1,31 @@
+.evidence-controls { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .75rem; margin-block: .75rem; color: var(--ink); font-size: .875rem; }
+.evidence-controls>div { display: flex; align-items: center; gap: .5rem; }
+.evidence-controls select { max-width: 100%; min-height:44px; height:44px; padding: .6rem; background: var(--bg); color: var(--ink); border: 1px solid var(--ink-20); border-radius: var(--radius); font: inherit; }
+.evidence-controls button { min-width:44px; min-height:44px; }
+.cs-screen-strip { min-width: 0; }
+.cs-screen-strip__rail { position: relative; display: flex; gap: 1.25rem; overflow-x: auto; scroll-snap-type: x proximity; padding-block: .5rem 1rem; scrollbar-width: thin; }
+.cs-screen-strip__rail>figure { flex: 0 0 85%; margin: 0; scroll-snap-align: start; min-width: 0; }
+.cs-screen-strip__rail>figure:last-child { margin-right: 15%; }
+.cs-screen-strip__rail img { display: block; width: 100%; height: auto; object-fit: contain; border: 0; border-radius: 0; background: transparent; }
+.cs-screen-strip figcaption { display: flex; flex-wrap: wrap; gap: .75rem; align-items: center; justify-content: space-between; margin-top: .75rem; font-size: .875rem; color: var(--ink-60); }
+.cs-report-reader__viewport { height: min(68vh, 660px); overflow: auto; background: var(--bg); border: 1px solid var(--ink-15); overscroll-behavior: contain; }
+.cs-report-reader__viewport img { display: block; width: calc(100% * var(--report-zoom, 1)); max-width: none; height: auto; }
+.cs-report-reader__dialog { width: min(1200px, 94vw); max-height: 96dvh; padding: 1rem; color: var(--ink); background: var(--bg); border: 1px solid var(--ink-20); border-radius: var(--radius); }
+.cs-report-reader__dialog::backdrop { background: #0009; }
+.cs-report-reader__dialog .cs-report-reader__viewport { height: 72dvh; }
+.evidence-error { min-height: 180px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 1rem; padding: 1rem; }
+.cs-screen-strip :focus-visible,.cs-report-reader :focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+@media(max-width:600px) { .cs-screen-strip__rail>figure { flex-basis: 92%; } .cs-screen-strip__rail>figure:last-child { margin-right: 8%; } .evidence-controls { align-items: flex-start; } .cs-report-reader__viewport { height: 55dvh; } }
+
+.cs-screen-strip--portrait .cs-screen-strip__rail>figure { flex: 0 0 clamp(250px, 29vw, 330px); }
+.cs-screen-strip--portrait .cs-screen-strip__rail>figure:last-child { margin-right: 0; }
+.cs-screen-strip--portrait .cs-screen-strip__rail { align-items: flex-start; }
+.glass-action:disabled { opacity: .45; cursor: default; transform: none; }
+
+.cs-screen-strip__rail>figure,.cs-report-reader__viewport { position: relative; }
+.evidence-loading { position: absolute; z-index: 1; top: 1rem; left: 1rem; padding: .5rem .75rem; background: var(--bg); color: var(--ink); font: 400 .875rem/1.4 var(--sans); }
+
+.cs-screen-strip>.evidence-controls { min-height: 44px; }
+
+.project-main .cs-nda-reviewer-grid.cs-nda-reviewer-grid--strip { display: block; min-width: 0; }
+body:has(.cs-report-reader__dialog[open]) { overflow: hidden; }

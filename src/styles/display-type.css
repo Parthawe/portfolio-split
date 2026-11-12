@@ -1,0 +1,77 @@
+/* Site-wide display typography.
+   Nikolas is reserved for large editorial headings and project names only. */
+
+:where(
+  main:not(.typeface-page),
+  .footer,
+  .next-project
+) :is(
+  h1,
+  h2,
+  .wr-hero-title,
+  .wr-identity-title,
+  .wr-about-heading,
+  .work-page-title,
+  .work-library-shelf__title,
+  .work-timeline-year__label,
+  .work-timeline-feature__title,
+  .proj-title,
+  .proj-visual-title,
+  .proj-header-summary-title,
+  .cs-section-title,
+  .cs-display,
+  .cs-thanks-title,
+  .cs-nda-story-title,
+  .cs-media-spotlight-title,
+  .cs-quick-summary-title,
+  .next-project-title,
+  .gy-hero-title,
+  .lp-hero-title,
+  .lp-featured-title,
+  .book-hero-title,
+  .not-found-title,
+  .abt-collage-title,
+  .abt-proofboard-trigger-title,
+  .tools-board-title,
+  .abt-gy-title,
+  .footer-marquee,
+  .ft-contact-line
+) {
+  font-family: var(--display-heading);
+  font-weight: 400;
+  letter-spacing: 0;
+  font-synthesis: none;
+}
+
+/* Keep product/UI chrome out of the display face. */
+:where(
+  .site-tools,
+  .site-layers-panel,
+  .site-properties-panel,
+  .agent-panel,
+  .mobile-overlay,
+  .work-view-switch,
+  .work-filter-inline,
+  .cs-bottom-nav,
+  .work-bottom-nav,
+  .studio-shell,
+  .glyph-playground,
+  .glyph-editor
+) :is(h1, h2, h3, .agent-panel-title, .studio-props-title) {
+  font-family: var(--sans);
+  font-weight: 350;
+}
+
+/* Eyebrow-style headings are intentionally small — keep them in their own
+   font (usually sans) rather than the Nikolas display face the broad h1/h2
+   rule would otherwise force on them. */
+:where(main, .footer) :is(.cta-v2-headline) {
+  font-family: var(--sans);
+  font-weight: 400;
+}
+
+/* Project cover titles use General Sans instead of the Nikolas display face. */
+:where(main, .footer) :is(.pcard-name, .proj-title, .proj-visual-title) {
+  font-family: var(--sans);
+  font-weight: 400;
+}

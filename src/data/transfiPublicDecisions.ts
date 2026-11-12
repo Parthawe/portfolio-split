@@ -1,0 +1,6 @@
+import type { ScreenDecision } from '../components/case-study/DecisionNote'
+export const transfiDecisions: Record<string, ScreenDecision> = {
+  '6:6779': { question: 'What does the buyer need after payment?', choice: 'Keep order details, progress, destination, and history connected.', evidence: 'Follow the order summary into placed, paid, processing, and delivered states, then locate the history entry.', limit: 'The public board documents interface states, not measured delivery speed or completion.' },
+  '6:9052': { question: 'Can the buyer inspect the price before committing?', choice: 'Put pay/receive amounts and an itemized estimate beside the buy action.', evidence: 'On the right, inspect the Summary, network fee, and processing fee above Buy Ethereum. The values are historical design examples.' },
+  '6:9184': { question: 'Must every returning buyer paste a full wallet address?', choice: 'Offer scanning, a nickname, and saved-wallet selection.', evidence: 'The right-hand design adds Scan, Save, and named wallet cards before Continue.', limit: 'The left view shows a network mismatch; this after view does not demonstrate validation or recovery. Do not infer that address safety was tested.' },
+}

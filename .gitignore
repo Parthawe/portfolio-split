@@ -1,0 +1,44 @@
+.DS_Store
+**/.DS_Store
+*.DS_Store
+node_modules/
+/node_modules
+package-lock.json
+.env
+.env.local
+.env.*.local
+.vite/
+dist/
+qa-rendered-report.md
+.claude/
+supabase/.temp/
+
+# Private/NDA material must not ship through GitHub Pages.
+.nda-private/
+private-nda/
+*_nda-private*
+public/archive/
+public/Assets/Projects/AI VOICE/
+public/Assets/Projects/Health App/
+public/Assets/Projects/CueTV/
+# TransFi can publish only approved glimpse assets; reviewer material stays local/private.
+public/Assets/Projects/Transfi/*
+!public/Assets/Projects/Transfi/public/
+!public/Assets/Projects/Transfi/public/**
+!public/Assets/Projects/Transfi/motion/
+!public/Assets/Projects/Transfi/motion/**
+public/Assets/Projects/Transfi/reviewer/
+public/Assets/Projects/ai-voice/
+public/Assets/Projects/health-app/
+# The public TransFi wordmark (from transfi.com's own site) is allowed for
+# the homepage client strip — only project/case-study material stays private.
+public/Assets/featured/transfi-hover.gif
+public/Assets/images/ai-voice.webp
+public/Assets/images/cuetv.jpg
+public/Assets/images/transfi.jpg
+public/Assets/images/zentipay.webp
+public/Assets/mockups/projects/ai-voice.webp
+public/Assets/mockups/projects/cuetv.webp
+public/Assets/mockups/projects/healthapp.webp
+public/Assets/mockups/projects/transfi-project.webp
+public/Assets/mockups/projects/zentipay.webp

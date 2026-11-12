@@ -1,0 +1,20 @@
+{
+  "product": {
+    "name": "Product Design",
+    "heading": "Designing product systems people trust.",
+    "description": "Product design by Parth Pawar across smart glasses, payments, AI tools, and public services.",
+    "featured": ["mentra", "transfi-project", "raahi-project", "clawed-chat"],
+    "supporting": ["mentra-miniapps", "mentra-brand", "zentipay", "executivelens", "glassly", "medimorpho", "the-point-cdc", "vj-software"],
+    "archive": ["ballah-code", "ai-voice", "cuetv", "office-of-diversity", "ibm", "code-for-build", "org-dashboard", "healthapp", "messy-humans", "atps", "vishwaconclave"],
+    "pages": ["ai", "ux-design", "ux-research", "design-engineering", "design-engineer", "brand-visual", "healthcare", "fintech", "design-for-good", "crypto", "ai-wearables", "perplexity"]
+  },
+  "experimental": {
+    "name": "Design That Plays",
+    "heading": "Design That Plays",
+    "description": "Experimental interaction design and creative technology by Parth Pawar.",
+    "featured": ["jugalbandi", "enigma", "shuffle", "sea-of-salt"],
+    "supporting": ["black-hole", "the-omakase", "moniac-machine", "making-of-time", "uv-light", "revolving-stage", "dumb-waiter-set-design", "drowning", "sculpture", "dna-speculative", "tedx", "typeface"],
+    "archive": ["flow-fields", "embodied-web", "feeling-patterns", "performance-by-design", "on-becoming", "storytelling", "comp-media", "hypercinema", "applications", "production-studio", "arcade-lab"],
+    "pages": ["installations", "after-hours", "shuffle/simulation", "typeface/workshop"]
+  }
+}

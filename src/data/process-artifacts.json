@@ -1,0 +1,793 @@
+[
+  {
+    "slug": "raahi-project",
+    "artifacts": [
+      {
+        "title": "Rider models and journeys",
+        "src": "/Assets/Projects/Raahi/photos/Group 2531.png",
+        "alt": "Original rider models and journey maps for the service concept.",
+        "stage": "experiment",
+        "caption": "Original rider models and journey maps for the service concept.",
+        "sourceHref": "/raahi-project#cs-research",
+        "creator": "Project archive",
+        "evidenceNote": "The archive does not establish participant counts or sampling.",
+        "id": "raahi-project-1b9111ad6929"
+      },
+      {
+        "title": "Connect the touchpoints",
+        "src": "/Assets/Projects/Raahi/photos/service blueprints.png",
+        "alt": "The service blueprint connects journey stages and service touchpoints.",
+        "stage": "experiment",
+        "caption": "The service blueprint connects journey stages and service touchpoints.",
+        "sourceHref": "/raahi-project#cs-research",
+        "creator": "Project archive",
+        "evidenceNote": "A service concept, not proof of live operations.",
+        "id": "raahi-project-7975e47a81ec"
+      },
+      {
+        "title": "Explore the identity",
+        "src": "/Assets/Projects/Raahi/photos/brand personality.png",
+        "alt": "Brand directions explored before the chosen identity.",
+        "stage": "experiment",
+        "caption": "Brand directions explored before the chosen identity.",
+        "sourceHref": "/raahi-project#cs-system",
+        "creator": "Project archive",
+        "evidenceNote": "The board shows exploration; rejection reasons are not recorded.",
+        "id": "raahi-project-dbd0d0f996da"
+      },
+      {
+        "title": "Choose the brand direction",
+        "src": "/Assets/Projects/Raahi/photos/brand personality-1.png",
+        "alt": "The original board identifies the chosen brand direction.",
+        "stage": "decision",
+        "caption": "The original board identifies the chosen brand direction.",
+        "sourceHref": "/raahi-project#cs-system",
+        "creator": "Project archive",
+        "evidenceNote": "Selection is documented; no comparative validation is supplied.",
+        "id": "raahi-project-c1d08a5497db"
+      }
+    ],
+    "exploration": "Could riders explain their next transfer after comparing the mobile and vehicle displays?"
+  },
+  {
+    "slug": "drowning",
+    "artifacts": [
+      {
+        "title": "Scene two study",
+        "src": "/Assets/Projects/Drowning/photos/A4 - 3.png",
+        "alt": "Scene two board with notes on stillness and dim light.",
+        "stage": "experiment",
+        "caption": "Scene two board with notes on stillness and dim light.",
+        "sourceHref": "/drowning#cs-concept",
+        "creator": "Project archive",
+        "evidenceNote": "An annotated scenic proposal, not a lighting test result.",
+        "id": "drowning-dd24841e290f"
+      },
+      {
+        "title": "Scene three study",
+        "src": "/Assets/Projects/Drowning/photos/A4 - 5.png",
+        "alt": "Scene three board proposes a close spotlight during Pea\u2019s emotional breakdown.",
+        "stage": "experiment",
+        "caption": "Scene three board proposes a close spotlight during Pea\u2019s emotional breakdown.",
+        "sourceHref": "/drowning#cs-design",
+        "creator": "Project archive",
+        "evidenceNote": "The board records an intended atmosphere.",
+        "id": "drowning-204ef70a8db1"
+      },
+      {
+        "title": "Completed greenhouse",
+        "src": "/Assets/Projects/Drowning/photos/WhatsApp Image 2024-10-10 at 11.54.18.webp",
+        "alt": "Completed greenhouse scenic model viewed from the front.",
+        "stage": "outcome",
+        "caption": "Completed greenhouse scenic model viewed from the front.",
+        "sourceHref": "/drowning#cs-production",
+        "creator": "Project archive",
+        "evidenceNote": "Documents the model; it does not establish audience response.",
+        "id": "drowning-e1ec57bfb7e6"
+      }
+    ],
+    "exploration": "How would a different lighting transition change the audience\u2019s reading of the same scenic model?"
+  },
+  {
+    "slug": "jugalbandi",
+    "artifacts": [
+      {
+        "title": "Controller construction",
+        "src": "/Assets/Projects/Jugalbandi/Photos/538A3938_nsquare_23.webp",
+        "alt": "Original Hexa-18 controller showing its top and sensor faces.",
+        "stage": "experiment",
+        "caption": "Original Hexa-18 controller showing its top and sensor faces.",
+        "sourceHref": "/jugalbandi#cs-background",
+        "creator": "Project archive",
+        "evidenceNote": "Synchronized controller and actuator logs are unavailable.",
+        "id": "jugalbandi-3332df405879"
+      },
+      {
+        "title": "Harp control and wiring",
+        "src": "/Assets/Projects/Jugalbandi/Photos/538A3968_nsquare_39-1.png",
+        "alt": "Original harp controller and wiring details.",
+        "stage": "experiment",
+        "caption": "Original harp controller and wiring details.",
+        "sourceHref": "/jugalbandi#cs-background",
+        "creator": "Project archive",
+        "evidenceNote": "Construction evidence does not establish response timing.",
+        "id": "jugalbandi-b1b0faeff4e6"
+      },
+      {
+        "title": "Wind pipes from above",
+        "src": "/Assets/Projects/Jugalbandi/Photos/538A4023_nsquare_64.png",
+        "alt": "Original wind-pipe assembly photographed from above.",
+        "stage": "outcome",
+        "caption": "Original wind-pipe assembly photographed from above.",
+        "sourceHref": "/jugalbandi#cs-background",
+        "creator": "Project archive",
+        "evidenceNote": "The original performance film is the evidence for the acoustic sound.",
+        "id": "jugalbandi-ef0148b4ae17"
+      }
+    ],
+    "exploration": "How does the onset and decay of each acoustic answer compare with its visible physical movement?"
+  },
+  {
+    "slug": "moniac-machine",
+    "artifacts": [
+      {
+        "title": "Historic machine reference",
+        "src": "/Assets/Projects/Moniac/photos/original-moniac.png",
+        "alt": "Historic Phillips MONIAC machine reference retained in the project archive.",
+        "stage": "reference",
+        "caption": "Historic Phillips MONIAC machine reference retained in the project archive.",
+        "sourceHref": "/moniac-machine#cs-mechanics",
+        "creator": "Project archive",
+        "evidenceNote": "The case study names the hydraulic computer as inspiration. Individual image attribution is not recorded.",
+        "id": "moniac-machine-7584f6dc1620"
+      },
+      {
+        "title": "Cabinet and controls",
+        "src": "/Assets/Projects/Moniac/photos/annotated-breakdown.png",
+        "alt": "Annotated cabinet with iPad, wooden enclosure, valve controls and Teensy wiring.",
+        "stage": "experiment",
+        "caption": "Annotated cabinet with iPad, wooden enclosure, valve controls and Teensy wiring.",
+        "sourceHref": "/moniac-machine#cs-original",
+        "creator": "Project archive",
+        "evidenceNote": "Individual physical valve policy assignments are unverified.",
+        "id": "moniac-machine-cbd7945910c4"
+      },
+      {
+        "title": "Original game layout",
+        "src": "/Assets/Projects/Moniac/photos/screen-closeup.png",
+        "alt": "Original game screen with labelled valves and reservoir levels in one isometric view.",
+        "stage": "decision",
+        "caption": "Original game screen with labelled valves and reservoir levels in one isometric view.",
+        "sourceHref": "/moniac-machine#cs-original",
+        "creator": "Project archive",
+        "evidenceNote": "Original economic equations and event timings are unavailable.",
+        "id": "moniac-machine-9d353c048b89"
+      },
+      {
+        "title": "Operate the cabinet",
+        "src": "/Assets/Projects/Moniac/photos/hand-playing.webp",
+        "alt": "A player turns a physical valve controller on the cabinet.",
+        "stage": "outcome",
+        "caption": "A player turns a physical valve controller on the cabinet.",
+        "sourceHref": "/moniac-machine#cs-original",
+        "creator": "Project archive",
+        "evidenceNote": "Exhibition evidence does not demonstrate a learning improvement.",
+        "id": "moniac-machine-6d9991ed80ff"
+      }
+    ],
+    "exploration": "Can a player predict one policy effect and explain the assumptions behind it?"
+  },
+  {
+    "slug": "making-of-time",
+    "artifacts": [
+      {
+        "title": "Watchmaking tools",
+        "src": "/Assets/Projects/making-of-time/photos/tools-layout.webp",
+        "alt": "Watchmaking tools and a mechanical watch arranged for inspection.",
+        "stage": "experiment",
+        "caption": "Watchmaking tools and a mechanical watch arranged for inspection.",
+        "sourceHref": "/making-of-time#cs-sundial",
+        "creator": "Project archive",
+        "evidenceNote": "The photograph does not provide a complete build sequence.",
+        "id": "making-of-time-15a03882907d"
+      },
+      {
+        "title": "Raised gnomon",
+        "src": "/Assets/Projects/making-of-time/photos/white-watch.webp",
+        "alt": "Sundial-inspired watch with a raised gnomon on its white dial.",
+        "stage": "experiment",
+        "caption": "Sundial-inspired watch with a raised gnomon on its white dial.",
+        "sourceHref": "/making-of-time#cs-sundial",
+        "creator": "Project archive",
+        "evidenceNote": "No comparative accuracy test is recorded here.",
+        "id": "making-of-time-38300f5b584d"
+      },
+      {
+        "title": "Mechanical watch",
+        "src": "/Assets/Projects/making-of-time/photos/blue-dial-angle.png",
+        "alt": "Mechanical watch with blue dial, octagonal bezel and steel bracelet.",
+        "stage": "outcome",
+        "caption": "Mechanical watch with blue dial, octagonal bezel and steel bracelet.",
+        "sourceHref": "/making-of-time#cs-mechanical",
+        "creator": "Project archive",
+        "evidenceNote": "A documented physical result, not a performance benchmark.",
+        "id": "making-of-time-afc63e763133"
+      }
+    ],
+    "exploration": "How accurately can someone read each timekeeping system under the same conditions?"
+  },
+  {
+    "slug": "the-omakase",
+    "artifacts": [
+      {
+        "title": "Build the cabinet",
+        "src": "/Assets/Projects/the-omakase/photos/cabinet-workshop.webp",
+        "alt": "The Omakase cabinet in the ITP workshop during construction.",
+        "stage": "experiment",
+        "caption": "The Omakase cabinet in the ITP workshop during construction.",
+        "sourceHref": "/the-omakase#cs-gameplay",
+        "creator": "Project archive",
+        "evidenceNote": "The archive does not show a complete rejected-concept history.",
+        "id": "the-omakase-11cc5eb26b79"
+      },
+      {
+        "title": "Prepare the controls",
+        "src": "/Assets/Projects/the-omakase/photos/plywood-shell-drilled.webp",
+        "alt": "Plywood shell with two clusters of eight drilled button holes before hardware installation.",
+        "stage": "experiment",
+        "caption": "Plywood shell with two clusters of eight drilled button holes before hardware installation.",
+        "sourceHref": "/the-omakase#cs-fabrication",
+        "creator": "Project archive",
+        "evidenceNote": "The photograph records fabrication, not ergonomic validation.",
+        "id": "the-omakase-337ef055e1e4"
+      },
+      {
+        "title": "Explain the match",
+        "src": "/Assets/Projects/the-omakase/photos/chef-select-screen.webp",
+        "alt": "Chef selection screen with sushi preferences and a color-coded button legend.",
+        "stage": "decision",
+        "caption": "Chef selection screen with sushi preferences and a color-coded button legend.",
+        "sourceHref": "/the-omakase#cs-gameplay",
+        "creator": "Project archive",
+        "evidenceNote": "A documented interface decision, not proof that onboarding was understood.",
+        "id": "the-omakase-db7afd1ef499"
+      },
+      {
+        "title": "Play at exhibition",
+        "src": "/Assets/Projects/the-omakase/photos/two-players.webp",
+        "alt": "Two players compete at the arcade cabinet during exhibition.",
+        "stage": "outcome",
+        "caption": "Two players compete at the arcade cabinet during exhibition.",
+        "sourceHref": "/the-omakase#cs-gameplay",
+        "creator": "Project archive",
+        "evidenceNote": "The photograph demonstrates use, not a comparative playtest result.",
+        "id": "the-omakase-584f0a4a4ca1"
+      }
+    ],
+    "exploration": "Would first-time players understand the controls without the nearby button legend?"
+  },
+  {
+    "slug": "revolving-stage",
+    "artifacts": [
+      {
+        "title": "Assembly breakdown",
+        "src": "/Assets/Projects/RevolvingStage/photos/full-assembly-exploded.png",
+        "alt": "Exploded assembly of the wooden stage, axle stack, caster wheels and base.",
+        "stage": "experiment",
+        "caption": "Exploded assembly of the wooden stage, axle stack, caster wheels and base.",
+        "sourceHref": "/revolving-stage#cs-engineering",
+        "creator": "Project archive",
+        "evidenceNote": "The drawing is design evidence, not an independent structural certification.",
+        "id": "revolving-stage-071eb16d533a"
+      },
+      {
+        "title": "Rotation sequence",
+        "src": "/Assets/Projects/RevolvingStage/photos/stage-rotation.png",
+        "alt": "The revolving stage shown at multiple planned rotation angles.",
+        "stage": "decision",
+        "caption": "The revolving stage shown at multiple planned rotation angles.",
+        "sourceHref": "/revolving-stage#cs-engineering",
+        "creator": "Project archive",
+        "evidenceNote": "Stop positions are documented; audience sightline measurements are not supplied.",
+        "id": "revolving-stage-3f231c2cbeaa"
+      },
+      {
+        "title": "Build and render",
+        "src": "/Assets/Projects/RevolvingStage/photos/stage-vs-render.png",
+        "alt": "The built shop-front set beside its corresponding 3D render.",
+        "stage": "outcome",
+        "caption": "The built shop-front set beside its corresponding 3D render.",
+        "sourceHref": "/revolving-stage#cs-design",
+        "creator": "Project archive",
+        "evidenceNote": "Compare visible design correspondence without inferring unrecorded performance results.",
+        "id": "revolving-stage-5edf08dd0fc9"
+      }
+    ],
+    "exploration": "How would a different stop sequence affect sightlines and the pace of a scene change?"
+  },
+  {
+    "slug": "tedx",
+    "artifacts": [
+      {
+        "title": "Construction and lighting",
+        "src": "/Assets/Projects/Tedxvitpune/Desktop/4.jpg",
+        "alt": "Columns under construction, lighting tests and volunteer-built TEDx lettering.",
+        "stage": "experiment",
+        "caption": "Columns under construction, lighting tests and volunteer-built TEDx lettering.",
+        "sourceHref": "/tedx#cs-process",
+        "creator": "Project archive",
+        "evidenceNote": "A construction record, not a full sequence of discarded stage concepts.",
+        "id": "tedx-4df71ff39f08"
+      },
+      {
+        "title": "Stage in use",
+        "src": "/Assets/Projects/Tedxvitpune/Desktop/1.jpg",
+        "alt": "The completed blue-lit cityscape stage during live performance.",
+        "stage": "outcome",
+        "caption": "The completed blue-lit cityscape stage during live performance.",
+        "sourceHref": "/tedx#cs-stage",
+        "creator": "Project archive",
+        "evidenceNote": "The photograph documents use; audience visibility testing is not included.",
+        "id": "tedx-bc1053d743e3"
+      }
+    ],
+    "exploration": "How does the cityscape read from the back row compared with the speaker\u2019s position?"
+  },
+  {
+    "slug": "atps",
+    "artifacts": [
+      {
+        "title": "Series identity",
+        "src": "/Assets/Projects/ATPS/Desktop/1.jpg",
+        "alt": "Original ArtTown Podcast Series artwork with microphone and episode covers.",
+        "stage": "outcome",
+        "caption": "Original ArtTown Podcast Series artwork with microphone and episode covers.",
+        "sourceHref": "/atps#cs-overview",
+        "creator": "Project archive",
+        "evidenceNote": "Archived audience totals are historical and are not current analytics.",
+        "id": "atps-80d1cd0c0550"
+      },
+      {
+        "title": "Episode artwork system",
+        "src": "/Assets/Projects/ATPS/Desktop/5.webp",
+        "alt": "Archived episode grid with guest thumbnails and descriptions.",
+        "stage": "outcome",
+        "caption": "Archived episode grid with guest thumbnails and descriptions.",
+        "sourceHref": "/atps#cs-episodes",
+        "creator": "Project archive",
+        "evidenceNote": "The image documents artwork; it is not a playable episode directory.",
+        "id": "atps-c0ddba3c6231"
+      }
+    ],
+    "exploration": "Can a new listener distinguish guest identity, episode subject and the play destination at a glance?"
+  },
+  {
+    "slug": "sculpture",
+    "artifacts": [
+      {
+        "title": "Anatomy and posture",
+        "src": "/Assets/Projects/Sculpture/3.jpg",
+        "alt": "Original anatomy and classical sculpture reference board.",
+        "stage": "reference",
+        "caption": "Original anatomy and classical sculpture reference board.",
+        "sourceHref": "/sculpture#cs-sculpture-process",
+        "creator": "Project archive",
+        "evidenceNote": "The case study states that this board informed pose and proportions. Individual reference credits are not recorded.",
+        "id": "sculpture-8121cf3210ec"
+      },
+      {
+        "title": "Failed ideas and early form",
+        "src": "/Assets/Projects/Sculpture/4.jpg",
+        "alt": "Original process board labels failed ideas alongside armature and material build-up studies.",
+        "stage": "experiment",
+        "caption": "Original process board labels failed ideas alongside armature and material build-up studies.",
+        "sourceHref": "/sculpture#cs-sculpture-process",
+        "creator": "Project archive",
+        "evidenceNote": "The failed-idea label is documented; individual rejection reasons are not recorded.",
+        "id": "sculpture-ae5c613f3aed"
+      },
+      {
+        "title": "Finished form",
+        "src": "/Assets/Projects/Sculpture/5.jpg",
+        "alt": "Original photographs of the completed figurative sculpture.",
+        "stage": "outcome",
+        "caption": "Original photographs of the completed figurative sculpture.",
+        "sourceHref": "/sculpture#cs-sculpture-process",
+        "creator": "Project archive",
+        "evidenceNote": "Unseen geometry cannot be reconstructed from the available views.",
+        "id": "sculpture-43bb6386c88c"
+      }
+    ],
+    "exploration": "Would a side-by-side silhouette comparison expose proportion changes before surface detail is added?"
+  },
+  {
+    "slug": "code-for-build",
+    "artifacts": [
+      {
+        "title": "Wireframe blueprint",
+        "src": "/Assets/Projects/CodeforBuild/photos/wireframe-blueprint.png",
+        "alt": "Original wireframe blueprint for the mobile coding concept.",
+        "stage": "experiment",
+        "caption": "Original wireframe blueprint for the mobile coding concept.",
+        "sourceHref": "/code-for-build#cs-process",
+        "creator": "Project archive",
+        "evidenceNote": "A concept artifact, not evidence of a shipped learning product.",
+        "id": "code-for-build-eb53d858efa0"
+      },
+      {
+        "title": "Block system guide",
+        "src": "/Assets/Projects/CodeforBuild/photos/block-system-guide.png",
+        "alt": "Original guide connecting the block system to the coding interface.",
+        "stage": "decision",
+        "caption": "Original guide connecting the block system to the coding interface.",
+        "sourceHref": "/code-for-build#cs-process",
+        "creator": "Project archive",
+        "evidenceNote": "The guide documents the intended mapping; learning outcomes need testing.",
+        "id": "code-for-build-453c21a7cc7e"
+      },
+      {
+        "title": "Connect code and output",
+        "src": "/Assets/Projects/CodeforBuild/photos/output-code-pair.png",
+        "alt": "The concept places code and its visible output together.",
+        "stage": "outcome",
+        "caption": "The concept places code and its visible output together.",
+        "sourceHref": "/code-for-build#cs-result",
+        "creator": "Project archive",
+        "evidenceNote": "The archive does not establish improved comprehension.",
+        "id": "code-for-build-0cba355f2a8d"
+      }
+    ],
+    "exploration": "Can a beginner predict the rendered result before assembling the corresponding code blocks?"
+  },
+  {
+    "slug": "office-of-diversity",
+    "artifacts": [
+      {
+        "title": "Scope and intended approach",
+        "src": "/Assets/Projects/office-of-diversity/photos/scope-timeline.png",
+        "alt": "Original scope board naming themes, visualization, engagement, collaboration and accessibility.",
+        "stage": "experiment",
+        "caption": "Original scope board naming themes, visualization, engagement, collaboration and accessibility.",
+        "sourceHref": "/office-of-diversity#cs-learning",
+        "creator": "Project archive",
+        "evidenceNote": "Tool names and the board\u2019s accessibility wording are not an implementation audit.",
+        "id": "office-of-diversity-f854bb227c56"
+      },
+      {
+        "title": "Program overview",
+        "src": "/Assets/Projects/office-of-diversity/photos/report-slices/report-intro.png",
+        "alt": "Original report excerpt with program areas, learning, engagement and resource development.",
+        "stage": "outcome",
+        "caption": "Original report excerpt with program areas, learning, engagement and resource development.",
+        "sourceHref": "/office-of-diversity#cs-report",
+        "creator": "Project archive",
+        "evidenceNote": "Figures belong to their original reporting context, not a website impact claim.",
+        "id": "office-of-diversity-91cd10f0738f"
+      },
+      {
+        "title": "Learning and practice",
+        "src": "/Assets/Projects/office-of-diversity/photos/report-slices/report-data.png",
+        "alt": "Original report excerpt with learning participation and restorative-practice summaries.",
+        "stage": "outcome",
+        "caption": "Original report excerpt with learning participation and restorative-practice summaries.",
+        "sourceHref": "/office-of-diversity#cs-report",
+        "creator": "Project archive",
+        "evidenceNote": "No new audience or usability metrics are inferred from these source graphics.",
+        "id": "office-of-diversity-874f0ed55227"
+      }
+    ],
+    "exploration": "Can readers locate one program priority and interpret its chart without losing the reporting context?"
+  },
+  {
+    "slug": "enigma",
+    "artifacts": [
+      {
+        "title": "Start at the tablet",
+        "src": "/Assets/Projects/Enigma/photos/tablet-input.jpg",
+        "alt": "A visitor draws one alphabet letter on the tablet beside the sculpture.",
+        "stage": "decision",
+        "caption": "A visitor draws one alphabet letter on the tablet beside the sculpture.",
+        "sourceHref": "/enigma#cs-source",
+        "creator": "Project archive",
+        "evidenceNote": "The photograph documents the original interaction; the browser uses a different illustrative model.",
+        "id": "enigma-5b7c9cc1311d"
+      },
+      {
+        "title": "Expose the connections",
+        "src": "/Assets/Projects/Enigma/photos/full-sculpture-wide.webp",
+        "alt": "Original sculpture showing layered lights, crossing wires and alphabet output.",
+        "stage": "outcome",
+        "caption": "Original sculpture showing layered lights, crossing wires and alphabet output.",
+        "sourceHref": "/enigma#cs-source",
+        "creator": "Project archive",
+        "evidenceNote": "Photographs do not supply original model weights or a recognition benchmark.",
+        "id": "enigma-84c90ae50e75"
+      },
+      {
+        "title": "Read the output",
+        "src": "/Assets/Projects/Enigma/photos/alphabet-layer.webp",
+        "alt": "Original alphabet-labelled output lights.",
+        "stage": "outcome",
+        "caption": "Original alphabet-labelled output lights.",
+        "sourceHref": "/enigma#cs-source",
+        "creator": "Project archive",
+        "evidenceNote": "The original prediction and the browser\u2019s chosen letter have different sources.",
+        "id": "enigma-b09847fe6d94"
+      }
+    ],
+    "exploration": "Can a visitor explain the difference between the input lights, intermediate layers and predicted letter?"
+  },
+  {
+    "slug": "typeface",
+    "artifacts": [
+      {
+        "title": "A physical cut",
+        "src": "/Assets/Projects/Typeface/photos/inspiration-cut.jpg",
+        "alt": "Original inspiration board with a kitchen knife and a hand-carved plate.",
+        "stage": "reference",
+        "caption": "Original inspiration board with a kitchen knife and a hand-carved plate.",
+        "sourceHref": "/typeface#tf-origin",
+        "creator": "Project archive",
+        "evidenceNote": "The case study identifies fine cuts as the starting reference. Individual image creators are not recorded.",
+        "id": "typeface-dc2cdacdaf3a"
+      },
+      {
+        "title": "Slice construction",
+        "src": "/Assets/Projects/Typeface/photos/slice-types.jpg",
+        "alt": "Original slice-construction examples across glyphs.",
+        "stage": "experiment",
+        "caption": "Original slice-construction examples across glyphs.",
+        "sourceHref": "/typeface#tf-concept",
+        "creator": "Project archive",
+        "evidenceNote": "The specimen does not provide a controlled readability study.",
+        "id": "typeface-fd273828f2bb"
+      },
+      {
+        "title": "Weight comparison",
+        "src": "/Assets/Projects/Typeface/photos/weights-grid.jpg",
+        "alt": "Original Butler\u2019s Slice weights grid.",
+        "stage": "outcome",
+        "caption": "Original Butler\u2019s Slice weights grid.",
+        "sourceHref": "/typeface#tf-concept",
+        "creator": "Project archive",
+        "evidenceNote": "A type specimen, not evidence of measured reading performance.",
+        "id": "typeface-1faa34857171"
+      }
+    ],
+    "exploration": "At what size does the slice stop reading as a deliberate cut and start affecting legibility?"
+  },
+  {
+    "slug": "uv-light",
+    "artifacts": [
+      {
+        "title": "Map the rooms",
+        "src": "/Assets/Projects/UVLight/photos/1000051727.webp",
+        "alt": "Original whiteboard with room layouts, puzzle concepts and interaction-flow sketches.",
+        "stage": "experiment",
+        "caption": "Original whiteboard with room layouts, puzzle concepts and interaction-flow sketches.",
+        "sourceHref": "/uv-light#cs-exploration",
+        "creator": "Project archive",
+        "evidenceNote": "The board records explored concepts; individual rejection reasons are not supplied.",
+        "id": "uv-light-ac766fa3015d"
+      },
+      {
+        "title": "Early four-room concept",
+        "src": "/Assets/Projects/UVLight/photos/1000051772.png",
+        "alt": "Early four-room concept with timing calculations for cycling participant groups.",
+        "stage": "experiment",
+        "caption": "Early four-room concept with timing calculations for cycling participant groups.",
+        "sourceHref": "/uv-light#cs-exploration",
+        "creator": "Project archive",
+        "evidenceNote": "This is an early proposal, not proof of the final operating schedule.",
+        "id": "uv-light-eddef7ed1276"
+      },
+      {
+        "title": "Prepare the blacklight stage",
+        "src": "/Assets/Projects/UVLight/photos/screenshot-2023-12-21-at-3.51-1.png",
+        "alt": "Blacklight stage before participants entered, with fluorescent tape letters and UV dots.",
+        "stage": "outcome",
+        "caption": "Blacklight stage before participants entered, with fluorescent tape letters and UV dots.",
+        "sourceHref": "/uv-light#cs-making",
+        "creator": "Project archive",
+        "evidenceNote": "Documents the prepared environment rather than a controlled audience result.",
+        "id": "uv-light-3eed731ec5a2"
+      }
+    ],
+    "exploration": "Could the transition into blacklight communicate the experience\u2019s premise before instructions are given?"
+  },
+  {
+    "slug": "sea-of-salt",
+    "artifacts": [
+      {
+        "title": "Story progress as a control",
+        "src": "/Assets/Projects/sea-of-salt/photos/slider-closeup.webp",
+        "alt": "The story slider runs from the start to the end of the story.",
+        "stage": "decision",
+        "caption": "The story slider runs from the start to the end of the story.",
+        "sourceHref": "/sea-of-salt#cs-folktale",
+        "creator": "Project archive",
+        "evidenceNote": "A documented input mapping, not evidence of how visitors interpreted it.",
+        "id": "sea-of-salt-aa1fa25057fc"
+      },
+      {
+        "title": "Material study",
+        "src": "/Assets/Projects/sea-of-salt/photos/materials.webp",
+        "alt": "Sea salt, coarse salt and the mill on its platform.",
+        "stage": "experiment",
+        "caption": "Sea salt, coarse salt and the mill on its platform.",
+        "sourceHref": "/sea-of-salt#cs-try",
+        "creator": "Project archive",
+        "evidenceNote": "Material photographs do not establish the order or rationale of earlier alternatives.",
+        "id": "sea-of-salt-5226f73fc01b"
+      },
+      {
+        "title": "Accumulated consequence",
+        "src": "/Assets/Projects/sea-of-salt/photos/salt-overflow.webp",
+        "alt": "Salt overflowing after repeated story tellings.",
+        "stage": "outcome",
+        "caption": "Salt overflowing after repeated story tellings.",
+        "sourceHref": "/sea-of-salt#cs-try",
+        "creator": "Project archive",
+        "evidenceNote": "The accumulation is visible; participant interpretation is not measured here.",
+        "id": "sea-of-salt-ba7e388fc52d"
+      }
+    ],
+    "exploration": "How would a different mapping between story progress and salt output change the story\u2019s perceived consequence?"
+  },
+  {
+    "slug": "black-hole",
+    "artifacts": [
+      {
+        "title": "Fabric of the universe",
+        "src": "/Assets/Projects/black-hole-assets/fabric-of-universe.jpg",
+        "alt": "Original physical model of the fabric of the universe.",
+        "stage": "outcome",
+        "caption": "Original physical model of the fabric of the universe.",
+        "sourceHref": "/black-hole#cs-fabric",
+        "creator": "Project archive",
+        "evidenceNote": "An explanatory model, not a measurement or scientific simulation.",
+        "id": "black-hole-bda5edc440d5"
+      },
+      {
+        "title": "Gravitational lensing",
+        "src": "/Assets/Projects/black-hole-assets/gravitational-lensing.jpg",
+        "alt": "Original physical model of gravitational lensing and wormholes.",
+        "stage": "outcome",
+        "caption": "Original physical model of gravitational lensing and wormholes.",
+        "sourceHref": "/black-hole#cs-lensing",
+        "creator": "Project archive",
+        "evidenceNote": "The model\u2019s communication effectiveness needs a visitor study.",
+        "id": "black-hole-0f4521329465"
+      },
+      {
+        "title": "Binary mergers",
+        "src": "/Assets/Projects/black-hole-assets/binary-mergers.jpg",
+        "alt": "Original binary black-hole merger model in three stages.",
+        "stage": "outcome",
+        "caption": "Original binary black-hole merger model in three stages.",
+        "sourceHref": "/black-hole#cs-mergers",
+        "creator": "Project archive",
+        "evidenceNote": "The artifact is documented; no discarded material or comparison test is recorded.",
+        "id": "black-hole-20b3c59506b2"
+      }
+    ],
+    "exploration": "Which physical analogy is easiest to connect back to the astronomical phenomenon without introducing a misconception?"
+  },
+  {
+    "slug": "the-point-cdc",
+    "artifacts": [
+      {
+        "title": "Inspect the old structure",
+        "src": "/Assets/Projects/ThePointCDC/Desktop/slice-5.webp",
+        "alt": "Before-and-after website comparison with annotated improvement areas.",
+        "stage": "experiment",
+        "caption": "Before-and-after website comparison with annotated improvement areas.",
+        "sourceHref": "/the-point-cdc#cs-discover",
+        "creator": "Project archive",
+        "evidenceNote": "The board documents design comparison, not an independently measured outcome.",
+        "id": "the-point-cdc-73fb997e0343"
+      },
+      {
+        "title": "Map goals and routes",
+        "src": "/Assets/Projects/ThePointCDC/Desktop/slice-6.webp",
+        "alt": "Original goal-mapping and journey-structure board.",
+        "stage": "experiment",
+        "caption": "Original goal-mapping and journey-structure board.",
+        "sourceHref": "/the-point-cdc#cs-define",
+        "creator": "Project archive",
+        "evidenceNote": "The source board supports synthesis, not a reliable participant count.",
+        "id": "the-point-cdc-983dcd101fff"
+      },
+      {
+        "title": "Build a shared interface system",
+        "src": "/Assets/Projects/ThePointCDC/Desktop/slice-8.webp",
+        "alt": "Original design-system board with typography, buttons, colors, tags, icons and menu.",
+        "stage": "decision",
+        "caption": "Original design-system board with typography, buttons, colors, tags, icons and menu.",
+        "sourceHref": "/the-point-cdc#cs-develop",
+        "creator": "Project archive",
+        "evidenceNote": "A component system does not by itself establish usability or accessibility conformance.",
+        "id": "the-point-cdc-263ec0816d17"
+      }
+    ],
+    "exploration": "Can community members reach a relevant program and explain its next step without a facilitator?"
+  },
+  {
+    "slug": "vj-software",
+    "artifacts": [
+      {
+        "title": "Structure before screens",
+        "src": "/Assets/Projects/vj/photos/all-screens-wireframes.png",
+        "alt": "Original VJ parking wireframe overview.",
+        "stage": "experiment",
+        "caption": "Original VJ parking wireframe overview.",
+        "sourceHref": "/vj-software#cs-develop",
+        "creator": "Project archive",
+        "evidenceNote": "The source does not establish which failure states were implemented or tested.",
+        "id": "vj-software-71856e63dc60"
+      },
+      {
+        "title": "Carry selection through payment",
+        "src": "/Assets/Projects/vj/photos/all-screens-ui.png",
+        "alt": "Original flow connecting onboarding, spatial selection, filters, payment and confirmation.",
+        "stage": "decision",
+        "caption": "Original flow connecting onboarding, spatial selection, filters, payment and confirmation.",
+        "sourceHref": "/vj-software#cs-define",
+        "creator": "Project archive",
+        "evidenceNote": "The design warns that confirmed spots cannot be changed; comprehension testing is still needed.",
+        "id": "vj-software-510374000b98"
+      },
+      {
+        "title": "Explain availability",
+        "src": "/Assets/Projects/vj/photos/car-parking.png",
+        "alt": "Original parking page presents availability before the selection action.",
+        "stage": "decision",
+        "caption": "Original parking page presents availability before the selection action.",
+        "sourceHref": "/vj-software#cs-deliver",
+        "creator": "Project archive",
+        "evidenceNote": "The displayed availability values and priority window are proposed source-design states, not live inventory.",
+        "id": "vj-software-13416d88daed"
+      }
+    ],
+    "exploration": "Can residents recover from an unavailable spot or failed payment before confirming an irreversible selection?"
+  },
+  {
+    "slug": "mentra-brand",
+    "artifacts": [
+      {
+        "title": "Shared box structure",
+        "src": "/Assets/Projects/mentra-brand/photos/packaging-box-black.png",
+        "alt": "Black-frame packaging dieline with product identification and QR-led setup panel.",
+        "stage": "decision",
+        "caption": "Black-frame packaging dieline with product identification and QR-led setup panel.",
+        "sourceHref": "/mentra-brand#cs-packaging",
+        "creator": "Project archive",
+        "evidenceNote": "The archive documents final constraints, not all seven stated packaging iterations.",
+        "id": "mentra-brand-ebf800844e0d"
+      },
+      {
+        "title": "Second frame variant",
+        "src": "/Assets/Projects/mentra-brand/photos/packaging-box-clear-1.webp",
+        "alt": "Clear-frame packaging keeps the structure while changing the product imagery.",
+        "stage": "decision",
+        "caption": "Clear-frame packaging keeps the structure while changing the product imagery.",
+        "sourceHref": "/mentra-brand#cs-packaging",
+        "creator": "Project archive",
+        "evidenceNote": "A documented variant, not an unused or rejected direction.",
+        "id": "mentra-brand-d1b49684e2ea"
+      },
+      {
+        "title": "Production label",
+        "src": "/Assets/Projects/mentra-brand/photos/packaging-box-clear-2.webp",
+        "alt": "Annotated factory label with dimensions, barcode and model identification.",
+        "stage": "outcome",
+        "caption": "Annotated factory label with dimensions, barcode and model identification.",
+        "sourceHref": "/mentra-brand#cs-packaging",
+        "creator": "Project archive",
+        "evidenceNote": "Documents the handoff artifact; production performance is not independently validated.",
+        "id": "mentra-brand-81ae00e24208"
+      }
+    ],
+    "exploration": "Could two frame variants remain distinguishable when the packaging is seen only briefly?"
+  }
+]

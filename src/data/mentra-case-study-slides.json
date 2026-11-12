@@ -1,0 +1,496 @@
+[
+  {
+    "id": "cs-context",
+    "title": "Product and scope",
+    "slides": [
+      {
+        "id": "0:33",
+        "src": "/Assets/case-study-slides/mentra/slide-0-33.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Product and scope · Mentra is a YC-backed operating system and MiniApp platform for AI glasses. The primary focus was making setup, active apps, AI states, perm",
+        "text": "Mentra is a YC-backed operating system and MiniApp platform for\nAI glasses.\nThe primary focus was making setup, active apps, AI states, permissions, and recovery clear across the glasses and companion app.\nINTRO\nc",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=0-33"
+      },
+      {
+        "id": "6:27163",
+        "src": "/Assets/case-study-slides/mentra/slide-6-27163.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Product and scope · An open layer across supported glasses 6+ SUPPORTED GLASSES 30+ miniapps INTRO",
+        "text": "An open layer across\nsupported glasses\n6+\nSUPPORTED GLASSES\n30+\nminiapps\nINTRO",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=6-27163"
+      },
+      {
+        "id": "6:27424",
+        "src": "/Assets/case-study-slides/mentra/slide-6-27424.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Product and scope · ROLE Head of Design WITH 02 Founders 08 Engineers 03 Operators 02 Marketers INTRO",
+        "text": "ROLE\nHead of Design\nWITH\n02 Founders 08 Engineers 03 Operators\n02 Marketers\nINTRO",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=6-27424"
+      },
+      {
+        "id": "6:27349",
+        "src": "/Assets/case-study-slides/mentra/slide-6-27349.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Product and scope · Product I worked on Miniapps Mentra OS Enterprise Website INTRO",
+        "text": "Product I worked on\nMiniapps\nMentra OS\nEnterprise\nWebsite\nINTRO",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=6-27349"
+      },
+      {
+        "id": "6:28307",
+        "src": "/Assets/case-study-slides/mentra/slide-6-28307.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Product and scope · BUSINESS PROBLEM What How . Who How might we ... increase adoption by creating clear first use and recurring value for users and developers?",
+        "text": "BUSINESS PROBLEM\nWhat\nHow\n.\nWho\nHow might we ...\nincrease adoption\nby creating clear first use and \nrecurring value  \nfor users and developers?\nPROBLEM",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=6-28307"
+      }
+    ]
+  },
+  {
+    "id": "cs-bet",
+    "title": "Research and direction",
+    "slides": [
+      {
+        "id": "327:8202",
+        "src": "/Assets/case-study-slides/mentra/slide-327-8202.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Research and direction · RESEARCH Learn where confidence breaks Community research turned product friction into a clear journey. MENTRA · PRODUCT PLATFORM",
+        "text": "RESEARCH\nLearn where\nconfidence breaks\nCommunity research turned product friction into a clear journey.\nMENTRA · PRODUCT PLATFORM",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=327-8202"
+      },
+      {
+        "id": "0:47",
+        "src": "/Assets/case-study-slides/mentra/slide-0-47.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Research and direction · Research the full loop Interview Interview Journey map Journey map Prototype Prototypes Task test Task test Iterate Iterate RESEARCH",
+        "text": "Research the full loop\nInterview\nInterview\nJourney map\nJourney map\n Prototype\nPrototypes\nTask test\nTask test\nIterate\nIterate\nRESEARCH",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=0-47"
+      },
+      {
+        "id": "0:46",
+        "src": "/Assets/case-study-slides/mentra/slide-0-46.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Research and direction · The community became the beta channel Discord recruitment Weekly beta releases Qualitative task sessions",
+        "text": "The community became the beta channel\nDiscord\nrecruitment\nWeekly\nbeta releases\nQualitative\ntask sessions",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=0-46"
+      },
+      {
+        "id": "61:2290",
+        "src": "/Assets/case-study-slides/mentra/slide-61-2290.webp",
+        "width": 3840,
+        "height": 2160,
+        "alt": "Research and direction · Onboarding Journey",
+        "text": "Onboarding Journey",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=61-2290"
+      },
+      {
+        "id": "61:2298",
+        "src": "/Assets/case-study-slides/mentra/slide-61-2298.webp",
+        "width": 3840,
+        "height": 2160,
+        "alt": "Research and direction · Everyday Use",
+        "text": "Everyday Use",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=61-2298"
+      },
+      {
+        "id": "125:18909",
+        "src": "/Assets/case-study-slides/mentra/slide-125-18909.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Research and direction · What users said “I just want to know what I can actually do with these.” 5.⁠ ⁠“It feels like nothing happened when I press it. Once I saw it",
+        "text": "What users said\n“I just want to know what I can actually do with these.”\n5.⁠ ⁠“It feels like nothing happened when I press it.\nOnce I saw it work, it made a lot more sense.”\n“I’m connected, but what do I do now?”\n“There are too many steps before I get to try\nanything.”\n“I don’t know if this is actually a button.”\n⁠“I tapped it twice because I wasn’t sure it worked.”\n“Did it start, or am I still waiting?”\n“I shouldn’t have to take my phone out just to check.”\nINSIGHT",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=125-18909"
+      },
+      {
+        "id": "24:33183",
+        "src": "/Assets/case-study-slides/mentra/slide-24-33183.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Research and direction · Hypothesis If users can reach their first useful interaction with fewer steps, they’ll be more likely to complete onboarding and return. If ",
+        "text": "Hypothesis\nIf users can reach their first useful interaction with fewer steps, they’ll be more likely to complete onboarding and return.\n\nIf every tap gives immediate, clear feedback, users will move with more confidence and reach value faster.\n",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=24-33183"
+      }
+    ]
+  },
+  {
+    "id": "cs-companion",
+    "title": "First use",
+    "slides": [
+      {
+        "id": "97:5038",
+        "src": "/Assets/case-study-slides/mentra/slide-97-5038.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "First use · Setup",
+        "text": "Setup",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=97-5038"
+      },
+      {
+        "id": "77:2532",
+        "src": "/Assets/case-study-slides/mentra/slide-77-2532.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "First use · Pairing",
+        "text": "Pairing",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=77-2532"
+      },
+      {
+        "id": "77:2539",
+        "src": "/Assets/case-study-slides/mentra/slide-77-2539.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "First use · Onboarding",
+        "text": "Onboarding",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=77-2539"
+      },
+      {
+        "id": "77:2546",
+        "src": "/Assets/case-study-slides/mentra/slide-77-2546.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "First use · User Manual",
+        "text": "User Manual",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=77-2546"
+      }
+    ]
+  },
+  {
+    "id": "cs-os",
+    "title": "Home screen and runtime",
+    "slides": [
+      {
+        "id": "6:28341",
+        "src": "/Assets/case-study-slides/mentra/slide-6-28341.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Home screen and runtime · 9:41 9:41 Before After",
+        "text": "9:41\n9:41\nBefore\nAfter",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=6-28341"
+      },
+      {
+        "id": "0:54",
+        "src": "/Assets/case-study-slides/mentra/slide-0-54.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Home screen and runtime · Homepage critique Setup dominates Identity feels unfinished Navigation is ambiguous Empty state stalls State is unclear Settings steal focus",
+        "text": "Homepage critique\nSetup dominates\nIdentity feels unfinished\nNavigation is ambiguous\nEmpty state stalls\nState is unclear\nSettings steal focus\nEverything looks equal\nGradient is dominating",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=0-54"
+      },
+      {
+        "id": "399:7892",
+        "src": "/Assets/case-study-slides/mentra/slide-399-7892.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Home screen and runtime · Design Foundations Phase 1 Make it not suck!",
+        "text": "Design Foundations\nPhase 1\nMake it not suck!",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=399-7892"
+      },
+      {
+        "id": "404:7920",
+        "src": "/Assets/case-study-slides/mentra/slide-404-7920.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Home screen and runtime · V1",
+        "text": "V1",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=404-7920"
+      },
+      {
+        "id": "404:7930",
+        "src": "/Assets/case-study-slides/mentra/slide-404-7930.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Home screen and runtime · Why is Background apps separate? Waste of space with branding Navigation is ambiguous What is an active app? Device Info is covering >20% Wh",
+        "text": "Why is Background apps separate?\n Waste of space with branding\nNavigation is ambiguous\nWhat is an active app?\nDevice Info is covering >20%\nWhy are there 2 buttons besides\nWhy is there only 1 button?\nHow can I start inactive app directly?",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=404-7930"
+      },
+      {
+        "id": "0:59",
+        "src": "/Assets/case-study-slides/mentra/slide-0-59.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Home screen and runtime · Ten directions 1 Active App Strip 2 Glow-Highlighted Apps 3 Paired App Layout 4 Dual-Section Home 5 Primary App Focus 6 Dynamic Drawer 7 Bot",
+        "text": "Ten directions\n1\nActive App Strip\n2\nGlow-Highlighted Apps\n3\nPaired App Layout\n4\nDual-Section Home\n5\nPrimary App Focus\n6\nDynamic Drawer\n7\nBottom Drawer System\n8\nApp Status Cards\n9\nSwipe-to-Close Flow\n10\nMinimal Glance Mode\nREAL EXPLORATION SCREENS · SELECTED DIRECTION HIGHLIGHTED",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=0-59"
+      },
+      {
+        "id": "0:60",
+        "src": "/Assets/case-study-slides/mentra/slide-0-60.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Home screen and runtime · Three rounds tied tasks to decisions Recognize state → persistent cue Switch or stop → direct control Recover → app-level context Deployment",
+        "text": "Three rounds tied tasks to decisions\nRecognize state → persistent cue\nSwitch or stop → direct control\nRecover → app-level context\nDeployment interface",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=0-60"
+      },
+      {
+        "id": "0:64",
+        "src": "/Assets/case-study-slides/mentra/slide-0-64.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Home screen and runtime · Three models survived Persistent dock Card switcher Bottom drawer",
+        "text": "Three models survived\nPersistent dock\nCard switcher\nBottom drawer",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=0-64"
+      },
+      {
+        "id": "0:65",
+        "src": "/Assets/case-study-slides/mentra/slide-0-65.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Home screen and runtime · DECISION The bottom drawer won RECOGNIZE CONTROL IDLE COST SCALE A Persistent dock STRONG STRONG HIGH MEDIUM B Card switcher MEDIUM STRONG M",
+        "text": "DECISION\nThe bottom drawer won\nRECOGNIZE\nCONTROL\nIDLE COST\nSCALE\nA\nPersistent dock\nSTRONG\nSTRONG\nHIGH\nMEDIUM\nB\nCard switcher\nMEDIUM\nSTRONG\nMEDIUM\nMEDIUM\nC\nBottom drawer\nSTRONG\nSTRONG\nLOW\nSTRONG\nQUALITATIVE TRADE-OFF COMPARISON\nSELECTED",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=0-65"
+      },
+      {
+        "id": "0:66",
+        "src": "/Assets/case-study-slides/mentra/slide-0-66.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Home screen and runtime · SELECTED SYSTEM One handle became the runtime home 1 Count 2 Active app 3 Background apps 4 Data access 5 Stop and recover",
+        "text": "SELECTED SYSTEM\nOne handle became the\nruntime home\n1\nCount\n2\nActive app\n3\nBackground apps\n4\nData access\n5\nStop and recover",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=0-66"
+      },
+      {
+        "id": "0:68",
+        "src": "/Assets/case-study-slides/mentra/slide-0-68.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Home screen and runtime · STATE MODEL One lifecycle across every MiniApp Installed Active Background Stopped",
+        "text": "STATE MODEL\nOne lifecycle across every\nMiniApp\nInstalled\nActive\nBackground\nStopped",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=0-68"
+      },
+      {
+        "id": "500:3981",
+        "src": "/Assets/case-study-slides/mentra/slide-500-3981.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Home screen and runtime · AI STATES AI explained what was happening before it answered. LISTENING Listening… WORKING Working… UNSURE Which MiniApp? Recorder Captions ",
+        "text": "AI STATES\nAI explained what was happening before it answered.\nLISTENING\nListening…\nWORKING\nWorking…\nUNSURE\nWhich MiniApp?\nRecorder\nCaptions\nVOICE INPUT\nCancel\nLATENCY\nCancel\nLOW CONFIDENCE\nClarify",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=500-3981"
+      },
+      {
+        "id": "500:3980",
+        "src": "/Assets/case-study-slides/mentra/slide-500-3980.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Home screen and runtime · RECOVERY Failure never became a dead end. The system preserved intent and offered a clear next step. 01 Connection lost Reconnect 02 Permiss",
+        "text": "RECOVERY\nFailure never became a dead end.\nThe system preserved intent and offered a clear next step.\n01\nConnection lost\nReconnect\n02\nPermission blocked\nOpen settings\n03\nDevice busy\nSwitch app\n04\nRequest failed\nRetry / Edit / Cancel\nPRESERVE INTENT\nEXPOSE STATE\nKEEP CONTROL REVERSIBLE",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=500-3980"
+      }
+    ]
+  },
+  {
+    "id": "cs-store",
+    "title": "MiniApps and glasses UI",
+    "slides": [
+      {
+        "id": "97:3874",
+        "src": "/Assets/case-study-slides/mentra/slide-97-3874.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "MiniApps and glasses UI · Jan 6 at 2:55 PM Speech Audio Transcript 00:10.7 Pause Stop Glasses mic Recorder App Gemini Flash Lite 3.0 Mira Mira Say \"Hey Mentra\" The LE",
+        "text": "Jan 6 at 2:55 PM\nSpeech\nAudio\nTranscript\n00:10.7\nPause\nStop\nGlasses mic\nRecorder App\nGemini Flash Lite 3.0\nMira\nMira\nSay \"Hey Mentra\"\nThe LED blinks to show others you’re capturing.\nThen ask a question.\nStreamer\nWhere do you want to stream?\nStream here\nTwitch\nTiktok\nYoutube\nInstagram\nCustom\nGlasses\n40%\nCase\n100%\nNew\nStreams\nSettings\nStreamer\nStreaming Now\nLive\nYoutube\nStream Key  - *********6731\n02:00 pm 2/2/2025 \nOpen\nYoutube\nStream Key  - *********5445\n02:00 pm 2/2/2025 \nOpen\nTwitch\nStream Key  - *********4554\n02:00 pm 2/2/2025 \nOpen\nToast - You have to connect your glasses\nNew\nStreams\nSettings\nCaptions\nAll languages (Auto-detect)\nLISTENING\nAuto Scroll\nThe LED blinks to show others you’re capturing.\nWaiting for \nspeech.\nCaptions appear here as people speak. They're transient and won't be saved afterwards.\nCaptions\n🇯🇵 Japanese\n🇺🇸 English\nLISTENING\nAuto Scroll\n1\nSpeaker 1\n9:12 PM\nYes, I have the packet you sent. Let me open it so I can follow along.\n2\nSpeaker 2\n9:12 PM\nOkay, great. Our team has narrowed down our top choices,\n and we’d like to make a final decision today.\n3\nSpeaker 1\n9:12 PM\nUnderstood. We’re deciding between the options on page 3 and page 4, right?\n2\nSpeaker 2\n9:12 PM\nThat’s right. Do you have a preference between them?\n3\nSpeaker 3\n9:12 PM\nそうですね……ページ3のデザインはシンプルで見やすいですが、少し印象が弱い気がします。\n2\nSpeaker 2\n9:12 PM\n確かに。ただ、ページ4の方は色使いが強くて目立ちますね。\n5\nSpeaker 5\n9:12 PM\nそうなんです。プレゼンの場では目を引く方がいいかもしれません。\n3\nSpeaker 1\n9:12 PM\nでは、ページ4をベースに進めて、細かい調整を加えるというのはどうでしょうか？\n16:02\nYes, they are in the shared folder. I'll send the link after this call.\n16:04\nI'm blocked on the backend endpoint, can someone take a look?\n16:07\nLet's make sure we update the documentation before the end of the sprint.\n16:14\nOkay, let's get started. We have a lot to cover today regarding the new feature rollout.\n16:22\nI think we should prioritize the mobile responsiveness. Our analytics show 60% mobile traffic.\n16:29\nThe automated tests are failing on the CI pipeline, looking into it now.\n16:37\nThe performance on the dashboard page is a bit sluggish, we should optimize the queries.\n16:44\nI'm going to be out of office next week, so please plan accordingly.\n16:52\nHas anyone seen the updated requirements doc?\n7 AM\n8 AM\n9 AM\n10 AM\n11 AM\n12 PM\n1 PM\n2 PM\n3 PM\n4 PM\nJanuary 26, 2026\nNotes\nTranscript\nAudio\nAI\nMentra Notes\n16:02\nYes, they are in the shared folder. I'll send the link after this call.\n16:04\nI'm blocked on the backend endpoint, can someone take a look?\n16:07\nLet's make sure we update the documentation before the end of the sprint.\n16:14\nOkay, let's get started. We have a lot to cover today regarding the new feature rollout.\n16:22\nI think we should prioritize the mobile responsiveness. Our analytics show 60% mobile traffic.\n16:29\nThe automated tests are failing on the CI pipeline, looking into it now.\n16:37\nThe performance on the dashboard page is a bit sluggish, we should optimize the queries.\n16:44\nI'm going to be out of office next week, so please plan accordingly.\n16:52\nHas anyone seen the updated requirements doc?\n11 AM\n12 PM\n1 PM\n2 PM\n3 PM\n4 PM\n25+\nMiniapps",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=97-3874"
+      },
+      {
+        "id": "517:6085",
+        "src": "/Assets/case-study-slides/mentra/slide-517-6085.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "MiniApps and glasses UI · Teleprompter Transaction Calendar Captions Mentra Notes Dash Merge Linklingo Memcard Notification X Streamer One design system. A family of ",
+        "text": "Teleprompter\nTransaction\nCalendar\nCaptions\nMentra Notes\nDash\nMerge\nLinklingo\nMemcard\nNotification\nX\nStreamer\nOne design system. A family of MiniApps.",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=517-6085"
+      },
+      {
+        "id": "346:8591",
+        "src": "/Assets/case-study-slides/mentra/slide-346-8591.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "MiniApps and glasses UI · Designing for Accessiblity MentraOS brings translation and captions overlayed on your world. Captions Japanese English LISTENING 1 Speaker 1",
+        "text": "Designing for Accessiblity\nMentraOS brings \ntranslation and captions \noverlayed on your world.\nCaptions\nJapanese\nEnglish\nLISTENING\n1\nSpeaker 1\n9:12 PM\nYes, I have the packet you sent. Let me open it so I can follow along.\n2\nSpeaker 2\n9:12 PM\nOkay, great. Our team has narrowed down our top choices,\n and we’d like to make a final decision today.\n3\nSpeaker 3\n9:12 PM\nそうですね……ページ3のデザインはシンプルで見やすいですが、少し印象が弱い気がします。\n5\nSpeaker 5\n9:12 PM\nそうなんです。プレゼンの場では目を引く方がいいかもしれません。\n3\nSpeaker 1\n9:12 PM\nUnderstood. We’re deciding between the options on page 3 and page 4, right?\n2\nSpeaker 2\n9:12 PM\nThat’s right. Do you have a preference between them?\n2\nSpeaker 2\n9:12 PM\n確かに。ただ、ページ4の方は色使いが強くて目立ちますね。\n3\nSpeaker 1\n9:12 PM\nでは、ページ4をベースに進めて、細かい調整を加えるというのはどうでしょうか？\n9:41",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=346-8591"
+      },
+      {
+        "id": "528:21712",
+        "src": "/Assets/case-study-slides/mentra/slide-528-21712.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "MiniApps and glasses UI · Expanding Design system for Glasses UI Mentra UIUX Design Guidelines 2025 Iconography Overview - Mentra OS 2.0 Best Practice —Create a 24x24",
+        "text": "Expanding Design system for Glasses UI\nMentra       UIUX Design Guidelines 2025\nIconography Overview - Mentra OS 2.0\nBest Practice\n—Create a 24x24px artboard for each icon.\n—Add 3px padding to 24x24px artboard.\n—Set up your workspace to snap to pixels and round values to whole pixels to avoid corrections later.\n—Use the rectangle tool instead of the line tool to avoid placing vectors on half pixels.\n—Be mindful of automatic alignments, which can result in vectors on uneven or half pixels.\n—Flatten and merge all pixel units for better resizing.\n—Properly name layers and artboards.\n—Create a component for each new icon. \nFramework & Key-shapes\nBase grid  24x24px\nFor uniformity, the Mentra icons are crafted on top of a foundational 24x24px grid. It is advised to employ this grid while designing icons to ensure a cohesive and practical visual presentation.\nPadding  3px (Are allowed to be broken if necessary)\nUnit\nPixels Unit\nUse a 1x1px unit to draw the icon, as this gives the best consistency across all icons.\nPixel unit\n1x1 px\nDo\ndon't\nIcon should remain inside the padding.\nExtend icons into padding if additional space is needed.\nSome icons are allowed to use a 2-pixel stroke.\n\nPixel corner characteristics.\nAvoid placing the pixel unit on random decimals.\nAvoid placing the majority part of the icon in the padding area.\nAvoid over complicating the icons. Keep them simple and focused.\nAvoid using smooth rounded corners for a corner effect; opt for pixelated corners instead.\nFeature & Function Icons\nNews\nStocks\nCalendar\nUp\nUp\nNo change\nAlert\nDisconnect\nQuickList\nWalk\nBicycle\nSleep\nHealth\nHeart\nSpo2\nSteps\nCalories\nHome\nOffice\nFlag\nLocation\nTime\nComplete\nInomplete\nMentra       UIUX Design Guidelines 2025\nComponent - Mentra OS 2.0\nSelection List\n—Outlines are used to indicate a selection or an item with an available interaction.\n—Users may scroll through available selections in a list.\n—A single tap confirms the current selection.\nSelection 1\nSelection 2\nSelection 3\nSelection 4\nSelection 5\nTitle\nText containers\nNo container outline\n—Intended for extended reading without interactive items. (e.g., Teleprompt)\n—Vertical scrolling is enabled automatically based on the content. A scrollbar will automatically appear when container overflows.\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\n\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, \nWith container outline\n—Containers should be used to indicate a potential interaction. \n—Users can either swipe to navigate content areas on a page (similar to a list selection) or tap to interact with a piece of content.\nLorem ipsum dolor sit amet, consectetur adipiscing elit.\n\nSed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.\n\nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui \nNemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui sit voluptatem accusantium \neaque ips",
+        "textTruncated": true,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=528-21712"
+      },
+      {
+        "id": "107:8931",
+        "src": "/Assets/case-study-slides/mentra/slide-107-8931.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "MiniApps and glasses UI · MiniApp Store",
+        "text": "MiniApp Store",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=107-8931"
+      }
+    ]
+  },
+  {
+    "id": "cs-enterprise",
+    "title": "Enterprise extension",
+    "slides": [
+      {
+        "id": "107:8823",
+        "src": "/Assets/case-study-slides/mentra/slide-107-8823.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Enterprise extension · B2B EXTENSION Extend MentraOS to enterprise teams Manage fleets, apps, policies, and deployments from one sandbox. MENTRA · PRODUCT PLATFORM",
+        "text": "B2B EXTENSION\nExtend MentraOS\nto enterprise teams\nManage fleets, apps, policies, and deployments from one sandbox.\nMENTRA · PRODUCT PLATFORM",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=107-8823"
+      },
+      {
+        "id": "107:8861",
+        "src": "/Assets/case-study-slides/mentra/slide-107-8861.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Enterprise extension · Wearer runtime Admin apps + policy OEM capability Deployment interface Designing a Service for deploying smart glasses",
+        "text": "Wearer runtime\nAdmin apps + policy\nOEM capability\nDeployment interface\nDesigning\na Service\nfor deploying\nsmart glasses",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=107-8861"
+      },
+      {
+        "id": "101:8350",
+        "src": "/Assets/case-study-slides/mentra/slide-101-8350.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Enterprise extension · MENTRA ENTERPRISE SANDBOX Overview Fleet Apps Policies Deployments Analytics Settings Illustrative workspace Field Operations / Sandbox Sand",
+        "text": "MENTRA\nENTERPRISE SANDBOX\nOverview\nFleet\nApps\nPolicies\nDeployments\nAnalytics\nSettings\nIllustrative workspace\nField Operations / Sandbox\nSandbox\nPX\nFleet\nProvision demo devices, inspect health, and assign test groups.\nILLUSTRATIVE SANDBOX DATA\nAdd demo device\nSearch devices or groups\nAll states\nAll groups\nFilter\nDEVICE\nGROUP\nSTATUS\nLAST SEEN\nPOLICY\nAPP SET\nDemo unit 014\nRemote support\nONLINE\nJust now\nSupport-safe\nCore 3\nDemo unit 018\nInspections\nONLINE\n3 min ago\nField v2\nInspect 5\nDemo unit 021\nTraining\nIDLE\n28 min ago\nTraining\nStarter 2\nDemo unit 024\nRemote support\nATTENTION\n1 hr ago\nSupport-safe\nCore 3\nDemo unit 031\nWarehouse\nOFFLINE\nYesterday\nField v2\nInspect 5\nDemo unit 036\nTraining\nONLINE\nJust now\nTraining\nStarter 2\n6 demo devices · Production devices are not connected\nMENTRA\nENTERPRISE SANDBOX\nOverview\nFleet\nApps\nPolicies\nDeployments\nAnalytics\nSettings\nIllustrative workspace\nField Operations / Sandbox\nSandbox\nPX\nEnterprise sandbox\nTest a managed Mentra workflow before deploying it to a real fleet.\nILLUSTRATIVE SANDBOX DATA\n24\nDemo devices\n6\nApproved apps\n3\nActive policies\n98.4%\nSession success\nWorkflow health\nREADY\nDevice connection\nOnline\n24 / 24\nApp sessions\nHealthy\n142 today\nPolicy checks\nPassing\n3 active\nSupport handoffs\nReview\n2 queued\nStart with a safe task\nUse demo devices and sample users. Nothing here reaches a production fleet.\nCreate a test workflow\nAdd demo devices\nInvite a teammate\nRecent sandbox activity\nPolicy check passed\nCamera Assist · Demo unit 014\n2 min ago\nApp version staged\nRemote Support v2.4\n18 min ago\nTest session completed\nInspection checklist\n42 min ago\nMENTRA\nENTERPRISE SANDBOX\nOverview\nFleet\nApps\nPolicies\nDeployments\nAnalytics\nSettings\nIllustrative workspace\nField Operations / Sandbox\nSandbox\nPX\nApps\nApprove MiniApps, stage versions, and control who can run them.\nILLUSTRATIVE SANDBOX DATA\nAdd test app\nMiniApp catalog\nVersion filter\nAPP\nVERSION\nSTATE\nASSIGNMENT\nRemote Support\nCamera · Audio\n2.4.0\nAPPROVED\nSupport fleet\nInspection Checklist\nCamera\n1.8.2\nSTAGED\nField ops\nLive Translator\nAudio\n3.1.0\nAPPROVED\nAll demo groups\nSafety Coach\nAudio\n0.9.4\nREVIEW\nTraining\nInventory Lookup\nCamera · Audio\n1.2.6\nAPPROVED\nWarehouse\nApp access\nRemote Support\nAPPROVED\nPermissions\nCamera\nMicrophone\nForeground controls\nAssigned groups\nRemote support\nTraining\nStage new version\nView audit history\nMENTRA\nENTERPRISE SANDBOX\nOverview\nFleet\nApps\nPolicies\nDeployments\nAnalytics\nSettings\nIllustrative workspace\nField Operations / Sandbox\nSandbox\nPX\nPolicies\nSet clear limits for sensors, apps, sessions, and recovery.\nILLUSTRATIVE SANDBOX DATA\nCreate policy\nPolicy library\nSupport-safe\nACTIVE\nRemote support\nCamera while app is foregrounded\nField v2\nACTIVE\nInspections\nCamera + audio with visible indicator\nTraining\nDRAFT\nTraining fleet\nNo recording; 30-minute session limit\nDuplicate selected policy\nSupport-safe\nACTIVE\nAllowed sensors\nCamera, microphone\nRuntime\nForeground only\nPublic indicator\nRequired\nSession limit\n45 minutes\nRecovery\nReturn to home on error\nSave changes\nDiscard\nMENTRA\nENTERPRISE SANDBOX\nOverview\nFleet\nApps\nPolicies\nDeployments\nAnalytics\nSettings\nIllustrative workspace\nField Operations / Sandbox\nSandbox\nPX\nDeployments\nStage changes, choose a test group, and watch the rollout.\nILLUSTRATIVE SANDBOX DATA\nNew deployment\nRemote Support v2.4\nIN PROGRESS\n1\nValidated\n2\nStaged\n3\nPilot group\n4\nFull sandbox\nDeployment history\nVERSION\nTARGET\nOWNER\nSTATUS\nSTARTED\n2.4.0\nRemote support\nAlex P.\nPILOT\nToday, 10:20\n1.8.2\nField ops\nMina R.",
+        "textTruncated": true,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=101-8350"
+      }
+    ]
+  },
+  {
+    "id": "cs-website",
+    "title": "Website",
+    "slides": [
+      {
+        "id": "0:75",
+        "src": "/Assets/case-study-slides/mentra/slide-0-75.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Website · Make the platform easier to buy",
+        "text": "Make the platform easier to buy",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=0-75"
+      },
+      {
+        "id": "517:7317",
+        "src": "/Assets/case-study-slides/mentra/slide-517-7317.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Website · Current",
+        "text": "Current",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=517-7317"
+      }
+    ]
+  },
+  {
+    "id": "cs-impact",
+    "title": "Results and production learning",
+    "slides": [
+      {
+        "id": "329:8419",
+        "src": "/Assets/case-study-slides/mentra/slide-329-8419.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Pairing Completion: 61% → 84%; Onboarding Completion: 54% → 73%",
+        "text": "Pairing Completion: 61% → 84%\nOnboarding Completion: 54% → 73%",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=329-8419"
+      },
+      {
+        "id": "329:8449",
+        "src": "/Assets/case-study-slides/mentra/slide-329-8449.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Process time: 9m 40s → 5m 10s; 7-Day Return: 22% → 23%",
+        "text": "Process time: 9m 40s → 5m 10s\n7-Day Return: 22% → 23%",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=329-8449"
+      },
+      {
+        "id": "329:8363",
+        "src": "/Assets/case-study-slides/mentra/slide-329-8363.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Runtime control improved after the redesign: Miniapp task completion and 7-Day Return.",
+        "text": "Runtime control improved after the redesign.\nMiniapp task Completion: 52% → 78%\n7-Day Return: 22% → 41%",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=329-8363"
+      },
+      {
+        "id": "500:3979",
+        "src": "/Assets/case-study-slides/mentra/slide-500-3979.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Results and production learning · PRODUCTION LEARNING Designed → shipped → tightened after beta. DESIGNED SHIPPED AFTER BETA Bottom drawer prototype Runtime drawer in product",
+        "text": "PRODUCTION LEARNING\nDesigned → shipped → tightened after beta.\nDESIGNED\nSHIPPED\nAFTER BETA\nBottom drawer prototype\nRuntime drawer in product\n3\nproduction refinements\nRunning count\nApp attribution\nDirect stop",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=500-3979"
+      }
+    ]
+  },
+  {
+    "id": "cs-learnings",
+    "title": "Reflection",
+    "slides": [
+      {
+        "id": "107:8889",
+        "src": "/Assets/case-study-slides/mentra/slide-107-8889.webp",
+        "width": 1920,
+        "height": 1080,
+        "alt": "Reflection · CONCLUSION Key learnings Design Beyond screens - hardware, software and context work together. Prototype early, test on-device, and simplify",
+        "text": "CONCLUSION\nKey learnings\nDesign Beyond screens - hardware, software\nand context work together.\nPrototype early, test on-device, and simplify\nfrom real user behavior.",
+        "textTruncated": false,
+        "sourceUrl": "https://www.figma.com/slides/N4p7rXXnLNYjKIRCpzlBaE?node-id=107-8889"
+      }
+    ]
+  }
+]

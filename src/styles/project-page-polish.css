@@ -1,0 +1,1649 @@
+/* Project-only polish for case studies that need bespoke media behavior. */
+
+/* ── Black Hole ─────────────────────────────────────────────────────────── */
+.project-main--black-hole .black-hole-film {
+  display: block;
+  width: 100%;
+  border-radius: var(--radius-lg);
+}
+
+.project-main--black-hole .black-hole-interactive {
+  margin-top: var(--space-4);
+}
+
+.project-main--black-hole .black-hole-fabric-fallback,
+.project-main--black-hole .black-hole-fabric-loading {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
+  background: #050508;
+}
+
+.project-main--black-hole .black-hole-fabric-fallback > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.project-main--black-hole .black-hole-fabric-fallback__copy {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  padding: var(--space-6);
+  color: #fff;
+  text-align: center;
+  background: linear-gradient(135deg, rgba(5, 5, 16, 0.74), rgba(26, 26, 46, 0.54));
+}
+
+.project-main--black-hole .black-hole-fabric-fallback__copy span {
+  max-width: 22ch;
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 300;
+  line-height: 1.25;
+}
+
+.project-main--black-hole .black-hole-fabric-fallback__copy small {
+  color: rgba(255, 255, 255, 0.72);
+  font-family: var(--sans);
+  font-size: var(--text-xs);
+}
+
+.project-main--black-hole .black-hole-fabric-loading {
+  display: grid;
+  place-items: center;
+  color: rgba(255, 255, 255, 0.68);
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+}
+
+/* ── ArtTown Podcast Series ─────────────────────────────────────────────── */
+.project-main--atps .atps-platforms {
+  margin-bottom: 2rem;
+}
+
+.project-main--atps .atps-overview-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+.project-main--atps .atps-overview-head .cs-display {
+  margin: 0;
+}
+
+.project-main--atps .atps-overview-meta {
+  display: grid;
+  flex: 0 0 auto;
+  gap: 0.2rem;
+  text-align: right;
+}
+
+.project-main--atps .atps-overview-meta strong,
+.project-main--atps .atps-overview-meta span {
+  font-family: var(--display);
+  font-weight: 400;
+}
+
+.project-main--atps .atps-overview-meta strong {
+  color: var(--ink-70);
+  font-size: 1.1rem;
+}
+
+.project-main--atps .atps-overview-meta span {
+  color: var(--ink-50);
+  font-size: 1rem;
+}
+
+.project-main--atps .atps-impact-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.project-main--atps .atps-impact-grid .cs-info-item {
+  align-items: center;
+}
+
+.project-main--atps .atps-impact-grid .cs-info-value {
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: clamp(3rem, 7vw, 5rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.project-main--atps .atps-impact-grid .cs-info-key {
+  color: var(--ink-70);
+  font-family: var(--sans);
+  font-size: 1rem;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.project-main--atps .atps-centered-heading {
+  text-align: center;
+}
+
+.project-main--atps .atps-centered-copy {
+  max-width: 70ch;
+  margin: 0 auto 2rem;
+  text-align: center;
+}
+
+.project-main--atps .atps-centered-copy .cs-body,
+.project-main--atps .atps-reflection-copy .cs-body {
+  max-width: none;
+}
+
+.project-main--atps .atps-process {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-top: 3rem;
+  border: 0;
+}
+
+.project-main--atps .atps-process .cs-step {
+  position: relative;
+  display: flex;
+  min-height: 10rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 1.25rem 1rem;
+  border: 1px solid var(--ink-08);
+  border-radius: var(--radius-md);
+  background: var(--surface);
+}
+
+.project-main--atps .atps-process .cs-step::before {
+  content: counter(step-counter, decimal-leading-zero);
+  color: color-mix(in srgb, var(--project-color) 74%, var(--ink-40));
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  letter-spacing: var(--ls-wide);
+}
+
+.project-main--atps .atps-process .cs-step-desc {
+  font-size: var(--text-xs);
+  line-height: 1.5;
+}
+
+.project-main--atps .atps-listener-flow .cs-step {
+  text-align: left;
+}
+
+.project-main--atps .atps-callout {
+  margin-top: 3rem;
+}
+
+.project-main--atps .atps-callout .cs-callout {
+  margin: 0;
+  border-left: 0;
+  border-radius: var(--radius-md);
+  background: var(--bg-alt);
+  text-align: center;
+}
+
+.project-main--atps .atps-callout-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.project-main--atps .atps-callout-grid > div {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.project-main--atps .atps-callout-grid small {
+  color: var(--ink-50);
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.project-main--atps .atps-callout-grid strong {
+  color: var(--ink);
+  font-family: var(--display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 500;
+}
+
+.project-main--atps .atps-episodes-intro {
+  margin-bottom: 1.5rem;
+}
+
+.project-main--atps .atps-reflection-copy {
+  max-width: 720px;
+}
+
+/* ── The Omakase ───────────────────────────────────────────────────────── */
+.project-main--omakase .omakase-keyboard-diagram {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(1.25rem, 5vw, 3rem);
+  padding: var(--space-4) 0;
+}
+
+.project-main--omakase .omakase-player-controls {
+  display: flex;
+  width: min(100%, 336px);
+  flex-direction: column;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.project-main--omakase .omakase-player-controls__label {
+  color: var(--ink-70);
+  font-family: var(--mono);
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.project-main--omakase .omakase-keyboard-grid {
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 4px;
+  padding: 8px;
+  border: 1px solid var(--ink-08);
+  border-radius: var(--radius-md);
+  background: var(--ink-04);
+}
+
+.project-main--omakase .omakase-keycap {
+  position: relative;
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  height: 64px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 0 2px;
+  border: 2px solid var(--omakase-key-color);
+  border-radius: 8px;
+  color: var(--omakase-key-color);
+  background: var(--omakase-key-tint);
+  font-family: var(--mono);
+  line-height: 1;
+}
+
+.project-main--omakase .omakase-keycap strong {
+  font-size: 1.125rem;
+}
+
+.project-main--omakase .omakase-keycap span {
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.project-main--omakase .omakase-keycap i {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--omakase-key-color);
+}
+
+.project-main--omakase .omakase-game {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  margin-top: var(--space-5);
+  border: 1px solid var(--ink-08);
+  border-radius: var(--radius-lg);
+  background: #1a1a2e;
+  box-shadow: var(--shadow-lg);
+}
+
+.project-main--omakase .omakase-touch-fallback,
+.project-main--omakase .omakase-game-load,
+.project-main--omakase .omakase-game-loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.project-main--omakase .omakase-touch-fallback {
+  gap: var(--space-3);
+  padding: var(--space-5);
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b3d 100%);
+}
+
+.project-main--omakase .omakase-touch-fallback > img {
+  width: clamp(4rem, 12vw, 5.5rem);
+  aspect-ratio: 1;
+  border-radius: var(--radius-md);
+  object-fit: cover;
+}
+
+.project-main--omakase .omakase-touch-fallback__title {
+  max-width: 24ch;
+  margin: 0;
+  color: #fff;
+  font-family: var(--serif);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 300;
+  line-height: 1.3;
+}
+
+.project-main--omakase .omakase-touch-fallback__copy {
+  max-width: 32ch;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-family: var(--sans);
+  font-size: var(--text-xs);
+  line-height: 1.6;
+}
+
+.project-main--omakase .omakase-touch-fallback__link {
+  min-height: 44px;
+  margin-top: var(--space-1);
+  border: 1px solid rgba(255, 255, 255, 0.26);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.1);
+  text-decoration: none;
+}
+
+.project-main--omakase .omakase-game-load {
+  width: 100%;
+  height: 100%;
+  gap: var(--space-3);
+  border: 0;
+  color: #fff;
+  background: linear-gradient(135deg, #1a1a2e 0%, #2d1b3d 50%, #8b5e3c 150%);
+  cursor: pointer;
+  transition: filter 180ms ease-out;
+}
+
+.project-main--omakase .omakase-game-load:hover {
+  filter: brightness(1.12);
+}
+
+.project-main--omakase .omakase-game-load:focus-visible,
+.project-main--omakase .omakase-game-tools__button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: -4px;
+}
+
+.project-main--omakase .omakase-game-load__icon {
+  display: grid;
+  width: 64px;
+  height: 64px;
+  place-items: center;
+  border: 2px solid rgba(255, 255, 255, 0.28);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.project-main--omakase .omakase-game-load__title,
+.project-main--omakase .omakase-game-loading span {
+  color: rgba(255, 255, 255, 0.78);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-main--omakase .omakase-game-load__meta {
+  margin-top: -0.25rem;
+  color: rgba(255, 255, 255, 0.58);
+  font-family: var(--sans);
+  font-size: var(--text-xs);
+}
+
+.project-main--omakase .omakase-game-loading {
+  z-index: 1;
+  gap: 0.75rem;
+  background: #1a1a2e;
+}
+
+.project-main--omakase .omakase-game-loading__spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  border-top-color: rgba(255, 255, 255, 0.68);
+  border-radius: 50%;
+  animation: omakase-spin 0.8s linear infinite;
+}
+
+.project-main--omakase .omakase-game__iframe,
+.project-main--omakase .omakase-film__iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.project-main--omakase .omakase-game-tools {
+  position: absolute;
+  z-index: 2;
+  top: 8px;
+  right: 8px;
+}
+
+.project-main--omakase .omakase-game-tools__button {
+  display: grid;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-md);
+  color: rgba(255, 255, 255, 0.82);
+  background: rgba(0, 0, 0, 0.58);
+  cursor: pointer;
+}
+
+.project-main--omakase .omakase-game-guide {
+  margin-top: var(--space-6);
+}
+
+.project-main--omakase .omakase-game-guide__heading {
+  margin-bottom: var(--space-3);
+}
+
+.project-main--omakase .omakase-game-guide__heading--loose {
+  margin-bottom: var(--space-4);
+}
+
+.project-main--omakase .omakase-game-help {
+  margin-top: var(--space-4);
+  color: var(--ink-40);
+  font-family: var(--mono);
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+  text-align: center;
+}
+
+.project-main--omakase .omakase-game-help a {
+  color: var(--ink-70);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.project-main--omakase .omakase-film {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.project-main--omakase .omakase-grid {
+  gap: 1rem;
+}
+
+.project-main--omakase .omakase-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.project-main--omakase .omakase-grid--feature {
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+}
+
+.project-main--omakase .omakase-grid__wide {
+  grid-column: 1 / -1;
+}
+
+.project-main--omakase .omakase-figure {
+  margin: 0;
+}
+
+.project-main--omakase .omakase-grid-caption {
+  margin-top: 0.75rem;
+}
+
+@keyframes omakase-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ── Shared case-study composition ────────────────────────────────────── */
+.project-main .cs-body--measure {
+  max-width: 720px;
+}
+
+.project-main .cs-body--space-before {
+  margin-top: 2rem;
+}
+
+.project-main .cs-body--space-before-sm {
+  margin-top: 1.5rem;
+}
+
+.project-main .cs-body--space-after {
+  margin-bottom: 2rem;
+}
+
+.project-main .cs-stat-grid--space-before {
+  margin-top: 2.5rem;
+}
+
+.project-main .cs-stat-grid--space-before-lg {
+  margin-top: 3rem;
+}
+
+.project-main .cs-credits.cs-stat-grid--space-before-lg {
+  margin-top: 3rem;
+}
+
+.project-main .cs-thanks--separated {
+  margin-top: 4rem;
+}
+
+.project-main .project-content-block {
+  margin-top: var(--space-4);
+}
+
+.project-main .project-content-block--roomy {
+  margin-top: var(--space-5);
+}
+
+.project-main .project-stack {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.project-main .project-image-grid--two {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.project-main .project-image-grid--three {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.project-main .project-image-grid--feature {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 1rem;
+}
+
+.project-main .project-image-grid--spaced {
+  margin-top: 2rem;
+}
+
+.project-main .project-image-grid--top-aligned {
+  align-items: start;
+}
+
+.project-main .project-label-row--open {
+  border-bottom: 0;
+}
+
+.project-main .project-text-link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.project-main .project-caption--standalone {
+  margin-top: 0.75rem;
+  color: var(--ink-soft, #777);
+  font-size: 1rem;
+}
+
+.project-main .project-label-row--spaced {
+  margin-top: 2rem;
+}
+
+.project-main .project-closing-link {
+  padding: 3rem 0;
+  text-align: center;
+}
+
+.project-main .project-closing-link a:not(.glass-action) {
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: var(--text-sm);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.project-main .project-media--narrow {
+  max-width: 640px;
+  margin: 2.5rem auto 0;
+}
+
+.project-main .project-media--compact {
+  max-width: 560px;
+  margin: 2.5rem auto 0;
+}
+
+.project-main .project-media--transparent {
+  background: transparent;
+}
+
+.project-main .project-tags--flush {
+  margin: 0;
+}
+
+.project-main .project-section--flush {
+  padding-top: 0;
+}
+
+.project-main .project-figure--flush {
+  margin: 0;
+}
+
+.project-main .tedx-foundation-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  margin-top: 2.5rem;
+}
+
+.project-main .tedx-foundation-label {
+  margin-bottom: 0.5rem;
+}
+
+.project-main .revolving-stage-process-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 1.5rem;
+  margin-top: 2.5rem;
+}
+
+.project-main .revolving-stage-credits-title {
+  font-style: italic;
+}
+
+.project-main .vj-display-measure {
+  max-width: 22ch;
+}
+
+/* VJ's hero is a tall process board, not a landscape cover. Keep the entire
+   authored image visible and let the following overview use an open editorial
+   measure tailored to this project. */
+.project-main--vj .project-header--project-vj-software .proj-visual-stage {
+  aspect-ratio: 1531 / 2059;
+}
+
+.project-main--vj .project-header--project-vj-software .proj-visual-hero__media img {
+  object-fit: contain;
+  transform: none !important;
+}
+
+.project-main--vj .vj-display-measure {
+  width: 100%;
+  max-width: none;
+}
+
+.project-main--vj .cs-label-row {
+  grid-template-columns: minmax(9rem, 0.22fr) minmax(0, 1fr);
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.project-main--vj .cs-label-row:first-child {
+  border-top: 0;
+}
+
+.project-main--vj .cs-label-row-val {
+  width: 100%;
+  max-width: none;
+}
+
+@media (min-width: 1101px) {
+  .project-main.project-main--vj .proj-visual-brief {
+    grid-template-columns: minmax(0, 1.35fr) minmax(23rem, 0.65fr);
+    column-gap: clamp(3rem, 5vw, 5rem);
+  }
+
+  .project-main--vj .proj-visual-brief__copy {
+    grid-column: 1;
+    max-width: none;
+  }
+
+  .project-main--vj .proj-visual-brief__facts {
+    grid-column: 2;
+    grid-template-columns: minmax(11rem, 1fr) max-content;
+    column-gap: 2rem;
+    padding: 0;
+  }
+
+  .project-main--vj .proj-visual-brief__facts > .proj-visual-timeline {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    min-width: 7rem;
+    justify-self: end;
+  }
+}
+
+@media (max-width: 760px) {
+  .project-main--vj .cs-label-row {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.4rem;
+  }
+}
+
+.project-main .vj-two-col--spaced {
+  margin-top: 2rem;
+}
+
+.project-main .point-callout-wrap {
+  text-align: center;
+}
+
+.project-main .point-callout {
+  max-width: 800px;
+  margin-inline: auto;
+  text-align: left;
+}
+
+.project-main .point-thanks-link {
+  margin-top: 1.5rem;
+}
+
+.project-main .project-media-frame {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--ink-06);
+  border-radius: var(--radius-lg);
+}
+
+.project-main .project-media-frame--dark {
+  border-color: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+}
+
+.project-main .clawed-media--spaced {
+  margin-top: 2rem;
+}
+
+.project-main .clawed-slide--spaced {
+  margin-top: var(--space-4);
+}
+
+.typeface-page .tf-split-section--flush {
+  padding-top: 0;
+}
+
+.typeface-page .tf-origin-figure {
+  margin: 0;
+}
+
+.typeface-page .tf-origin-image {
+  width: 100%;
+  border-radius: var(--radius-md, 12px);
+}
+
+.typeface-page .tf-origin-caption {
+  margin-top: 0.6rem;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.typeface-page .tf-metric-value {
+  font-family: var(--tf-slice);
+}
+
+.typeface-page .tf-metric-value--bold {
+  font-weight: 700;
+}
+
+.typeface-page .tf-metric-value--regular {
+  font-weight: 400;
+}
+
+@media (max-width: 680px) {
+  .project-main .revolving-stage-process-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 680px) {
+  .project-main :is(
+    .project-image-grid--two,
+    .project-image-grid--three,
+    .project-image-grid--feature
+  ) {
+    grid-template-columns: 1fr;
+  }
+
+  .project-main :is(button, [role='button'], input[type='range']) {
+    min-width: 44px;
+    min-height: 44px;
+  }
+}
+
+/* ── Shared project touch floor ────────────────────────────────────────── */
+@media (max-width: 480px) {
+  .typeface-page .ge-char-btn {
+    min-width: 44px;
+    min-height: 44px;
+    flex-basis: 44px;
+  }
+}
+
+@media (max-width: 820px) {
+  .project-main--atps .atps-process {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .project-main--atps .atps-overview-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .project-main--atps .atps-overview-meta {
+    text-align: left;
+  }
+
+  .project-main--atps .atps-impact-grid,
+  .project-main--atps .atps-callout-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-main--atps .atps-process {
+    grid-template-columns: 1fr;
+  }
+
+  .project-main--atps .atps-process .cs-step {
+    min-height: 0;
+  }
+
+  .project-main--omakase .omakase-keycap span {
+    font-size: 0.82rem;
+  }
+
+  .project-main--omakase .omakase-grid--two,
+  .project-main--omakase .omakase-grid--feature {
+    grid-template-columns: 1fr;
+  }
+
+  .project-main--omakase .omakase-touch-fallback {
+    gap: var(--space-2);
+    padding: var(--space-3);
+  }
+
+  .project-main--omakase .omakase-touch-fallback > img {
+    width: 3.5rem;
+  }
+
+  .project-main--omakase .omakase-touch-fallback__copy {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-main--omakase .omakase-game-loading__spinner {
+    animation-duration: 1.6s;
+  }
+}
+
+/* ── Shared project narrative width ─────────────────────────────────────
+   The project grid owns the page gutter. Narrative copy should use the
+   complete content column instead of stopping at an additional character-
+   based measure. This is scoped to project pages, so home, work, and about
+   retain their existing typography and layout. */
+.project-main .cs-body,
+.project-main .cs-body--measure,
+.project-main .cs-section-content > :is(.cs-body, .cs-body-lg, p) {
+  width: 100%;
+  max-width: none;
+}
+
+.project-main .cs-body > p,
+.project-main .cs-section-content > :is(.cs-body, .cs-body-lg) > p {
+  max-width: none;
+}
+
+/* ── Shared routed-project presentation contract ────────────────────────
+   This is intentionally project-only. The navbar, Home, Work, About,
+   category pages, and hidden registry entries keep their own presentation. */
+.project-main {
+  --project-hero-type: clamp(2.65rem, 5.15vw, 4.8rem);
+  --project-section-type: clamp(2rem, 3.8vw, 3.5rem);
+  --project-body-type: clamp(1rem, 1.35vw, 1.2rem);
+  --project-control-height: 44px;
+  --case-hero-radius: 12px;
+}
+
+/* The fixed navigation is the gutter source of truth. */
+.project-main .wrap,
+.project-main .cs-expand-preview--article {
+  width: auto;
+  max-width: none;
+  margin-inline: var(--project-edge);
+  padding-inline: 0;
+}
+
+.project-main .cs-expand-preview--article .cs-expand-preview-content {
+  width: 100%;
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+/* The collapsed project gateway reads as the beginning of a real article.
+   Its premise uses the full project column, then authentic project copy
+   continues beneath a functional blur before the reveal control. */
+.project-main .cs-expand-preview--article {
+  height: clamp(36rem, 70vh, 42rem);
+}
+
+.project-main .cs-expand-preview--article .cs-expand-preview-content {
+  padding-block: clamp(2rem, 5vw, 4rem) 2rem;
+}
+
+.project-main .cs-expand-preview-article-copy {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+}
+
+.project-main :is(
+  .cs-expand-preview-article-copy h2,
+  .cs-expand-preview-article-copy--auto h2,
+  .cs-expand-preview-article-copy > p,
+  .cs-expand-preview-article-copy--auto > p
+) {
+  width: 100%;
+  max-width: none;
+}
+
+.project-main .cs-expand-preview-continuation {
+  display: grid;
+  gap: 0.9rem;
+  width: 100%;
+  margin-top: clamp(2.75rem, 5vw, 4.5rem);
+  padding-top: clamp(1.5rem, 3vw, 2.25rem);
+  border-top: 1px solid var(--ink-12);
+  filter: blur(3px);
+  opacity: 0.62;
+  transform: translateZ(0);
+}
+
+.project-main .cs-expand-preview-continuation h3 {
+  width: 100%;
+  max-width: none;
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.8rem, 3.2vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.project-main .cs-expand-preview-continuation p {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  color: var(--ink-70);
+  font-size: clamp(1rem, 1.35vw, 1.2rem);
+  line-height: 1.6;
+}
+
+.project-main .cs-expand-preview--article .cs-expand-preview-veil {
+  inset: auto 0 0;
+  height: 58%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    color-mix(in srgb, var(--bg) 32%, transparent) 38%,
+    color-mix(in srgb, var(--bg) 86%, transparent) 72%,
+    var(--bg) 100%
+  );
+  backdrop-filter: blur(9px);
+  -webkit-backdrop-filter: blur(9px);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 34%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 34%);
+}
+
+.project-main .cs-expand-preview--article .cs-expand-preview-cta {
+  padding: 5.25rem 1.25rem 1.35rem;
+  border-top: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    color-mix(in srgb, var(--bg) 76%, transparent) 48%,
+    var(--bg) 82%
+  );
+}
+
+@media (max-width: 760px) {
+  .project-main .cs-expand-preview--article {
+    height: 38rem;
+  }
+
+  .project-main .cs-expand-preview--article .cs-expand-preview-content {
+    padding: 1.5rem 0 2rem;
+  }
+
+  .project-main .cs-expand-preview-continuation {
+    margin-top: 2.25rem;
+    padding-top: 1.25rem;
+  }
+
+  .project-main .cs-expand-preview-continuation h3 {
+    font-size: clamp(1.55rem, 7vw, 2rem);
+  }
+
+  .project-main .cs-expand-preview--article .cs-expand-preview-cta {
+    padding: 4.5rem 1rem 1.25rem;
+  }
+}
+
+.project-main :is(h1, h2, h3, h4, h5, h6, strong, b) {
+  font-weight: 500;
+}
+
+.project-main :is(
+  .proj-visual-title,
+  .proj-title,
+  .proj-visual-title__name,
+  .proj-visual-title__deck
+) {
+  width: 100%;
+  max-width: 100%;
+  font-size: var(--project-hero-type);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+  text-wrap: balance;
+}
+
+.project-main :is(.proj-visual-title--medium, .proj-title--medium) {
+  font-size: clamp(2.45rem, 4.65vw, 4.25rem);
+}
+
+.project-main :is(.proj-visual-title--long, .proj-title--long) {
+  font-size: clamp(2.2rem, 4vw, 3.65rem);
+}
+
+.project-main :is(.cs-section-title, .cs-display, .cs-quick-summary-title, .cs-media-spotlight-title) {
+  font-size: var(--project-section-type);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+.project-main :is(
+  .cs-body,
+  .cs-body-lg,
+  .cs-section-content,
+  .proj-visual-brief,
+  .proj-desc,
+  .cs-feature-card,
+  .cs-step,
+  .cs-credit-item
+) {
+  font-size: var(--project-body-type);
+  font-weight: 400;
+}
+
+/* Eyebrows were useful during drafting but duplicate the section titles. */
+.project-main :is(.cs-section-label, .proj-fastread-kicker) {
+  display: none;
+}
+
+.project-main :is(
+  .proj-tag,
+  .proj-visual-tag,
+  .proj-info-label,
+  .cs-stat-label,
+  .cs-feature-card-title,
+  .cs-credit-role,
+  .cs-info-key,
+  .cs-bnav-kicker,
+  .cs-bnav-link,
+  .cs-bnav-action
+) {
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Shared 44px control language. */
+.project-main :is(
+  .proj-visual-live,
+  .proj-live-link,
+  .cs-quick-summary-toggle button,
+  .cs-bnav-link,
+  .cs-bnav-action,
+  .cs-bnav-live,
+  .nda-request-submit
+) {
+  min-height: var(--project-control-height);
+  border-radius: 10px;
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.project-main .proj-visual-live {
+  min-width: 0;
+  padding: 0.7rem 0.9rem;
+}
+
+/* Mentra reference contract: shift the generous interval above the headline
+   instead of leaving it between the project actions and the product image. */
+@media (min-width: 769px) {
+  .project-main .project-header--visual .proj-visual-hero {
+    gap: clamp(1.75rem, 3vw, 2.5rem);
+    padding-top: clamp(2.25rem, 4vw, 3.25rem);
+  }
+}
+
+.project-main .proj-visual-timeline li::before {
+  box-shadow: none;
+}
+
+/* Quick summaries are one editorial section, not a stack of nested cards.
+   Keep every project on the same outer edge and give all three summary rows
+   the same padding, divider, and surface treatment. */
+.project-main .cs-quick-summary-shell {
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.project-main .cs-quick-summary {
+  scroll-margin-top: 7rem;
+}
+
+.project-main:not(.project-main--mentra-visual) .cs-quick-summary-card--outcome {
+  margin-top: 0;
+  padding: 1rem 0;
+  border: 0;
+  border-bottom: 1px solid var(--ink-08);
+  border-radius: 0;
+  background: transparent;
+}
+
+.project-main .cs-quick-summary-quote {
+  max-width: 46rem;
+  margin: clamp(3rem, 6vw, 5rem) auto 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  text-align: center;
+}
+
+.project-main .cs-quick-summary-quote p {
+  max-width: 34ch;
+  margin: 0 auto 0.85rem;
+  font-family: var(--serif-read);
+  font-size: clamp(1.45rem, 2.4vw, 2rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+
+.project-main .cs-quick-summary-quote cite {
+  display: block;
+  color: var(--ink-50);
+  font-family: var(--sans);
+  font-size: 0.95rem;
+}
+
+.project-main .cs-quick-summary-quote cite::before {
+  content: '— ';
+}
+
+.project-main :is(.cs-section-content > p, .cs-body > p) {
+  text-wrap: pretty;
+}
+
+@media (min-width: 901px) {
+  .project-main--mentra-visual #cs-context .cs-section-content {
+    align-self: center;
+  }
+
+  .project-main--mentra-visual #cs-context .cs-mentra-problem-copy {
+    width: 100%;
+    max-width: none;
+    margin-inline: auto;
+    font-size: clamp(2.15rem, 3.15vw, 3.55rem);
+    line-height: 1.16;
+    text-align: center;
+    text-wrap: balance;
+  }
+}
+
+/* Hero and authored media keep one restrained corner treatment. */
+.project-main :is(
+  .proj-visual-stage,
+  .proj-visual-hero__media,
+  .proj-hero-img,
+  .project-media-frame,
+  .cs-media,
+  .cs-media-frame,
+  .cs-img-full,
+  .cs-slide,
+  figure > video
+) {
+  border-radius: var(--case-hero-radius);
+}
+
+.project-main :is(.proj-visual-stage, .proj-visual-hero__media, .proj-hero-img, .cs-media, .cs-media-frame) {
+  overflow: clip;
+}
+
+/* Narrative / role-and-team / timeline. */
+@media (min-width: 1101px) {
+  .project-main .proj-visual-brief {
+    grid-template-columns: minmax(0, 1.5fr) minmax(12rem, 0.75fr) minmax(16rem, 1fr);
+    column-gap: clamp(2.5rem, 5vw, 6rem);
+  }
+
+  .project-main .proj-visual-brief__copy {
+    grid-column: 1;
+    max-width: none;
+  }
+
+  .project-main .proj-visual-brief__facts {
+    grid-column: 2 / 4;
+    display: grid;
+    grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+    gap: 2rem clamp(2rem, 4vw, 4rem);
+    padding: 0;
+  }
+
+  .project-main .proj-visual-brief__facts > .proj-visual-timeline {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+}
+
+[data-theme="light"] .project-main .proj-visual-brief,
+[data-theme="light"] .project-main .proj-visual-brief :is(dt, dd, p, span, strong) {
+  color: var(--ink);
+}
+
+[data-theme="light"] .project-main .proj-visual-brief :is(dd, p, .proj-visual-timeline span) {
+  color: color-mix(in srgb, var(--ink) 74%, transparent);
+}
+
+[data-theme="dark"] .project-main .proj-visual-brief,
+[data-theme="dark"] .project-main .proj-visual-brief :is(dt, dd, p, span, strong) {
+  color: #ededec;
+}
+
+.project-main .proj-visual-timeline li {
+  position: relative;
+}
+
+.project-main .proj-visual-timeline li:not(:last-child)::after {
+  top: 0.66rem;
+  bottom: -0.66rem;
+}
+
+.project-main .proj-visual-timeline li:last-child::after {
+  content: none;
+}
+
+/* Open editorial lists. Cards remain for media, comparisons, forms, quotes,
+   controls, and compact outcomes where containment carries meaning. */
+.project-main :is(.cs-feature-grid, .cs-steps, .cs-credits, .proj-overview-grid) {
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  border: 0;
+}
+
+.project-main :is(.cs-feature-card, .cs-step, .cs-credit-item, .proj-overview-card) {
+  min-height: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.project-main :is(.cs-feature-card, .cs-step, .cs-credit-item, .proj-overview-card):hover {
+  border-color: transparent;
+  background: transparent;
+  box-shadow: none;
+  transform: none;
+}
+
+.project-main .cs-feature-card {
+  display: grid;
+  grid-template-columns: minmax(8rem, 0.42fr) minmax(0, 1fr);
+  align-content: start;
+  gap: 0.45rem clamp(1rem, 3vw, 2.5rem);
+}
+
+.project-main .cs-feature-card-desc {
+  max-width: none;
+}
+
+.project-main :is(.cs-section, .cs-section-grid, .cs-section-content, .cs-credits, .cs-steps) {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.project-main .cs-section-head::after,
+.project-main .cs-section-title::after {
+  content: none;
+}
+
+.project-main .cs-stat-card,
+.project-main .cs-quick-summary-stat {
+  min-height: 0;
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.project-main blockquote {
+  margin-inline: 0;
+  border: 1px solid color-mix(in srgb, var(--project-color) 32%, var(--ink-08));
+  border-radius: 10px;
+  box-shadow: none;
+}
+
+.project-main :is(a, button, input, textarea, select):focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--project-color) 70%, var(--ink));
+  outline-offset: 3px;
+}
+
+@media (max-width: 768px) {
+  .project-main {
+    --project-hero-type: clamp(2.15rem, 7.9vw, 3.35rem);
+    --project-section-type: clamp(1.8rem, 6.8vw, 2.65rem);
+  }
+
+  .project-main :is(.proj-visual-title--long, .proj-title--long) {
+    font-size: clamp(1.6rem, 4.25vw, 2.2rem);
+  }
+
+  .project-main :is(.proj-visual-title--medium, .proj-title--medium) {
+    font-size: clamp(2rem, 5.5vw, 2.6rem);
+  }
+
+  .project-main .cs-feature-card {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.35rem;
+  }
+
+  .project-main .cs-bottom-nav {
+    min-height: var(--project-control-height);
+  }
+}
+
+@media (max-width: 560px) {
+  .project-main {
+    --project-body-type: 1rem;
+  }
+
+  .project-main :is(.proj-visual-title--long, .proj-title--long) {
+    font-size: clamp(1.3rem, 5.8vw, 2rem);
+  }
+
+  .project-main :is(.proj-visual-title--medium, .proj-title--medium) {
+    font-size: clamp(1.75rem, 7vw, 2rem);
+  }
+
+  .project-main .proj-visual-actions {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: end;
+  }
+
+  .project-main .proj-visual-live {
+    grid-column: 2;
+    justify-self: end;
+  }
+}
+
+/* OrgDashboard's original raster contained a broken-image placeholder baked
+   into the screenshot. This product-native artifact keeps the same restrained
+   grayscale direction while presenting the actual system model cleanly. */
+.org-dashboard-artifact {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  width: 100%;
+  height: 100%;
+  min-height: 28rem;
+  overflow: hidden;
+  color: #17191c;
+  background: #f4f3ef;
+  font-family: var(--sans);
+}
+
+.org-dashboard-artifact__top {
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 1.25rem;
+  align-items: center;
+  min-height: 4rem;
+  padding: 0 clamp(1rem, 2.6vw, 2rem);
+  border-bottom: 1px solid rgba(23, 25, 28, 0.12);
+  font-size: 0.76rem;
+}
+
+.org-dashboard-artifact__top > span {
+  color: rgba(23, 25, 28, 0.58);
+}
+
+.org-dashboard-artifact__command {
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(23, 25, 28, 0.14);
+  border-radius: 8px;
+  color: rgba(23, 25, 28, 0.72) !important;
+  background: rgba(255, 255, 255, 0.58);
+}
+
+.org-dashboard-artifact__body {
+  display: grid;
+  grid-template-columns: minmax(8.5rem, 0.23fr) minmax(0, 1fr);
+  min-height: 0;
+}
+
+.org-dashboard-artifact__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: clamp(1rem, 2.8vw, 2rem) clamp(0.75rem, 2vw, 1.4rem);
+  border-right: 1px solid rgba(23, 25, 28, 0.1);
+  color: rgba(23, 25, 28, 0.55);
+  font-size: 0.78rem;
+}
+
+.org-dashboard-artifact__nav strong {
+  margin-bottom: 0.7rem;
+  color: rgba(23, 25, 28, 0.9);
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.org-dashboard-artifact__nav span {
+  padding: 0.55rem 0.65rem;
+  border-radius: 8px;
+}
+
+.org-dashboard-artifact__nav .is-active {
+  color: #17191c;
+  background: rgba(23, 25, 28, 0.07);
+}
+
+.org-dashboard-artifact__content {
+  min-width: 0;
+  padding: clamp(1.25rem, 4vw, 3rem);
+}
+
+.org-dashboard-artifact__heading,
+.org-dashboard-artifact__knowledge header,
+.org-dashboard-artifact__actions header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.org-dashboard-artifact__heading > div > span,
+.org-dashboard-artifact__knowledge header span,
+.org-dashboard-artifact__actions header span {
+  color: rgba(23, 25, 28, 0.5);
+  font-size: 0.72rem;
+}
+
+.org-dashboard-artifact__heading h3 {
+  max-width: 16ch;
+  margin: 0.4rem 0 0;
+  font-size: clamp(1.65rem, 3.2vw, 3.15rem);
+  font-weight: 500;
+  line-height: 1.03;
+  letter-spacing: -0.035em;
+}
+
+.org-dashboard-artifact__status {
+  display: inline-flex;
+  gap: 0.45rem;
+  align-items: center;
+  padding-top: 0.25rem;
+  color: rgba(23, 25, 28, 0.58);
+  font-size: 0.72rem;
+  white-space: nowrap;
+}
+
+.org-dashboard-artifact__status i,
+.org-dashboard-artifact__actions div i {
+  width: 0.46rem;
+  height: 0.46rem;
+  border-radius: 50%;
+  background: #357a59;
+}
+
+.org-dashboard-artifact__columns {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: clamp(1.25rem, 3vw, 2.5rem);
+  margin-top: clamp(2rem, 6vw, 4.75rem);
+  padding-top: clamp(1.25rem, 2.6vw, 2rem);
+  border-top: 1px solid rgba(23, 25, 28, 0.12);
+}
+
+.org-dashboard-artifact__knowledge dl {
+  margin: 1rem 0 0;
+}
+
+.org-dashboard-artifact__knowledge dl > div {
+  display: grid;
+  grid-template-columns: minmax(4.5rem, 0.35fr) minmax(0, 1fr);
+  gap: 1rem;
+  padding: 0.7rem 0;
+  border-bottom: 1px solid rgba(23, 25, 28, 0.09);
+  font-size: 0.76rem;
+}
+
+.org-dashboard-artifact__knowledge dt {
+  font-weight: 600;
+}
+
+.org-dashboard-artifact__knowledge dd {
+  margin: 0;
+  color: rgba(23, 25, 28, 0.56);
+}
+
+.org-dashboard-artifact__actions p {
+  max-width: 38ch;
+  margin: 1rem 0 1.15rem;
+  color: rgba(23, 25, 28, 0.64);
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.org-dashboard-artifact__actions div {
+  display: flex;
+  gap: 0.55rem;
+  align-items: center;
+  padding: 0.55rem 0;
+  border-bottom: 1px solid rgba(23, 25, 28, 0.09);
+  font-size: 0.72rem;
+}
+
+.project-main--org-dashboard .cs-slide .org-dashboard-artifact {
+  min-height: clamp(30rem, 62vw, 46rem);
+}
+
+@media (max-width: 700px) {
+  .org-dashboard-artifact {
+    min-height: 23rem;
+  }
+
+  .org-dashboard-artifact__top {
+    grid-template-columns: 1fr auto;
+  }
+
+  .org-dashboard-artifact__top > span:not(.org-dashboard-artifact__command),
+  .org-dashboard-artifact__nav,
+  .org-dashboard-artifact__status,
+  .org-dashboard-artifact__actions p {
+    display: none;
+  }
+
+  .org-dashboard-artifact__body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .org-dashboard-artifact__content {
+    padding: 1.2rem;
+  }
+
+  .org-dashboard-artifact__heading h3 {
+    font-size: clamp(1.55rem, 7vw, 2.1rem);
+  }
+
+  .org-dashboard-artifact__columns {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.1rem;
+    margin-top: 1.7rem;
+  }
+
+  .org-dashboard-artifact__actions {
+    padding-top: 0.25rem;
+  }
+
+  .project-main--org-dashboard .proj-visual-hero__media .org-dashboard-artifact {
+    min-height: 0;
+  }
+
+  .project-main--org-dashboard .proj-visual-hero__media .org-dashboard-artifact__top {
+    min-height: 2.8rem;
+    padding-inline: 0.85rem;
+  }
+
+  .project-main--org-dashboard .proj-visual-hero__media .org-dashboard-artifact__content {
+    padding: 0.9rem;
+  }
+
+  .project-main--org-dashboard .proj-visual-hero__media .org-dashboard-artifact__heading h3 {
+    max-width: 13ch;
+    font-size: 1.45rem;
+  }
+
+  .project-main--org-dashboard .proj-visual-hero__media .org-dashboard-artifact__columns {
+    display: none;
+  }
+}

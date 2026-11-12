@@ -1,0 +1,148 @@
+.ja{max-width:1280px;margin:0 auto;color:var(--ink);--anatomy-weight:.8px}
+.ja-intro{max-width:660px;margin:32px 0}.ja-intro h2{font-family:var(--serif);font-size:clamp(28px,3.5vw,46px);font-weight:400;line-height:1.14;margin:12px 0}.ja p{line-height:1.6}.ja-eyebrow,.ja-caption{font-family:var(--mono);font-size:12px}.ja-eyebrow{color:var(--ink-70);letter-spacing:.06em}.ja-tabs{display:flex;gap:8px;margin:24px 0}.ja button,.ja select{min-height:44px;font:inherit;color:inherit;border:1px solid var(--ink-15);border-radius:8px;background:var(--surface);padding:10px 16px;cursor:pointer}.ja button:focus-visible,.ja select:focus-visible,.ja-hit:focus-visible{outline:2px solid var(--ink);outline-offset:4px}.ja button[aria-pressed=true]{border-color:var(--ink);background:var(--bg-alt)}.ja-tabs span{font:11px var(--mono);margin-right:10px;color:var(--ink-70)}.ja-workbench{display:grid;grid-template-columns:minmax(0,1fr) 290px;border:1px solid var(--ink-15);border-radius:12px;overflow:hidden}.ja-figure{margin:0;min-width:0;background:var(--anatomy-card)}.ja-caption{display:flex;justify-content:space-between;gap:12px;padding:18px 20px;color:var(--anatomy-text)}.ja-caption output{color:var(--anatomy-strong);text-align:right}.ja-stage{touch-action:pan-y}.ja-stage svg{display:block;width:100%;height:auto;max-height:600px;overflow:hidden}.ja-controls{padding:28px 22px;border-left:1px solid var(--ink-15);display:flex;flex-direction:column;gap:12px;background:var(--bg)}.ja-controls h3{font:28px var(--serif);margin:0}.ja-controls p{margin:0}.ja-controls label{display:flex;justify-content:space-between}.ja .ja-action{background:var(--ink);color:var(--bg);border-color:var(--ink)}.ja-secondary{display:flex;gap:8px;margin-top:auto}.ja-note{font-size:12px;color:var(--ink-70)}.ja-status{font-size:13px;min-height:64px}.ja-holes{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.ja-holes button{padding:8px}.ja-holes small{display:block;font-size:10px}.ja-hit{cursor:pointer;outline:none}.ja-hit circle{fill:transparent;stroke:transparent;stroke-width:1.5}.ja-hit:hover circle,.ja-hit:focus circle{fill:var(--anatomy-faint);fill-opacity:.3;stroke:var(--anatomy-hi)}.ja-hit[aria-pressed=true] circle{stroke:var(--anatomy-hi);stroke-dasharray:2 4}.ja-line,.ja-string{fill:none;stroke:var(--anatomy-mid);stroke-width:.8;stroke-linecap:round}.ja-string{stroke:var(--anatomy-hi);stroke-width:.55}.ja-hose{stroke:var(--anatomy-hi);stroke-width:3;stroke-linejoin:round}.ja-stage[data-air=true] .ja-hose{stroke:var(--anatomy-lit);stroke-width:5}.ja-hole .iso-fill,.ja-hole .iso-top,.ja-hole .iso-shade{fill:var(--anatomy-page)}.ja-frame .iso-top,.ja-band .iso-top{fill:var(--anatomy-shade-0)}.ja-source{display:grid;grid-template-columns:1fr 1.5fr;gap:40px;margin:40px 0;align-items:center}.ja-source h3{font:30px var(--serif);margin:10px 0}.ja-source p{max-width:40ch}.ja-source a{color:inherit}.ja-source img{display:block;width:100%;border-radius:8px}.ja-source a span{display:block;font-size:12px;margin-top:8px}.ja-film{border-top:1px solid var(--ink-15);padding:24px 0}.ja-film summary{cursor:pointer;min-height:44px;font-size:18px}.ja-film video{display:block;width:100%;max-height:650px;background:black}.ja-film p{max-width:70ch}
+@media(max-width:800px){.ja-workbench{grid-template-columns:1fr}.ja-controls{border-left:0;border-top:1px solid var(--ink-15);padding:20px}.ja-stage svg{max-height:480px}.ja-source{grid-template-columns:1fr;gap:16px}.ja-tabs{gap:6px}.ja-tabs button{flex:1;font-size:12px;padding:10px 6px}.ja-tabs span{display:block;margin:0 0 4px}.ja-caption{font-size:10px;padding:14px;flex-wrap:wrap}.ja-intro{margin:20px 0}.ja-status{min-height:0}.ja-secondary{margin-top:8px}}
+
+.ja .iso-line[data-tone="mid"]{stroke:var(--anatomy-hi);opacity:.6}.ja .ja-timber .iso-edge{stroke:var(--anatomy-hi)}
+.ja[data-theme=dark]{--anatomy-top:#373735;--anatomy-face:#292927;--anatomy-shade-0:#171716;--anatomy-shade-1:#20201e;--anatomy-shade-2:#292927;--anatomy-shade-3:#31312e;--anatomy-mid:#999991;--anatomy-lo:#76766f}
+.ja .ja-hole .iso-fill,.ja .ja-hole .iso-top,.ja .ja-hole .iso-shade{fill:#181818}
+
+.ja-tabs{flex-wrap:wrap}
+.ja-inputs{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}
+.ja-inputs button{padding:8px 4px;font:12px var(--mono)}
+.ja-stage[data-instrument=hexa][data-midi-active] .ja-hexa-panel .iso-edge{stroke:var(--anatomy-lit)}
+@media(max-width:800px){.ja-tabs button{flex:1 1 40%}.ja-inputs{grid-template-columns:repeat(6,minmax(0,1fr))}}
+
+.ja-hexa-sections { display:grid; gap:6px; }
+.ja-hexa-sections button { text-align:left; font-size:14px; }
+
+.ja-duet { margin-bottom:32px; }
+.ja-duet-pairing { display:flex; flex-wrap:wrap; gap:8px; margin:24px 0 16px; }
+.ja-duet-pairing button { flex:1 1 190px; text-align:left; }
+.ja-duet-pairing span { display:block; font-size:13px; color:var(--ink-70); margin-top:4px; }
+.ja-duet-stage { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.ja-duet-stage figure { margin:0; overflow:hidden; min-width:0; }
+.ja-duet-stage svg { display:block; width:100%; height:clamp(250px,31vw,390px); }
+.ja-duet-stage .ja-caption { padding:14px; }
+.ja-duet[data-call-active] .ja-duet-stage figure:first-child,
+.ja-duet-stage figure[data-responding="true"] { outline:2px solid var(--anatomy-hi); outline-offset:-2px; }
+.ja-duet[data-call-active] .ja-hexa-panel .iso-edge { stroke:var(--anatomy-lit); stroke-width:1.6; }
+.ja-duet-readout { display:flex; align-items:center; gap:16px; min-height:76px; border-bottom:1px solid var(--ink-15); }
+.ja-duet-readout output { display:none; }
+.ja-duet-readout p { flex:1; margin:12px 0; }
+.ja-duet-controls { display:grid; grid-template-columns:1.1fr 1fr; gap:40px; padding:24px 0; }
+.ja-duet-controls > div { min-width:0; }
+.ja-duet h3 { font:26px var(--serif); margin:0 0 12px; }
+.ja-duet-controls label { display:block; margin-top:16px; font-size:14px; }
+.ja-duet-controls label output { float:right; }
+.ja-duet-controls select,.ja-duet-controls textarea { width:100%; margin-top:8px; background:var(--bg); color:var(--ink); border:1px solid var(--ink-20); border-radius:6px; padding:10px; font:inherit; min-height:44px; }
+.ja-duet-controls textarea { min-height:80px; resize:vertical; }
+.ja-duet-controls textarea:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
+.ja-duet-controls .ja-secondary { flex-wrap:wrap; margin-top:20px; }
+.ja-duet-keys { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:6px; margin:16px 0; }
+.ja-duet-keys button { min-height:60px; padding:8px 2px; }
+.ja-duet-keys small { display:block; color:var(--ink-70); margin-top:4px; font:11px var(--mono); }
+.ja-duet-error { border:1px solid var(--ink-30); padding:12px; }
+.jugal-inspection { max-width:1280px; margin-inline:auto; border-top:1px solid var(--ink-20); margin-bottom:32px; }
+.jugal-inspection > summary { padding:20px 0; min-height:44px; cursor:pointer; font-size:18px; }
+@media(max-width:680px){.ja-duet-stage{grid-template-columns:1fr}.ja-duet-stage svg{height:280px}.ja-duet-controls{grid-template-columns:1fr;gap:24px}.ja-duet-pairing button{flex:1 1 100%}.ja-duet .ja-intro{margin-top:16px}}
+
+.ja-duet-stage figure { background:var(--anatomy-card); border:1px solid var(--ink-15); border-radius:8px; }
+.ja-duet-controls input.portfolio-slider { display:block; width:100%; }
+@media(max-width:680px){
+ .ja-duet-stage { grid-template-columns:repeat(2,minmax(0,1fr)); position:sticky; top:8px; z-index:5; background:var(--bg); gap:8px; }
+ .ja-duet-stage svg { height:170px; }
+ .ja-duet-stage .ja-caption { flex-direction:column; gap:4px; padding:10px 8px; font-size:10px; }
+ .ja-duet-stage figcaption { min-height:44px; }
+}
+
+.ja-duet-views { display:flex; gap:8px; margin-bottom:16px; }
+.ja-ensemble-stage { grid-template-columns:repeat(4,minmax(0,1fr)); }
+.ja-ensemble-stage svg { height:250px; }
+.ja-hexa-surface { border:1px solid var(--ink-20); border-radius:8px; overflow:hidden; }
+.ja-hexa-surface > div { padding:14px; }
+.ja-hexa-surface > div + div { border-top:1px solid var(--ink-15); }
+.ja-hexa-surface p { margin:0 0 10px; font-size:14px; }
+.ja-hexa-surface small { display:block; font-size:12px; color:var(--ink-70); }
+.ja-hexa-surface [role=group] { display:flex; gap:6px; flex-wrap:wrap; }
+.ja-hexa-surface button { flex:1; min-width:44px; padding:10px 4px; font-size:13px; }
+.ja-hexa-surface > .ja-note { padding:12px; margin:0; }
+.ja-tanpura-pad { position:relative; min-height:100px; border:1px solid var(--ink-30); border-radius:6px; background:var(--bg-alt); cursor:ew-resize; touch-action:none; overflow:hidden; }
+.ja-tanpura-pad span { position:absolute; width:3px; top:12px; bottom:12px; left:clamp(2px,var(--hand-position),calc(100% - 5px)); background:var(--ink); pointer-events:none; }
+.ja-tanpura-pad output { position:absolute; right:12px; bottom:8px; font:13px var(--mono); pointer-events:none; }
+.ja-tanpura-pad:focus-visible { outline:2px solid var(--ink); outline-offset:3px; }
+.ja-note-keyboard { margin-top:18px; }
+.ja-note-keyboard summary { cursor:pointer; padding:10px 0; min-height:44px; }
+.ja-ensemble-autoplay { display:flex!important; align-items:center; gap:8px; }
+.ja-ensemble-autoplay input { width:20px; height:20px; }
+@media(max-width:680px){
+ .ja-ensemble-stage { position:static; grid-template-columns:repeat(2,minmax(0,1fr)); }
+ .ja-ensemble-stage svg { height:155px; }
+ .ja-ensemble-stage .ja-caption { font-size:10px; }
+ .ja-duet-views button { flex:1; }
+}
+
+@media(min-width:681px) and (max-width:1000px){.ja-ensemble-stage { grid-template-columns:repeat(2,minmax(0,1fr)); }}
+
+.ja-duet-stage figure:first-child svg { cursor:crosshair; touch-action:pan-y; }
+/* Keep gesture targets stationary while the live status and caller caption change. */
+@media(max-width:680px){
+ .ja-duet-readout { min-height:128px; }
+ .ja-duet-stage figcaption { min-height:56px; }
+}
+.ja-duet { overflow-anchor:none; }
+
+/* Give each mechanism enough drawing area to read its working parts. */
+.ja-ensemble-stage svg { height:300px; }
+.ja-duet .ja-caption { line-height:1.5; min-height:60px; align-items:center; }
+.ja-duet .iso-plate { border:1px solid var(--ink-20); border-radius:8px; background:var(--anatomy-card); }
+.ja-play-regions { pointer-events:none; fill:none; stroke:var(--anatomy-hi); stroke-width:1.5; stroke-dasharray:3 5; opacity:.45; }
+.ja-play-regions [data-active=true] { stroke:var(--anatomy-lit); stroke-width:3; stroke-dasharray:none; opacity:1; }
+.ja-duet-evidence,.ja-duet-model-note { border-top:1px solid var(--ink-15); margin-top:20px; }
+.ja-duet :is(.ja-duet-evidence,.ja-duet-model-note) > summary { cursor:pointer; min-height:44px; padding-block:14px; }
+.ja-duet-photos { display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-block:20px; }
+.ja-duet-photos figure { margin:0; min-width:0; }
+.ja-duet-photos img { display:block; width:100%; height:300px; object-fit:contain; background:#f2f2f2; }
+.ja-duet-photos figcaption { font-size:13px; padding-block:12px; }
+.ja-duet-evidence video { display:block; width:100%; max-height:620px; background:#111; }
+@media(max-width:680px){.ja-ensemble-stage svg { height:205px; }.ja-duet .ja-caption { font-size:11px; padding:10px; min-height:66px; }.ja-duet-photos { grid-template-columns:1fr; }.ja-duet-photos img { height:250px; }}
+
+.ja-pair-explanation { margin-block:20px; max-width:74ch; }
+.ja-pair-explanation h3 { font:500 20px/1.4 var(--sans); margin:0 0 8px; }
+.ja-pair-explanation p { font:16px/1.65 var(--sans); margin:8px 0; }
+.ja-source-link { display:block; color:inherit; padding-block:12px; min-height:44px; text-decoration:underline; text-underline-offset:3px; }
+
+/* A complete call-and-response fits together before tune configuration. */
+.ja-duet-play { margin-top:12px; }
+.ja-duet .ja-intro { margin-block:20px; }
+.ja-duet .ja-intro h2 { margin-top:0; }
+.ja-duet .ja-intro p { margin-bottom:0; }
+.ja-duet .ja-duet-stage { position:relative; }
+@media(max-width:680px) {
+ .ja-duet .ja-intro { margin-block:12px; }
+ .ja-duet .ja-intro h2 { font-size:26px; margin-bottom:8px; }
+ .ja-duet .ja-intro p { font-size:14px; line-height:1.5; }
+ .ja-duet-pairing { margin-block:12px; gap:6px; }
+ .ja-duet-pairing button { flex:1 1 0; min-width:0; padding:8px 6px; font-size:14px; }
+ .ja-duet-pairing span { font-size:12px; }
+ .ja-duet .ja-duet-stage { position:sticky; top:8px; }
+ .ja-duet .ja-ensemble-stage { position:static; }
+ .ja-duet-stage:not(.ja-ensemble-stage) svg { height:140px; }
+ .ja-duet .ja-duet-stage:not(.ja-ensemble-stage) .ja-caption { min-height:36px; padding:6px 8px; font-size:11px; }
+ .ja-duet-play .ja-hexa-surface > div { padding:10px; }
+ .ja-duet-play .ja-hexa-surface > .ja-note { padding:8px 10px; }
+}
+
+@media(max-width:680px) {
+ .ja-duet-views { margin-bottom:8px; }
+ .ja-duet-views button { min-width:0; font-size:14px; line-height:1.4; padding:8px; }
+ .ja-duet-pairing button { line-height:1.35; }
+ .ja-duet-pairing span { line-height:1.35; }
+ .ja-duet .ja-duet-stage:not(.ja-ensemble-stage) .ja-caption { line-height:1.35; }
+ .ja-duet-stage .ja-source-link { padding-block:8px; }
+ .ja-surface-top [role=group] { display:grid; grid-template-columns:repeat(6,minmax(44px,1fr)); }
+ .ja-surface-top [role=group] button { min-width:0; }
+ .ja-duet-play .ja-hexa-surface p { line-height:1.4; }
+}
+@media(max-width:380px) {
+ .ja-surface-top [role=group] { grid-template-columns:repeat(3,minmax(44px,1fr)); }
+}

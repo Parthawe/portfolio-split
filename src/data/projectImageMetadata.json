@@ -1,0 +1,1524 @@
+{
+  "/Assets/Projects/ATPS/Desktop/1.jpg": {
+    "width": 1440,
+    "height": 719
+  },
+  "/Assets/Projects/ATPS/Desktop/5.webp": {
+    "width": 838,
+    "height": 2400
+  },
+  "/Assets/Projects/BallahCode/site/ballah-comparison.png": {
+    "width": 1349,
+    "height": 819,
+    "srcSet": "/Assets/project-display/e2c14de0b4382b-640.webp 640w, /Assets/project-display/e2c14de0b4382b-1040.webp 1040w, /Assets/Projects/BallahCode/site/ballah-comparison.png 1349w"
+  },
+  "/Assets/Projects/BallahCode/site/ballah-delegation.png": {
+    "width": 1349,
+    "height": 819,
+    "srcSet": "/Assets/project-display/5cf01101089f62-640.webp 640w, /Assets/project-display/5cf01101089f62-1040.webp 1040w, /Assets/Projects/BallahCode/site/ballah-delegation.png 1349w"
+  },
+  "/Assets/Projects/BallahCode/site/ballah-flow.png": {
+    "width": 1349,
+    "height": 819,
+    "srcSet": "/Assets/project-display/40eec83dfe807b-640.webp 640w, /Assets/project-display/40eec83dfe807b-1040.webp 1040w, /Assets/Projects/BallahCode/site/ballah-flow.png 1349w"
+  },
+  "/Assets/Projects/BallahCode/site/ballah-home-hero.png": {
+    "width": 1349,
+    "height": 961,
+    "srcSet": "/Assets/project-display/75d16fa55fb495-640.webp 640w, /Assets/project-display/75d16fa55fb495-1040.webp 1040w, /Assets/Projects/BallahCode/site/ballah-home-hero.png 1349w"
+  },
+  "/Assets/Projects/BallahCode/site/ballah-pillars.png": {
+    "width": 1349,
+    "height": 819,
+    "srcSet": "/Assets/project-display/4a46c4a0528bc2-640.webp 640w, /Assets/project-display/4a46c4a0528bc2-1040.webp 1040w, /Assets/Projects/BallahCode/site/ballah-pillars.png 1349w"
+  },
+  "/Assets/Projects/BallahCode/site/ballah-problem.png": {
+    "width": 1349,
+    "height": 961,
+    "srcSet": "/Assets/project-display/2d0fb2023a8872-640.webp 640w, /Assets/project-display/2d0fb2023a8872-1040.webp 1040w, /Assets/Projects/BallahCode/site/ballah-problem.png 1349w"
+  },
+  "/Assets/Projects/BallahCode/site/ballah-product-window.png": {
+    "width": 1349,
+    "height": 961,
+    "srcSet": "/Assets/project-display/68bf0a64fdd848-640.webp 640w, /Assets/project-display/68bf0a64fdd848-1040.webp 1040w, /Assets/Projects/BallahCode/site/ballah-product-window.png 1349w"
+  },
+  "/Assets/Projects/BallahCode/site/ballah-tools.png": {
+    "width": 1349,
+    "height": 835
+  },
+  "/Assets/Projects/CancerPrognosis/photos/hero-illustration.png": {
+    "width": 1647,
+    "height": 809,
+    "srcSet": "/Assets/project-display/ffc52067c362b3-640.webp 640w, /Assets/project-display/ffc52067c362b3-1040.webp 1040w, /Assets/project-display/ffc52067c362b3-1600.webp 1600w, /Assets/Projects/CancerPrognosis/photos/hero-illustration.png 1647w"
+  },
+  "/Assets/Projects/CancerPrognosis/photos/km-clusters-dark.jpg": {
+    "width": 540,
+    "height": 790
+  },
+  "/Assets/Projects/Clawed.chat/deploy-options.webp": {
+    "width": 1281,
+    "height": 628
+  },
+  "/Assets/Projects/Clawed.chat/docs-page.webp": {
+    "width": 1483,
+    "height": 938
+  },
+  "/Assets/Projects/Clawed.chat/landing-hero.webp": {
+    "width": 1511,
+    "height": 941
+  },
+  "/Assets/Projects/CodeforBuild/photos/app-screens-collage.png": {
+    "width": 1440,
+    "height": 1823,
+    "srcSet": "/Assets/project-display/031e6e4fc1e5b4-640.webp 640w, /Assets/project-display/031e6e4fc1e5b4-1040.webp 1040w, /Assets/Projects/CodeforBuild/photos/app-screens-collage.png 1440w"
+  },
+  "/Assets/Projects/CodeforBuild/photos/block-kit.png": {
+    "width": 502,
+    "height": 736
+  },
+  "/Assets/Projects/CodeforBuild/photos/block-stack.png": {
+    "width": 143,
+    "height": 736
+  },
+  "/Assets/Projects/CodeforBuild/photos/block-system-guide.png": {
+    "width": 1307,
+    "height": 1493,
+    "srcSet": "/Assets/project-display/ab1f6573271b3e-640.webp 640w, /Assets/project-display/ab1f6573271b3e-1040.webp 1040w, /Assets/Projects/CodeforBuild/photos/block-system-guide.png 1307w"
+  },
+  "/Assets/Projects/CodeforBuild/photos/body-block.png": {
+    "width": 319,
+    "height": 223
+  },
+  "/Assets/Projects/CodeforBuild/photos/output-code-pair.png": {
+    "width": 853,
+    "height": 853
+  },
+  "/Assets/Projects/CodeforBuild/photos/phone-hero.png": {
+    "width": 1149,
+    "height": 959,
+    "srcSet": "/Assets/project-display/06abb3e8a25ad1-640.webp 640w, /Assets/project-display/06abb3e8a25ad1-1040.webp 1040w, /Assets/Projects/CodeforBuild/photos/phone-hero.png 1149w"
+  },
+  "/Assets/Projects/CodeforBuild/photos/process-map.png": {
+    "width": 1320,
+    "height": 374
+  },
+  "/Assets/Projects/CodeforBuild/photos/two-phones.png": {
+    "width": 849,
+    "height": 849
+  },
+  "/Assets/Projects/CodeforBuild/photos/wireframe-blueprint.png": {
+    "width": 1650,
+    "height": 1716,
+    "srcSet": "/Assets/project-display/b3afa5e742d84c-640.webp 640w, /Assets/project-display/b3afa5e742d84c-1040.webp 1040w, /Assets/project-display/b3afa5e742d84c-1600.webp 1600w, /Assets/Projects/CodeforBuild/photos/wireframe-blueprint.png 1650w"
+  },
+  "/Assets/Projects/DNA/photos/boxes-closed.webp": {
+    "width": 2400,
+    "height": 1600
+  },
+  "/Assets/Projects/DNA/photos/boxes-open.png": {
+    "width": 1920,
+    "height": 1280,
+    "srcSet": "/Assets/project-display/14e1526d6f362f-640.webp 640w, /Assets/project-display/14e1526d6f362f-1040.webp 1040w, /Assets/project-display/14e1526d6f362f-1600.webp 1600w, /Assets/Projects/DNA/photos/boxes-open.png 1920w"
+  },
+  "/Assets/Projects/DNA/photos/card-final-message.webp": {
+    "width": 2400,
+    "height": 1600
+  },
+  "/Assets/Projects/DNA/photos/dosage-card.webp": {
+    "width": 2400,
+    "height": 1600
+  },
+  "/Assets/Projects/DNA/photos/pill-pack.webp": {
+    "width": 1920,
+    "height": 1280
+  },
+  "/Assets/Projects/Drowning/photos/A4 - 12.png": {
+    "width": 842,
+    "height": 595
+  },
+  "/Assets/Projects/Drowning/photos/A4 - 3.png": {
+    "width": 842,
+    "height": 595
+  },
+  "/Assets/Projects/Drowning/photos/A4 - 4.webp": {
+    "width": 842,
+    "height": 595
+  },
+  "/Assets/Projects/Drowning/photos/A4 - 5.png": {
+    "width": 842,
+    "height": 595
+  },
+  "/Assets/Projects/Drowning/photos/A4 - 6.png": {
+    "width": 842,
+    "height": 595
+  },
+  "/Assets/Projects/Drowning/photos/WhatsApp Image 2024-10-10 at 11.54.18.webp": {
+    "width": 1600,
+    "height": 1077
+  },
+  "/Assets/Projects/Enigma/photos/alphabet-layer.webp": {
+    "width": 1323,
+    "height": 753
+  },
+  "/Assets/Projects/Enigma/photos/full-sculpture-c.webp": {
+    "width": 1321,
+    "height": 1101
+  },
+  "/Assets/Projects/Enigma/photos/full-sculpture-wide.webp": {
+    "width": 1321,
+    "height": 881
+  },
+  "/Assets/Projects/Enigma/photos/neuron-closeup.webp": {
+    "width": 1323,
+    "height": 882
+  },
+  "/Assets/Projects/Enigma/photos/person-viewing.webp": {
+    "width": 1216,
+    "height": 810
+  },
+  "/Assets/Projects/Enigma/photos/tablet-input.jpg": {
+    "width": 511,
+    "height": 476
+  },
+  "/Assets/Projects/Enigma/photos/wire-detail.webp": {
+    "width": 1321,
+    "height": 881
+  },
+  "/Assets/Projects/HealthApp/optimized/01-planning.webp": {
+    "width": 1800,
+    "height": 2354
+  },
+  "/Assets/Projects/HealthApp/optimized/02-flow.webp": {
+    "width": 1800,
+    "height": 3370
+  },
+  "/Assets/Projects/HealthApp/optimized/03-tasks.webp": {
+    "width": 1800,
+    "height": 2855
+  },
+  "/Assets/Projects/HealthApp/optimized/04-insights.webp": {
+    "width": 1800,
+    "height": 1682
+  },
+  "/Assets/Projects/HealthApp/optimized/07-screen-set.webp": {
+    "width": 1800,
+    "height": 3475
+  },
+  "/Assets/Projects/HealthApp/optimized/09-calendar.webp": {
+    "width": 1800,
+    "height": 1725
+  },
+  "/Assets/Projects/HealthApp/optimized/cover-original.webp": {
+    "width": 1800,
+    "height": 2161,
+    "srcSet": "/Assets/project-display/1ca0539f6bc84b-640.webp 640w, /Assets/project-display/1ca0539f6bc84b-1040.webp 1040w, /Assets/project-display/1ca0539f6bc84b-1600.webp 1600w, /Assets/Projects/HealthApp/optimized/cover-original.webp 1800w"
+  },
+  "/Assets/Projects/Jugalbandi/Photos/538A3938_nsquare_23.webp": {
+    "width": 2400,
+    "height": 1599
+  },
+  "/Assets/Projects/Jugalbandi/Photos/538A3968_nsquare_39-1.png": {
+    "width": 571,
+    "height": 650
+  },
+  "/Assets/Projects/Jugalbandi/Photos/538A3968_nsquare_39.png": {
+    "width": 571,
+    "height": 650
+  },
+  "/Assets/Projects/Jugalbandi/Photos/538A4005_nsquare_57.webp": {
+    "width": 2400,
+    "height": 1598,
+    "srcSet": "/Assets/project-display/3f6f3756c77e35-640.webp 640w, /Assets/project-display/3f6f3756c77e35-1040.webp 1040w, /Assets/project-display/3f6f3756c77e35-1600.webp 1600w, /Assets/Projects/Jugalbandi/Photos/538A4005_nsquare_57.webp 2400w"
+  },
+  "/Assets/Projects/Jugalbandi/Photos/538A4023_nsquare_64.png": {
+    "width": 703,
+    "height": 650
+  },
+  "/Assets/Projects/Jugalbandi/Photos/755.png": {
+    "width": 1323,
+    "height": 745,
+    "srcSet": "/Assets/project-display/2c683f48dbc48d-640.webp 640w, /Assets/project-display/2c683f48dbc48d-1040.webp 1040w, /Assets/Projects/Jugalbandi/Photos/755.png 1323w"
+  },
+  "/Assets/Projects/Jugalbandi/Photos/756.png": {
+    "width": 1323,
+    "height": 745,
+    "srcSet": "/Assets/project-display/ac63c0d3192eff-640.webp 640w, /Assets/project-display/ac63c0d3192eff-1040.webp 1040w, /Assets/Projects/Jugalbandi/Photos/756.png 1323w"
+  },
+  "/Assets/Projects/Jugalbandi/Photos/757.png": {
+    "width": 1324,
+    "height": 745,
+    "srcSet": "/Assets/project-display/e49eace526fb92-640.webp 640w, /Assets/project-display/e49eace526fb92-1040.webp 1040w, /Assets/Projects/Jugalbandi/Photos/757.png 1324w"
+  },
+  "/Assets/Projects/Jugalbandi/Photos/758.png": {
+    "width": 1324,
+    "height": 745,
+    "srcSet": "/Assets/project-display/24aa7bacaefbca-640.webp 640w, /Assets/project-display/24aa7bacaefbca-1040.webp 1040w, /Assets/Projects/Jugalbandi/Photos/758.png 1324w"
+  },
+  "/Assets/Projects/Keyboard/photos/breakgen-demo-live.png": {
+    "width": 1280,
+    "height": 720
+  },
+  "/Assets/Projects/Keyboard/photos/breakgen-launch-live.png": {
+    "width": 1280,
+    "height": 720
+  },
+  "/Assets/Projects/Keyboard/photos/data-sculpture.png": {
+    "width": 1319,
+    "height": 880,
+    "srcSet": "/Assets/project-display/1d9d5fe310eb6b-640.webp 640w, /Assets/project-display/1d9d5fe310eb6b-1040.webp 1040w, /Assets/Projects/Keyboard/photos/data-sculpture.png 1319w"
+  },
+  "/Assets/Projects/Keyboard/photos/fabrication-process.png": {
+    "width": 679,
+    "height": 697
+  },
+  "/Assets/Projects/Keyboard/photos/keyboard-angle.png": {
+    "width": 1321,
+    "height": 880,
+    "srcSet": "/Assets/project-display/4878539c8956be-640.webp 640w, /Assets/project-display/4878539c8956be-1040.webp 1040w, /Assets/Projects/Keyboard/photos/keyboard-angle.png 1321w"
+  },
+  "/Assets/Projects/Keyboard/photos/keyboard-data-hero.webp": {
+    "width": 2325,
+    "height": 1550
+  },
+  "/Assets/Projects/Keyboard/photos/keys-closeup.webp": {
+    "width": 1321,
+    "height": 880,
+    "srcSet": "/Assets/project-display/cd7887265cde85-640.webp 640w, /Assets/project-display/cd7887265cde85-1040.webp 1040w, /Assets/Projects/Keyboard/photos/keys-closeup.webp 1321w"
+  },
+  "/Assets/Projects/Keyboard/photos/letter-frequency-table.jpg": {
+    "width": 585,
+    "height": 545
+  },
+  "/Assets/Projects/Keyboard/photos/process-grid.png": {
+    "width": 597,
+    "height": 523
+  },
+  "/Assets/Projects/Keyboard/photos/spline-data-model.jpg": {
+    "width": 585,
+    "height": 218
+  },
+  "/Assets/Projects/MediMorpho/nyu-langone-building-clear.webp": {
+    "width": 2560,
+    "height": 1709,
+    "srcSet": "/Assets/project-display/a0136070686c08-640.webp 640w, /Assets/project-display/a0136070686c08-1040.webp 1040w, /Assets/project-display/a0136070686c08-1600.webp 1600w, /Assets/Projects/MediMorpho/nyu-langone-building-clear.webp 2560w"
+  },
+  "/Assets/Projects/Moniac/photos/annotated-breakdown.png": {
+    "width": 1214,
+    "height": 568,
+    "srcSet": "/Assets/project-display/d2ca75b58c4e36-640.webp 640w, /Assets/project-display/d2ca75b58c4e36-1040.webp 1040w, /Assets/Projects/Moniac/photos/annotated-breakdown.png 1214w"
+  },
+  "/Assets/Projects/Moniac/photos/gameplay-wide.png": {
+    "width": 1186,
+    "height": 791,
+    "srcSet": "/Assets/project-display/a5e5d0884d01b1-640.webp 640w, /Assets/project-display/a5e5d0884d01b1-1040.webp 1040w, /Assets/Projects/Moniac/photos/gameplay-wide.png 1186w"
+  },
+  "/Assets/Projects/Moniac/photos/hand-playing.webp": {
+    "width": 2400,
+    "height": 1600
+  },
+  "/Assets/Projects/Moniac/photos/hero-cabinet.png": {
+    "width": 1186,
+    "height": 791,
+    "srcSet": "/Assets/project-display/9bda92340d9f4f-640.webp 640w, /Assets/project-display/9bda92340d9f4f-1040.webp 1040w, /Assets/Projects/Moniac/photos/hero-cabinet.png 1186w"
+  },
+  "/Assets/Projects/Moniac/photos/original-moniac.png": {
+    "width": 371,
+    "height": 618
+  },
+  "/Assets/Projects/Moniac/photos/screen-closeup.png": {
+    "width": 1186,
+    "height": 791,
+    "srcSet": "/Assets/project-display/88d9daccab7061-640.webp 640w, /Assets/project-display/88d9daccab7061-1040.webp 1040w, /Assets/Projects/Moniac/photos/screen-closeup.png 1186w"
+  },
+  "/Assets/Projects/Moniac/photos/valve-detail.webp": {
+    "width": 2400,
+    "height": 1600,
+    "srcSet": "/Assets/project-display/4adddecf23db47-640.webp 640w, /Assets/project-display/4adddecf23db47-1040.webp 1040w, /Assets/project-display/4adddecf23db47-1600.webp 1600w, /Assets/Projects/Moniac/photos/valve-detail.webp 2400w"
+  },
+  "/Assets/Projects/Raahi/photos/raahi-hero.webp": {
+    "width": 1440,
+    "height": 3261,
+    "srcSet": "/Assets/project-display/647c256aaf6ef7-640.webp 640w, /Assets/project-display/647c256aaf6ef7-1040.webp 1040w, /Assets/Projects/Raahi/photos/raahi-hero.webp 1440w"
+  },
+  "/Assets/Projects/RevolvingStage/Mobile/3.jpg": {
+    "width": 585,
+    "height": 1336
+  },
+  "/Assets/Projects/RevolvingStage/photos/axle-exploded.png": {
+    "width": 1326,
+    "height": 1217
+  },
+  "/Assets/Projects/RevolvingStage/photos/caster-engineering.webp": {
+    "width": 1873,
+    "height": 2135,
+    "srcSet": "/Assets/project-display/d2cf1583534339-640.webp 640w, /Assets/project-display/d2cf1583534339-1040.webp 1040w, /Assets/project-display/d2cf1583534339-1600.webp 1600w, /Assets/Projects/RevolvingStage/photos/caster-engineering.webp 1873w"
+  },
+  "/Assets/Projects/RevolvingStage/photos/full-assembly-exploded.png": {
+    "width": 1394,
+    "height": 1573
+  },
+  "/Assets/Projects/RevolvingStage/photos/isometric-stage.png": {
+    "width": 1194,
+    "height": 1392
+  },
+  "/Assets/Projects/RevolvingStage/photos/performance-collage.webp": {
+    "width": 2400,
+    "height": 1682,
+    "srcSet": "/Assets/project-display/ffe0206fd5f9cf-640.webp 640w, /Assets/project-display/ffe0206fd5f9cf-1040.webp 1040w, /Assets/project-display/ffe0206fd5f9cf-1600.webp 1600w, /Assets/Projects/RevolvingStage/photos/performance-collage.webp 2400w"
+  },
+  "/Assets/Projects/RevolvingStage/photos/stage-rotation.png": {
+    "width": 975,
+    "height": 1652
+  },
+  "/Assets/Projects/RevolvingStage/photos/stage-vs-render.png": {
+    "width": 1338,
+    "height": 603
+  },
+  "/Assets/Projects/Sculpture/1.jpg": {
+    "width": 1440,
+    "height": 1039
+  },
+  "/Assets/Projects/Sculpture/3.jpg": {
+    "width": 1440,
+    "height": 944
+  },
+  "/Assets/Projects/Sculpture/4.jpg": {
+    "width": 1440,
+    "height": 1004
+  },
+  "/Assets/Projects/Sculpture/5.jpg": {
+    "width": 1440,
+    "height": 1038
+  },
+  "/Assets/Projects/Shuffle/photos/electronics-breadboard.jpg": {
+    "width": 511,
+    "height": 235
+  },
+  "/Assets/Projects/Shuffle/photos/g80-inspiration.jpg": {
+    "width": 504,
+    "height": 284
+  },
+  "/Assets/Projects/Shuffle/photos/hand-motion.jpg": {
+    "width": 2000,
+    "height": 1333,
+    "srcSet": "/Assets/project-display/1251d37a812a61-640.webp 640w, /Assets/project-display/1251d37a812a61-1040.webp 1040w, /Assets/project-display/1251d37a812a61-1600.webp 1600w, /Assets/Projects/Shuffle/photos/hand-motion.jpg 2000w"
+  },
+  "/Assets/Projects/Shuffle/photos/hand-sliding.jpg": {
+    "width": 2000,
+    "height": 1333,
+    "srcSet": "/Assets/project-display/d42ebf41734b65-640.webp 640w, /Assets/project-display/d42ebf41734b65-1040.webp 1040w, /Assets/project-display/d42ebf41734b65-1600.webp 1600w, /Assets/Projects/Shuffle/photos/hand-sliding.jpg 2000w"
+  },
+  "/Assets/Projects/Shuffle/photos/idea-demonstration.jpg": {
+    "width": 503,
+    "height": 529
+  },
+  "/Assets/Projects/Shuffle/photos/product-angle.jpg": {
+    "width": 2000,
+    "height": 1333
+  },
+  "/Assets/Projects/Shuffle/photos/product-front.jpg": {
+    "width": 2000,
+    "height": 1333
+  },
+  "/Assets/Projects/Shuffle/photos/slider-detail.jpg": {
+    "width": 2000,
+    "height": 1333,
+    "srcSet": "/Assets/project-display/70a678d5a76a6f-640.webp 640w, /Assets/project-display/70a678d5a76a6f-1040.webp 1040w, /Assets/project-display/70a678d5a76a6f-1600.webp 1600w, /Assets/Projects/Shuffle/photos/slider-detail.jpg 2000w"
+  },
+  "/Assets/Projects/Shuffle/photos/slider-labels.jpg": {
+    "width": 2000,
+    "height": 1333,
+    "srcSet": "/Assets/project-display/d32a06841764b8-640.webp 640w, /Assets/project-display/d32a06841764b8-1040.webp 1040w, /Assets/project-display/d32a06841764b8-1600.webp 1600w, /Assets/Projects/Shuffle/photos/slider-labels.jpg 2000w"
+  },
+  "/Assets/Projects/Shuffle/photos/underside-motors.jpg": {
+    "width": 511,
+    "height": 412
+  },
+  "/Assets/Projects/Tedxvitpune/Desktop/1.jpg": {
+    "width": 1440,
+    "height": 1083
+  },
+  "/Assets/Projects/Tedxvitpune/Desktop/4.jpg": {
+    "width": 1440,
+    "height": 1005
+  },
+  "/Assets/Projects/Tedxvitpune/Desktop/5.jpg": {
+    "width": 1440,
+    "height": 719
+  },
+  "/Assets/Projects/ThePointCDC/Desktop/slice-5.webp": {
+    "width": 1581,
+    "height": 2400,
+    "srcSet": "/Assets/project-display/5f7396984a7cdc-640.webp 640w, /Assets/project-display/5f7396984a7cdc-1040.webp 1040w, /Assets/Projects/ThePointCDC/Desktop/slice-5.webp 1581w"
+  },
+  "/Assets/Projects/ThePointCDC/Desktop/slice-6.webp": {
+    "width": 1031,
+    "height": 2400
+  },
+  "/Assets/Projects/ThePointCDC/Desktop/slice-7.png": {
+    "width": 2880,
+    "height": 5326
+  },
+  "/Assets/Projects/ThePointCDC/Desktop/slice-8.webp": {
+    "width": 2104,
+    "height": 2400,
+    "srcSet": "/Assets/project-display/a2e0148f788535-640.webp 640w, /Assets/project-display/a2e0148f788535-1040.webp 1040w, /Assets/project-display/a2e0148f788535-1600.webp 1600w, /Assets/Projects/ThePointCDC/Desktop/slice-8.webp 2104w"
+  },
+  "/Assets/Projects/ThePointCDC/photos/all-pages-mockup.webp": {
+    "width": 1928,
+    "height": 1276,
+    "srcSet": "/Assets/project-display/91ae04698146e2-640.webp 640w, /Assets/project-display/91ae04698146e2-1040.webp 1040w, /Assets/project-display/91ae04698146e2-1600.webp 1600w, /Assets/Projects/ThePointCDC/photos/all-pages-mockup.webp 1928w"
+  },
+  "/Assets/Projects/ThePointCDC/photos/annotated-redesign.webp": {
+    "width": 1457,
+    "height": 2788,
+    "srcSet": "/Assets/project-display/aeb53817e34ff6-640.webp 640w, /Assets/project-display/aeb53817e34ff6-1040.webp 1040w, /Assets/Projects/ThePointCDC/photos/annotated-redesign.webp 1457w"
+  },
+  "/Assets/Projects/ThePointCDC/photos/community-photo-2.png": {
+    "width": 539,
+    "height": 361
+  },
+  "/Assets/Projects/ThePointCDC/photos/community-photo.webp": {
+    "width": 635,
+    "height": 425
+  },
+  "/Assets/Projects/ThePointCDC/photos/homepage-hero.png": {
+    "width": 1775,
+    "height": 1664
+  },
+  "/Assets/Projects/ThePointCDC/photos/responsive-preview.png": {
+    "width": 820,
+    "height": 500
+  },
+  "/Assets/Projects/Transfi/public/Group 550.png": {
+    "width": 1459,
+    "height": 822,
+    "srcSet": "/Assets/project-display/c98625976cf780-640.webp 640w, /Assets/project-display/c98625976cf780-1040.webp 1040w, /Assets/Projects/Transfi/public/Group%20550.png 1459w"
+  },
+  "/Assets/Projects/Typeface/photos/glyph-detail.jpg": {
+    "width": 2161,
+    "height": 3142,
+    "srcSet": "/Assets/project-display/f0803817f36bf8-640.webp 640w, /Assets/project-display/f0803817f36bf8-1040.webp 1040w, /Assets/project-display/f0803817f36bf8-1600.webp 1600w, /Assets/Projects/Typeface/photos/glyph-detail.jpg 2161w"
+  },
+  "/Assets/Projects/Typeface/photos/hero-title.jpg": {
+    "width": 2161,
+    "height": 1290
+  },
+  "/Assets/Projects/Typeface/photos/inspiration-cut.jpg": {
+    "width": 585,
+    "height": 450
+  },
+  "/Assets/Projects/Typeface/photos/slice-types.jpg": {
+    "width": 2161,
+    "height": 3725,
+    "srcSet": "/Assets/project-display/c5c559552c34ae-640.webp 640w, /Assets/project-display/c5c559552c34ae-1040.webp 1040w, /Assets/project-display/c5c559552c34ae-1600.webp 1600w, /Assets/Projects/Typeface/photos/slice-types.jpg 2161w"
+  },
+  "/Assets/Projects/Typeface/photos/specimen-usage.jpg": {
+    "width": 2161,
+    "height": 2432,
+    "srcSet": "/Assets/project-display/c5895c57b10f27-640.webp 640w, /Assets/project-display/c5895c57b10f27-1040.webp 1040w, /Assets/project-display/c5895c57b10f27-1600.webp 1600w, /Assets/Projects/Typeface/photos/specimen-usage.jpg 2161w"
+  },
+  "/Assets/Projects/Typeface/photos/weights-grid.jpg": {
+    "width": 2161,
+    "height": 2996,
+    "srcSet": "/Assets/project-display/cbc688e8a45be7-640.webp 640w, /Assets/project-display/cbc688e8a45be7-1040.webp 1040w, /Assets/project-display/cbc688e8a45be7-1600.webp 1600w, /Assets/Projects/Typeface/photos/weights-grid.jpg 2161w"
+  },
+  "/Assets/Projects/UVLight/photos/1000051727.webp": {
+    "width": 2400,
+    "height": 1806,
+    "srcSet": "/Assets/project-display/90effcf90b5615-640.webp 640w, /Assets/project-display/90effcf90b5615-1040.webp 1040w, /Assets/project-display/90effcf90b5615-1600.webp 1600w, /Assets/Projects/UVLight/photos/1000051727.webp 2400w"
+  },
+  "/Assets/Projects/UVLight/photos/1000051740.png": {
+    "width": 764,
+    "height": 1015
+  },
+  "/Assets/Projects/UVLight/photos/1000051772.png": {
+    "width": 765,
+    "height": 1015
+  },
+  "/Assets/Projects/UVLight/photos/image-1.png": {
+    "width": 768,
+    "height": 1024
+  },
+  "/Assets/Projects/UVLight/photos/image-2.png": {
+    "width": 768,
+    "height": 1024
+  },
+  "/Assets/Projects/UVLight/photos/image-3.png": {
+    "width": 768,
+    "height": 1024
+  },
+  "/Assets/Projects/UVLight/photos/image-4.png": {
+    "width": 768,
+    "height": 1024
+  },
+  "/Assets/Projects/UVLight/photos/image-5.png": {
+    "width": 1024,
+    "height": 768,
+    "srcSet": "/Assets/project-display/e375e317b1b267-640.webp 640w, /Assets/Projects/UVLight/photos/image-5.png 1024w"
+  },
+  "/Assets/Projects/UVLight/photos/image-6.png": {
+    "width": 768,
+    "height": 1024
+  },
+  "/Assets/Projects/UVLight/photos/image-7-1.png": {
+    "width": 638,
+    "height": 850
+  },
+  "/Assets/Projects/UVLight/photos/image-7.png": {
+    "width": 533,
+    "height": 663
+  },
+  "/Assets/Projects/UVLight/photos/image-8-1.png": {
+    "width": 638,
+    "height": 850
+  },
+  "/Assets/Projects/UVLight/photos/image-8.png": {
+    "width": 741,
+    "height": 663
+  },
+  "/Assets/Projects/UVLight/photos/letter---1.png": {
+    "width": 792,
+    "height": 612
+  },
+  "/Assets/Projects/UVLight/photos/screenshot-2023-12-21-at-3.51-1.png": {
+    "width": 976,
+    "height": 730
+  },
+  "/Assets/Projects/UVLight/photos/screenshot-2023-12-26-at-1.08-1.png": {
+    "width": 720,
+    "height": 471
+  },
+  "/Assets/Projects/UVLight/photos/screenshot-2023-12-26-at-1.10-1.png": {
+    "width": 708,
+    "height": 892
+  },
+  "/Assets/Projects/VishwaConclave/1.jpg": {
+    "width": 1440,
+    "height": 1867,
+    "srcSet": "/Assets/project-display/d79a0832d4612d-640.webp 640w, /Assets/project-display/d79a0832d4612d-1040.webp 1040w, /Assets/Projects/VishwaConclave/1.jpg 1440w"
+  },
+  "/Assets/Projects/VishwaConclave/2.jpg": {
+    "width": 1440,
+    "height": 2086,
+    "srcSet": "/Assets/project-display/745260bb0bd45f-640.webp 640w, /Assets/project-display/745260bb0bd45f-1040.webp 1040w, /Assets/Projects/VishwaConclave/2.jpg 1440w"
+  },
+  "/Assets/Projects/VishwaConclave/4.jpg": {
+    "width": 1440,
+    "height": 2698,
+    "srcSet": "/Assets/project-display/9865fd72b980a2-640.webp 640w, /Assets/project-display/9865fd72b980a2-1040.webp 1040w, /Assets/Projects/VishwaConclave/4.jpg 1440w"
+  },
+  "/Assets/Projects/VishwaConclave/5.webp": {
+    "width": 1440,
+    "height": 3684,
+    "srcSet": "/Assets/project-display/6d76e9ac862efc-640.webp 640w, /Assets/project-display/6d76e9ac862efc-1040.webp 1040w, /Assets/Projects/VishwaConclave/5.webp 1440w"
+  },
+  "/Assets/Projects/VishwaConclave/6.jpg": {
+    "width": 1440,
+    "height": 792
+  },
+  "/Assets/Projects/ZentiPay/reviewer/add-contact-1.webp": {
+    "width": 1556,
+    "height": 1148,
+    "srcSet": "/Assets/project-display/4e88ecdb57df10-640.webp 640w, /Assets/project-display/4e88ecdb57df10-1040.webp 1040w, /Assets/Projects/ZentiPay/reviewer/add-contact-1.webp 1556w"
+  },
+  "/Assets/Projects/ZentiPay/reviewer/add-contact-2.webp": {
+    "width": 1556,
+    "height": 1148,
+    "srcSet": "/Assets/project-display/44c9a7df6c272c-640.webp 640w, /Assets/project-display/44c9a7df6c272c-1040.webp 1040w, /Assets/Projects/ZentiPay/reviewer/add-contact-2.webp 1556w"
+  },
+  "/Assets/Projects/ZentiPay/reviewer/dashboard-1.webp": {
+    "width": 1556,
+    "height": 1148,
+    "srcSet": "/Assets/project-display/3554602b41ce28-640.webp 640w, /Assets/project-display/3554602b41ce28-1040.webp 1040w, /Assets/Projects/ZentiPay/reviewer/dashboard-1.webp 1556w"
+  },
+  "/Assets/Projects/ZentiPay/reviewer/landing-page.webp": {
+    "width": 350,
+    "height": 1400
+  },
+  "/Assets/Projects/ZentiPay/reviewer/profile.webp": {
+    "width": 1556,
+    "height": 1148,
+    "srcSet": "/Assets/project-display/16cbc7a1e680c4-640.webp 640w, /Assets/project-display/16cbc7a1e680c4-1040.webp 1040w, /Assets/Projects/ZentiPay/reviewer/profile.webp 1556w"
+  },
+  "/Assets/Projects/ZentiPay/reviewer/send-crypto-1.webp": {
+    "width": 1556,
+    "height": 1148,
+    "srcSet": "/Assets/project-display/e3cb6dcb5fff7d-640.webp 640w, /Assets/project-display/e3cb6dcb5fff7d-1040.webp 1040w, /Assets/Projects/ZentiPay/reviewer/send-crypto-1.webp 1556w"
+  },
+  "/Assets/Projects/ZentiPay/reviewer/transaction-history.webp": {
+    "width": 1556,
+    "height": 1148,
+    "srcSet": "/Assets/project-display/7756d1cf51d296-640.webp 640w, /Assets/project-display/7756d1cf51d296-1040.webp 1040w, /Assets/Projects/ZentiPay/reviewer/transaction-history.webp 1556w"
+  },
+  "/Assets/Projects/black-hole-assets/binary-mergers.jpg": {
+    "width": 1280,
+    "height": 720
+  },
+  "/Assets/Projects/black-hole-assets/fabric-of-universe.jpg": {
+    "width": 1280,
+    "height": 720
+  },
+  "/Assets/Projects/black-hole-assets/gravitational-lensing.jpg": {
+    "width": 1280,
+    "height": 720
+  },
+  "/Assets/Projects/black-hole-assets/time-trap.jpg": {
+    "width": 1280,
+    "height": 720
+  },
+  "/Assets/Projects/cuetv-public/refresh/hero-devices.png": {
+    "width": 1101,
+    "height": 969,
+    "srcSet": "/Assets/project-display/2b339c1765272f-640.webp 640w, /Assets/project-display/2b339c1765272f-1040.webp 1040w, /Assets/Projects/cuetv-public/refresh/hero-devices.png 1101w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/bath-mirror.jpg": {
+    "width": 2200,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/d72265284afe82-640.webp 640w, /Assets/project-display/d72265284afe82-1040.webp 1040w, /Assets/project-display/d72265284afe82-1600.webp 1600w, /Assets/Projects/dumb-waiter/photos/bath-mirror.jpg 2200w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/ben-gus-wall.jpg": {
+    "width": 2200,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/820c0e7f822073-640.webp 640w, /Assets/project-display/820c0e7f822073-1040.webp 1040w, /Assets/project-display/820c0e7f822073-1600.webp 1600w, /Assets/Projects/dumb-waiter/photos/ben-gus-wall.jpg 2200w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/card-1x1.jpg": {
+    "width": 1466,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/708420a34bf853-640.webp 640w, /Assets/project-display/708420a34bf853-1040.webp 1040w, /Assets/Projects/dumb-waiter/photos/card-1x1.jpg 1466w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/card-4x5.jpg": {
+    "width": 1173,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/796f57790db555-640.webp 640w, /Assets/project-display/796f57790db555-1040.webp 1040w, /Assets/Projects/dumb-waiter/photos/card-4x5.jpg 1173w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/cover-16x9.jpg": {
+    "width": 2200,
+    "height": 1238,
+    "srcSet": "/Assets/project-display/7430be519b8cc5-640.webp 640w, /Assets/project-display/7430be519b8cc5-1040.webp 1040w, /Assets/project-display/7430be519b8cc5-1600.webp 1600w, /Assets/Projects/dumb-waiter/photos/cover-16x9.jpg 2200w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/doorway-hitman.jpg": {
+    "width": 2200,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/9c058f6d8adc02-640.webp 640w, /Assets/project-display/9c058f6d8adc02-1040.webp 1040w, /Assets/project-display/9c058f6d8adc02-1600.webp 1600w, /Assets/Projects/dumb-waiter/photos/doorway-hitman.jpg 2200w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/empty-room.jpg": {
+    "width": 2200,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/7f13deb15bdc26-640.webp 640w, /Assets/project-display/7f13deb15bdc26-1040.webp 1040w, /Assets/project-display/7f13deb15bdc26-1600.webp 1600w, /Assets/Projects/dumb-waiter/photos/empty-room.jpg 2200w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/model-full-props.jpg": {
+    "width": 2200,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/9d5a84d63d08de-640.webp 640w, /Assets/project-display/9d5a84d63d08de-1040.webp 1040w, /Assets/project-display/9d5a84d63d08de-1600.webp 1600w, /Assets/Projects/dumb-waiter/photos/model-full-props.jpg 2200w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/overhead-room.jpg": {
+    "width": 2200,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/cf7bea028bb6c4-640.webp 640w, /Assets/project-display/cf7bea028bb6c4-1040.webp 1040w, /Assets/project-display/cf7bea028bb6c4-1600.webp 1600w, /Assets/Projects/dumb-waiter/photos/overhead-room.jpg 2200w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/props-flatlay.jpg": {
+    "width": 2200,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/59ba834eee456e-640.webp 640w, /Assets/project-display/59ba834eee456e-1040.webp 1040w, /Assets/project-display/59ba834eee456e-1600.webp 1600w, /Assets/Projects/dumb-waiter/photos/props-flatlay.jpg 2200w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/room-depth.jpg": {
+    "width": 2200,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/59ebe224c66ae2-640.webp 640w, /Assets/project-display/59ebe224c66ae2-1040.webp 1040w, /Assets/project-display/59ebe224c66ae2-1600.webp 1600w, /Assets/Projects/dumb-waiter/photos/room-depth.jpg 2200w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/set-wide.jpg": {
+    "width": 2200,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/5738907449e5e8-640.webp 640w, /Assets/project-display/5738907449e5e8-1040.webp 1040w, /Assets/project-display/5738907449e5e8-1600.webp 1600w, /Assets/Projects/dumb-waiter/photos/set-wide.jpg 2200w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/staircase-weapons.jpg": {
+    "width": 2200,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/c956754bbce8da-640.webp 640w, /Assets/project-display/c956754bbce8da-1040.webp 1040w, /Assets/project-display/c956754bbce8da-1600.webp 1600w, /Assets/Projects/dumb-waiter/photos/staircase-weapons.jpg 2200w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/stairs-close.jpg": {
+    "width": 2200,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/6cc7d473bd7909-640.webp 640w, /Assets/project-display/6cc7d473bd7909-1040.webp 1040w, /Assets/project-display/6cc7d473bd7909-1600.webp 1600w, /Assets/Projects/dumb-waiter/photos/stairs-close.jpg 2200w"
+  },
+  "/Assets/Projects/dumb-waiter/photos/weapon-wall.jpg": {
+    "width": 2200,
+    "height": 1466,
+    "srcSet": "/Assets/project-display/b2441843de6fb9-640.webp 640w, /Assets/project-display/b2441843de6fb9-1040.webp 1040w, /Assets/project-display/b2441843de6fb9-1600.webp 1600w, /Assets/Projects/dumb-waiter/photos/weapon-wall.jpg 2200w"
+  },
+  "/Assets/Projects/ibm/1.webp": {
+    "width": 2400,
+    "height": 1347
+  },
+  "/Assets/Projects/ibm/4.jpg": {
+    "width": 2161,
+    "height": 1730
+  },
+  "/Assets/Projects/ibm/5.jpg": {
+    "width": 2161,
+    "height": 1691
+  },
+  "/Assets/Projects/making-of-time/photos/blue-dial-angle.png": {
+    "width": 1323,
+    "height": 882,
+    "srcSet": "/Assets/project-display/61899f549a9746-640.webp 640w, /Assets/project-display/61899f549a9746-1040.webp 1040w, /Assets/Projects/making-of-time/photos/blue-dial-angle.png 1323w"
+  },
+  "/Assets/Projects/making-of-time/photos/blue-dial-hero.webp": {
+    "width": 2400,
+    "height": 2000
+  },
+  "/Assets/Projects/making-of-time/photos/blue-dial-top.png": {
+    "width": 1323,
+    "height": 753,
+    "srcSet": "/Assets/project-display/c4d7aaa3fb121a-640.webp 640w, /Assets/project-display/c4d7aaa3fb121a-1040.webp 1040w, /Assets/Projects/making-of-time/photos/blue-dial-top.png 1323w"
+  },
+  "/Assets/Projects/making-of-time/photos/tools-layout.webp": {
+    "width": 2400,
+    "height": 1351,
+    "srcSet": "/Assets/project-display/2a32b6adf9b7e9-640.webp 640w, /Assets/project-display/2a32b6adf9b7e9-1040.webp 1040w, /Assets/project-display/2a32b6adf9b7e9-1600.webp 1600w, /Assets/Projects/making-of-time/photos/tools-layout.webp 2400w"
+  },
+  "/Assets/Projects/making-of-time/photos/watch-components.png": {
+    "width": 1323,
+    "height": 881,
+    "srcSet": "/Assets/project-display/d7d348453e9e1f-640.webp 640w, /Assets/project-display/d7d348453e9e1f-1040.webp 1040w, /Assets/Projects/making-of-time/photos/watch-components.png 1323w"
+  },
+  "/Assets/Projects/making-of-time/photos/white-watch.webp": {
+    "width": 2400,
+    "height": 1600
+  },
+  "/Assets/Projects/mentra-brand/photos/ad-3.webp": {
+    "width": 2160,
+    "height": 3230,
+    "srcSet": "/Assets/project-display/35946cbdb71430-640.webp 640w, /Assets/project-display/35946cbdb71430-1040.webp 1040w, /Assets/project-display/35946cbdb71430-1600.webp 1600w, /Assets/Projects/mentra-brand/photos/ad-3.webp 2160w"
+  },
+  "/Assets/Projects/mentra-brand/photos/ad-4.webp": {
+    "width": 2160,
+    "height": 3230,
+    "srcSet": "/Assets/project-display/619f1dc37e8006-640.webp 640w, /Assets/project-display/619f1dc37e8006-1040.webp 1040w, /Assets/project-display/619f1dc37e8006-1600.webp 1600w, /Assets/Projects/mentra-brand/photos/ad-4.webp 2160w"
+  },
+  "/Assets/Projects/mentra-brand/photos/ad-hear.webp": {
+    "width": 2160,
+    "height": 3230,
+    "srcSet": "/Assets/project-display/e6c0a1ae37764b-640.webp 640w, /Assets/project-display/e6c0a1ae37764b-1040.webp 1040w, /Assets/project-display/e6c0a1ae37764b-1600.webp 1600w, /Assets/Projects/mentra-brand/photos/ad-hear.webp 2160w"
+  },
+  "/Assets/Projects/mentra-brand/photos/ad-stream.webp": {
+    "width": 2160,
+    "height": 3230,
+    "srcSet": "/Assets/project-display/418661ea458db8-640.webp 640w, /Assets/project-display/418661ea458db8-1040.webp 1040w, /Assets/project-display/418661ea458db8-1600.webp 1600w, /Assets/Projects/mentra-brand/photos/ad-stream.webp 2160w"
+  },
+  "/Assets/Projects/mentra-brand/photos/booklet-page-1.webp": {
+    "width": 747,
+    "height": 545
+  },
+  "/Assets/Projects/mentra-brand/photos/booklet-page-2.webp": {
+    "width": 747,
+    "height": 545
+  },
+  "/Assets/Projects/mentra-brand/photos/booklet-page-3.webp": {
+    "width": 747,
+    "height": 545
+  },
+  "/Assets/Projects/mentra-brand/photos/booklet-page-5.webp": {
+    "width": 747,
+    "height": 545
+  },
+  "/Assets/Projects/mentra-brand/photos/booklet-page-9.webp": {
+    "width": 747,
+    "height": 545
+  },
+  "/Assets/Projects/mentra-brand/photos/brand-pattern.png": {
+    "width": 877,
+    "height": 571
+  },
+  "/Assets/Projects/mentra-brand/photos/cover-github-light.webp": {
+    "width": 1280,
+    "height": 640
+  },
+  "/Assets/Projects/mentra-brand/photos/cover-linkedin-light.png": {
+    "width": 1128,
+    "height": 191
+  },
+  "/Assets/Projects/mentra-brand/photos/cover-reddit-light.webp": {
+    "width": 1920,
+    "height": 384
+  },
+  "/Assets/Projects/mentra-brand/photos/cover-twitter-green.png": {
+    "width": 1500,
+    "height": 500
+  },
+  "/Assets/Projects/mentra-brand/photos/cover-youtube-light.webp": {
+    "width": 2000,
+    "height": 1125
+  },
+  "/Assets/Projects/mentra-brand/photos/editorial-portrait-1.webp": {
+    "width": 1600,
+    "height": 2125
+  },
+  "/Assets/Projects/mentra-brand/photos/editorial-portrait-2.webp": {
+    "width": 1600,
+    "height": 2125
+  },
+  "/Assets/Projects/mentra-brand/photos/editorial-portrait-3.webp": {
+    "width": 1600,
+    "height": 2125,
+    "srcSet": "/Assets/project-display/c65fd3466a526c-640.webp 640w, /Assets/project-display/c65fd3466a526c-1040.webp 1040w, /Assets/Projects/mentra-brand/photos/editorial-portrait-3.webp 1600w"
+  },
+  "/Assets/Projects/mentra-brand/photos/glasses-flash.webp": {
+    "width": 2000,
+    "height": 1250
+  },
+  "/Assets/Projects/mentra-brand/photos/logo-3d-black.webp": {
+    "width": 1200,
+    "height": 1200
+  },
+  "/Assets/Projects/mentra-brand/photos/logo-3d-green.webp": {
+    "width": 1200,
+    "height": 1200
+  },
+  "/Assets/Projects/mentra-brand/photos/logo-3d-iridescent.webp": {
+    "width": 1200,
+    "height": 1200
+  },
+  "/Assets/Projects/mentra-brand/photos/packaging-box-black.png": {
+    "width": 2050,
+    "height": 1402
+  },
+  "/Assets/Projects/mentra-brand/photos/packaging-box-clear-1.webp": {
+    "width": 2000,
+    "height": 1294
+  },
+  "/Assets/Projects/mentra-brand/photos/packaging-box-clear-2.webp": {
+    "width": 2000,
+    "height": 1294
+  },
+  "/Assets/Projects/mentra-brand/photos/powered-by-badge.png": {
+    "width": 848,
+    "height": 512
+  },
+  "/Assets/Projects/mentra-brand/photos/product-flat.webp": {
+    "width": 1600,
+    "height": 1204
+  },
+  "/Assets/Projects/mentra-brand/photos/product-folded.webp": {
+    "width": 1600,
+    "height": 2125
+  },
+  "/Assets/Projects/mentra-brand/photos/product-hand-angle.webp": {
+    "width": 1600,
+    "height": 2125
+  },
+  "/Assets/Projects/mentra-brand/photos/product-hand-front.webp": {
+    "width": 1600,
+    "height": 2125
+  },
+  "/Assets/Projects/mentra-brand/photos/render-black-camera.webp": {
+    "width": 3840,
+    "height": 2400,
+    "srcSet": "/Assets/project-display/13740b35654934-640.webp 640w, /Assets/project-display/13740b35654934-1040.webp 1040w, /Assets/project-display/13740b35654934-1600.webp 1600w, /Assets/Projects/mentra-brand/photos/render-black-camera.webp 3840w"
+  },
+  "/Assets/Projects/mentra-brand/photos/render-black-front.webp": {
+    "width": 3840,
+    "height": 2400,
+    "srcSet": "/Assets/project-display/5457f5fc5899b4-640.webp 640w, /Assets/project-display/5457f5fc5899b4-1040.webp 1040w, /Assets/project-display/5457f5fc5899b4-1600.webp 1600w, /Assets/Projects/mentra-brand/photos/render-black-front.webp 3840w"
+  },
+  "/Assets/Projects/mentra-brand/photos/render-black-temple.webp": {
+    "width": 2000,
+    "height": 1250
+  },
+  "/Assets/Projects/mentra-brand/photos/render-both-frames.webp": {
+    "width": 3840,
+    "height": 2400
+  },
+  "/Assets/Projects/mentra-brand/photos/render-exploded.webp": {
+    "width": 2560,
+    "height": 1600
+  },
+  "/Assets/Projects/mentra-brand/photos/render-hinge-detail.webp": {
+    "width": 2000,
+    "height": 1250
+  },
+  "/Assets/Projects/mentra-brand/photos/studio-shot-1.webp": {
+    "width": 1080,
+    "height": 1350
+  },
+  "/Assets/Projects/mentra-brand/photos/studio-shot-2.webp": {
+    "width": 1080,
+    "height": 1350
+  },
+  "/Assets/Projects/mentra-brand/photos/studio-shot-3.webp": {
+    "width": 1080,
+    "height": 1350
+  },
+  "/Assets/Projects/mentra-brand/photos/text-bubble-1.webp": {
+    "width": 1600,
+    "height": 899
+  },
+  "/Assets/Projects/mentra-brand/photos/yt-unboxing-1.webp": {
+    "width": 1600,
+    "height": 893
+  },
+  "/Assets/Projects/mentra-brand/photos/yt-unboxing-2.webp": {
+    "width": 1600,
+    "height": 893
+  },
+  "/Assets/Projects/mentra-miniapps/figma/conversations.png": {
+    "width": 419,
+    "height": 909
+  },
+  "/Assets/Projects/mentra-miniapps/figma/guidance.png": {
+    "width": 363,
+    "height": 783
+  },
+  "/Assets/Projects/mentra-miniapps/figma/live-transcript.png": {
+    "width": 420,
+    "height": 911
+  },
+  "/Assets/Projects/mentra-miniapps/figma/meet-home.png": {
+    "width": 390,
+    "height": 844
+  },
+  "/Assets/Projects/mentra-miniapps/figma/notes.png": {
+    "width": 419,
+    "height": 909
+  },
+  "/Assets/Projects/office-of-diversity/4.webp": {
+    "width": 2880,
+    "height": 3566,
+    "srcSet": "/Assets/project-display/6531e3202420ff-640.webp 640w, /Assets/project-display/6531e3202420ff-1040.webp 1040w, /Assets/project-display/6531e3202420ff-1600.webp 1600w, /Assets/Projects/office-of-diversity/4.webp 2880w"
+  },
+  "/Assets/Projects/office-of-diversity/photos/community-workshop-1.png": {
+    "width": 422,
+    "height": 300
+  },
+  "/Assets/Projects/office-of-diversity/photos/community-workshop-2.png": {
+    "width": 422,
+    "height": 300
+  },
+  "/Assets/Projects/office-of-diversity/photos/community-workshop-3.png": {
+    "width": 421,
+    "height": 300
+  },
+  "/Assets/Projects/office-of-diversity/photos/report-slices/report-access.png": {
+    "width": 840,
+    "height": 1658
+  },
+  "/Assets/Projects/office-of-diversity/photos/report-slices/report-data.png": {
+    "width": 840,
+    "height": 1658
+  },
+  "/Assets/Projects/office-of-diversity/photos/report-slices/report-intro.png": {
+    "width": 840,
+    "height": 1658
+  },
+  "/Assets/Projects/office-of-diversity/photos/report-slices/report-timeline.png": {
+    "width": 840,
+    "height": 1658
+  },
+  "/Assets/Projects/office-of-diversity/photos/research-wall.webp": {
+    "width": 1187,
+    "height": 537
+  },
+  "/Assets/Projects/office-of-diversity/photos/responsive-preview.png": {
+    "width": 820,
+    "height": 500
+  },
+  "/Assets/Projects/office-of-diversity/photos/scope-timeline.png": {
+    "width": 1319,
+    "height": 664
+  },
+  "/Assets/Projects/sea-of-salt/photos/detail-salt-slider.webp": {
+    "width": 2400,
+    "height": 1600,
+    "srcSet": "/Assets/project-display/da92ac51b42b84-640.webp 640w, /Assets/project-display/da92ac51b42b84-1040.webp 1040w, /Assets/project-display/da92ac51b42b84-1600.webp 1600w, /Assets/Projects/sea-of-salt/photos/detail-salt-slider.webp 2400w"
+  },
+  "/Assets/Projects/sea-of-salt/photos/final-wide.webp": {
+    "width": 2400,
+    "height": 1600,
+    "srcSet": "/Assets/project-display/2be0c8e9032cc9-640.webp 640w, /Assets/project-display/2be0c8e9032cc9-1040.webp 1040w, /Assets/project-display/2be0c8e9032cc9-1600.webp 1600w, /Assets/Projects/sea-of-salt/photos/final-wide.webp 2400w"
+  },
+  "/Assets/Projects/sea-of-salt/photos/materials.webp": {
+    "width": 2400,
+    "height": 1600
+  },
+  "/Assets/Projects/sea-of-salt/photos/mill-front.webp": {
+    "width": 1600,
+    "height": 2400
+  },
+  "/Assets/Projects/sea-of-salt/photos/overview.webp": {
+    "width": 2400,
+    "height": 1600
+  },
+  "/Assets/Projects/sea-of-salt/photos/salt-ground.webp": {
+    "width": 2400,
+    "height": 1600
+  },
+  "/Assets/Projects/sea-of-salt/photos/salt-overflow.webp": {
+    "width": 2400,
+    "height": 1600
+  },
+  "/Assets/Projects/sea-of-salt/photos/salt-pile.webp": {
+    "width": 1600,
+    "height": 2400
+  },
+  "/Assets/Projects/sea-of-salt/photos/salt-spread.webp": {
+    "width": 2400,
+    "height": 1600
+  },
+  "/Assets/Projects/sea-of-salt/photos/slider-closeup.webp": {
+    "width": 2400,
+    "height": 1600,
+    "srcSet": "/Assets/project-display/0c4bc06633ba7c-640.webp 640w, /Assets/project-display/0c4bc06633ba7c-1040.webp 1040w, /Assets/project-display/0c4bc06633ba7c-1600.webp 1600w, /Assets/Projects/sea-of-salt/photos/slider-closeup.webp 2400w"
+  },
+  "/Assets/Projects/the-omakase/photos/cabinet-front.webp": {
+    "width": 1551,
+    "height": 2325
+  },
+  "/Assets/Projects/the-omakase/photos/cabinet-workshop.webp": {
+    "width": 3072,
+    "height": 4080,
+    "srcSet": "/Assets/project-display/e871aca8615b8e-640.webp 640w, /Assets/project-display/e871aca8615b8e-1040.webp 1040w, /Assets/project-display/e871aca8615b8e-1600.webp 1600w, /Assets/Projects/the-omakase/photos/cabinet-workshop.webp 3072w"
+  },
+  "/Assets/Projects/the-omakase/photos/chef-select-screen.webp": {
+    "width": 1883,
+    "height": 1418,
+    "srcSet": "/Assets/project-display/388cec42fdf2b6-640.webp 640w, /Assets/project-display/388cec42fdf2b6-1040.webp 1040w, /Assets/project-display/388cec42fdf2b6-1600.webp 1600w, /Assets/Projects/the-omakase/photos/chef-select-screen.webp 1883w"
+  },
+  "/Assets/Projects/the-omakase/photos/game-screen-sushi.webp": {
+    "width": 1551,
+    "height": 2324
+  },
+  "/Assets/Projects/the-omakase/photos/head-to-head-match.webp": {
+    "width": 1883,
+    "height": 1418
+  },
+  "/Assets/Projects/the-omakase/photos/marquee-sign-detail.webp": {
+    "width": 2324,
+    "height": 1551
+  },
+  "/Assets/Projects/the-omakase/photos/play-dark-buttons-screen.webp": {
+    "width": 1550,
+    "height": 2324
+  },
+  "/Assets/Projects/the-omakase/photos/plywood-shell-drilled.webp": {
+    "width": 1418,
+    "height": 1883,
+    "srcSet": "/Assets/project-display/5858b9e6a2f42a-640.webp 640w, /Assets/project-display/5858b9e6a2f42a-1040.webp 1040w, /Assets/Projects/the-omakase/photos/plywood-shell-drilled.webp 1418w"
+  },
+  "/Assets/Projects/the-omakase/photos/rgb-buttons-dark.webp": {
+    "width": 1550,
+    "height": 2325
+  },
+  "/Assets/Projects/the-omakase/photos/rgb-buttons-hands.webp": {
+    "width": 2325,
+    "height": 1550
+  },
+  "/Assets/Projects/the-omakase/photos/team-photo.webp": {
+    "width": 2325,
+    "height": 1551,
+    "srcSet": "/Assets/project-display/e43c4823531ea5-640.webp 640w, /Assets/project-display/e43c4823531ea5-1040.webp 1040w, /Assets/project-display/e43c4823531ea5-1600.webp 1600w, /Assets/Projects/the-omakase/photos/team-photo.webp 2325w"
+  },
+  "/Assets/Projects/the-omakase/photos/two-players.webp": {
+    "width": 1550,
+    "height": 2324,
+    "srcSet": "/Assets/project-display/da6c59283701e4-640.webp 640w, /Assets/project-display/da6c59283701e4-1040.webp 1040w, /Assets/Projects/the-omakase/photos/two-players.webp 1550w"
+  },
+  "/Assets/Projects/vj/Desktop/10.webp": {
+    "width": 2160,
+    "height": 3810,
+    "srcSet": "/Assets/project-display/e6f3804db87cb6-640.webp 640w, /Assets/project-display/e6f3804db87cb6-1040.webp 1040w, /Assets/project-display/e6f3804db87cb6-1600.webp 1600w, /Assets/Projects/vj/Desktop/10.webp 2160w"
+  },
+  "/Assets/Projects/vj/Desktop/4.webp": {
+    "width": 2160,
+    "height": 2675,
+    "srcSet": "/Assets/project-display/25aced55945ae4-640.webp 640w, /Assets/project-display/25aced55945ae4-1040.webp 1040w, /Assets/project-display/25aced55945ae4-1600.webp 1600w, /Assets/Projects/vj/Desktop/4.webp 2160w"
+  },
+  "/Assets/Projects/vj/Desktop/5.webp": {
+    "width": 2160,
+    "height": 2092
+  },
+  "/Assets/Projects/vj/Desktop/7.webp": {
+    "width": 2160,
+    "height": 2498
+  },
+  "/Assets/Projects/vj/Desktop/8.webp": {
+    "width": 2160,
+    "height": 3642,
+    "srcSet": "/Assets/project-display/63ed4609c6bec1-640.webp 640w, /Assets/project-display/63ed4609c6bec1-1040.webp 1040w, /Assets/project-display/63ed4609c6bec1-1600.webp 1600w, /Assets/Projects/vj/Desktop/8.webp 2160w"
+  },
+  "/Assets/Projects/vj/Desktop/9.webp": {
+    "width": 2160,
+    "height": 2820
+  },
+  "/Assets/Projects/vj/photos/all-screens-ui.png": {
+    "width": 1531,
+    "height": 2059,
+    "srcSet": "/Assets/project-display/b3e5dba3682bc8-640.webp 640w, /Assets/project-display/b3e5dba3682bc8-1040.webp 1040w, /Assets/Projects/vj/photos/all-screens-ui.png 1531w"
+  },
+  "/Assets/Projects/vj/photos/car-parking.png": {
+    "width": 413,
+    "height": 1398
+  },
+  "/Assets/Projects/vj/photos/legal-pay.png": {
+    "width": 413,
+    "height": 957
+  },
+  "/Assets/Projects/vj/photos/post-possession.png": {
+    "width": 413,
+    "height": 1208
+  },
+  "/Assets/Projects/vj/photos/user-flows.png": {
+    "width": 1598,
+    "height": 293
+  },
+  "/Assets/Projects/website-screenshot/screencapture-clawed-chat-2026-03-25-13_35_05.webp": {
+    "width": 3456,
+    "height": 11858,
+    "srcSet": "/Assets/project-display/df96316c592335-640.webp 640w, /Assets/project-display/df96316c592335-1040.webp 1040w, /Assets/project-display/df96316c592335-1600.webp 1600w, /Assets/Projects/website-screenshot/screencapture-clawed-chat-2026-03-25-13_35_05.webp 3456w"
+  },
+  "/Assets/images/atps.webp": {
+    "width": 2880,
+    "height": 1800
+  },
+  "/Assets/images/ballah-code.webp": {
+    "width": 2880,
+    "height": 1800,
+    "srcSet": "/Assets/project-display/7f27c8dddf4d18-640.webp 640w, /Assets/project-display/7f27c8dddf4d18-1040.webp 1040w, /Assets/project-display/7f27c8dddf4d18-1600.webp 1600w, /Assets/images/ballah-code.webp 2880w"
+  },
+  "/Assets/images/black-hole.jpg": {
+    "width": 1280,
+    "height": 720
+  },
+  "/Assets/images/clawed.webp": {
+    "width": 2880,
+    "height": 1800,
+    "srcSet": "/Assets/project-display/5ca0ce2e9ace01-640.webp 640w, /Assets/project-display/5ca0ce2e9ace01-1040.webp 1040w, /Assets/project-display/5ca0ce2e9ace01-1600.webp 1600w, /Assets/images/clawed.webp 2880w"
+  },
+  "/Assets/images/code-for-build.jpg": {
+    "width": 3200,
+    "height": 1600
+  },
+  "/Assets/images/drowning.jpg": {
+    "width": 1800,
+    "height": 1075,
+    "srcSet": "/Assets/project-display/d90b9f0d3572ec-640.webp 640w, /Assets/project-display/d90b9f0d3572ec-1040.webp 1040w, /Assets/project-display/d90b9f0d3572ec-1600.webp 1600w, /Assets/images/drowning.jpg 1800w"
+  },
+  "/Assets/images/enigma.jpg": {
+    "width": 3200,
+    "height": 1600
+  },
+  "/Assets/images/executivelens.webp": {
+    "width": 2880,
+    "height": 1800,
+    "srcSet": "/Assets/project-display/7f89c7ec1f6f79-640.webp 640w, /Assets/project-display/7f89c7ec1f6f79-1040.webp 1040w, /Assets/project-display/7f89c7ec1f6f79-1600.webp 1600w, /Assets/images/executivelens.webp 2880w"
+  },
+  "/Assets/images/executivelens/site-crops/executivelens-site-capabilities.png": {
+    "width": 3456,
+    "height": 1800,
+    "srcSet": "/Assets/project-display/7cd2503e98b14d-640.webp 640w, /Assets/project-display/7cd2503e98b14d-1040.webp 1040w, /Assets/project-display/7cd2503e98b14d-1600.webp 1600w, /Assets/images/executivelens/site-crops/executivelens-site-capabilities.png 3456w"
+  },
+  "/Assets/images/executivelens/site-crops/executivelens-site-hero.png": {
+    "width": 3456,
+    "height": 1800,
+    "srcSet": "/Assets/project-display/7d053cb2858c92-640.webp 640w, /Assets/project-display/7d053cb2858c92-1040.webp 1040w, /Assets/project-display/7d053cb2858c92-1600.webp 1600w, /Assets/images/executivelens/site-crops/executivelens-site-hero.png 3456w"
+  },
+  "/Assets/images/executivelens/site-crops/executivelens-site-integrations.png": {
+    "width": 3456,
+    "height": 1800,
+    "srcSet": "/Assets/project-display/c890f19ed47955-640.webp 640w, /Assets/project-display/c890f19ed47955-1040.webp 1040w, /Assets/project-display/c890f19ed47955-1600.webp 1600w, /Assets/images/executivelens/site-crops/executivelens-site-integrations.png 3456w"
+  },
+  "/Assets/images/executivelens/site-crops/executivelens-site-workflow.png": {
+    "width": 3456,
+    "height": 1800,
+    "srcSet": "/Assets/project-display/258c6c09df7473-640.webp 640w, /Assets/project-display/258c6c09df7473-1040.webp 1040w, /Assets/project-display/258c6c09df7473-1600.webp 1600w, /Assets/images/executivelens/site-crops/executivelens-site-workflow.png 3456w"
+  },
+  "/Assets/images/making-of-time.jpg": {
+    "width": 2000,
+    "height": 1195
+  },
+  "/Assets/images/mentra.webp": {
+    "width": 2880,
+    "height": 1800,
+    "srcSet": "/Assets/project-display/28d6c86aa47343-640.webp 640w, /Assets/project-display/28d6c86aa47343-1040.webp 1040w, /Assets/project-display/28d6c86aa47343-1600.webp 1600w, /Assets/images/mentra.webp 2880w"
+  },
+  "/Assets/images/mentra/appstore-device.png": {
+    "width": 1284,
+    "height": 2778
+  },
+  "/Assets/images/mentra/appstore-hero.webp": {
+    "width": 1284,
+    "height": 2778
+  },
+  "/Assets/images/mentra/appstore-translation.webp": {
+    "width": 1284,
+    "height": 2778
+  },
+  "/Assets/images/mentra/deck/active-strip.png": {
+    "width": 394,
+    "height": 852
+  },
+  "/Assets/images/mentra/deck/bottom-drawer.png": {
+    "width": 394,
+    "height": 852
+  },
+  "/Assets/images/mentra/deck/home-after.png": {
+    "width": 342,
+    "height": 725
+  },
+  "/Assets/images/mentra/deck/home-before.png": {
+    "width": 313,
+    "height": 712
+  },
+  "/Assets/images/mentra/deck/miniapps-handheld.png": {
+    "width": 808,
+    "height": 1045
+  },
+  "/Assets/images/mentra/deck/status-cards.png": {
+    "width": 394,
+    "height": 852
+  },
+  "/Assets/images/mentra/glasses-angle.png": {
+    "width": 1600,
+    "height": 900
+  },
+  "/Assets/images/mentra/os-all-apps.png": {
+    "width": 385,
+    "height": 832
+  },
+  "/Assets/images/mentra/os-home.png": {
+    "width": 385,
+    "height": 832
+  },
+  "/Assets/images/mentra/os-running-apps.png": {
+    "width": 385,
+    "height": 832
+  },
+  "/Assets/images/mentra/photo-angle.webp": {
+    "width": 3072,
+    "height": 4080
+  },
+  "/Assets/images/mentra/render-camera-detail.webp": {
+    "width": 3840,
+    "height": 2400,
+    "srcSet": "/Assets/project-display/13740b35654934-640.webp 640w, /Assets/project-display/13740b35654934-1040.webp 1040w, /Assets/project-display/13740b35654934-1600.webp 1600w, /Assets/images/mentra/render-camera-detail.webp 3840w"
+  },
+  "/Assets/images/mentra/render-transparent.webp": {
+    "width": 3840,
+    "height": 2400,
+    "srcSet": "/Assets/project-display/70821a428cc9df-640.webp 640w, /Assets/project-display/70821a428cc9df-1040.webp 1040w, /Assets/project-display/70821a428cc9df-1600.webp 1600w, /Assets/images/mentra/render-transparent.webp 3840w"
+  },
+  "/Assets/images/mentra/site-crops/mentra-site-platform.png": {
+    "width": 1920,
+    "height": 3200,
+    "srcSet": "/Assets/project-display/e7438f3acd287d-640.webp 640w, /Assets/project-display/e7438f3acd287d-1040.webp 1040w, /Assets/project-display/e7438f3acd287d-1600.webp 1600w, /Assets/images/mentra/site-crops/mentra-site-platform.png 1920w"
+  },
+  "/Assets/images/moniac-machine.jpg": {
+    "width": 2160,
+    "height": 1502,
+    "srcSet": "/Assets/project-display/c3bae30affcd18-640.webp 640w, /Assets/project-display/c3bae30affcd18-1040.webp 1040w, /Assets/project-display/c3bae30affcd18-1600.webp 1600w, /Assets/images/moniac-machine.jpg 2160w"
+  },
+  "/Assets/images/office-of-diversity.webp": {
+    "width": 2880,
+    "height": 1800,
+    "srcSet": "/Assets/project-display/dee3623b334d25-640.webp 640w, /Assets/project-display/dee3623b334d25-1040.webp 1040w, /Assets/project-display/dee3623b334d25-1600.webp 1600w, /Assets/images/office-of-diversity.webp 2880w"
+  },
+  "/Assets/images/oncall-lens.webp": {
+    "width": 2880,
+    "height": 1800,
+    "srcSet": "/Assets/project-display/86793e3b0d7df8-640.webp 640w, /Assets/project-display/86793e3b0d7df8-1040.webp 1040w, /Assets/project-display/86793e3b0d7df8-1600.webp 1600w, /Assets/images/oncall-lens.webp 2880w"
+  },
+  "/Assets/images/oncall-lens/glasses-detail.png": {
+    "width": 1080,
+    "height": 1080
+  },
+  "/Assets/images/oncall-lens/hero.webp": {
+    "width": 1920,
+    "height": 1080
+  },
+  "/Assets/images/org-dashboard.webp": {
+    "width": 2880,
+    "height": 1800,
+    "srcSet": "/Assets/project-display/fd5d1afd7f4caf-640.webp 640w, /Assets/project-display/fd5d1afd7f4caf-1040.webp 1040w, /Assets/project-display/fd5d1afd7f4caf-1600.webp 1600w, /Assets/images/org-dashboard.webp 2880w"
+  },
+  "/Assets/images/raahi.jpg": {
+    "width": 1920,
+    "height": 960,
+    "srcSet": "/Assets/project-display/e0c563a1f51d44-640.webp 640w, /Assets/project-display/e0c563a1f51d44-1040.webp 1040w, /Assets/project-display/e0c563a1f51d44-1600.webp 1600w, /Assets/images/raahi.jpg 1920w"
+  },
+  "/Assets/images/revolving-stage.webp": {
+    "width": 3200,
+    "height": 1600,
+    "srcSet": "/Assets/project-display/cd1257db1335e1-640.webp 640w, /Assets/project-display/cd1257db1335e1-1040.webp 1040w, /Assets/project-display/cd1257db1335e1-1600.webp 1600w, /Assets/images/revolving-stage.webp 3200w"
+  },
+  "/Assets/images/shuffle.jpg": {
+    "width": 1800,
+    "height": 900
+  },
+  "/Assets/images/tedx.jpg": {
+    "width": 1440,
+    "height": 719
+  },
+  "/Assets/images/the-omakase.jpg": {
+    "width": 2000,
+    "height": 1195,
+    "srcSet": "/Assets/project-display/07aff2466fe8aa-640.webp 640w, /Assets/project-display/07aff2466fe8aa-1040.webp 1040w, /Assets/project-display/07aff2466fe8aa-1600.webp 1600w, /Assets/images/the-omakase.jpg 2000w"
+  },
+  "/Assets/images/the-point-cdc.webp": {
+    "width": 2880,
+    "height": 1800,
+    "srcSet": "/Assets/project-display/cfe27e1a7d17f0-640.webp 640w, /Assets/project-display/cfe27e1a7d17f0-1040.webp 1040w, /Assets/project-display/cfe27e1a7d17f0-1600.webp 1600w, /Assets/images/the-point-cdc.webp 2880w"
+  },
+  "/Assets/images/typeface.webp": {
+    "width": 6400,
+    "height": 3200
+  },
+  "/Assets/images/uv-light.jpg": {
+    "width": 1800,
+    "height": 900
+  },
+  "/Assets/images/vj.jpg": {
+    "width": 3200,
+    "height": 1600
+  },
+  "/Assets/mockups/projects/ai-voice_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/ai-voice_4x5.webp": {
+    "width": 1200,
+    "height": 1537
+  },
+  "/Assets/mockups/projects/arcade-lab.webp": {
+    "width": 2048,
+    "height": 2048
+  },
+  "/Assets/mockups/projects/ballah-code_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/black-hole_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/breakgen_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/breakgen_4x5.webp": {
+    "width": 1200,
+    "height": 1441
+  },
+  "/Assets/mockups/projects/clawed-chat_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/clawed-chat_1x1.webp": {
+    "width": 1600,
+    "height": 1600
+  },
+  "/Assets/mockups/projects/clawed-chat_4x5.webp": {
+    "width": 1200,
+    "height": 1441
+  },
+  "/Assets/mockups/projects/cuetv_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/enigma_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/executivelens_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/healthapp_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/ibm_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/jugalbandi_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/making-of-time_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/mentra-miniapps_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/mentra_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/mentra_4x5.webp": {
+    "width": 1200,
+    "height": 1441
+  },
+  "/Assets/mockups/projects/office-of-diversity_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/raahi-project_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/revolving-stage_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/shuffle_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/the-omakase_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/the-point-cdc_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/transfi-project_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/transfi-project_4x5.webp": {
+    "width": 1200,
+    "height": 1441
+  },
+  "/Assets/mockups/projects/vj-software_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/mockups/projects/zentipay_16x9.webp": {
+    "width": 1600,
+    "height": 800
+  },
+  "/Assets/project-illustrations/feeling-patterns-materials.webp": {
+    "width": 1536,
+    "height": 1024,
+    "srcSet": "/Assets/project-display/b2ae2171db4542-640.webp 640w, /Assets/project-display/b2ae2171db4542-1040.webp 1040w, /Assets/project-illustrations/feeling-patterns-materials.webp 1536w"
+  },
+  "/Assets/project-illustrations/hypercinema-viewpoints.webp": {
+    "width": 1536,
+    "height": 1024
+  },
+  "/Assets/Projects/mentra-miniapps/figma/store-discovery.png": {
+    "width": 390,
+    "height": 1103
+  },
+  "/Assets/Projects/mentra-miniapps/figma/store-detail.png": {
+    "width": 390,
+    "height": 1166
+  },
+  "/Assets/Projects/mentra-miniapps/figma/store-installed.png": {
+    "width": 390,
+    "height": 1166
+  }
+}

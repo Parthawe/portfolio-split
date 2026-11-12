@@ -1,0 +1,81 @@
+/* --- Reset --- */
+*,*::before,*::after { box-sizing:border-box; margin:0; padding:0; }
+html {
+  /* Motion measures scroll targets against this containing block. */
+  position: relative;
+  -webkit-text-size-adjust:100%;
+  scroll-behavior:auto;
+  overflow-x: clip;
+  overscroll-behavior-y: none;
+}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+  overscroll-behavior-y: none;
+}
+img,video { display:block; max-width:100%; }
+a { color:inherit; text-decoration:none; }
+button { cursor:pointer; border:none; background:none; font:inherit; color:inherit; }
+ul { list-style:none; }
+
+/* --- Custom scrollbar (thin, 4px) --- */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--ink-12); border-radius: 2px; }
+html { scrollbar-width: thin; scrollbar-color: var(--ink-12) var(--bg); }
+
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+
+/* --- Skip link --- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  background: var(--ink);
+  color: var(--bg);
+  padding: 0.5rem 1rem;
+  z-index: 9999;
+  font-size: var(--text-sm);
+}
+.skip-link:focus { left: 1rem; top: 1rem; }
+
+/* --- Focus-visible (single canonical definition) --- */
+:focus-visible {
+  outline: 2px solid var(--ink-70);
+  outline-offset: 2px;
+}
+a:focus-visible,
+button:focus-visible {
+  border-radius: 3px;
+}
+.pcard:focus-visible,
+.pcard-text:focus-visible,
+.wr-arrow-btn:focus-visible,
+.work-bnav-link:focus-visible,
+.about-cta-btn:focus-visible,
+.back-to-top:focus-visible {
+  outline: 2px solid var(--ink-70);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+.hp-tab:focus-visible {
+  outline: 2px solid var(--ink-70);
+  outline-offset: -2px;
+  border-radius: 4px;
+}
+.project-row:focus-visible {
+  border-radius: var(--radius);
+}
+.work-list-row:focus-visible {
+  background: var(--ink-04);
+  border-radius: 4px;
+}
+
+/* --- Selection highlight --- */
+::selection { background: var(--accent-hi-30); color: var(--ink); }
