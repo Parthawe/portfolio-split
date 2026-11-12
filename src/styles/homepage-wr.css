@@ -2237,6 +2237,10 @@ body.page-ready .wr-hero-stage {
     height: min(100svh, calc(140vw - 670px));
   }
 
+  .wr-portfolio-hero.wr-hero--plays:not(.wr-hero--web-open) {
+    height: min(100svh, calc(150vw - 830px));
+  }
+
   .wr-featured-v2-inner {
     padding-top: min(clamp(3rem, 6vw, 5rem), max(1.25rem, calc(18vw - 140px)));
   }
