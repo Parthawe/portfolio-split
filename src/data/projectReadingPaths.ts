@@ -13,7 +13,7 @@ export const projectReadingPaths: Record<string, { label: string; id: string }> 
   "ibm": { label: "See the research output", id: "cs-result" },
   "ballah-code": { label: "See the editor decisions", id: "cs-decisions" },
   "ai-voice": { label: "Explore voice selection", id: "cs-ai-voice-journey" },
-  "raahi-project": { label: "Start with the prototype", id: "cs-prototype" },
+  "raahi-project": { label: "Follow one trip", id: "cs-raahi-trip" },
   "the-point-cdc": { label: "See the website design", id: "cs-deliver" },
   "office-of-diversity": { label: "Read the report", id: "cs-report" },
   "jugalbandi": { label: "Watch the installation", id: "cs-film" },

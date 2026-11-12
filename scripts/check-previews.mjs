@@ -12,7 +12,7 @@ const cases = {
   product: {
     heading: 'Designing product systems people trust.',
     caseStudy: ['mentra', 'Mentra'],
-    otherFeatured: [['transfi-project', 'TransFi'], ['raahi-project', 'Raahi'], ['clawed-chat', 'Clawed']],
+    otherFeatured: [['transfi-project', 'TransFi'], ['clawed-chat', 'Clawed']],
   },
   experimental: {
     heading: 'Design That Plays',
@@ -135,6 +135,14 @@ try {
         const requestAccess = page.getByRole('link', { name: 'Request access on the live portfolio' })
         assert.ok(await quote.evaluate(node => node.compareDocumentPosition(document.querySelector('#overview')) & Node.DOCUMENT_POSITION_FOLLOWING))
         assert.ok((await contribution.boundingBox()).y < (await requestAccess.boundingBox()).y)
+        assert.equal((await page.goto(`${url}/raahi-project/`)).status(), 200)
+        const trip = page.getByRole('region', { name: 'One trip across Pune' })
+        await expect(trip.getByRole('heading', { level: 3 })).toHaveText([
+          'Plan from Vanaz', 'Find the feeder at Ramwadi', 'Check the next stop',
+        ])
+        await expect(trip.locator('img')).toHaveCount(3)
+        await trip.locator('img').evaluateAll(images => Promise.all(images.map(image => image.decode())))
+        await page.getByRole('heading', { name: 'What I designed', exact: true }).waitFor()
       } else {
         const opening = page.locator('#cs-film')
         const film = opening.getByLabel('Jugalbandi Performance', { exact: true })

@@ -16,6 +16,36 @@ import RaahiServiceStudy from '../../components/case-study/RaahiServiceStudy'
 import '../../components/case-study/service-decisions.css'
 const raahiAsset = (file: string) => `/Assets/Projects/Raahi/photos/${encodeURIComponent(file)}`
 const serviceAsset=(file:string)=>`/Assets/Projects/Raahi/service-2026/${file}`
+const tripStages = [
+  {
+    surface: 'App',
+    title: 'Plan from Vanaz',
+    description: 'Aditi sets EON IT Park as her destination. She takes the Aqua Line to Ramwadi, where she’ll change to a feeder bus.',
+    image: 'mobile-home.png',
+    alt: 'Raahi app showing the Vanaz to EON IT Park journey and the start and destination fields.',
+    width: 390,
+    height: 844,
+  },
+  {
+    surface: 'Station kiosk',
+    title: 'Find the feeder at Ramwadi',
+    description: 'At Ramwadi, she selects EON IT Park on the kiosk and sees Metro Shuttle 20 as an option. The kiosk starts its own session.',
+    image: 'kiosk.png',
+    alt: 'Raahi kiosk showing a connection from Ramwadi to EON IT Park on Metro Shuttle 20.',
+    width: 1280,
+    height: 900,
+  },
+  {
+    surface: 'Bus display',
+    title: 'Check the next stop',
+    description: 'On the shuttle, Kharadi Bypass is the next stop. Aditi can see EON IT Park farther along the route.',
+    image: 'bus.png',
+    alt: 'Raahi bus display showing Kharadi Bypass as the next stop and EON IT Park later on the route.',
+    width: 1280,
+    height: 900,
+  },
+]
+
 const research = [
  ['Mind Map.png', 'Problem-space map', 'Early framing of transport needs and service opportunities.'],
  ['Group 2531.png', 'Rider models and journey maps', 'Concept synthesis for convenience switchers, captive riders and mode mixers. Participant counts and sampling records are unavailable.'],
@@ -31,7 +61,7 @@ export default function RaahiPage() {
  return <>
       <Helmet>
         <title>Raahi Public Transit Research Case Study &middot; Parth Pawar</title>
-        <meta name="description" content="Explore Raahi's private working browser prototype, then follow the service design decisions across mobile, kiosk, and in-vehicle transit touchpoints in Pune." />
+        <meta name="description" content="Follow one proposed Pune transit trip across the Raahi app, station kiosk, and bus display, with the original service design and prototype evidence." />
         <meta property="og:type" content="article" />
         <meta property="og:title" content="Raahi · Parth Pawar" />
         <meta property="og:description" content="How rider research and service mapping reframed Pune transit as one connected journey across digital and physical touchpoints." />
@@ -47,13 +77,40 @@ export default function RaahiPage() {
           backLink="/work"
           categorySlug="design-for-good"
           backLabel="Back to Work"
-          tags={['UX', 'Research', 'Service Design', 'Mobile']}
+          tags={['Service design', 'Research', 'UI design']}
           title="Raahi"
           subtitle="A connected Pune transit concept, from the phone to the station kiosk and the next stop on the bus."
-          visualHeroImage={serviceAsset('service-mockup.png')}
-          visualHeroAlt="Concept mockups of a Raahi phone demo QR ticket, station kiosk and bus display"
           heroFraming="image"
-          liveLabel="Open private prototype"
+          openingMediaId="cs-raahi-trip"
+          visualHeroMedia={
+            <div>
+              <section className="raahi-trip-opening" aria-labelledby="raahi-trip-title">
+                <h2 id="raahi-trip-title">One trip across Pune</h2>
+                <p className="raahi-trip-opening__route">
+                  Vanaz <span aria-hidden="true">→</span> Ramwadi <span aria-hidden="true">→</span> EON IT Park
+                </p>
+                <p className="raahi-trip-opening__note">Example trip from the 2026 browser prototype, based on the 2022 service concept.</p>
+                <ol className="raahi-trip-opening__stages" aria-label="Trip stages">
+                  {tripStages.map(stage => (
+                    <li key={stage.surface}>
+                      <p className="raahi-trip-opening__surface">{stage.surface}</p>
+                      <h3>{stage.title}</h3>
+                      <p className="raahi-trip-opening__description">{stage.description}</p>
+                      <div className="raahi-trip-opening__screen">
+                        <img data-project-preview src={serviceAsset(stage.image)} alt={stage.alt}
+                          width={stage.width} height={stage.height} decoding="async" />
+                      </div>
+                    </li>
+                  ))}
+                </ol>
+                <p className="raahi-trip-opening__note">The screens show demo fares and a simulated bus position.</p>
+              </section>
+              <section id="cs-summary" className="public-workflow-contribution" aria-labelledby="raahi-contribution-title">
+                <h2 id="raahi-contribution-title">What I designed</h2>
+                <p>I worked with Sampada Inamdar on rider research and service mapping. I designed the visual identity, saved places and route comparison in the app, language choice and route lookup at the kiosk, and a bus display that puts the next stop first.</p>
+              </section>
+            </div>
+          }
           info={[
             { label: 'Decision at risk', value: 'Where should one service connect fragmented transit touchpoints?' },
             { label: 'My contribution', value: 'Research, service synthesis, brand, and UI system' },
@@ -64,11 +121,8 @@ export default function RaahiPage() {
         />
 
 
-        <figure className="wrap service-overview raahi-overview-proof"><EvidenceImage src={raahiAsset('Frame 427318652.png')} alt="Original Raahi concept overview showing mobile, bus and service touchpoints" /><figcaption>A 2022 service concept for Pune. Screens show proposed behavior; they do not establish live transit performance.</figcaption></figure>
-        <CsSection id="cs-summary" label="Problem" title="Keep a journey legible across handoffs">
-          <CsBody><p>Planning a route is only part of a commute. The design connects saved destinations, route comparisons, a leg-by-leg itinerary and stop information. I worked with Sampada Inamdar on research and concept development, then carried the service structure into the identity and interfaces.</p></CsBody>
-        </CsSection>
         <CsExpandPreview sectionIds={['cs-pune-evidence','cs-service-journey','cs-service-blueprint','cs-service-architecture','cs-service-mockups','cs-service-validation','cs-research','cs-system','cs-visual','cs-features','cs-touchpoints','cs-results','cs-reflections']} cta="Read the decisions and original screens" note="Inspect the mobile journey, shared-service touchpoints and supporting research artifacts.">
+        <figure className="wrap service-overview raahi-overview-proof"><EvidenceImage src={raahiAsset('Frame 427318652.png')} alt="Original Raahi concept overview showing mobile, bus and service touchpoints" /><figcaption>Original 2022 Pune transit concept.</figcaption></figure>
         <RaahiServiceStudy />
         <CsSection id="cs-features" label="Mobile journey" title="From a familiar place to the next leg">
           <CsScreenExplorer scrollPortrait label="Choose a Raahi journey screen" screens={[
@@ -99,7 +153,7 @@ export default function RaahiPage() {
           <CsCredits credits={[{role:'UI Designer & Researcher',name:'Parth Pawar'},{role:'UX Designer & Researcher',name:'Sampada Inamdar'}]} />
         </CsSection>
         </CsExpandPreview>
-        <BottomNav sections={[{id:'cs-pune-evidence',label:'Pune evidence'},{id:'cs-service-blueprint',label:'Service blueprint'},{id:'cs-service-architecture',label:'Architecture'},{id:'cs-service-mockups',label:'Final touchpoints'},{id:'cs-features',label:'Original screens'},{id:'cs-touchpoints',label:'Beyond the phone'},{id:'cs-research',label:'Source artifacts'},{id:'cs-results',label:'Next study'}]} />
+        <BottomNav sections={[{id:'cs-raahi-trip',label:'The trip'},{id:'cs-pune-evidence',label:'Pune evidence'},{id:'cs-service-blueprint',label:'Service blueprint'},{id:'cs-service-architecture',label:'Architecture'},{id:'cs-service-mockups',label:'Final touchpoints'},{id:'cs-features',label:'Original screens'},{id:'cs-touchpoints',label:'Beyond the phone'},{id:'cs-research',label:'Source artifacts'},{id:'cs-results',label:'Next study'}]} />
       </main>
       <NextProject slug="mentra-miniapps" title="MiniApps in OS" image="/Assets/mockups/projects/mentra-miniapps_16x9.webp" />
       <Footer />
