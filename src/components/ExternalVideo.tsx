@@ -6,6 +6,7 @@ type Props = IframeHTMLAttributes<HTMLIFrameElement> & {
   poster?: string
   fallbackLabel?: string
   playLabel?: string
+  silentExcerpt?: string
 }
 
 const filmPosters: Record<string, string> = {
@@ -19,17 +20,21 @@ const filmPosters: Record<string, string> = {
   '1010457989': 'making-of-time',
 }
 
-function LocalProjectFilm({ slug, title, watchUrl, poster, silent = false, playLabel }: { slug: string; title: string; watchUrl: string; poster?: string; silent?: boolean; playLabel?: string }) {
+function LocalProjectFilm({ slug, title, watchUrl, poster, silent = false, playLabel, silentExcerpt }: { slug: string; title: string; watchUrl: string; poster?: string; silent?: boolean; playLabel?: string; silentExcerpt?: string }) {
   const video = useRef<HTMLVideoElement>(null)
   const [failed, setFailed] = useState(false)
   const [started, setStarted] = useState(false)
-  const captions = projectFilmCaptions[slug]
+  const fullFilm = `/Assets/films/${slug}.mp4`
+  const captions = silentExcerpt ? undefined : projectFilmCaptions[slug]
+  const fallbackUrl = silentExcerpt ? fullFilm : watchUrl
+  const fallbackName = silentExcerpt ? 'Watch the full film' : 'Watch on Vimeo'
+  const fallbackLabel = silentExcerpt ? fallbackName : `Watch ${title} on Vimeo`
   return (
     <div className="external-video local-project-film">
       <div className="local-project-film__stage">
-        <video ref={video} controls playsInline muted={silent} preload="none" poster={poster || `/Assets/mockups/projects/${slug}_16x9.webp`}
+        <video ref={video} controls={!silentExcerpt || !playLabel || started} playsInline muted={silent || Boolean(silentExcerpt)} preload="none" poster={poster || `/Assets/mockups/projects/${slug}_16x9.webp`}
           aria-label={title} data-caption-status={captions ? 'automatic' : undefined} onError={() => setFailed(true)} onPlay={playLabel ? () => setStarted(true) : undefined}>
-          <source src={`/Assets/films/${slug}.mp4`} type="video/mp4" onError={() => setFailed(true)} />
+          <source src={silentExcerpt || fullFilm} type="video/mp4" onError={() => setFailed(true)} />
           {captions && <track kind="captions" src={captions.src} srcLang={captions.language} label="Automatic captions" default />}
         </video>
         {playLabel && !started && !failed && (
@@ -46,12 +51,12 @@ function LocalProjectFilm({ slug, title, watchUrl, poster, silent = false, playL
         )}
       </div>
       <div className="local-project-film__links">
-        {silent && <span className="external-video-fallback">Silent film</span>}
+        {(silentExcerpt || silent) && <span className="external-video-fallback">{silentExcerpt ? 'Original footage · silent excerpt' : 'Silent film'}</span>}
         {captions && <a href={captions.src} download className="external-video-fallback" aria-label={`Download automatic captions for ${title}`}>Automatic captions ↓</a>}
-        <a href={watchUrl} target="_blank" rel="noreferrer" className="external-video-fallback" aria-label={`Watch ${title} on Vimeo in a separate tab`}>Watch on Vimeo ↗</a>
+        <a href={fallbackUrl} target="_blank" rel="noreferrer" className="external-video-fallback" aria-label={`${fallbackLabel} in a separate tab`}>{fallbackName} ↗</a>
       </div>
       {failed && <div className="external-video__status" role="status">
-        This film could not load. You can watch on Vimeo or retry here.
+        This video could not load. {fallbackName} or retry here.
         <button type="button" onClick={() => { setFailed(false); video.current?.load() }}>Reload film</button>
       </div>}
     </div>
@@ -115,7 +120,7 @@ function VimeoPlayer({ src, title = 'Project film', poster, ...props }: Props) {
 }
 
 /** Prefer the local final edit; external-only films load on request. */
-export default function ExternalVideo({ poster, fallbackLabel = 'Open media', playLabel, ...props }: Props) {
+export default function ExternalVideo({ poster, fallbackLabel = 'Open media', playLabel, silentExcerpt, ...props }: Props) {
   if (props.src?.startsWith('https://player.vimeo.com/video/')) {
     const url = new URL(props.src)
     const id = url.pathname.split('/').pop() || ''
@@ -123,7 +128,7 @@ export default function ExternalVideo({ poster, fallbackLabel = 'Open media', pl
     if (film) {
       const hash = url.searchParams.get('h')
       const watchUrl = `https://vimeo.com/${id}${hash ? `/${hash}` : ''}`
-      return <LocalProjectFilm key={film.slug} slug={film.slug} title={props.title || 'Project film'} watchUrl={watchUrl} poster={poster} silent={film.silent} playLabel={playLabel} />
+      return <LocalProjectFilm key={film.slug} slug={film.slug} title={props.title || 'Project film'} watchUrl={watchUrl} poster={poster} silent={film.silent} playLabel={playLabel} silentExcerpt={silentExcerpt} />
     }
     return <VimeoPlayer key={props.src} {...props} poster={poster} />
   }

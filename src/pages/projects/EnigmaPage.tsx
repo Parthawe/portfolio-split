@@ -5,7 +5,6 @@ import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
 import ProjectHeader from '../../components/case-study/ProjectHeader'
 import CsExpandPreview from '../../components/case-study/CsExpandPreview'
-import CsMediaSpotlight from '../../components/case-study/CsMediaSpotlight'
 import CsSection from '../../components/case-study/CsSection'
 import CsBody from '../../components/case-study/CsBody'
 import CsScreenExplorer from '../../components/case-study/CsScreenExplorer'
@@ -35,34 +34,37 @@ export default function EnigmaPage() {
           backLink="/work"
           categorySlug="creative-tech"
           backLabel="Back to Work"
-          tags={['Creative Technology', 'AI', 'Installation']}
+          tags={['Physical computing', 'Interaction design', 'Installation']}
           title="Enigma"
-          subtitle="A 200-neuron light sculpture that makes a neural network visible"
+          subtitle="Draw a letter on a tablet. Watch the signal move through a sculpture of 200 lights."
           info={[
             { label: 'Year', value: '2023' },
             { label: 'Role', value: 'Creator' },
           ]}
+          showHeaderSummary={false}
+          heroFraming="image"
+          openingMediaId="cs-film"
+          visualHeroMedia={
+            <div>
+              <ExternalVideo
+                src="https://player.vimeo.com/video/895893649?h=d78737dcdb&badge=0&autopause=0&player_id=0&app_id=58479"
+                title="Enigma installation film"
+                poster="/Assets/Projects/Enigma/photos/interaction-film-poster.webp"
+                playLabel="Watch the letter light up"
+                silentExcerpt="/Assets/films/enigma-interaction.mp4"
+              />
+              <section className="public-workflow-contribution" aria-labelledby="enigma-contribution-title">
+                <h2 id="enigma-contribution-title">What I designed</h2>
+                <p>I designed and built Enigma at NYU ITP. I placed a tablet below the sculpture for visitors to draw a single letter, used 200 lights to show activity across the network’s layers, and labeled the top layer with the alphabet so visitors could read the model’s prediction.</p>
+              </section>
+            </div>
+          }
         />
 
-        <CsMediaSpotlight layout="stacked"
-          id="cs-film"
-          label="Watch first"
-          title="Light as inference"
-          lede="The film shows the main idea faster than text can: a handwritten letter becomes a visible cascade through 200 physical neurons."
-        >
-          <ExternalVideo
-            src="https://player.vimeo.com/video/895893649?h=d78737dcdb&badge=0&autopause=0&player_id=0&app_id=58479"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowFullScreen
-            loading="lazy"
-            title="Enigma"
-          />
-        </CsMediaSpotlight>
-
         {/* Interactive */}
-        <CsSection id="cs-interactive" label="Interactive" title="Draw through the sculpture">
+        <CsSection id="cs-interactive" label="Browser study" title="Draw through the sculpture">
           <CsBody>
-            <p>Draw on the tablet or type a letter to drive the sculpture’s lights. Switch to the signal explanation to inspect the input and layer relationships. Both browser studies are explanatory adaptations; the original trained model is not available. The film records the actual installation.</p>
+            <p>Draw on the virtual tablet or choose a letter to see how the lights respond. Switch to the signal view to follow the input through the layers. In this browser study, the output lights up the letter you choose.</p>
           </CsBody>
           <div className="cs-label-row">
             <span className="cs-label-row-key">Network</span>
