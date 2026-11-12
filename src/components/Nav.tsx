@@ -4,6 +4,7 @@ import { useNavScroll } from '../hooks/useNavScroll';
 import ThemeToggle from './ThemeToggle';
 import FigmaSelect from './FigmaSelect';
 import AmbientAudio from './AmbientAudio';
+import { sibling, siblingHome } from '../config/portfolio';
 import { CONTACT_EMAIL } from '../config/site';
 import { setCanvasChromePreference } from '../utils/performance';
 import CompactSheet from './CompactSheet';
@@ -143,6 +144,9 @@ export default function Nav() {
             <Link to="/" className="nav-logo figma-hover" aria-label="Parth Pawar, home">Parth<FigmaSelect /></Link>
             <Link to="/work" data-label="Work" className={`pill-link nav-pill-link figma-hover${isWorkContext ? ' active' : ''}`}><span className="nav-pill-link__label">Work</span><FigmaSelect /></Link>
             <Link to="/about" data-label="About" className={`pill-link nav-pill-link figma-hover${isAbout ? ' active' : ''}`}><span className="nav-pill-link__label">About</span><FigmaSelect /></Link>
+            <a href={siblingHome} className="pill-link nav-portfolio-link">
+              {sibling.name}<span aria-hidden="true">&rarr;</span>
+            </a>
             <FigmaSelect />
           </div>
 

@@ -65,6 +65,31 @@
   visibility: hidden;
   pointer-events: none;
 }
+
+.nav-portfolio-link {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 0.45rem 0.65rem;
+  color: var(--ink-70);
+}
+
+@media (max-width: 768px) {
+  .nav-portfolio-link {
+    min-height: 44px;
+    margin-block: calc(-1 * var(--space-1));
+    padding-inline: var(--space-2);
+    font-size: var(--text-xs);
+  }
+}
+
+@media (max-width: 360px) {
+  .nav-left-pill .nav-logo,
+  .nav-portfolio-link {
+    padding-inline: var(--space-1);
+  }
+}
+
 .nav-pill-link:focus-visible,
 .nav-logo:focus-visible,
 .nav-cta:focus-visible {
@@ -290,6 +315,7 @@ body.nav-on-dark .nav-right > .ambient-ui .ambient-note.surface-glass {
 
 body.nav-on-dark .nav-logo,
 body.nav-on-dark .nav-pill-link,
+body.nav-on-dark .nav-portfolio-link,
 body.nav-on-dark .nav-grid-toggle,
 body.nav-on-dark .nav-easter-toggle,
 body.nav-on-dark .nav-right > .theme-toggle,
@@ -305,6 +331,7 @@ body.nav-on-dark .nav-pill-link.active {
 }
 
 body.nav-on-dark .nav-pill-link:hover,
+body.nav-on-dark .nav-portfolio-link:hover,
 body.nav-on-dark .nav-logo:hover,
 body.nav-on-dark .nav-grid-toggle:hover {
   color: #fff;
