@@ -6,16 +6,18 @@ const origin = process.env.PREVIEW_ORIGIN || 'https://parthawe.github.io'
 const base = `${origin}/portfolio-split`
 const screenshots = process.env.PREVIEW_SCREENSHOTS
 if (screenshots) await mkdir(screenshots, { recursive: true })
-const browser = await chromium.launch()
+const browser = await chromium.launch({ args: ['--enable-unsafe-swiftshader'] })
 const portfolios = JSON.parse(await readFile(new URL('../src/config/portfolios.json', import.meta.url), 'utf8'))
 const cases = {
   product: {
     heading: 'Designing product systems people trust.',
     caseStudy: ['mentra', 'Mentra'],
+    otherFeatured: [['transfi-project', 'TransFi'], ['raahi-project', 'Raahi'], ['clawed-chat', 'Clawed']],
   },
   experimental: {
     heading: 'Design That Plays',
     caseStudy: ['jugalbandi', 'Jugalbandi'],
+    otherFeatured: [['enigma', 'Enigma'], ['shuffle', 'Shuffle'], ['sea-of-salt', 'Why the Sea is Salt']],
   },
 }
 
@@ -25,6 +27,8 @@ try {
   const directory = await index.text()
   for (const [variant, details] of Object.entries(cases)) {
     assert.ok(directory.includes(`/portfolio-split/${variant}/`))
+    const rawHome = await (await fetch(`${base}/${variant}/`)).text()
+    assert.ok(rawHome.includes(`property="og:image" content="https://parthawe.github.io/portfolio-split${portfolios[variant].shareImage}"`))
     const { featured, supporting, archive } = portfolios[variant]
     const projects = [...featured, ...supporting, ...archive]
     const listSlugs = locator => locator.evaluateAll(links => links.map(link => link.pathname.split('/').filter(Boolean).at(-1)))
@@ -58,17 +62,35 @@ try {
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1))
       await page.locator('.page-loader').waitFor({ state: 'detached' })
       if (screenshots) await page.screenshot({ path: `${screenshots}/${variant}-${viewport.width}.png` })
+      if (viewport.width === 1440) {
+        await page.setViewportSize({ width: 900, height: 844 })
+        const tablet = await homeCards.first().boundingBox()
+        await page.setViewportSize({ width: 901, height: 844 })
+        const smallDesktop = await homeCards.first().boundingBox()
+        assert.ok(Math.abs(smallDesktop.y - tablet.y) < 80, `Selected work jumps at 901px: ${tablet.y} → ${smallDesktop.y}`)
+        await page.setViewportSize(viewport)
+      }
 
       assert.equal((await page.goto(`${url}/work/`)).status(), 200)
       await page.getByRole('heading', { level: 1, name: 'Work', exact: true }).waitFor()
       const cards = page.locator('#work-project-results .pcard')
       assert.deepEqual(await listSlugs(cards), projects)
       await expect(cards.locator('.pcard-caption__title')).toHaveCount(projects.length)
+      await page.locator('.work-group--selected .work-project-grid[data-packed]').waitFor()
       const first = await cards.nth(0).boundingBox()
       const second = await cards.nth(1).boundingBox()
+      const tallCover = await cards.nth(0).locator('.pcard-visual').boundingBox()
+      const shortCover = await cards.nth(1).locator('.pcard-visual').boundingBox()
+      assert.ok(tallCover.height > tallCover.width && shortCover.height < shortCover.width)
+      const archiveCovers = page.locator('.work-group--archive .pcard-visual')
+      const tallArchive = await archiveCovers.nth(0).boundingBox()
+      const shortArchive = await archiveCovers.nth(1).boundingBox()
+      assert.ok(tallArchive.height > tallArchive.width && shortArchive.height < shortArchive.width)
       if (viewport.width > 540) {
         assert.equal(first.y, second.y)
-        assert.ok(Math.abs(first.height - second.height) < 1)
+        const fourth = await cards.nth(3).boundingBox()
+        assert.equal(fourth.x, second.x)
+        assert.ok(fourth.y < first.y + first.height)
       } else {
         assert.equal(first.x, second.x)
         assert.ok(first.y < second.y)
@@ -124,6 +146,12 @@ try {
         assert.notEqual(await slider.inputValue(), before)
       }
       const other = variant === 'product' ? 'experimental' : 'product'
+      if (viewport.width === 390) {
+        for (const [featuredSlug, featuredTitle] of details.otherFeatured) {
+          assert.equal((await page.goto(`${url}/${featuredSlug}/`)).status(), 200)
+          await page.getByRole('heading', { level: 1, name: featuredTitle, exact: true }).waitFor()
+        }
+      }
       await page.goto(`${url}/${slug}/`)
       await page.locator('#nav').getByRole('link', { name: portfolios[other].name, exact: true }).click()
       await page.waitForURL(`${base}/${other}/`)
@@ -133,6 +161,22 @@ try {
       await page.close()
     }
   }
+
+  const touch = await browser.newPage({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true })
+  await touch.addInitScript(() => {
+    Object.defineProperty(navigator, 'hardwareConcurrency', { value: 8 })
+    Object.defineProperty(navigator, 'deviceMemory', { value: 8 })
+  })
+  await touch.goto(`${base}/product/`)
+  await touch.locator('.wr-hero.is-scene-ready canvas').waitFor({ timeout: 18000 })
+  const lighting = await touch.evaluate(() => performance.getEntriesByType('resource').filter(entry => entry.name.includes('potsdamer_platz')))
+  assert.deepEqual(lighting.map(entry => new URL(entry.name).pathname.split('/').at(-1)), ['potsdamer_platz_512.rgbe.gz'])
+  await touch.getByRole('button', { name: 'Explore the skills and projects web' }).tap()
+  await touch.locator('.wr-hero--web-open').waitFor()
+  await touch.getByRole('button', { name: 'Close the web and return to the hero' }).tap()
+  await touch.locator('.wr-hero--web-open').waitFor({ state: 'detached' })
+  await touch.close()
+  console.log('Mobile 3D hero and compact lighting passed')
 } finally {
   await browser.close()
 }

@@ -23,7 +23,7 @@ createRoot(document.getElementById('root')!).render(
   </StrictMode>,
 )
 
-// Let the initial page paint before starting the desktop-only lighting fetch.
+// Let the initial page paint before warming eligible Product Design heroes.
 requestAnimationFrame(() => requestAnimationFrame(preloadHeroEnvironmentAsset))
 
 // Wheel and touch stay native; explicit navigation owns smooth scrolling.

@@ -7,6 +7,8 @@ const root = '/portfolio-split'
 const origin = 'https://parthawe.github.io'
 const dist = 'dist'
 
+const escapeAttribute = value => value.replaceAll('&', '&amp;').replaceAll('"', '&quot;').replaceAll('<', '&lt;')
+
 function run(command, args, env = process.env) {
   const result = spawnSync(command, args, { env, stdio: 'inherit' })
   if (result.error) throw result.error
@@ -40,10 +42,30 @@ for (const [variant, portfolio] of Object.entries(portfolios)) {
   if (variant === 'experimental') {
     routes.push('project-experiences', ...['jugalbandi', 'enigma', 'shuffle', 'black-hole', 'revolving-stage', 'moniac-machine'].map(slug => `${slug}/world`))
   }
-  const documentFor = (route = '') => index.replace(
-    '<title>Parth Pawar</title>',
-    `<title>${portfolio.name} · Parth Pawar</title>\n    <meta name="description" content="${portfolio.description}" />\n    <link rel="canonical" href="${origin}${root}/${variant}/${route ? route + '/' : ''}" />`,
-  )
+  const documentFor = (route = '') => {
+    const title = `${portfolio.name} · Parth Pawar`
+    const url = `${origin}${root}/${variant}/${route ? route + '/' : ''}`
+    const image = `${origin}${root}${portfolio.shareImage}`
+    const meta = [
+      ['name', 'description', portfolio.description],
+      ['property', 'og:type', 'website'],
+      ['property', 'og:title', title],
+      ['property', 'og:description', portfolio.description],
+      ['property', 'og:url', url],
+      ['property', 'og:image', image],
+      ['property', 'og:image:alt', portfolio.shareImageAlt],
+      ['name', 'twitter:card', 'summary_large_image'],
+      ['name', 'twitter:title', title],
+      ['name', 'twitter:description', portfolio.description],
+      ['name', 'twitter:image', image],
+      ['name', 'twitter:image:alt', portfolio.shareImageAlt],
+    ].map(([attribute, key, value]) => `<meta data-rh="true" ${attribute}="${key}" content="${escapeAttribute(value)}" />`)
+    return index.replace('<title>Parth Pawar</title>', [
+      `<title>${escapeAttribute(title)}</title>`,
+      ...meta,
+      `<link data-rh="true" rel="canonical" href="${escapeAttribute(url)}" />`,
+    ].join('\n    '))
+  }
   await writeFile(path.join(directory, 'index.html'), documentFor())
   for (const route of routes) {
     const target = path.join(directory, route)

@@ -7,7 +7,9 @@ export function decodeHeroEnvironment(buffer: ArrayBuffer) {
   const header = new DataView(buffer)
   const width = header.getUint32(8, true), height = header.getUint32(12, true)
   const count = width * height
-  if (width !== 1024 || height !== 512 || bytes.length !== 16 + count * 4) throw new Error('Invalid hero lighting dimensions')
+  if ((width !== 1024 && width !== 512) || height * 2 !== width || bytes.length !== 16 + count * 4) {
+    throw new Error('Invalid hero lighting dimensions')
+  }
   const planes = bytes.subarray(16)
   for (let channel = 0; channel < 4; channel++) {
     const offset = channel * count

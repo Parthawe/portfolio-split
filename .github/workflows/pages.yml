@@ -30,6 +30,16 @@ jobs:
           bun-version: 1.3.10
       - run: bun install --frozen-lockfile
       - run: bun run build
+      - run: bunx playwright install --with-deps chromium
+      - name: Check built previews
+        run: |
+          preview_dir="$(mktemp -d)"
+          ln -s "$GITHUB_WORKSPACE/dist" "$preview_dir/portfolio-split"
+          python3 -m http.server 4185 --bind 127.0.0.1 --directory "$preview_dir" &
+          preview_pid=$!
+          trap 'kill "$preview_pid"; rm -r "$preview_dir"' EXIT
+          curl --retry 5 --retry-connrefused --fail --silent http://127.0.0.1:4185/portfolio-split/ >/dev/null
+          PREVIEW_ORIGIN=http://127.0.0.1:4185 bun run qa:previews
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

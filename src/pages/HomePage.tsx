@@ -21,6 +21,7 @@ import { beginSceneStartup, isHeroScenePerformanceDegraded, isLowPowerDevice, is
 import ParthDoesSection from '../components/ParthDoesSection';
 import '../styles/homepage-wr.css';
 import { preloadHeroEnvironmentAsset } from '../utils/preloadHeroEnvironment';
+import { observeVisible } from '../utils/visibleActivity';
 
 
 const loadHeroScene = () => import('../components/HeroScene');
@@ -119,8 +120,17 @@ export default function HomePage() {
   });
   useEffect(() => {
     // The site-wide monitor is skipped when touch layouts use lighter chrome.
-    if (!mountHeroScene || !isPerformanceDegraded()) return;
-    return startRuntimePerformanceMonitor(isHeroScenePerformanceDegraded);
+    const hero = heroRef.current;
+    if (!hero || !mountHeroScene || !isPerformanceDegraded()) return;
+    let stopMonitor: (() => void) | undefined;
+    const stopObserving = observeVisible(hero, visible => {
+      stopMonitor?.();
+      stopMonitor = visible ? startRuntimePerformanceMonitor(isHeroScenePerformanceDegraded) : undefined;
+    });
+    return () => {
+      stopObserving();
+      stopMonitor?.();
+    };
   }, [mountHeroScene]);
   const mountDisciplineObjects = useDeferredMount(allowDecorative3D && disciplinesInView, { timeout: lowPowerDevice ? 2200 : 1400, delayMs: lowPowerDevice ? 360 : 150 });
   const activeIdentity = identityTabs.find(tab => tab.id === identityTab) ?? identityTabs[0];

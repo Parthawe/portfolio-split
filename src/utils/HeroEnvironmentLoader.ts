@@ -3,7 +3,7 @@ import { RGBELoader } from 'three-stdlib'
 import { HERO_ENVIRONMENT_URL } from '../data/heroAssets'
 import { decodeHeroEnvironment } from './decodeHeroEnvironment'
 
-/** Faster representation of the same lighting, with the original HDR as recovery. */
+/** Packed hero lighting with the original HDR as recovery. */
 export class HeroEnvironmentLoader extends RGBELoader {
   override load(url: string, onLoad: (texture: DataTexture) => void, onProgress?: (event: ProgressEvent) => void, onError?: (error: unknown) => void): DataTexture {
     const loaded = (result: DataTexture) => { result.mapping = EquirectangularReflectionMapping; onLoad(result) }
