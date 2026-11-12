@@ -1,5 +1,5 @@
 import { isExperimental } from '../config/portfolio'
-import { useState, useEffect, useLayoutEffect, useCallback, useRef } from 'react'
+import { useState, useEffect, useLayoutEffect, useCallback } from 'react'
 import { Helmet } from 'react-helmet-async'
 import { Link, useSearchParams } from 'react-router-dom'
 import Nav from '../components/Nav'
@@ -19,15 +19,19 @@ import {
   type Project,
   type ProjectCategory,
 } from '../data/projects'
+import { packCardGrid } from '../utils/packCardGrid'
 import '../styles/work-page.css'
 
 const filters = CATEGORIES
   .filter(filter => filter.key === 'all' || filterProjectsByCategory(visibleProjects, filter.key as ProjectCategory).length)
   .map(filter => isExperimental && filter.key === 'creative' ? { ...filter, label: 'Creative Technology' } : filter)
 const WORK_FILTER_EVENT = 'folio:set-work-filter'
-const workCoverShapes = new Map([...selectedWorkProjects, ...archiveWorkProjects].map((project, index) =>
-  [project.slug, index % 2 === 0 ? 'portrait' as const : 'wide' as const]
-))
+const selectedCoverShapes = ['tall', 'portrait', 'square', 'square', 'square', 'tall'] as const
+const archiveCoverShapes = ['portrait', 'square', 'portrait', 'portrait', 'square', 'square'] as const
+const workCoverShapes = new Map([
+  ...selectedWorkProjects.map((project, index) => [project.slug, selectedCoverShapes[index % selectedCoverShapes.length]] as const),
+  ...archiveWorkProjects.map((project, index) => [project.slug, archiveCoverShapes[index % archiveCoverShapes.length]] as const),
+])
 
 interface WorkFilterEventDetail {
   filterKey: 'all' | ProjectCategory
@@ -105,7 +109,6 @@ function getTimelineSectionSummary(projects: Project[], leadProject: Project) {
 }
 
 export default function WorkPage() {
-  const projectResultsRef = useRef<HTMLDivElement>(null)
   const [searchParams, setSearchParams] = useSearchParams()
   const requestedFilter = searchParams.get('filter')
   const activeFilter = filters.some(filter => filter.key === requestedFilter) ? requestedFilter! : 'all'
@@ -149,30 +152,6 @@ export default function WorkPage() {
     document.body.classList.toggle('page-work-timeline', viewMode === 'timeline')
     return () => document.body.classList.remove('page-work-timeline')
   }, [viewMode])
-
-  useLayoutEffect(() => {
-    const grids = projectResultsRef.current?.querySelectorAll<HTMLElement>('.work-project-grid')
-    if (!grids?.length || typeof ResizeObserver === 'undefined') return
-
-    // Pack each card into one-pixel rows while keeping the DOM in project order.
-    const observers = Array.from(grids, grid => {
-      const observer = new ResizeObserver(entries => {
-        const gap = parseFloat(getComputedStyle(grid).columnGap)
-        for (const entry of entries) {
-          const card = entry.target as HTMLElement
-          const height = entry.borderBoxSize?.[0]?.blockSize ?? card.offsetHeight
-          card.style.setProperty('--work-card-rows', String(Math.ceil(height + gap)))
-        }
-        grid.dataset.packed = ''
-      })
-      for (const card of grid.children) observer.observe(card, { box: 'border-box' })
-      return observer
-    })
-    return () => {
-      observers.forEach(observer => observer.disconnect())
-      for (const grid of grids) delete grid.dataset.packed
-    }
-  }, [activeFilter, viewMode])
 
   useEffect(() => {
     const handleFilter = (event: Event) => {
@@ -264,7 +243,7 @@ export default function WorkPage() {
   const renderCard = (project: Project, eager = false) => (
     <ProjectCardComponent key={project.slug} slug={project.slug} name={project.name} image={project.image}
       tag={project.tag} year={project.year} desc={project.desc} loading={eager ? 'eager' : 'lazy'}
-      nda={project.nda} coverShape={workCoverShapes.get(project.slug)} showCaption />
+      nda={project.nda} coverShape={workCoverShapes.get(project.slug)} editorial />
   )
 
   const handleFilterChange = useCallback((filterKey: 'all' | ProjectCategory) => {
@@ -452,17 +431,17 @@ export default function WorkPage() {
             </header>
 
             {viewMode === 'editorial' ? (
-              <div id="work-project-results" ref={projectResultsRef}>
+              <div id="work-project-results">
                 {editorialSelectedProjects.length > 0 && (
                   <section className="work-group work-group--selected" aria-labelledby="work-selected-title">
                     <h2 className="mono-label work-group-label" id="work-selected-title">Selected work</h2>
-                    <div className="work-project-grid">{editorialSelectedProjects.map((project, index) => renderCard(project, index === 0))}</div>
+                    <div className="work-project-grid project-card-grid" ref={packCardGrid} key={activeFilter}>{editorialSelectedProjects.map((project, index) => renderCard(project, index === 0))}</div>
                   </section>
                 )}
                 {archiveProjects.length > 0 && (
                   <section className="work-group work-group--archive" aria-labelledby="work-more-title">
                     <h2 className="mono-label work-group-label" id="work-more-title">More projects</h2>
-                    <div className="work-project-grid">{archiveProjects.map(project => renderCard(project))}</div>
+                    <div className="work-project-grid project-card-grid" ref={packCardGrid} key={activeFilter}>{archiveProjects.map(project => renderCard(project))}</div>
                   </section>
                 )}
               </div>

@@ -23,13 +23,13 @@ interface ProjectCardProps {
   tag?: string
   year?: string
   desc?: string
-  showCaption?: boolean
+  editorial?: boolean
   loading?: 'eager' | 'lazy'
   /** Keep offscreen homepage media out of the hero’s request queue. */
   deferUntilNearView?: boolean
   preloadMargin?: string
   featured?: boolean
-  coverShape?: 'portrait' | 'square' | 'wide'
+  coverShape?: 'tall' | 'portrait' | 'square' | 'wide'
   /** Force the wide 16:9 cover (for landscape card slots). */
   preferWide?: boolean
   /** Keep the image supplied by the caller instead of substituting a registry cover. */
@@ -41,7 +41,7 @@ interface ProjectCardProps {
 
 export default memo(function ProjectCard({
   slug, name, image, hoverMediaSrc, hoverMediaKind = 'image',
-  tag, year, desc, showCaption = false,
+  tag, year, desc, editorial = false,
   loading = 'lazy', deferUntilNearView = false, preloadMargin = '600px 0px', featured = false, coverShape, preferWide = false, useProvidedImage = false, tilt = false, tiltIntensity = 4, nda = false,
 }: ProjectCardProps) {
   const cardRef = useRef<HTMLAnchorElement>(null)
@@ -100,7 +100,7 @@ export default memo(function ProjectCard({
   useEffect(() => {
     const track = marqueeRef.current
     const copy = track?.firstElementChild
-    if (!track || !copy) return
+    if (!track || !copy || editorial) return
     // Keep reading speed independent of copy length, font, and breakpoint.
     const measure = (entries: ResizeObserverEntry[]) => {
       // Observer measurements are already batched by layout. Reading offsetWidth
@@ -112,7 +112,7 @@ export default memo(function ProjectCard({
     const observer = new ResizeObserver(measure)
     observer.observe(copy)
     return () => observer.disconnect()
-  }, [safeDesc, showCaption])
+  }, [safeDesc, editorial])
 
   const handleImgLoad = useCallback((e: React.SyntheticEvent<HTMLImageElement>) => {
     const img = e.currentTarget
@@ -152,7 +152,7 @@ export default memo(function ProjectCard({
       data-cover-shape={resolvedCoverShape}
       data-cover-preview-kind={coverPreview?.kind}
       data-cover-tone={coverPreview?.tone}
-      className={`pcard figma-hover${showCaption ? ' pcard--captioned' : ''}${featured ? ' pcard--featured' : ''}${legacyHoverMedia ? ' pcard--has-hover-media' : ''}${requestAccess ? ' pcard--request-access' : ''}`}
+      className={`pcard figma-hover${editorial ? ' pcard--editorial' : ''}${featured ? ' pcard--featured' : ''}${legacyHoverMedia ? ' pcard--has-hover-media' : ''}${requestAccess ? ' pcard--request-access' : ''}`}
       to={`/${slug}`}
       onMouseEnter={handlePrefetch}
       onFocus={handlePrefetch}
@@ -211,23 +211,21 @@ export default memo(function ProjectCard({
               />
             )
           ) : null}
+          {editorial && <h2 className="pcard-name">{name}</h2>}
         </div>
-        {showCaption ? (
-          <div className="pcard-caption">
-            <h2 className="pcard-caption__title">{name}</h2>
-            {safeDesc && <p>{safeDesc}</p>}
-          </div>
-        ) : <h2 className="pcard-name">{name}</h2>}
-        {!showCaption && safeDesc && (
+        {!editorial && <h2 className="pcard-name">{name}</h2>}
+        {safeDesc && (editorial ? (
+          <div className="pcard-ribbon"><span>{safeDesc}</span></div>
+        ) : (
           <div className="pcard-marquee" aria-hidden="true">
             <div className="pcard-marquee-track" ref={marqueeRef}>
               <span>{safeDesc}, {safeDesc}, {safeDesc}, </span>
               <span>{safeDesc}, {safeDesc}, {safeDesc}, </span>
             </div>
           </div>
-        )}
+        ))}
         <span className="sr-only">
-          {!showCaption && safeDesc}{' '}
+          {!editorial && safeDesc}{' '}
           {requestAccess ? 'Public preview. Full case study available by request.' : 'View project.'}
         </span>
       </div>

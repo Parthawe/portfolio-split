@@ -8,6 +8,7 @@ import Nav from '../components/Nav'
 import ClientsMarquee from '../components/ClientsMarquee';
 import Footer from '../components/Footer';
 import ProjectCard from '../components/ProjectCard';
+import { packCardGrid } from '../utils/packCardGrid';
 import FigmaSelect from '../components/FigmaSelect';
 import FigmaFrameLabel from '../components/FigmaFrameLabel';
 import { useDeferredMount } from '../hooks/useDeferredMount';
@@ -270,35 +271,30 @@ export default function HomePage() {
                 <Link to="/work" className="wr-arrow-btn figma-hover">View all work &rarr;<FigmaSelect /></Link>
               </div>
 
-              <div className="wr-feat-grid">
-                {featuredProjects.map((project) => {
+              <div className="wr-feat-grid project-card-grid" ref={packCardGrid}>
+                {featuredProjects.map((project, index) => {
                   const hoverMedia = ['mentra', 'jugalbandi'].includes(project.slug) ? undefined : project.hoverMedia;
 
                   return (
-                    <div
+                    <ProjectCard
                       key={project.slug}
-                      className="wr-motion-item"
-                      data-project={project.slug}
-                    >
-                      <ProjectCard
-                        slug={project.slug}
-                        name={project.name}
-                        image={project.image}
-                        hoverMediaSrc={hoverMedia?.src}
-                        hoverMediaKind={hoverMedia?.kind}
-                        hoverMediaAlt={hoverMedia?.alt}
-                        tag={project.tag}
-                        year={project.year}
-                        desc={project.desc}
-                        showCaption
-                        loading="lazy"
-                        deferUntilNearView
-                        preloadMargin={cardPreloadMargin}
-                        featured
-                        coverShape="wide"
-                        nda={project.nda}
-                      />
-                    </div>
+                      slug={project.slug}
+                      name={project.name}
+                      image={project.image}
+                      hoverMediaSrc={hoverMedia?.src}
+                      hoverMediaKind={hoverMedia?.kind}
+                      hoverMediaAlt={hoverMedia?.alt}
+                      tag={project.tag}
+                      year={project.year}
+                      desc={project.desc}
+                      editorial
+                      loading="lazy"
+                      deferUntilNearView
+                      preloadMargin={cardPreloadMargin}
+                      featured
+                      coverShape={index % 3 === 0 ? 'portrait' : 'square'}
+                      nda={project.nda}
+                    />
                   );
                 })}
               </div>
@@ -385,10 +381,10 @@ export default function HomePage() {
                 <h2 className="wr-section-highlight" id="home-more-projects">More projects</h2>
                 <Link to="/work" className="wr-arrow-btn figma-hover">Filter projects &rarr;<FigmaSelect /></Link>
               </div>
-              <div className="wr-archive-grid" id="homepage-project-archive">
-                {homepageSelectedProjects.map(project => (
+              <div className="wr-archive-grid project-card-grid" id="homepage-project-archive" ref={packCardGrid}>
+                {homepageSelectedProjects.map((project, index) => (
                   <ProjectCard key={project.slug} slug={project.slug} name={project.name} image={project.image}
-                    tag={project.tag} year={project.year} desc={project.desc} nda={project.nda} coverShape="wide" showCaption />
+                    tag={project.tag} year={project.year} desc={project.desc} nda={project.nda} coverShape={index % 3 === 1 ? 'square' : 'portrait'} editorial />
                 ))}
               </div>
             </div>
