@@ -203,6 +203,13 @@ export default function HomePage() {
         <div className="wr-hero-aurora-bottom" aria-hidden="true" />
         <div className="wr-hero-web-scrim" aria-hidden="true" />
 
+        <div className="wr-hero-copy">
+          <h1 className="wr-hero-title wr-hero-stage wr-hero-stage--title">{portfolio.heading}</h1>
+          <p className="wr-hero-dek wr-hero-stage wr-hero-stage--dek">
+            {portfolio.description}
+          </p>
+        </div>
+
         {isExperimental ? <figure className="plays-hero-object">
           <img src="/Assets/Projects/Jugalbandi/Photos/538A3938_nsquare_23.webp" alt="Jugalbandi, a sculptural instrument for a human–machine duet" fetchPriority="high" />
           <figcaption><Link to="/jugalbandi">Jugalbandi</Link></figcaption>
@@ -229,23 +236,16 @@ export default function HomePage() {
         {(!heroSceneReady && !heroSceneUnavailable || heroSceneTimedOut) && <div className="hero-scene-status" role="status">
           {heroSceneTimedOut ? <>The interactive scene could not load. <button type="button" onClick={() => window.location.reload()}>Reload scene</button></> : 'Preparing the interactive scene…'}
         </div>}
-        <div className="wr-hero-copy">
-          <h1 className="wr-hero-title wr-hero-stage wr-hero-stage--title">{portfolio.heading}</h1>
-          <p className="wr-hero-dek wr-hero-stage wr-hero-stage--dek">
-            {portfolio.description}
-          </p>
-        </div>
-
       </section>
 
       <Nav />
 
       <main id="main-content">
         <div className="abt-paper">
-          <section className="wr-featured-v2" id="works" style={{ position: 'relative' }}>
+          <section className={`wr-featured-v2${isExperimental ? "" : " wr-featured-v2--product"}`} id="works" style={{ position: 'relative' }}>
             <FigmaFrameLabel name="Featured Work" />
             <div className="wr-featured-v2-inner">
-              {!isExperimental && <div className="reveal"><ClientsMarquee /></div>}
+              {!isExperimental && <div className="wr-featured-clients reveal"><ClientsMarquee /></div>}
 
               <div className="wr-section-head">
                 <h2 className="wr-section-highlight">Selected work</h2>

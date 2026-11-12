@@ -2318,8 +2318,51 @@ body.page-ready .wr-hero-stage {
 
 @media (max-width: 768px) {
   .wr-portfolio-hero:not(.wr-hero--plays, .wr-hero--web-open) {
-    height: clamp(39rem, 85svh, 44rem);
+    --wr-mobile-hero-scene-height: clamp(11rem, 54vw, 16rem);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: .75rem;
+    height: auto;
     min-height: 0;
+    padding: 5rem clamp(1.25rem, 4vw, 3rem) 1rem;
+  }
+
+  .wr-portfolio-hero:not(.wr-hero--plays, .wr-hero--web-open) .wr-hero-copy {
+    position: relative;
+    inset: auto;
+    grid-area: 1 / 1;
+    width: auto;
+  }
+
+  .wr-portfolio-hero:not(.wr-hero--plays, .wr-hero--web-open) .wr-hero-title {
+    max-width: 18ch;
+    font-size: clamp(2.25rem, 9.8vw, 3.7rem);
+  }
+
+  .wr-portfolio-hero:not(.wr-hero--plays, .wr-hero--web-open) :is(.wr-hero-still, .wr-hero-3d) {
+    position: relative;
+    inset: auto;
+    grid-area: 2 / 1;
+    height: var(--wr-mobile-hero-scene-height);
+  }
+
+  .wr-featured-v2--product .wr-featured-v2-inner {
+    display: flex;
+    flex-direction: column;
+    padding-top: 1.25rem;
+  }
+
+  .wr-featured-v2--product .wr-section-head {
+    margin-bottom: 1.25rem;
+  }
+
+  .wr-featured-v2--product .wr-featured-clients {
+    order: 1;
+    margin-top: 2rem;
+  }
+
+  .wr-featured-v2--product .wr-featured-clients .wr-clients {
+    margin-bottom: 0;
   }
 
   .wr-portfolio-hero.wr-hero--plays {
