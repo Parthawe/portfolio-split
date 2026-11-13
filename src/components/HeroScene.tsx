@@ -14,6 +14,7 @@ import { isHeroScenePerformanceDegraded } from '../utils/performance';
 import { usePerformanceDegraded } from '../hooks/usePerformanceDegraded';
 import { layoutHeroWeb, type WebNode, type WebEdge } from '../data/heroWeb';
 import SuperwhiteHighlight from './SuperwhiteHighlight';
+import { isExperimental } from '../config/portfolio';
 
 /* ─── Node config ─── */
 
@@ -40,6 +41,26 @@ const SAFE_DESKTOP_NODES: NodeConfig[] = [
   { position: [-1.15, -0.1, 0.3], label: 'Brand & Visual', labelOffset: [-0.36, -0.88, 0.12], route: '/brand-visual' },
   { position: [-0.08, -1.66, 0.3], label: 'AI & Wearables', labelOffset: [-0.08, -0.6, 0.12], route: '/ai' },
   { position: [1.55, -1.28, 0.2], label: 'Design Engineering', labelOffset: [0.28, -0.98, 0.12], route: '/design-engineering' },
+];
+
+type ObjectSelection = { index: number };
+
+const PRODUCT_RESPONSES = [
+  'TransFi connects a customer’s payment widget to the merchant dashboard.',
+  'Raahi carries the same route information across three interfaces.',
+  'Mentra connects glasses setup, the companion app, and MiniApps.',
+  'Mentra connects the product experience to its packaging and launch site.',
+  'Mentra pairs the glasses with the phone people already use.',
+  'Clawed connects assistant setup with proposed approval flows.',
+];
+
+const PLAY_RESPONSES = [
+  'Truss · A pulse through the frame',
+  'Knot · A twist through the loop',
+  'Screens · A ripple across the layers',
+  'Plates · A turn around the axis',
+  'Lens · A flicker through the rings',
+  'Crystal · A pulse through the cage',
 ];
 
 /* ─── Constellation threads, invisible curves that glow as energy passes ─── */
@@ -78,6 +99,8 @@ const threadFragmentShader = /* glsl */ `
   uniform float uTintLift;
   uniform float uWhiteMixMax;
   uniform float uFade;
+  uniform float uSignal;
+  uniform vec3 uSignalColor;
   varying float vProgress;
   void main() {
     float d = abs(vProgress - uGlowCenter);
@@ -92,7 +115,8 @@ const threadFragmentShader = /* glsl */ `
     vec3 tintBase = mix(uColor, white, uTintLift);
     vec3 tint = mix(tintBase, white, combined * uWhiteMixMax);
     // Base visibility higher in light mode so the resting thread remains readable
-    float alpha = (combined * uGlowAlpha + uBaseAlpha) * uFade;
+    tint = mix(tint, uSignalColor, uSignal);
+    float alpha = (combined * uGlowAlpha + uBaseAlpha + uSignal * 0.24) * uFade;
     if (alpha < 0.001) discard;
     gl_FragColor = vec4(tint, alpha);
   }
@@ -105,6 +129,9 @@ interface ThreadInfo {
   phase: number;
   glowCenter: number;
   fade: number;
+  signal: number;
+  from: number;
+  to: number;
 }
 
 function collapsedThreadAppearance(dark: boolean) { return dark
@@ -136,6 +163,8 @@ function createThreadMaterial(appearance: ReturnType<typeof collapsedThreadAppea
             uTintLift: { value: appearance.tintLift },
             uWhiteMixMax: { value: appearance.whiteMixMax },
             uFade: { value: 1 },
+            uSignal: { value: 0 },
+            uSignalColor: { value: new THREE.Color(isExperimental ? '#efad71' : '#72b9ff') },
           },
           transparent: true,
           depthWrite: false,
@@ -143,7 +172,14 @@ function createThreadMaterial(appearance: ReturnType<typeof collapsedThreadAppea
         });
 }
 
-function ConstellationLines({ positions, dark, fadeRef }: { positions: [number, number, number][]; dark: boolean; fadeRef?: React.RefObject<number> }) {
+function ConstellationLines({ positions, dark, fadeRef, selection }: {
+  positions: [number, number, number][];
+  dark: boolean;
+  fadeRef?: React.RefObject<number>;
+  selection: ObjectSelection | null;
+}) {
+  const lastSelection = useRef<ObjectSelection | null>(null);
+  const signalTime = useRef(0);
   const groupRef = useRef<THREE.Group>(null!);
 
   const shareMaterial = useThree(state => state.gl instanceof THREE.WebGLRenderer);
@@ -221,6 +257,9 @@ function ConstellationLines({ positions, dark, fadeRef }: { positions: [number, 
           material,
           glowCenter: 0,
           fade: 1,
+          signal: 0,
+          from: i,
+          to: j,
           speed: 0.03 + r1 * 0.12 + r3 * 0.06, // wider speed range for organic feel
           phase: r2 * 6.28 + t * 1.2 + pairIdx * 0.7, // more phase spread
         });
@@ -244,8 +283,13 @@ function ConstellationLines({ positions, dark, fadeRef }: { positions: [number, 
   }, [threadData]);
 
   // Animate: move the glow window along each thread
-  useFrame(({ clock }) => {
+  useFrame(({ clock }, delta) => {
     if (!groupRef.current) return;
+    if (selection !== lastSelection.current) {
+      lastSelection.current = selection;
+      signalTime.current = 0;
+    }
+    signalTime.current += Math.min(delta, 0.05);
     const time = clock.getElapsedTime();
     // Collapsed threads fade out as the expanded web takes over.
     const fade = fadeRef ? fadeRef.current ?? 1 : 1;
@@ -257,8 +301,21 @@ function ConstellationLines({ positions, dark, fadeRef }: { positions: [number, 
       const center = raw < 1 ? raw : 2 - raw;
       thread.glowCenter = center;
       thread.fade = fade;
+      const fromSelected = thread.from === selection?.index;
+      const toSelected = thread.to === selection?.index;
+      thread.signal = 0;
+      if (fromSelected || toSelected) {
+        if (isExperimental) {
+          const progress = signalTime.current * 1.55;
+          if (progress < 1) thread.glowCenter = fromSelected ? progress : 1 - progress;
+          thread.signal = Math.max(0, 1 - progress) * 0.75;
+        } else {
+          thread.signal = 0.55;
+        }
+      }
       if (!shareMaterial) {
-        thread.material.uniforms.uGlowCenter.value = center;
+        thread.material.uniforms.uGlowCenter.value = thread.glowCenter;
+        thread.material.uniforms.uSignal.value = thread.signal;
         thread.material.uniforms.uFade.value = fade;
       }
     }
@@ -275,6 +332,7 @@ function ConstellationLines({ positions, dark, fadeRef }: { positions: [number, 
           // retain their original transparent depth sorting and glow values.
           td.material.uniforms.uGlowCenter.value = td.glowCenter;
           td.material.uniforms.uFade.value = td.fade;
+          td.material.uniforms.uSignal.value = td.signal;
           td.material.uniformsNeedUpdate = true;
         } : undefined} raycast={noRaycast} />
       ))}
@@ -298,16 +356,27 @@ function ClickableObject({
   position,
   active,
   onActiveChange,
+  onSelect,
+  play,
+  objectIndex,
 }: {
   route: string;
   children: (hovered: boolean) => React.ReactNode;
   position: [number, number, number];
   active?: boolean;
   onActiveChange?: (active: boolean) => void;
+  onSelect?: () => void;
+  play?: ObjectSelection | null;
+  objectIndex: number;
 }) {
   const [hovered, setHovered] = useState(false);
   const spinGroupRef = useRef<THREE.Group>(null!);
+  const responseRef = useRef<THREE.Group>(null!);
+  const previousPlay = useRef<ObjectSelection | null>(null);
+  const playTime = useRef(1);
   const isDragging = useRef(false);
+  const stopDrag = useRef<(() => void) | null>(null);
+  useEffect(() => () => stopDrag.current?.(), []);
   const dragMoved = useRef(false);
   const revealOnlyClick = useRef(false);
   const spinVel = useRef({ x: 0, y: 0 });
@@ -315,6 +384,14 @@ function ClickableObject({
   // Apply spin velocity with momentum decay each frame
   useFrame((_, delta) => {
     if (!spinGroupRef.current) return;
+    const response = responseRef.current;
+    if (play && play !== previousPlay.current) playTime.current = 0;
+    previousPlay.current = play ?? null;
+    playTime.current = Math.min(1, playTime.current + Math.min(delta, 0.05) * 1.55);
+    const wave = Math.sin(playTime.current * Math.PI * 2) * (1 - playTime.current);
+    response.rotation.y = objectIndex % 2 === 0 ? 0.12 * wave : 0.65 * wave;
+    response.rotation.z = objectIndex % 2 === 0 ? 0.25 * wave : 0;
+    response.scale.setScalar(1 + 0.28 * wave);
     const sv = spinVel.current;
     if (Math.abs(sv.x) > 0.001 || Math.abs(sv.y) > 0.001) {
       spinGroupRef.current.rotation.x += sv.x * delta;
@@ -327,7 +404,8 @@ function ClickableObject({
 
   const handlePointerDown = useCallback((e: { stopPropagation: () => void; nativeEvent: PointerEvent }) => {
     e.stopPropagation();
-    revealOnlyClick.current = e.nativeEvent.pointerType !== 'mouse' && !active;
+    stopDrag.current?.();
+    revealOnlyClick.current = !onSelect && e.nativeEvent.pointerType !== 'mouse' && !active;
     onActiveChange?.(true);
     isDragging.current = true;
     dragMoved.current = false;
@@ -346,21 +424,25 @@ function ClickableObject({
       isDragging.current = false;
       window.removeEventListener('pointermove', onMove);
       window.removeEventListener('pointerup', onUp);
+      window.removeEventListener('pointercancel', onUp);
+      stopDrag.current = null;
     };
 
+    stopDrag.current = onUp;
     window.addEventListener('pointermove', onMove);
     window.addEventListener('pointerup', onUp);
-  }, [active, onActiveChange]);
+    window.addEventListener('pointercancel', onUp);
+  }, [active, onActiveChange, onSelect]);
 
-  const handleClick = useCallback(() => {
+  const handleClick = useCallback((event: { stopPropagation: () => void }) => {
+    event.stopPropagation();
     const revealOnly = revealOnlyClick.current;
     revealOnlyClick.current = false;
     // Only navigate if it wasn't a drag
-    if (!dragMoved.current && _navigate) {
-      if (revealOnly) return;
-      _navigate(route);
-    }
-  }, [route]);
+    if (dragMoved.current || revealOnly) return;
+    if (onSelect) onSelect();
+    else _navigate?.(route);
+  }, [route, onSelect]);
 
   return (
     <group
@@ -385,7 +467,7 @@ function ClickableObject({
           <sphereGeometry args={[0.55, 8, 8]} />
           <meshBasicMaterial />
         </mesh>
-        {children(hovered)}
+        <group ref={responseRef}>{children(hovered)}</group>
       </group>
     </group>
   );
@@ -2031,7 +2113,14 @@ function InfiniteGrid({ introRef, panRef, dark }: {
 
 /* ─── Scene Content ─── */
 
-function SceneContent({ reduced, isMobile, dark, expanded }: { reduced: boolean; isMobile: boolean; dark: boolean; expanded: boolean }) {
+function SceneContent({ reduced, isMobile, dark, expanded, selection, onSelect }: {
+  reduced: boolean;
+  isMobile: boolean;
+  dark: boolean;
+  expanded: boolean;
+  selection: ObjectSelection | null;
+  onSelect: (index: number) => void;
+}) {
   const groupRef = useRef<THREE.Group>(null!);
   const mouse = useRef({ x: 0, y: 0 });
   const target = useRef({ x: 0, y: 0 });
@@ -2270,43 +2359,49 @@ function SceneContent({ reduced, isMobile, dark, expanded }: { reduced: boolean;
       <InfiniteGrid introRef={introRef} panRef={pan} dark={dark} />
 
       <group ref={groupRef} scale={sceneScale} position={[sceneOffsetX, 0, 0]}>
-        <ConstellationLines positions={positions} dark={dark} fadeRef={collapsedFadeRef} />
+        <ConstellationLines positions={positions} dark={dark} fadeRef={collapsedFadeRef} selection={expanded ? null : selection} />
         {expanded ? (
           <ExpandedWeb positions={positions} introRef={introRef} dark={dark} labelsAlwaysOn={isMobile} />
         ) : null}
 
         {/* 0: Installations, Truss (top) */}
-        <ClickableObject route={nodes[0].route} position={nodes[0].position} active={activeIndex === 0} onActiveChange={(active) => setNodeActive(0, active)}>
+        <ClickableObject objectIndex={0} onSelect={expanded ? undefined : () => onSelect(0)}
+          play={isExperimental && !expanded && selection?.index === 0 ? selection : null} route={nodes[0].route} position={nodes[0].position} active={activeIndex === 0} onActiveChange={(active) => setNodeActive(0, active)}>
           {(hovered) => <TrussStructure dark={dark} hovered={hovered} />}
         </ClickableObject>
 
         {/* 1: Design for Good, Chrome knot (right) */}
-        <ClickableObject route={nodes[1].route} position={nodes[1].position} active={activeIndex === 1} onActiveChange={(active) => setNodeActive(1, active)}>
+        <ClickableObject objectIndex={1} onSelect={expanded ? undefined : () => onSelect(1)}
+          play={isExperimental && !expanded && selection?.index === 1 ? selection : null} route={nodes[1].route} position={nodes[1].position} active={activeIndex === 1} onActiveChange={(active) => setNodeActive(1, active)}>
           {(hovered) => <PetalRose dark={dark} hovered={hovered} />}
         </ClickableObject>
 
         {/* 2: Product Design, Morphing screens (center) */}
-        <ClickableObject route={nodes[2].route} position={nodes[2].position} active={activeIndex === 2} onActiveChange={(active) => setNodeActive(2, active)}>
+        <ClickableObject objectIndex={2} onSelect={expanded ? undefined : () => onSelect(2)}
+          play={isExperimental && !expanded && selection?.index === 2 ? selection : null} route={nodes[2].route} position={nodes[2].position} active={activeIndex === 2} onActiveChange={(active) => setNodeActive(2, active)}>
           {(hovered) => <MorphingScreens dark={dark} hovered={hovered} />}
         </ClickableObject>
 
         {/* 3: Brand & Visual, Bauhaus (left) */}
-        <ClickableObject route={nodes[3].route} position={nodes[3].position} active={activeIndex === 3} onActiveChange={(active) => setNodeActive(3, active)}>
+        <ClickableObject objectIndex={3} onSelect={expanded ? undefined : () => onSelect(3)}
+          play={isExperimental && !expanded && selection?.index === 3 ? selection : null} route={nodes[3].route} position={nodes[3].position} active={activeIndex === 3} onActiveChange={(active) => setNodeActive(3, active)}>
           {(hovered) => <StackedPlates dark={dark} hovered={hovered} />}
         </ClickableObject>
 
         {/* 4: AI & Wearables, Lens (bottom left) */}
-        <ClickableObject route={nodes[4].route} position={nodes[4].position} active={activeIndex === 4} onActiveChange={(active) => setNodeActive(4, active)}>
+        <ClickableObject objectIndex={4} onSelect={expanded ? undefined : () => onSelect(4)}
+          play={isExperimental && !expanded && selection?.index === 4 ? selection : null} route={nodes[4].route} position={nodes[4].position} active={activeIndex === 4} onActiveChange={(active) => setNodeActive(4, active)}>
           {(hovered) => <LensAssembly dark={dark} hovered={hovered} />}
         </ClickableObject>
 
         {/* 5: Creative Technology, Geodesic (bottom right) */}
-        <ClickableObject route={nodes[5].route} position={nodes[5].position} active={activeIndex === 5} onActiveChange={(active) => setNodeActive(5, active)}>
+        <ClickableObject objectIndex={5} onSelect={expanded ? undefined : () => onSelect(5)}
+          play={isExperimental && !expanded && selection?.index === 5 ? selection : null} route={nodes[5].route} position={nodes[5].position} active={activeIndex === 5} onActiveChange={(active) => setNodeActive(5, active)}>
           {(hovered) => <GlassCrystal dark={dark} hovered={hovered} />}
         </ClickableObject>
 
         {/* Interactive labels stay hidden until a 3D object is engaged. */}
-        {nodes.map((n, i) => (
+        {expanded && nodes.map((n, i) => (
           <InteractiveLabel
             key={i}
             position={n.position}
@@ -2337,7 +2432,9 @@ function HeroEnvironment({ dark }: { dark: boolean }) {
   return <Environment map={texture} environmentIntensity={dark ? 1.0 : 1.2} />;
 }
 
-function SceneActivity({ expanded, dark, onReady }: { expanded: boolean; dark: boolean; onReady?: () => void }) {
+function SceneActivity({ expanded, dark, selection, onReady }: {
+  expanded: boolean; dark: boolean; selection: ObjectSelection | null; onReady?: () => void;
+}) {
   const { gl, scene, camera, advance, size } = useThree();
   const activity = useRef<ReturnType<typeof createSceneActivity> | null>(null);
   const elapsed = useRef(0);
@@ -2363,7 +2460,7 @@ function SceneActivity({ expanded, dark, onReady }: { expanded: boolean; dark: b
     else cancelPreparation = prepareSceneShaders(gl, scene, camera, start);
     return () => { cancelPreparation(); activity.current?.dispose(); activity.current = null; };
   }, [gl, scene, camera, advance, expanded]);
-  useEffect(() => { activity.current?.wake(); }, [expanded, dark, size.width, size.height]);
+  useEffect(() => { activity.current?.wake(); }, [expanded, dark, selection, size.width, size.height]);
   return null;
 }
 
@@ -2385,6 +2482,9 @@ export default function HeroScene({
     typeof window !== 'undefined' ? window.matchMedia('(max-width: 768px)').matches : false,
   );
   const [expanded, setExpanded] = useState(false);
+  const [selection, setSelection] = useState<ObjectSelection | null>(null);
+  const selectObject = useCallback((index: number) => setSelection({ index }), []);
+  const responses = isExperimental ? PLAY_RESPONSES : PRODUCT_RESPONSES;
 
   // Sync navigate callback to module-level ref for R3F access
   useEffect(() => {
@@ -2438,8 +2538,8 @@ export default function HeroScene({
           camera={{ fov: 40, near: 0.1, far: 100, position: [0, 0.3, 7.5] }}
           style={{ background: 'transparent' }}
         >
-          <SceneActivity expanded={expanded} dark={dark} onReady={onReady} />
-          <SceneContent reduced={reduced} isMobile={isMobile} dark={dark} expanded={expanded} />
+          <SceneActivity expanded={expanded} dark={dark} selection={selection} onReady={onReady} />
+          <SceneContent reduced={reduced} isMobile={isMobile} dark={dark} expanded={expanded} selection={selection} onSelect={selectObject} />
         </Canvas>
       </div>
 
@@ -2447,20 +2547,28 @@ export default function HeroScene({
           these are real controls, so they carry labels. Keep controls outside
           the canvas wrapper so renderer visibility changes never hide them. */}
       {!expanded ? (
-        <button
-          type="button"
-          className="hero-web-trigger figma-hover"
-          onClick={() => setExpanded(true)}
-          aria-label="Explore the skills and projects web"
-        >
-          <span className="hero-web-trigger-dot" aria-hidden="true">
-            <SuperwhiteHighlight className="hero-web-trigger-superwhite" />
-          </span>
-          See how it connects
-          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-            <path d="M2 12L12 2M12 2H5M12 2V9" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-          </svg>
-        </button>
+        <div className="hero-object-controls">
+          <p className="hero-object-response" role="status">
+            {selection ? responses[selection.index] : isExperimental ? 'Tap an object to see how it moves.' : 'Select an object to trace its connections.'}
+          </p>
+          <div className="hero-object-actions">
+            <button type="button" className="hero-web-trigger hero-object-next"
+              onClick={() => setSelection(current => ({ index: ((current?.index ?? 1) + 1) % NODES.length }))}>
+              {isExperimental ? 'Play an object' : 'Trace a connection'}
+            </button>
+            <button
+              type="button"
+              className="hero-web-trigger"
+              onClick={() => { setSelection(null); setExpanded(true); }}
+              aria-label="Explore the skills and projects web"
+            >
+              <span className="hero-web-trigger-dot" aria-hidden="true">
+                <SuperwhiteHighlight className="hero-web-trigger-superwhite" />
+              </span>
+              Open the web
+            </button>
+          </div>
+        </div>
       ) : backButton}
     </>
   );

@@ -189,7 +189,9 @@ try {
         }
       }
       await page.goto(`${url}/${slug}/`)
-      await page.locator('#nav').getByRole('link', { name: portfolios[other].name, exact: true }).click()
+      const portfolioSwitch = page.getByRole('group', { name: 'Portfolio', exact: true })
+      await expect(portfolioSwitch.getByRole('link', { name: portfolios[variant].name, exact: true })).toHaveAttribute('aria-current', 'true')
+      await portfolioSwitch.getByRole('link', { name: portfolios[other].name, exact: true }).click()
       await page.waitForURL(`${base}/${other}/`)
       await page.getByRole('heading', { level: 1, name: cases[other].heading, exact: true }).waitFor()
       assert.deepEqual(errors, [], `${variant} at ${viewport.width}px`)
@@ -207,6 +209,9 @@ try {
   await touch.locator('.wr-hero.is-scene-ready canvas').waitFor({ timeout: 18000 })
   const lighting = await touch.evaluate(() => performance.getEntriesByType('resource').filter(entry => entry.name.includes('potsdamer_platz')))
   assert.deepEqual(lighting.map(entry => new URL(entry.name).pathname.split('/').at(-1)), ['potsdamer_platz_512.rgbe.gz'])
+  const trace = touch.getByRole('button', { name: 'Trace a connection', exact: true })
+  await trace.tap()
+  await expect(touch.locator('.hero-object-response')).toContainText('Mentra connects')
   await touch.getByRole('button', { name: 'Explore the skills and projects web' }).tap()
   await touch.locator('.wr-hero--web-open').waitFor()
   await touch.getByRole('button', { name: 'Close the web and return to the hero' }).tap()

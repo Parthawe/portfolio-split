@@ -1,5 +1,10 @@
 import portfolios from './portfolios.json'
 
+export const portfolioOptions = [
+  { name: portfolios.product.name, shortName: 'Product' },
+  { name: portfolios.experimental.name, shortName: 'Plays' },
+]
+
 export const isExperimental = import.meta.env.VITE_PORTFOLIO === 'experimental'
 export const portfolio = isExperimental ? portfolios.experimental : portfolios.product
 export const sibling = isExperimental ? portfolios.product : portfolios.experimental

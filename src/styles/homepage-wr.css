@@ -2267,3 +2267,56 @@ body.page-ready .wr-hero-stage {
     text-align: left;
   }
 }
+
+.hero-object-controls {
+  position: absolute;
+  z-index: 6;
+  inset-inline: 0;
+  bottom: clamp(.75rem, 2vw, 1.5rem);
+  display: grid;
+  justify-items: center;
+  gap: .35rem;
+  pointer-events: none;
+}
+
+.hero-object-response {
+  display: grid;
+  place-items: end center;
+  min-height: 2.65em;
+  width: min(100%, 36ch);
+  margin: 0;
+  color: var(--ink);
+  font: 500 var(--text-xs)/1.35 var(--sans);
+  text-align: center;
+  text-wrap: balance;
+}
+
+.hero-object-actions {
+  display: flex;
+  justify-content: center;
+  gap: .4rem;
+}
+
+.hero-object-actions .hero-web-trigger {
+  position: static;
+  transform: none;
+  min-height: 44px;
+  padding: .45rem .65rem;
+  opacity: 1;
+  animation: none;
+  pointer-events: auto;
+  white-space: nowrap;
+}
+
+.hero-object-actions .hero-object-next {
+  color: var(--ink);
+  background: var(--surface);
+}
+
+@media (max-width: 900px) {
+  .wr-portfolio-hero.is-scene-ready:not(.wr-hero--web-open, .wr-hero--no-scene) {
+    padding-bottom: 3.75rem;
+  }
+
+  .hero-object-controls { bottom: -3.1rem; }
+}
