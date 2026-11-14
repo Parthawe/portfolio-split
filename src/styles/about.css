@@ -3819,3 +3819,52 @@
     grid-template-columns: minmax(0, 1fr);
   }
 }
+
+.abt-product-decisions .abt-featured-project {
+  grid-template-columns: minmax(0, 1fr) minmax(0, .85fr);
+  padding-block: clamp(1rem, 3vw, 2rem);
+}
+
+.abt-product-decisions .abt-decision-project {
+  margin: 0 0 .45rem;
+  font: 500 var(--text-xs)/1.35 var(--mono);
+}
+
+.abt-product-decisions .glass-action { margin-top: .85rem; }
+
+.abt-decision-screens {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-self: stretch;
+  gap: .75rem;
+  padding: .75rem;
+  border-radius: var(--radius-sm);
+  background: var(--ink-04);
+}
+
+.abt-decision-screens figure {
+  display: grid;
+  justify-items: center;
+  gap: .45rem;
+  min-width: 0;
+  margin: 0;
+}
+
+.abt-decision-screens figcaption {
+  color: var(--ink-70);
+  font: 500 var(--text-xs)/1.35 var(--mono);
+}
+
+.abt-decision-screens img {
+  width: 100%;
+  height: clamp(8rem, 17vw, 15rem);
+  border-radius: 0;
+  aspect-ratio: auto;
+  object-fit: contain;
+}
+
+@media (max-width: 640px) {
+  .abt-product-decisions .abt-featured-project {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

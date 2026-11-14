@@ -349,8 +349,26 @@ function CodexProfile() {
 /* ── Component ── */
 
 const productDecisions = [
-  { title: 'Mentra', story: heroObjectStories[2], role: 'I moved MiniApps into the main area and gave running apps a dedicated control.' },
-  { title: 'TransFi', story: heroObjectStories[0], role: 'I separated pay and receive and put the fee breakdown above the buy button.' },
+  {
+    title: 'Mentra',
+    decision: 'Put the apps where people reach first',
+    story: heroObjectStories[2],
+    role: 'The old home screen gave most of its space to glasses controls. I moved MiniApps into the main area and kept glasses status at the top. I also gave running apps their own control, so people could see what was still on.',
+    screens: [
+      { label: 'Before', src: '/Assets/images/mentra/deck/home-before.png', width: 313, height: 712, alt: 'Mentra home screen with a large glasses control panel' },
+      { label: 'After', src: '/Assets/images/mentra/deck/home-after.png', width: 342, height: 725, alt: 'Mentra home screen with a MiniApp grid, glasses status, and a running apps control' },
+    ],
+  },
+  {
+    title: 'TransFi',
+    decision: 'Show the cost before someone buys',
+    story: heroObjectStories[0],
+    role: 'For a buy quote, I wanted people to be able to see what they’d pay, what they’d get, and what the fees were at a glance. I split pay and receive into their own fields and put the fee breakdown right above the buy button.',
+    screens: [
+      { label: 'Before', src: '/Assets/Projects/Transfi/public/buy-quote-before.webp', width: 485, height: 668, alt: 'Original TransFi buy screen with the asset, payment method, and compact price summary' },
+      { label: 'After', src: '/Assets/Projects/Transfi/public/buy-quote-after.webp', width: 401, height: 699, alt: 'Redesigned TransFi buy quote with separate pay and receive fields and itemized fees' },
+    ],
+  },
 ]
 
 const selectedExperiments = [
@@ -461,8 +479,8 @@ export default function AboutPage() {
             {/* ── Spotlight: after hero ── */}
             <section className="wr-reveal-section">
               <TextReveal
-                front={isExperimental ? "I make instruments, installations, and experimental interfaces." : "I design product systems for AI wearables, fintech, and civic tools."}
-                behind={isExperimental ? "I use sound, light, and physical feedback to make systems people can explore for themselves." : "I build and test interfaces where people need to understand what the system is doing."}
+                front={isExperimental ? "I make instruments, installations, and experimental interfaces." : "I’m drawn to the moment when someone has to decide what to do next."}
+                behind={isExperimental ? "I use sound, light, and physical feedback to make systems people can explore for themselves." : "With smart glasses, that might mean checking what’s running. With payments, it’s knowing what you’ll pay before you buy."}
               />
             </section>
 
@@ -490,19 +508,28 @@ export default function AboutPage() {
               </>
             ) : (
               <>
-                <ExperienceTable />
-                <section className="abt-featured-work" aria-labelledby="abt-featured-title">
-                  <h2 id="abt-featured-title">Two design decisions</h2>
-                  {productDecisions.map(({ title, story, role }) => (
+                <section className="abt-featured-work abt-product-decisions" aria-labelledby="abt-featured-title">
+                  <h2 id="abt-featured-title">How I make design decisions</h2>
+                  {productDecisions.map(({ title, decision, story, role, screens }) => (
                     <article className="abt-featured-project" key={title}>
                       <div>
-                        <h3>{title}</h3>
+                        <p className="abt-decision-project">{title}</p>
+                        <h3>{decision}</h3>
                         <p>{role}</p>
+                        <Link className="glass-action" to={story.to}>{story.label}</Link>
                       </div>
-                      <Link className="glass-action" to={story.to}>{story.label}</Link>
+                      <div className="abt-decision-screens" role="group" aria-label={`${title} before and after`}>
+                        {screens.map(({ label, src, width, height, alt }) => (
+                          <figure key={label}>
+                            <figcaption>{label}</figcaption>
+                            <img src={src} width={width} height={height} alt={alt} loading="lazy" decoding="async" />
+                          </figure>
+                        ))}
+                      </div>
                     </article>
                   ))}
                 </section>
+                <ExperienceTable />
                 <Recognition />
                 <Recognition exhibitions />
               </>
