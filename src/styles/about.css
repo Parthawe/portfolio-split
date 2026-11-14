@@ -3738,11 +3738,9 @@
 
 /* Recognition reads as a record, with no fabricated award artwork. */
 .abt-recognition-ledger { display: grid; gap: 2.5rem; }
-.abt-recognition-group { display: grid; grid-template-columns: minmax(8rem, .3fr) minmax(0, 1fr); gap: 2rem; }
-.abt-recognition-group > h3 { font: 400 1rem/1.4 var(--sans); margin: 1.25rem 0; }
 .abt-recognition-group ul { list-style: none; margin: 0; padding: 0; }
 .abt-recognition-row { display: grid; grid-template-columns: minmax(0, 1fr) minmax(8rem, .5fr); gap: 2rem; align-items: baseline; border-top: 1px solid var(--ink-10); padding: 1.25rem 0; }
-.abt-recognition-row h4 { margin: 0; font: 400 clamp(1.2rem, 2vw, 1.65rem)/1.25 var(--serif); }
+.abt-recognition-row h3 { margin: 0; font: 400 clamp(1.2rem, 2vw, 1.65rem)/1.25 var(--serif); }
 .abt-recognition-row p { margin: 0; font-size: .82rem; color: var(--ink-60); }
 .page-about .abt-vibe { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); padding: 2rem 0; background: none; border: 0; border-radius: 0; gap: 2rem; }
 .page-about .abt-vibe-head { grid-column: 1; align-self: center; text-align: left; }
@@ -3759,7 +3757,6 @@
 .abt-table-role a { text-underline-offset: 5px; }
 .abt-table-row:focus-within { background: var(--ink-04); }
 @media(max-width: 700px) {
-  .abt-recognition-group { grid-template-columns: minmax(0, 1fr); gap: .25rem; }
   .abt-recognition-row { gap: .5rem; grid-template-columns: minmax(0, 1fr); }
   .page-about .abt-vibe { grid-template-columns: minmax(0, 1fr); gap: 1rem; }
   .page-about .abt-vibe-stage { grid-column: 1; grid-row: auto; }
@@ -3767,6 +3764,58 @@
 }
 .abt-experience-heading { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap; }
 .abt-experience-heading h2 { margin: 0; font: 400 clamp(1.75rem, 3vw, 2.5rem)/1.2 var(--serif); }
-#experience, #recognition { scroll-margin-top: calc(var(--nav-h) + 2rem); }
+#experience, #recognition, #exhibitions, #teaching { scroll-margin-top: calc(var(--nav-h) + 2rem); }
 .page-about .abt-vibe { box-shadow: none; }
 .page-about .abt-vibe::before { display: none; }
+
+.abt-featured-work {
+  margin-block: clamp(2.5rem, 6vw, 5rem);
+}
+
+.abt-featured-work h2 {
+  margin: 0 0 1.5rem;
+  font: 400 clamp(1.75rem, 3vw, 2.5rem)/1.2 var(--serif);
+}
+
+.abt-featured-project {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  justify-items: start;
+  gap: .85rem clamp(1rem, 4vw, 3rem);
+  padding-block: 1.25rem;
+  border-top: 1px solid var(--ink-10);
+}
+
+.abt-experiment-list .abt-featured-project {
+  grid-template-columns: minmax(0, .9fr) minmax(0, 1fr);
+}
+
+.abt-featured-project img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius-sm);
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.abt-featured-project h3 {
+  margin: 0;
+  font: 400 clamp(1.35rem, 2.5vw, 2rem)/1.2 var(--serif);
+}
+
+.abt-featured-project p {
+  max-width: 46ch;
+  margin: .6rem 0 0;
+  color: var(--ink-70);
+}
+
+.abt-experiment-list .glass-action { margin-top: .75rem; }
+
+@media (max-width: 640px) {
+  .abt-featured-project,
+  .abt-experiment-list .abt-featured-project {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

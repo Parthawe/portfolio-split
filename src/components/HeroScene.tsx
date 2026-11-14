@@ -15,6 +15,8 @@ import { usePerformanceDegraded } from '../hooks/usePerformanceDegraded';
 import { layoutHeroWeb, type WebNode, type WebEdge } from '../data/heroWeb';
 import SuperwhiteHighlight from './SuperwhiteHighlight';
 import { isExperimental } from '../config/portfolio';
+import { Link } from 'react-router-dom';
+import { heroObjectStories } from '../data/portfolioEntrances';
 
 /* ─── Node config ─── */
 
@@ -44,24 +46,6 @@ const SAFE_DESKTOP_NODES: NodeConfig[] = [
 ];
 
 type ObjectSelection = { index: number };
-
-const PRODUCT_RESPONSES = [
-  'TransFi connects a customer’s payment widget to the merchant dashboard.',
-  'Raahi carries the same route information across three interfaces.',
-  'Mentra connects glasses setup, the companion app, and MiniApps.',
-  'Mentra connects the product experience to its packaging and launch site.',
-  'Mentra pairs the glasses with the phone people already use.',
-  'Clawed connects assistant setup with proposed approval flows.',
-];
-
-const PLAY_RESPONSES = [
-  'Truss · A pulse through the frame',
-  'Knot · A twist through the loop',
-  'Screens · A ripple across the layers',
-  'Plates · A turn around the axis',
-  'Lens · A flicker through the rings',
-  'Crystal · A pulse through the cage',
-];
 
 /* ─── Constellation threads, invisible curves that glow as energy passes ─── */
 
@@ -2484,7 +2468,7 @@ export default function HeroScene({
   const [expanded, setExpanded] = useState(false);
   const [selection, setSelection] = useState<ObjectSelection | null>(null);
   const selectObject = useCallback((index: number) => setSelection({ index }), []);
-  const responses = isExperimental ? PLAY_RESPONSES : PRODUCT_RESPONSES;
+  const story = selection ? heroObjectStories[selection.index] : null;
 
   // Sync navigate callback to module-level ref for R3F access
   useEffect(() => {
@@ -2548,9 +2532,14 @@ export default function HeroScene({
           the canvas wrapper so renderer visibility changes never hide them. */}
       {!expanded ? (
         <div className="hero-object-controls">
-          <p className="hero-object-response" role="status">
-            {selection ? responses[selection.index] : isExperimental ? 'Tap an object to see how it moves.' : 'Select an object to trace its connections.'}
-          </p>
+          <div className="hero-object-details">
+            <p className="hero-object-response" role="status">
+              {story?.description ?? (isExperimental ? 'Tap an object to see how it moves.' : 'Select an object to trace its connections.')}
+            </p>
+            {story && <Link className="hero-object-proof-link" to={story.to}>
+              {story.label} <span aria-hidden="true">↗</span>
+            </Link>}
+          </div>
           <div className="hero-object-actions">
             <button type="button" className="hero-web-trigger hero-object-next"
               onClick={() => setSelection(current => ({ index: ((current?.index ?? 1) + 1) % NODES.length }))}>

@@ -11,7 +11,7 @@
   position: relative;
 }
 
-.project-main :is(.cs-section, .cs-media-spotlight, .proj-fastread)[id] {
+.project-main :is(.cs-section, .cs-media-spotlight, .proj-fastread, .proj-visual-stage, #transfi-quote-title)[id] {
   scroll-margin-top: calc(var(--nav-h) + 1.5rem);
 }
 .figma-grid-on .project-main {

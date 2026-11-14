@@ -2279,6 +2279,31 @@ body.page-ready .wr-hero-stage {
   pointer-events: none;
 }
 
+.wr-hero-proof-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  min-height: 44px;
+  margin-top: .75rem;
+}
+
+.hero-object-details {
+  display: grid;
+  grid-template-rows: minmax(2.65em, auto) minmax(1.6rem, auto);
+  justify-items: center;
+  gap: .2rem;
+  width: min(100%, 38ch);
+  font: 500 var(--text-xs)/1.35 var(--sans);
+}
+
+.hero-object-proof-link {
+  align-self: start;
+  color: var(--ink);
+  pointer-events: auto;
+  text-decoration: underline;
+  text-underline-offset: .23em;
+}
+
 .hero-object-response {
   display: grid;
   place-items: end center;
@@ -2315,8 +2340,8 @@ body.page-ready .wr-hero-stage {
 
 @media (max-width: 900px) {
   .wr-portfolio-hero.is-scene-ready:not(.wr-hero--web-open, .wr-hero--no-scene) {
-    padding-bottom: 3.75rem;
+    padding-bottom: 5.35rem;
   }
 
-  .hero-object-controls { bottom: -3.1rem; }
+  .hero-object-controls { bottom: -4.7rem; }
 }

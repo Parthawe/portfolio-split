@@ -48,6 +48,7 @@ import FigmaSelect from '../components/FigmaSelect'
 import TextReveal from '../components/TextReveal'
 import PortalReveal from '../components/PortalReveal'
 import BinaryFlower from '../components/BinaryFlower'
+import { heroObjectStories } from '../data/portfolioEntrances'
 import { DEFAULT_OG_IMAGE, SITE_ORIGIN, SITE_URL } from '../config/site'
 
 /* ── Data ── */
@@ -347,6 +348,77 @@ function CodexProfile() {
 
 /* ── Component ── */
 
+const productDecisions = [
+  { title: 'Mentra', story: heroObjectStories[2], role: 'I moved MiniApps into the main area and gave running apps a dedicated control.' },
+  { title: 'TransFi', story: heroObjectStories[0], role: 'I separated pay and receive and put the fee breakdown above the buy button.' },
+]
+
+const selectedExperiments = [
+  { title: 'Jugalbandi', story: heroObjectStories[1], image: '/Assets/mockups/projects/jugalbandi_16x9.webp', alt: 'A musician performs on Hexa-18', role: 'I designed and fabricated Hexa-18 and the robotic flute, harp, and rainsticks that answer it.' },
+  { title: 'Enigma', story: heroObjectStories[0], image: '/Assets/mockups/projects/enigma_16x9.webp', alt: 'A visitor faces the illuminated Enigma sculpture', role: 'I built a light sculpture that shows how a neural network recognizes a handwritten letter.' },
+  { title: 'Shuffle', story: heroObjectStories[4], image: '/Assets/mockups/projects/shuffle_16x9.webp', alt: 'Shuffle’s plywood board and motorized faders', role: 'I built an eight-fader board and programmed the faders to move in response to one another.' },
+]
+
+function ExperienceTable({ teaching = false }: { teaching?: boolean }) {
+  const teachingStart = rows.findIndex(row => row.section === 'Teaching Experience')
+  const educationStart = rows.findIndex(row => row.section === 'Education')
+  const entries = teaching ? rows.slice(teachingStart + 1, educationStart)
+    : isExperimental ? [...rows.slice(0, teachingStart), ...rows.slice(educationStart)] : rows
+
+  return (
+    <section id={teaching ? 'teaching' : 'experience'} className="abt-table-wrap">
+      <div className="abt-experience-heading">
+        <h2>{teaching ? 'Teaching' : 'Experience'}</h2>
+        {!teaching && <a className="glass-action" href="https://designwhich.works/book">Read the 2022 portfolio</a>}
+      </div>
+      <table className="abt-table">
+        <tbody>
+          {entries.map((row, index) => (
+            <Fragment key={index}>
+              {row.section && (
+                <tr className="abt-table-section">
+                  <td colSpan={3}><span className="abt-table-section-label">{row.section}</span></td>
+                </tr>
+              )}
+              <tr className={`abt-table-row${!row.date ? ' abt-table-row--no-date' : ''}`}>
+                {row.date && <td className="abt-table-date">{row.date}</td>}
+                <td className="abt-table-main" data-co={row.co || ''} colSpan={row.date ? undefined : 2}>
+                  <span className="abt-table-role">
+                    {row.link ? <Link to={projectLink(row.link)}>{row.role}</Link> : row.role}
+                  </span>
+                  {row.co && <span className="abt-table-co-inline">{row.co}</span>}
+                  {row.desc && <span className="abt-table-desc">{row.desc}</span>}
+                </td>
+                <td className="abt-table-co">{row.co}</td>
+              </tr>
+            </Fragment>
+          ))}
+        </tbody>
+      </table>
+    </section>
+  )
+}
+
+function Recognition({ exhibitions = false }: { exhibitions?: boolean }) {
+  const groups = recognitionGroups.filter(group => (group.label === 'Exhibitions') === exhibitions)
+  return (
+    <section id={exhibitions ? 'exhibitions' : 'recognition'} className="abt-recognition" aria-labelledby={exhibitions ? 'abt-exhibitions-title' : 'abt-recognition-title'}>
+      <div className="abt-recognition-head">
+        <h2 id={exhibitions ? 'abt-exhibitions-title' : 'abt-recognition-title'}>{exhibitions ? 'Exhibitions' : 'Recognition'}</h2>
+      </div>
+      <div className="abt-recognition-ledger">
+        {groups.map(group => (
+          <div className="abt-recognition-group" key={group.label}>
+            <ul>{group.items.map(item => (
+              <li className="abt-recognition-row" key={item.title}><h3>{item.title}</h3><p>{item.meta}</p></li>
+            ))}</ul>
+          </div>
+        ))}
+      </div>
+    </section>
+  )
+}
+
 export default function AboutPage() {
   /* Body class so CSS can target nav + global elements on this page */
   useEffect(() => {
@@ -361,7 +433,7 @@ export default function AboutPage() {
         <meta name="description" content={portfolio.description} />
         <meta property="og:type" content="website" />
         <meta property="og:title" content="About &middot; Parth Pawar" />
-        <meta property="og:description" content="Product Designer. Head of UI/UX at Mentra. Making complex systems feel simple." />
+        <meta property="og:description" content={portfolio.description} />
         <meta property="og:image" content={`${SITE_ORIGIN}${DEFAULT_OG_IMAGE}`} />
         <link rel="canonical" href={`${SITE_URL}/about`} />
       </Helmet>
@@ -394,47 +466,47 @@ export default function AboutPage() {
               />
             </section>
 
-            {/* ── Unified experience table ── */}
-            <section id="experience" className="abt-table-wrap reveal"><div className="abt-experience-heading"><h2>Experience</h2><a className="glass-action" href="https://designwhich.works/book">Read the 2022 portfolio</a></div>
-              <table className="abt-table">
-                <tbody>
-                  {rows.map((r, i) => (
-                    <Fragment key={i}>
-                      {r.section && (
-                        <tr className="abt-table-section">
-                          <td colSpan={3}>
-                            <span className="abt-table-section-label">{r.section}</span>
-                          </td>
-                        </tr>
-                      )}
-                <tr className={`abt-table-row${!r.date ? ' abt-table-row--no-date' : ''}`}>
-                  {r.date && <td className="abt-table-date">{r.date}</td>}
-                  <td className="abt-table-main" data-co={r.co || ''} colSpan={r.date ? undefined : 2}>
-                    <span className="abt-table-role">
-                      {r.link ? <Link to={projectLink(r.link)}>{r.role}</Link> : r.role}
-                    </span>
-                          {r.co && <span className="abt-table-co-inline">{r.co}</span>}
-                          {r.desc && <span className="abt-table-desc">{r.desc}</span>}
-                        </td>
-                        <td className="abt-table-co">{r.co}</td>
-                      </tr>
-                    </Fragment>
+            {isExperimental ? (
+              <>
+                <section className="abt-featured-work" aria-labelledby="abt-featured-title">
+                  <h2 id="abt-featured-title">Selected experiments</h2>
+                  <div className="abt-experiment-list">
+                    {selectedExperiments.map(({ title, story, image, alt, role }) => (
+                      <article className="abt-featured-project" key={title}>
+                        <img src={image} alt={alt} width="960" height="540" loading="lazy" />
+                        <div>
+                          <h3>{title}</h3>
+                          <p>{role}</p>
+                          <Link className="glass-action" to={story.to}>{story.label}</Link>
+                        </div>
+                      </article>
+                    ))}
+                  </div>
+                </section>
+                <Recognition exhibitions />
+                <ExperienceTable teaching />
+                <ExperienceTable />
+                <Recognition />
+              </>
+            ) : (
+              <>
+                <ExperienceTable />
+                <section className="abt-featured-work" aria-labelledby="abt-featured-title">
+                  <h2 id="abt-featured-title">Two design decisions</h2>
+                  {productDecisions.map(({ title, story, role }) => (
+                    <article className="abt-featured-project" key={title}>
+                      <div>
+                        <h3>{title}</h3>
+                        <p>{role}</p>
+                      </div>
+                      <Link className="glass-action" to={story.to}>{story.label}</Link>
+                    </article>
                   ))}
-                </tbody>
-              </table>
-            </section>
-
-        <section id="recognition" className="abt-recognition reveal" aria-labelledby="abt-recognition-title">
-          <div className="abt-recognition-head">
-              <h2 id="abt-recognition-title">Proof beyond the job title</h2>
-          </div>
-          <div className="abt-recognition-ledger">
-            {recognitionGroups.map(group => <div className="abt-recognition-group" key={group.label}>
-              <h3>{group.label}</h3>
-              <ul>{group.items.map(item => <li className="abt-recognition-row" key={item.title}><h4>{item.title}</h4><p>{item.meta}</p></li>)}</ul>
-            </div>)}
-          </div>
-            </section>
+                </section>
+                <Recognition />
+                <Recognition exhibitions />
+              </>
+            )}
 
             {/* ── Vibe coding / software stack ── */}
             <section className="abt-vibe reveal" aria-labelledby="abt-vibe-title">

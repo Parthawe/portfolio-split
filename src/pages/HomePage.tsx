@@ -16,6 +16,7 @@ import { useInView } from '../hooks/useInView';
 import { useMediaQuery } from '../hooks/useMediaQuery';
 import { usePerformanceDegraded } from '../hooks/usePerformanceDegraded';
 import { canUseWebGL, useWebGLAvailable } from '../hooks/useWebGLAvailable';
+import { homepageEntrance } from '../data/portfolioEntrances';
 import { featuredProjects, homepageSelectedProjects } from '../data/projects';
 import { DEFAULT_OG_IMAGE, SITE_ORIGIN, SITE_URL } from '../config/site';
 import { beginSceneStartup, isHeroScenePerformanceDegraded, isLowPowerDevice, isPerformanceDegraded, startRuntimePerformanceMonitor } from '../utils/performance';
@@ -227,11 +228,14 @@ export default function HomePage() {
         <div className="wr-hero-aurora-bottom" aria-hidden="true" />
         <div className="wr-hero-web-scrim" aria-hidden="true" />
 
-        <div className="wr-hero-copy">
+        <div className="wr-hero-copy" inert={heroWebOpen}>
           <h1 className="wr-hero-title wr-hero-stage wr-hero-stage--title">{portfolio.heading}</h1>
           <p className="wr-hero-dek wr-hero-stage wr-hero-stage--dek">
-            {portfolio.description}
+            {homepageEntrance.intro}
           </p>
+          <Link className="wr-hero-proof-link glass-action" to={homepageEntrance.to}>
+            {homepageEntrance.label} <span aria-hidden="true">↗</span>
+          </Link>
         </div>
 
         <div className="wr-hero-still" aria-hidden="true">
