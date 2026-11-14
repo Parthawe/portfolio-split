@@ -372,9 +372,30 @@ const productDecisions = [
 ]
 
 const selectedExperiments = [
-  { title: 'Jugalbandi', story: heroObjectStories[1], image: '/Assets/mockups/projects/jugalbandi_16x9.webp', alt: 'A musician performs on Hexa-18', role: 'I designed and fabricated Hexa-18 and the robotic flute, harp, and rainsticks that answer it.' },
-  { title: 'Enigma', story: heroObjectStories[0], image: '/Assets/mockups/projects/enigma_16x9.webp', alt: 'A visitor faces the illuminated Enigma sculpture', role: 'I built a light sculpture that shows how a neural network recognizes a handwritten letter.' },
-  { title: 'Shuffle', story: heroObjectStories[4], image: '/Assets/mockups/projects/shuffle_16x9.webp', alt: 'Shuffle’s plywood board and motorized faders', role: 'I built an eight-fader board and programmed the faders to move in response to one another.' },
+  {
+    title: 'Jugalbandi',
+    story: heroObjectStories[1],
+    image: '/Assets/mockups/projects/jugalbandi_16x9.webp',
+    alt: 'A musician performs on Hexa-18',
+    role: 'I wanted to hear what a neural network could do as a partner in a Hindustani duet. I built Hexa-18 for the performer and a robotic flute, harp, and rainsticks to answer.',
+    reflection: 'The instruments taught me to work with their timing. A harp string sounds as the pick lets go, while a rainstick keeps sounding as the grains fall. Each needed its own pace.',
+  },
+  {
+    title: 'Enigma',
+    story: heroObjectStories[0],
+    image: '/Assets/mockups/projects/enigma_16x9.webp',
+    alt: 'A visitor faces the illuminated Enigma sculpture',
+    role: 'I wanted to see what happens between drawing a letter and getting a prediction. I built Enigma with 200 lights so you could follow a handwritten letter through the layers of a neural network.',
+    reflection: 'Building it taught me how much the first gesture matters. Drawing one letter gives you a place to start. The lights give you a path to follow, and the alphabet at the top tells you what the model guessed.',
+  },
+  {
+    title: 'Shuffle',
+    story: heroObjectStories[4],
+    image: '/Assets/mockups/projects/shuffle_16x9.webp',
+    alt: 'Shuffle’s plywood board and motorized faders',
+    role: 'I built an eight-fader board and programmed the faders to move in response to one another.',
+    reflection: null,
+  },
 ]
 
 function ExperienceTable({ teaching = false }: { teaching?: boolean }) {
@@ -480,7 +501,7 @@ export default function AboutPage() {
             <section className="wr-reveal-section">
               <TextReveal
                 front={isExperimental ? "I make instruments, installations, and experimental interfaces." : "I’m drawn to the moment when someone has to decide what to do next."}
-                behind={isExperimental ? "I use sound, light, and physical feedback to make systems people can explore for themselves." : "With smart glasses, that might mean checking what’s running. With payments, it’s knowing what you’ll pay before you buy."}
+                behind={isExperimental ? "I like giving invisible processes a physical form, so you can hear an answer or watch a letter move through a sculpture." : "With smart glasses, that might mean checking what’s running. With payments, it’s knowing what you’ll pay before you buy."}
               />
             </section>
 
@@ -489,12 +510,13 @@ export default function AboutPage() {
                 <section className="abt-featured-work" aria-labelledby="abt-featured-title">
                   <h2 id="abt-featured-title">Selected experiments</h2>
                   <div className="abt-experiment-list">
-                    {selectedExperiments.map(({ title, story, image, alt, role }) => (
+                    {selectedExperiments.map(({ title, story, image, alt, role, reflection }) => (
                       <article className="abt-featured-project" key={title}>
                         <img src={image} alt={alt} width="960" height="540" loading="lazy" />
                         <div>
                           <h3>{title}</h3>
                           <p>{role}</p>
+                          {reflection && <p>{reflection}</p>}
                           <Link className="glass-action" to={story.to}>{story.label}</Link>
                         </div>
                       </article>
