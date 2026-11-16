@@ -1,4 +1,5 @@
-import { portfolio } from '../config/portfolio'
+import mitPortfolio from '../config/mitPortfolio.json'
+import { isExperimental, portfolio } from '../config/portfolio'
 import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router-dom'
 import { categories } from '../data/categories'
@@ -116,6 +117,10 @@ function getHomeSchema() {
 function getRouteMeta(pathname: string): RouteMeta {
   const url = pathname === '/' ? SITE_URL : `${SITE_URL}${pathname}`
   const robots = 'noindex, nofollow'
+
+  if (pathname === '/mit' && isExperimental) {
+    return { ...mitPortfolio, url: `${url}/`, image: toAbsoluteUrl(DEFAULT_IMAGE), type: 'website', robots }
+  }
 
   if (pathname === '/process' || pathname.startsWith('/process/')) {
     const project = getProject(pathname.split('/')[2] || '')

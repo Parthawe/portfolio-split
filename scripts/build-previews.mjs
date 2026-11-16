@@ -3,6 +3,7 @@ import { spawnSync } from 'node:child_process'
 import path from 'node:path'
 
 const portfolios = JSON.parse(await readFile('src/config/portfolios.json', 'utf8'))
+const mitPortfolio = JSON.parse(await readFile('src/config/mitPortfolio.json', 'utf8'))
 const transfiPublicSlides = JSON.parse(await readFile('src/data/transfi-public-slides.json', 'utf8'))
 const transfiSlideDirectory = 'Assets/case-study-slides/transfi/'
 const allowedTransfiSlides = new Set(transfiPublicSlides.flatMap(chapter =>
@@ -45,23 +46,24 @@ for (const [variant, portfolio] of Object.entries(portfolios)) {
   const routes = ['work', 'about', 'accessibility', ...portfolio.pages, ...portfolio.featured, ...portfolio.supporting, ...portfolio.archive]
   if (variant === 'product') routes.push('mentra-website')
   if (variant === 'experimental') {
-    routes.push('project-experiences', ...['jugalbandi', 'enigma', 'shuffle', 'black-hole', 'revolving-stage', 'moniac-machine'].map(slug => `${slug}/world`))
+    routes.push('mit', 'project-experiences', ...['jugalbandi', 'enigma', 'shuffle', 'black-hole', 'revolving-stage', 'moniac-machine'].map(slug => `${slug}/world`))
   }
   const documentFor = (route = '') => {
-    const title = `${portfolio.name} · Parth Pawar`
+    const title = route === 'mit' ? mitPortfolio.title : `${portfolio.name} · Parth Pawar`
+    const description = route === 'mit' ? mitPortfolio.description : portfolio.description
     const url = `${origin}${root}/${variant}/${route ? route + '/' : ''}`
     const image = `${origin}${root}${portfolio.shareImage}`
     const meta = [
-      ['name', 'description', portfolio.description],
+      ['name', 'description', description],
       ['property', 'og:type', 'website'],
       ['property', 'og:title', title],
-      ['property', 'og:description', portfolio.description],
+      ['property', 'og:description', description],
       ['property', 'og:url', url],
       ['property', 'og:image', image],
       ['property', 'og:image:alt', portfolio.shareImageAlt],
       ['name', 'twitter:card', 'summary_large_image'],
       ['name', 'twitter:title', title],
-      ['name', 'twitter:description', portfolio.description],
+      ['name', 'twitter:description', description],
       ['name', 'twitter:image', image],
       ['name', 'twitter:image:alt', portfolio.shareImageAlt],
     ].map(([attribute, key, value]) => `<meta data-rh="true" ${attribute}="${key}" content="${escapeAttribute(value)}" />`)

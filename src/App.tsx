@@ -84,6 +84,7 @@ function ErrorBoundary({ children }: { children: ReactNode }) {
 const HomePage = lazy(() => import('./pages/HomePage'))
 const WorkPage = lazy(() => import('./pages/WorkPage'))
 const AboutPage = lazy(() => import('./pages/AboutPage'))
+const MitPortfolioPage = lazy(() => import('./pages/MitPortfolioPage'))
 const AccessibilityPage = lazy(() => import('./pages/AccessibilityPage'))
 const CategoryPage = lazy(() => import('./pages/CategoryPage'))
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'))
@@ -135,6 +136,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/work" element={<WorkPage />} />
           <Route path="/about" element={<AboutPage />} />
+          {isExperimental && <Route path="/mit" element={<MitPortfolioPage />} />}
           <Route path="/accessibility" element={<AccessibilityPage />} />
           {portfolio.pages.filter(page => !page.includes('/'))
             .map(page => <Route key={page} path={`/${page}`} element={<CategoryPage />} />)}
