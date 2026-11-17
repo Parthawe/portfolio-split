@@ -9,35 +9,42 @@ const groups = [
   {
     id: 'future-sketches',
     name: 'Future Sketches',
-    heading: 'Tools for making with code',
-    intro: 'I’m interested in tools that let people change a rule and find something they wouldn’t have drawn on their own.',
+    heading: 'Making concepts physical',
+    intro: 'I want to help people understand a system through behavior they can see and change.',
     guide: 'https://www.media.mit.edu/groups/future-sketches/applicant-information/',
     evidence: { text: 'At NYU ITP I was a graduate assistant for Physical Computing, Interaction as Art Medium, and 100 Days of Making.', to: '/about#teaching', label: 'See my teaching experience' },
     next: 'I’d build a small workshop around editable constraints. Give people one starting rule, let them change it, and see which variations they can explain and make again on their own.',
     projects: [
       {
         name: 'Enigma',
-        image: '/Assets/Projects/Enigma/photos/tablet-input.jpg',
-        alt: 'A hand drawing on the tablet below Enigma',
-        description: 'I built a sculpture around the act of drawing one letter. The browser study lets you draw again to compare the input and illustrative light patterns.',
-        to: '/enigma#cs-interactive',
-        action: 'Draw a letter',
+        featured: true,
+        image: '/Assets/Projects/Enigma/photos/full-sculpture-wide.webp',
+        alt: 'Enigma’s illuminated physical layers above a tablet showing a handwritten A',
+        description: 'I built a 200-light sculpture so visitors could follow a handwritten letter through a neural network. The film shows the original installation responding.',
+        to: '/enigma#cs-film',
+        action: 'Watch the original installation',
       },
+      {
+        name: 'Shuffle',
+        image: '/Assets/mockups/projects/shuffle_16x9.webp',
+        alt: 'The original Shuffle board with labeled motorized faders',
+        description: 'Push one fader and the others move. A physical game about balancing student life.',
+        to: '/shuffle#cs-film',
+        action: 'Watch the physical board in use',
+      },
+    ],
+    supporting: [
       {
         name: 'After Hours',
         image: '/Assets/preview-covers/after-hours.jpg',
-        alt: 'An isometric floor of illustrated workshops',
-        description: 'I drew eight workshops and wrote the rules that arrange them into a floor you can explore.',
+        description: 'A generative floor of illustrated workshops.',
         to: '/after-hours',
-        action: 'Explore the workshop floor',
       },
       {
         name: 'Butler’s Slice',
         image: '/Assets/Projects/Typeface/photos/hero-title.jpg',
-        alt: 'A display specimen of Butler’s Slice',
-        description: 'I carried one diagonal cut through a type family. In the browser workshop, you can pull the actual Bézier points and see how the outline changes.',
+        description: 'Type design and an editable glyph workshop.',
         to: '/typeface/workshop',
-        action: 'Open the glyph workshop',
       },
     ],
   },
@@ -123,12 +130,6 @@ export default function MitPortfolioPage() {
                 <h2 id={`${group.id}-heading`}>{group.heading}</h2>
                 <p>{group.intro}</p>
               </header>
-              {group.id === 'future-sketches' && group.evidence && (
-                <div className="mit-evidence mit-evidence--teaching">
-                  <p>{group.evidence.text}</p>
-                  <Link className="mit-project-link" to={group.evidence.to}>{group.evidence.label} <span aria-hidden="true">↗</span></Link>
-                </div>
-              )}
               {group.film && (
                 <figure className="mit-performance">
                   <video controls playsInline preload="none" poster="/Assets/mockups/projects/jugalbandi_16x9.webp" aria-label="Jugalbandi original performance">
@@ -146,7 +147,7 @@ export default function MitPortfolioPage() {
               )}
               <ol className="mit-projects" aria-label={`Selected work for ${group.name}`}>
                 {group.projects.map(project => (
-                  <li key={project.name}>
+                  <li key={project.name} className={'featured' in project && project.featured ? 'mit-project--featured' : undefined}>
                     <img src={project.image} alt={project.alt} loading="lazy" decoding="async" />
                     <div>
                       <h3>{project.name}</h3>
@@ -156,6 +157,30 @@ export default function MitPortfolioPage() {
                   </li>
                 ))}
               </ol>
+              {group.supporting && (
+                <aside className="mit-supporting" aria-label="Supporting experiments">
+                  <h3>Supporting experiments</h3>
+                  <ul>
+                    {group.supporting.map(project => (
+                      <li key={project.name}>
+                        <Link to={project.to}>
+                          <img src={project.image} alt="" loading="lazy" decoding="async" />
+                          <span>
+                            <strong>{project.name} <span aria-hidden="true">↗</span></strong>
+                            <span>{project.description}</span>
+                          </span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </aside>
+              )}
+              {group.id === 'future-sketches' && group.evidence && (
+                <div className="mit-evidence mit-evidence--teaching">
+                  <p>{group.evidence.text}</p>
+                  <Link className="mit-project-link" to={group.evidence.to}>{group.evidence.label} <span aria-hidden="true">↗</span></Link>
+                </div>
+              )}
               {group.id !== 'future-sketches' && group.evidence && (
                 <div className="mit-evidence">
                   <p>{group.evidence.text}</p>

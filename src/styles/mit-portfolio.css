@@ -164,3 +164,95 @@
   text-decoration: underline;
   text-underline-offset: .22em;
 }
+
+.mit-projects .mit-project--featured {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 1.25rem;
+  border-top: 0;
+  padding-top: 0;
+  padding-bottom: clamp(1.5rem, 4vw, 3rem);
+}
+
+.mit-project--featured img {
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+  background: #111110;
+}
+
+.mit-project--featured > div {
+  display: grid;
+  grid-template-columns: minmax(0, .65fr) minmax(0, 1fr);
+  column-gap: clamp(1.25rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.mit-projects .mit-project--featured h3 {
+  grid-row: 1 / 3;
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.mit-project--featured > div > p { margin-top: 0; }
+.mit-project--featured .mit-project-link { justify-self: start; }
+
+.mit-supporting {
+  margin-top: 1rem;
+  padding-block: 1.25rem;
+  border-block: 1px solid var(--ink-15);
+}
+
+.mit-group .mit-supporting h3 {
+  font: 500 var(--text-sm)/1.4 var(--sans);
+  color: var(--ink-70);
+  margin-bottom: .75rem;
+}
+
+.mit-supporting ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem 2rem;
+}
+
+.mit-supporting a {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  align-items: center;
+  gap: 1rem;
+  min-height: 72px;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+.mit-supporting img {
+  display: block;
+  width: 72px;
+  height: 54px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+}
+
+.mit-supporting strong {
+  display: block;
+  font-size: var(--text-sm);
+  font-weight: 600;
+}
+
+.mit-supporting strong + span {
+  display: block;
+  margin-top: .25rem;
+  font-size: var(--text-sm);
+  color: var(--ink-70);
+}
+
+.mit-supporting a:hover strong {
+  text-decoration: underline;
+  text-underline-offset: .22em;
+}
+
+@media (max-width: 620px) {
+  .mit-project--featured > div,
+  .mit-supporting ul { grid-template-columns: minmax(0, 1fr); }
+  .mit-projects .mit-project--featured h3 { grid-row: auto; margin-bottom: .6rem; }
+}
