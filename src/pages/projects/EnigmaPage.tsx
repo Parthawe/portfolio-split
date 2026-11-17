@@ -61,6 +61,17 @@ export default function EnigmaPage() {
           }
         />
 
+        <CsSection id="cs-source" title="Compare input, arrangement and output">
+          <CsScreenExplorer format="landscape" label="Choose original Enigma evidence" screens={[
+            {title:'Draw at the tablet',label:'Original interaction',src:'/Assets/Projects/Enigma/photos/tablet-input.jpg',alt:'Original visitor drawing on the tablet beneath the installation',caption:'The tablet invites one alphabet letter; the physical lights provide the response.',decision:{question:'Where should an interaction begin?',choice:'Put a single-letter drawing surface beside the sculpture.',evidence:'The original prompt reads “Please draw one Alphabet.” The browser uses the same physical starting point.'}},
+            {title:'Follow the layers',label:'Original sculpture',src:'/Assets/Projects/Enigma/photos/full-sculpture-wide.webp',alt:'Original Enigma sculpture showing light layers, wires and alphabet output',caption:'The light arrangement can be compared directly with the browser model.',decision:{question:'How can an invisible network become inspectable?',choice:'Give its layers physical lights and expose their connections.',evidence:'Follow the rows and crossing wires toward the labelled alphabet. The project documents 200 lights.',limit:'Photographs establish arrangement; they do not supply the original weights or a recognition benchmark.'}},
+            {title:'Read the selected letter',label:'Alphabet output',src:'/Assets/Projects/Enigma/photos/alphabet-layer.webp',alt:'Original Enigma alphabet-labelled output lights',caption:'The original model’s prediction and the browser’s chosen label have different sources.',decision:{question:'What does the final light mean?',choice:'Make the alphabet readable at the output layer.',evidence:'In the original installation it represents the model’s prediction. In the browser drawing mode, it represents the label you choose.',limit:'Browser drawing drives the front input lights and illustrative intermediate layers. It does not automatically recognize the letter.'}},
+          ]} />
+          <details className="service-source-details"><summary>Inspect the remaining installation photographs</summary><CsScreenStrip label="Original Enigma installation details" screens={[
+            ['person-viewing.webp','Visitor and sculpture'],['full-sculpture-c.webp','Letter C in the original installation'],['wire-detail.webp','Connections'],['neuron-closeup.webp','Light construction'],
+          ].map(([file,label])=>({src:`/Assets/Projects/Enigma/photos/${file}`,label,alt:`Original Enigma: ${label}`}))} /></details>
+        </CsSection>
+
         {/* Interactive */}
         <CsSection id="cs-interactive" label="Browser study" title="Draw through the sculpture">
           <CsBody>
@@ -79,16 +90,6 @@ export default function EnigmaPage() {
           cta="Open the sculpture proof"
           note="Gallery shots, concept, technical system, exhibition notes, and thanks."
         >
-        <CsSection id="cs-source" title="Compare input, arrangement and output">
-          <CsScreenExplorer format="landscape" label="Choose original Enigma evidence" screens={[
-            {title:'Draw at the tablet',label:'Original interaction',src:'/Assets/Projects/Enigma/photos/tablet-input.jpg',alt:'Original visitor drawing on the tablet beneath the installation',caption:'The tablet invites one alphabet letter; the physical lights provide the response.',decision:{question:'Where should an interaction begin?',choice:'Put a single-letter drawing surface beside the sculpture.',evidence:'The original prompt reads “Please draw one Alphabet.” The browser uses the same physical starting point.'}},
-            {title:'Follow the layers',label:'Original sculpture',src:'/Assets/Projects/Enigma/photos/full-sculpture-wide.webp',alt:'Original Enigma sculpture showing light layers, wires and alphabet output',caption:'The light arrangement can be compared directly with the browser model.',decision:{question:'How can an invisible network become inspectable?',choice:'Give its layers physical lights and expose their connections.',evidence:'Follow the rows and crossing wires toward the labelled alphabet. The project documents 200 lights.',limit:'Photographs establish arrangement; they do not supply the original weights or a recognition benchmark.'}},
-            {title:'Read the selected letter',label:'Alphabet output',src:'/Assets/Projects/Enigma/photos/alphabet-layer.webp',alt:'Original Enigma alphabet-labelled output lights',caption:'The original model’s prediction and the browser’s chosen label have different sources.',decision:{question:'What does the final light mean?',choice:'Make the alphabet readable at the output layer.',evidence:'In the original installation it represents the model’s prediction. In the browser drawing mode, it represents the label you choose.',limit:'Browser drawing drives the front input lights and illustrative intermediate layers. It does not automatically recognize the letter.'}},
-          ]} />
-          <details className="service-source-details"><summary>Inspect the remaining installation photographs</summary><CsScreenStrip label="Original Enigma installation details" screens={[
-            ['person-viewing.webp','Visitor and sculpture'],['full-sculpture-c.webp','Letter C in the original installation'],['wire-detail.webp','Connections'],['neuron-closeup.webp','Light construction'],
-          ].map(([file,label])=>({src:`/Assets/Projects/Enigma/photos/${file}`,label,alt:`Original Enigma: ${label}`}))} /></details>
-        </CsSection>
 
         {/* Concept */}
         <CsSection id="cs-concept" label="01 &mdash; Concept" title="200 Neurons of Light">
@@ -127,8 +128,8 @@ export default function EnigmaPage() {
 
         <BottomNav sections={[
           { id: 'cs-film', label: 'Film' },
-          { id: 'cs-interactive', label: 'Interactive' },
           { id: 'cs-source', label: 'Original evidence' },
+          { id: 'cs-interactive', label: 'Interactive' },
           { id: 'cs-concept', label: 'Concept' },
           { id: 'cs-technology', label: 'Technology' },
           { id: 'cs-exhibition', label: 'Exhibition' },

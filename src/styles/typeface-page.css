@@ -812,3 +812,11 @@ body.site-tools-open .typeface-page .tf-image-grid {
 .tf-font-status{font:12px/1.6 var(--sans);color:var(--ink-70)}
 .tf-download-section h2 {font-size:clamp(34px,5vw,64px)}
 .tf-primary-download.glass-action {font:14px var(--sans);min-height:44px;padding:10px 16px;border-radius:var(--radius-sm)}
+
+.tf-construction-image figure { margin: 0; }
+.tf-construction-image img { display: block; width: 100%; height: auto; }
+.tf-construction-image figcaption {
+  margin-top: .6rem;
+  color: var(--ink-60);
+  font-size: var(--text-sm);
+}

@@ -1,5 +1,6 @@
 import { projectImageProps } from '../../utils/projectImage'
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import Nav from '../../components/Nav'
 import Footer from '../../components/Footer'
@@ -111,6 +112,7 @@ export default function TypefacePage() {
                   <p className="tf-section-kicker">Playground</p>
                   <h2>Type into the specimen.</h2>
                   <p>Switch weight and size. Click a glyph to inspect the character at display scale.</p>
+                  <Link className="glass-action" to="/typeface/workshop">Edit an outline and export a specimen</Link>
                 </div>
                 <GlyphPlayground />
               </section>
@@ -164,6 +166,19 @@ export default function TypefacePage() {
                 <span>{activeWeight.file}</span>
               </div>
             </div>
+          </div>
+        </section>
+
+        <section className="tf-section" id="tf-construction">
+          <div className="tf-section-head">
+            <p className="tf-section-kicker">Original specimen</p>
+            <h2>The construction of the slice.</h2>
+          </div>
+          <div className="tf-construction-image">
+            <figure>
+              <img {...projectImageProps(`${TYPEFACE_ASSET}/photos/slice-types.jpg`)} data-project-preview src={`${TYPEFACE_ASSET}/photos/slice-types.jpg`} alt="Slice construction examples across glyphs" loading="lazy" />
+              <figcaption>Slice construction</figcaption>
+            </figure>
           </div>
         </section>
 
@@ -248,10 +263,6 @@ export default function TypefacePage() {
 
         <section className="tf-image-grid" aria-label="Typeface specimen images">
           <figure>
-            <img {...projectImageProps(`${TYPEFACE_ASSET}/photos/slice-types.jpg`)} data-project-preview src={`${TYPEFACE_ASSET}/photos/slice-types.jpg`} alt="Slice construction examples across glyphs" loading="lazy" />
-            <figcaption>Slice construction</figcaption>
-          </figure>
-          <figure>
             <img {...projectImageProps(`${TYPEFACE_ASSET}/photos/weights-grid.jpg`)} data-project-preview src={`${TYPEFACE_ASSET}/photos/weights-grid.jpg`} alt="Butler's Slice weights grid" loading="lazy" />
             <figcaption>Weight comparison</figcaption>
           </figure>
@@ -333,6 +344,7 @@ export default function TypefacePage() {
         <BottomNav
           sections={[
             { id: 'tf-overview', label: 'Overview' },
+            { id: 'tf-construction', label: 'Construction' },
             { id: 'tf-origin', label: 'Origin' },
             { id: 'tf-concept', label: 'Concept' },
             { id: 'tf-glyphs', label: 'Glyphs' },
