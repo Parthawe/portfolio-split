@@ -2279,12 +2279,23 @@ body.page-ready .wr-hero-stage {
   pointer-events: none;
 }
 
+.wr-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem .55rem;
+  margin-top: .75rem;
+}
+
+.wr-hero-mit-link,
 .wr-hero-proof-link {
   display: inline-flex;
   align-items: center;
   gap: .45rem;
   min-height: 44px;
-  margin-top: .75rem;
+}
+
+.wr-hero-mit-link {
+  font-weight: 650;
 }
 
 .hero-object-details {

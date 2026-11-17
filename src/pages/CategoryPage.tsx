@@ -4,6 +4,7 @@ import { usePerformanceDegraded } from '../hooks/usePerformanceDegraded'
 import { useLocation, Link } from 'react-router-dom'
 import { Helmet } from 'react-helmet-async'
 import { categories } from '../data/categories'
+import { isExperimental } from '../config/portfolio'
 import Nav from '../components/Nav'
 import Footer from '../components/Footer'
 import ProjectCard from '../components/ProjectCard'
@@ -69,7 +70,6 @@ const CATEGORY_ANNOTATION_LINKS = [
   { label: 'UX Research', slug: 'ux-research', link: '/ux-research' },
   { label: 'AI & Wearables', slug: 'ai-wearables', link: '/ai-wearables' },
   { label: 'Design Engineering', slug: 'design-engineering', link: '/design-engineering' },
-  { label: 'Installations', slug: 'installations', link: '/installations' },
   { label: 'Brand & Visual', slug: 'brand-visual', link: '/brand-visual' },
   { label: 'Design for Good', slug: 'design-for-good', link: '/design-for-good' },
 ] as const
@@ -255,17 +255,18 @@ export default function CategoryPage() {
           </div>
 
           {/* Impact proof: later in the page, after the work has context. */}
-          <Reveal>
-            <section className="lp-impact-strip" aria-label="Where my work made a difference">
-              <ClientsMarquee />
-            </section>
-          </Reveal>
+          {!isExperimental && <>
+            <Reveal>
+              <section className="lp-impact-strip" aria-label="Where my work made a difference">
+                <ClientsMarquee />
+              </section>
+            </Reveal>
+            <Reveal>
+              {slug === 'ux-research' ? <ResearchImpactSection /> : <ParthDoesSection />}
+            </Reveal>
+          </>}
 
-          <Reveal>
-            {slug === 'ux-research' ? <ResearchImpactSection /> : <ParthDoesSection />}
-          </Reveal>
-
-          {slug !== 'ux-research' && webglAvailable && !performanceDegraded && (
+          {!isExperimental && slug !== 'ux-research' && webglAvailable && !performanceDegraded && (
             <DisciplineObjectsBoundary key={slug}>
               <Suspense fallback={null}>
                 <Reveal>

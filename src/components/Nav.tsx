@@ -4,7 +4,7 @@ import { useNavScroll } from '../hooks/useNavScroll';
 import ThemeToggle from './ThemeToggle';
 import FigmaSelect from './FigmaSelect';
 import AmbientAudio from './AmbientAudio';
-import { portfolio, portfolioOptions, siblingHome } from '../config/portfolio';
+import { isExperimental } from '../config/portfolio';
 import { CONTACT_EMAIL } from '../config/site';
 import { setCanvasChromePreference } from '../utils/performance';
 import CompactSheet from './CompactSheet';
@@ -117,12 +117,13 @@ export default function Nav() {
 
   const normalizedPathname = pathname === '/' ? pathname : pathname.replace(/\/+$/, '');
   const isHome = normalizedPathname === '/';
+  const isMit = isExperimental && normalizedPathname === '/mit';
   const isAbout = normalizedPathname === '/about';
   const isNotes = normalizedPathname === '/notes' || normalizedPathname === '/guestbook';
   const isWriting = normalizedPathname === '/writing' || normalizedPathname.startsWith('/writing/');
   const isWork = normalizedPathname === '/work' || normalizedPathname.startsWith('/work/');
   // Project and category pages also count as "work"
-  const isWorkContext = isWork || (!isHome && !isAbout && !isWriting && !isNotes && !['studio', 'book', 'graveyard'].some(r => normalizedPathname === `/${r}`));
+  const isWorkContext = isWork || (!isHome && !isMit && !isAbout && !isWriting && !isNotes && !['studio', 'book', 'graveyard'].some(r => normalizedPathname === `/${r}`));
 
   const handleSkipToContent = useCallback((event: React.MouseEvent<HTMLAnchorElement>) => {
     const main = document.getElementById('main-content');
@@ -142,16 +143,9 @@ export default function Nav() {
           {/* Left group, logo + links in a single pill */}
           <div className="nav-left-pill surface-glass figma-hover">
             <Link to="/" className="nav-logo figma-hover" aria-label="Parth Pawar, home">Parth<FigmaSelect /></Link>
-            <div className="nav-portfolio-switch" role="group" aria-label="Portfolio">
-              {portfolioOptions.map(({ name, shortName }) => {
-                const label = <><span className="nav-portfolio-full">{name}</span><span className="nav-portfolio-short" aria-hidden="true">{shortName}</span></>;
-                return name === portfolio.name
-                  ? <Link key={name} to="/" className="nav-portfolio-link" aria-label={name} aria-current="true">{label}</Link>
-                  : <a key={name} href={siblingHome} className="nav-portfolio-link" aria-label={name}>{label}</a>;
-              })}
-            </div>
             <Link to="/work" data-label="Work" className={`pill-link nav-pill-link figma-hover${isWorkContext ? ' active' : ''}`}><span className="nav-pill-link__label">Work</span><FigmaSelect /></Link>
             <Link to="/about" data-label="About" className={`pill-link nav-pill-link figma-hover${isAbout ? ' active' : ''}`}><span className="nav-pill-link__label">About</span><FigmaSelect /></Link>
+            {isExperimental && <Link to="/mit" data-label="MIT Portfolio" aria-current={isMit ? 'page' : undefined} className={`pill-link nav-pill-link figma-hover${isMit ? ' active' : ''}`}><span className="nav-pill-link__label">MIT Portfolio</span><FigmaSelect /></Link>}
             <FigmaSelect />
           </div>
 
@@ -250,6 +244,7 @@ export default function Nav() {
           <ul className="mobile-nav-links">
             <li><Link to="/work" onClick={closeMenu}>Work</Link></li>
             <li><Link to="/about" onClick={closeMenu}>About</Link></li>
+            {isExperimental && <li><Link to="/mit" onClick={closeMenu} aria-current={isMit ? 'page' : undefined}>MIT Portfolio</Link></li>}
             <li><a href={`mailto:${CONTACT_EMAIL}`} onClick={closeMenu}>Let's Talk</a></li>
           </ul>
         </CompactSheet>

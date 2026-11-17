@@ -50,10 +50,17 @@ export const HUB_IDS = [
   'design-engineering',
 ] as const
 
-// Disciplines behind the work — each links to the page that talks about that
-// context, so every field object is a real doorway into the portfolio. Spread
-// covers all six domains (Installations included, per request).
-const LINKS: { label: string; route: string }[] = [
+export const ART_HERO_DESTINATIONS = [
+  { label: 'Installations', route: '/installations/' },
+  { label: 'Sound', route: '/jugalbandi/#cs-film' },
+  { label: 'Physical Play', route: '/shuffle/simulation/' },
+  { label: 'Creative Tools', route: '/typeface/workshop/' },
+  { label: 'Generative Work', route: '/after-hours/' },
+  { label: 'Light and Computation', route: '/enigma/#cs-interactive' },
+]
+
+// Product-portfolio disciplines and their destinations.
+const PRODUCT_DESTINATIONS: { label: string; route: string }[] = [
   // Product / UX
   { label: 'User Experience', route: '/ux-design' },
   { label: 'Interaction Design', route: '/ux-design' },
@@ -78,12 +85,12 @@ const LINKS: { label: string; route: string }[] = [
   { label: 'Machine Learning', route: '/ai' },
   { label: 'Wearables', route: '/ai-wearables' },
   { label: 'Smart Glasses', route: '/ai-wearables' },
-  // Installations (explicitly linked)
-  { label: 'Fabrication', route: '/installations' },
-  { label: 'Material Science', route: '/installations' },
-  { label: '3D Printing', route: '/installations' },
-  { label: 'Large-Scale Installations', route: '/installations' },
-  { label: 'Kinetic Sculpture', route: '/installations' },
+  // Physical prototyping
+  { label: 'Fabrication', route: '/work' },
+  { label: 'Material Science', route: '/work' },
+  { label: '3D Printing', route: '/work' },
+  { label: 'Large-Scale Installations', route: '/work' },
+  { label: 'Kinetic Sculpture', route: '/work' },
   // Design for good
   { label: 'Sustainable Design', route: '/design-for-good' },
   { label: 'Civic Tech', route: '/design-for-good' },
@@ -119,6 +126,7 @@ function dist2(a: [number, number, number], b: [number, number, number]) {
 
 export function layoutHeroWeb(
   hubPositions: [number, number, number][],
+  experimental = false,
 ): { nodes: WebNode[]; edges: WebEdge[] } {
   const nodes: WebNode[] = []
 
@@ -163,7 +171,9 @@ export function layoutHeroWeb(
   const maxR = Math.hypot(field[field.length - 1]?.[0] ?? 1, field[field.length - 1]?.[1] ?? 1) || 1
   field.forEach((p, fi) => {
     // Offset label vs geom cycles so shape and discipline vary independently.
-    const link = LINKS[(fi * 3 + 1) % LINKS.length]
+    const link = experimental
+      ? ART_HERO_DESTINATIONS[(fi * 5 + 1) % ART_HERO_DESTINATIONS.length]
+      : PRODUCT_DESTINATIONS[(fi * 3 + 1) % PRODUCT_DESTINATIONS.length]
     nodes.push({
       id: `f${fi}`,
       tier: 'field',

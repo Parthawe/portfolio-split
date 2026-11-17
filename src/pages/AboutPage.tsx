@@ -1,4 +1,4 @@
-import { isExperimental, portfolio, projectLink } from '../config/portfolio'
+import { isExperimental, portfolio, projectSlugs } from '../config/portfolio'
 import { Fragment, useEffect } from 'react'
 import type { CSSProperties } from 'react'
 import { Link } from 'react-router-dom'
@@ -408,7 +408,7 @@ function ExperienceTable({ teaching = false }: { teaching?: boolean }) {
     <section id={teaching ? 'teaching' : 'experience'} className="abt-table-wrap">
       <div className="abt-experience-heading">
         <h2>{teaching ? 'Teaching' : 'Experience'}</h2>
-        {!teaching && <a className="glass-action" href="https://designwhich.works/book">Read the 2022 portfolio</a>}
+        {!teaching && !isExperimental && <a className="glass-action" href="https://designwhich.works/book">Read the 2022 portfolio</a>}
       </div>
       <table className="abt-table">
         <tbody>
@@ -423,7 +423,7 @@ function ExperienceTable({ teaching = false }: { teaching?: boolean }) {
                 {row.date && <td className="abt-table-date">{row.date}</td>}
                 <td className="abt-table-main" data-co={row.co || ''} colSpan={row.date ? undefined : 2}>
                   <span className="abt-table-role">
-                    {row.link ? <Link to={projectLink(row.link)}>{row.role}</Link> : row.role}
+                    {row.link && projectSlugs.includes(row.link.slice(1)) ? <Link to={row.link}>{row.role}</Link> : row.role}
                   </span>
                   {row.co && <span className="abt-table-co-inline">{row.co}</span>}
                   {row.desc && <span className="abt-table-desc">{row.desc}</span>}
@@ -704,7 +704,7 @@ export default function AboutPage() {
 
 
             {/* ── Graveyard banner ── */}
-            <section className="abt-graveyard reveal">
+            {!isExperimental && <section className="abt-graveyard reveal">
               <a href="https://designwhich.works/graveyard" className="abt-graveyard-card">
                 <div>
                   <p className="abt-gy-label">Portfolio Archaeology</p>
@@ -716,7 +716,7 @@ export default function AboutPage() {
                 </div>
                 <svg className="abt-gy-arrow" viewBox="0 0 24 24" fill="none"><path d="M5 19L19 5M19 5H9M19 5V15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/></svg>
               </a>
-            </section>
+            </section>}
 
             {/* ── Typography showcase, Butler's Slice ── */}
             <section className="abt-type reveal">
@@ -728,11 +728,11 @@ export default function AboutPage() {
                     Download .zip
                     <FigmaSelect />
                   </a>
-                  <Link to={projectLink("/typeface")} className="abt-type-link figma-hover">
+                  {isExperimental && <Link to="/typeface" className="abt-type-link figma-hover">
                     Case study
                     <svg viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2V7" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     <FigmaSelect />
-                  </Link>
+                  </Link>}
                 </div>
               </div>
 

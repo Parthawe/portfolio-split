@@ -1,4 +1,4 @@
-import { sibling, siblingHome } from '../config/portfolio'
+import { isExperimental } from '../config/portfolio'
 import { getVisitorLocation } from '../utils/visitorLocation'
 import { useState, useEffect, useRef, type RefObject } from 'react'
 import { Link } from 'react-router-dom'
@@ -13,6 +13,7 @@ const footerGroups = [{
     { label: 'Home', to: '/' },
     { label: 'Work', to: '/work' },
     { label: 'About', to: '/about' },
+    ...(isExperimental ? [{ label: 'MIT Portfolio', to: '/mit' }] : []),
     { label: 'Accessibility', to: '/accessibility' },
   ],
 }]
@@ -21,7 +22,6 @@ function FooterEnd({ meta }: { meta: React.ReactNode }) {
   return (
     <div className="ft-end">
       <div className="ft-end-meta">
-        <a className="glass-action" href={siblingHome}>{sibling.name}</a>
         {meta}
       </div>
     </div>

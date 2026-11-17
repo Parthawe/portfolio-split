@@ -1,6 +1,6 @@
 # Parth Pawar's portfolio previews
 
-[Product Design](https://parthawe.github.io/portfolio-split/product/) and [Design That Plays](https://parthawe.github.io/portfolio-split/experimental/) use the same case-study components, typography, and navigation. Project selections and homepage order live in `src/config/portfolios.json`.
+The [portfolio entrance](https://parthawe.github.io/portfolio-split/) opens Design That Plays. Its [MIT Media Lab selection](https://parthawe.github.io/portfolio-split/experimental/mit/) leads to the relevant artwork and project evidence. Existing Product Design URLs continue to work directly. Both builds share their case-study components and typography. Project selections and homepage order live in `src/config/portfolios.json`.
 
 Use Bun 1.3.10 and Node 20 or later. Run `bun install --frozen-lockfile` and `bun run build`. The Pages workflow publishes both builds together from `dist`. With a web server that serves `dist` at `/portfolio-split/`, pass its origin as `PREVIEW_ORIGIN` to `bun run qa:previews`.
 

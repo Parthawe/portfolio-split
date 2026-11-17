@@ -1,5 +1,5 @@
-import { isExperimental, portfolio, projectSlugs, siblingHome, siblingSlugs } from './config/portfolio'
-import { lazy, Suspense, Component, useEffect, type ReactNode } from 'react'
+import { isExperimental, portfolio, projectSlugs } from './config/portfolio'
+import { lazy, Suspense, Component, type ReactNode } from 'react'
 import { Navigate, Routes, Route, useLocation } from 'react-router-dom'
 import { ProjectReturnProvider } from './components/ProjectReturnContext'
 import RootLayout from './components/RootLayout'
@@ -108,16 +108,6 @@ const TypefaceWorkshopPage=lazy(()=>import('./pages/TypefaceWorkshopPage'))
 const PhysicalWorldPage = lazy(() => import('./pages/PhysicalWorldPage'))
 const ShuffleSimulationPage = lazy(() => import('./pages/ShuffleSimulationPage'))
 
-function PreviewFallback() {
-  const { pathname, hash, search } = useLocation()
-  const slug = pathname.replace(/^\/|\/$/g, '')
-  const destination = siblingSlugs.includes(slug) ? `${siblingHome}${slug}/${search}${hash}` : undefined
-  useEffect(() => {
-    if (destination) window.location.replace(destination)
-  }, [destination])
-  return destination ? <p><a href={destination}>Open the case study</a></p> : <NotFoundPage />
-}
-
 export default function App() {
   return (
     <ErrorBoundary>
@@ -145,7 +135,7 @@ export default function App() {
             <Route key={slug} path={`/${slug}`} element={<Component />} />
           ))}
           {!isExperimental && <Route path="/mentra-website" element={<Navigate to="/mentra#cs-website" replace />} />}
-          <Route path="*" element={<PreviewFallback />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
     </Suspense>

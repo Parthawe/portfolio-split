@@ -1,7 +1,7 @@
-import { isExperimental, portfolio, sibling, siblingHome } from '../config/portfolio';
+import { isExperimental, portfolio } from '../config/portfolio';
 import { useThemeMode } from '../hooks/useThemeMode';
 import ExperienceBoundary from '../components/ExperienceBoundary';
-import { useState, useEffect, useCallback, lazy, Suspense, useRef } from 'react';
+import { useState, useEffect, lazy, Suspense, useRef } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Nav from '../components/Nav'
@@ -85,14 +85,6 @@ const IDENTITY_SLIDE_INTERVAL_MS = 6500;
 export default function HomePage() {
   const heroStillTheme = useThemeMode() ? 'dark' : 'light';
   const navigate = useNavigate();
-  const navigateFromHero = useCallback((route: string) => {
-    const page = route.slice(1);
-    if (!portfolio.pages.includes(page) && sibling.pages.includes(page)) {
-      window.location.assign(`${siblingHome}${page}/`);
-    } else {
-      navigate(route);
-    }
-  }, [navigate]);
   const [identityTab, setIdentityTab] = useState<(typeof identityTabs)[number]['id']>('who-i-am');
   const [heroWebOpen, setHeroWebOpen] = useState(false);
   const [heroSceneReady, setHeroSceneReady] = useState(false);
@@ -233,9 +225,14 @@ export default function HomePage() {
           <p className="wr-hero-dek wr-hero-stage wr-hero-stage--dek">
             {homepageEntrance.intro}
           </p>
-          <Link className="wr-hero-proof-link glass-action" to={homepageEntrance.to}>
-            {homepageEntrance.label} <span aria-hidden="true">↗</span>
-          </Link>
+          <div className="wr-hero-actions">
+            {isExperimental && <Link className="wr-hero-mit-link glass-action" to="/mit">
+              Selected work for MIT <span aria-hidden="true">→</span>
+            </Link>}
+            <Link className="wr-hero-proof-link glass-action" to={homepageEntrance.to}>
+              {homepageEntrance.label} <span aria-hidden="true">↗</span>
+            </Link>
+          </div>
         </div>
 
         <div className="wr-hero-still" aria-hidden="true">
@@ -245,7 +242,7 @@ export default function HomePage() {
           {mountHeroScene ? (
             <ExperienceBoundary onError={() => setHeroSceneTimedOut(true)}><Suspense fallback={null}>
               <HeroScene
-                onNavigate={navigateFromHero}
+                onNavigate={navigate}
                 onExpandedChange={setHeroWebOpen}
                 onReady={() => {
                   // Keep the existing 2.2s warmup after the first real frame.

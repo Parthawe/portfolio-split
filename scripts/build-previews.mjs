@@ -100,9 +100,10 @@ for (const file of glasslyFiles.filter(file => /\.(?:html|js|css)$/.test(file)))
 }
 await writeFile(path.join(dist, '.nojekyll'), '')
 await writeFile(path.join(dist, 'robots.txt'), 'User-agent: *\nAllow: /\n')
-const directoryPage = `<!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow"><title>Parth Pawar · Portfolios</title>
-<style>@font-face{font-family:Nikolas;src:url(${root}/Assets/fonts/nikolas.woff2)}body{margin:0;background:#fafaf8;color:#171717;font:1rem/1.5 system-ui}main{max-width:40rem;margin:14vh auto;padding:1.5rem}h1{font:clamp(2.5rem,7vw,5rem)/1.1 Nikolas,serif;margin:0 0 2rem}a{display:block;padding:1rem 0;border-top:1px solid #d1d1ca;color:inherit;text-underline-offset:.22em}a:last-child{border-bottom:1px solid #d1d1ca}</style></head>
-<body><main><h1>Parth Pawar</h1><a href="${root}/product/">Product Design →</a><a href="${root}/experimental/">Design That Plays →</a></main></body></html>`
-await writeFile(path.join(dist, 'index.html'), directoryPage)
-await writeFile(path.join(dist, '404.html'), directoryPage.replace('<h1>Parth Pawar</h1>', '<h1>Page not found</h1>'))
+const artHome = `${root}/experimental/`
+const entrance = (title, destination, linkLabel, refresh = '') => `<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex, nofollow">${refresh}<title>${title} · Parth Pawar</title>
+<style>@font-face{font-family:Nikolas;src:url(${root}/Assets/fonts/nikolas.woff2)}body{margin:0;background:#fafaf8;color:#171717;font:1rem/1.5 system-ui}main{max-width:40rem;margin:14vh auto;padding:1.5rem}h1{font:clamp(2.5rem,7vw,5rem)/1.1 Nikolas,serif;margin:0 0 2rem}a{color:inherit;text-underline-offset:.22em}</style></head>
+<body><main><h1>${title}</h1><a href="${destination}">${linkLabel}</a></main></body></html>`
+await writeFile(path.join(dist, 'index.html'), entrance('Design That Plays', artHome, 'Open Design That Plays', `<meta http-equiv="refresh" content="0;url=${artHome}">`))
+await writeFile(path.join(dist, '404.html'), entrance('Page not found', `${artHome}work/`, 'Browse work by Parth Pawar'))

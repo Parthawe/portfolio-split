@@ -1,3 +1,4 @@
+import { isExperimental } from '../../config/portfolio'
 import { projectExperience, experienceHref, experienceLabel } from '../../data/projectExperiences'
 import ProjectRecord from './ProjectRecord'
 import { useProjectReturn } from '../ProjectReturnContext'
@@ -248,7 +249,7 @@ export default function ProjectHeader({
       <nav className="proj-reading-links" aria-label="Project navigation">
         <Link className="glass-action" to={backLink}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m10 5-7 7 7 7M3 12h18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg>{backLabel}</Link>
         <div className="proj-reading-destinations">
-          {project && <a className="glass-action" href={`https://designwhich.works/process/${encodeURIComponent(currentSlug)}`}>References &amp; process ↗</a>}
+          {!isExperimental && project && <a className="glass-action" href={`https://designwhich.works/process/${encodeURIComponent(currentSlug)}`}>References &amp; process ↗</a>}
           <a className="glass-action" href="#project-overview">{readingPath ? 'Overview' : 'Project overview'}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 14 7 7 7-7M12 3v18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>
           {readingPath && readingPath.id !== openingMediaId && <a href={`#${readingPath.id}`} onClick={event => followProjectSection(event, readingPath.id)} className="proj-reading-evidence glass-action">{readingPath.label}<svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="m5 14 7 7 7-7M12 3v18" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /></svg></a>}
         </div>
@@ -371,7 +372,7 @@ export default function ProjectHeader({
   return (
     <div className="wrap project-header">
       <div className="proj-back">
-        {project && <a className="glass-action" href={`https://designwhich.works/process/${encodeURIComponent(currentSlug)}`}>References &amp; process ↗</a>}
+        {!isExperimental && project && <a className="glass-action" href={`https://designwhich.works/process/${encodeURIComponent(currentSlug)}`}>References &amp; process ↗</a>}
         <Link to={backLink} className="back-link figma-hover">
           &larr; {backLabel}
           <FigmaSelect />

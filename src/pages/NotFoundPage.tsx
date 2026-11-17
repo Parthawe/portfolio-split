@@ -66,11 +66,6 @@ export default function NotFoundPage() {
               <span>you</span>
             </div>
 
-            <Link to="/graveyard" className="nf-ghost">
-              <span className="nf-ghost-name">deleted-frames/</span>
-              <span className="nf-ghost-hint">it might live in the graveyard &rarr;</span>
-            </Link>
-
             <nav className="nf-links" aria-label="Places to go instead">
               <Link to="/" className="not-found-link">Homepage</Link>
               <Link to="/work" className="not-found-link">All Work</Link>

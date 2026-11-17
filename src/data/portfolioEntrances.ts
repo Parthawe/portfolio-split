@@ -2,8 +2,8 @@ import { isExperimental } from '../config/portfolio'
 
 export const homepageEntrance = isExperimental
   ? {
-      intro: 'I build things that answer back: instruments, light sculptures, and playable simulations.',
-      label: 'Watch the duet',
+      intro: 'I build instruments, installations, and creative tools that let people see, hear, and change how a system responds.',
+      label: 'Watch the Jugalbandi duet',
       to: '/jugalbandi/#cs-film',
     }
   : {

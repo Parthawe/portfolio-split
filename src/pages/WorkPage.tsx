@@ -400,7 +400,7 @@ export default function WorkPage() {
     <>
       <Helmet>
         <title>Work · Parth Pawar</title>
-        <meta name="description" content="Selected work by Parth Pawar across product design, design engineering, AI wearables, fintech, and installations." />
+        <meta name="description" content={isExperimental ? "Instruments, installations, and experiments in physical interaction by Parth Pawar." : "Selected work by Parth Pawar across product design, design engineering, AI wearables, and fintech."} />
       </Helmet>
 
       <Nav />
@@ -420,7 +420,7 @@ export default function WorkPage() {
                 <nav className="work-mobile-views glass-segments" aria-label="Work page views">
                   {([['editorial', 'Editorial'], ['library', 'Index'], ['timeline', 'Arc']] as const).map(([view, label]) => <Link key={view} to={viewHref(view)} aria-current={viewMode === view ? 'page' : undefined}>{label}</Link>)}
                 </nav>
-                <a className="glass-action" href="https://designwhich.works/process">References &amp; process ↗</a>
+                {!isExperimental && <a className="glass-action" href="https://designwhich.works/process">References &amp; process ↗</a>}
                 {isExperimental && <Link className="work-room-link glass-action" to="/project-experiences">Explore project experiences</Link>}
               </div>
               {viewMode === 'editorial' ? (

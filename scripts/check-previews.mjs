@@ -25,8 +25,14 @@ try {
   const index = await fetch(`${base}/`)
   assert.equal(index.status, 200)
   const directory = await index.text()
+  assert.ok(directory.includes('content="0;url=/portfolio-split/experimental/"'))
+  assert.ok(!directory.includes('/portfolio-split/product/'))
+  const entrance = await browser.newPage({ reducedMotion: 'reduce' })
+  await entrance.goto(`${base}/`)
+  await entrance.waitForURL(`${base}/experimental/`)
+  await entrance.getByRole('heading', { level: 1, name: cases.experimental.heading }).waitFor()
+  await entrance.close()
   for (const [variant, details] of Object.entries(cases)) {
-    assert.ok(directory.includes(`/portfolio-split/${variant}/`))
     const rawHome = await (await fetch(`${base}/${variant}/`)).text()
     assert.ok(rawHome.includes(`property="og:image" content="https://parthawe.github.io/portfolio-split${portfolios[variant].shareImage}"`))
     const { featured, supporting, archive } = portfolios[variant]
@@ -51,6 +57,21 @@ try {
       await page.getByRole('heading', { level: 1, name: details.heading }).waitFor()
       assert.match(await page.locator('meta[name="robots"]').first().getAttribute('content'), /noindex/)
       assert.deepEqual(await listSlugs(page.locator('#works .pcard')), featured)
+      if (variant === 'experimental') {
+        const actions = page.locator('.wr-hero-actions').getByRole('link')
+        await expect(actions.first()).toHaveText(/Selected work for MIT/)
+        await expect(actions.nth(1)).toHaveAttribute('href', '/portfolio-split/experimental/jugalbandi/#cs-film')
+        await actions.first().click()
+        await expect(page.getByRole('heading', { name: 'Selected work for MIT Media Lab', exact: true })).toBeVisible()
+        await expect(page.locator('#nav a[data-label="Work"]')).not.toHaveClass(/\bactive\b/)
+        if (viewport.width === 390) {
+          await page.getByRole('button', { name: 'Open menu' }).click()
+          await expect(page.locator('#mobile-navigation').getByRole('link', { name: 'MIT Portfolio' })).toHaveAttribute('aria-current', 'page')
+        } else {
+          await expect(page.locator('#nav').getByRole('link', { name: 'MIT Portfolio' })).toHaveAttribute('aria-current', 'page')
+        }
+        await page.goto(`${url}/`)
+      }
       const homeCards = page.locator('#works .pcard')
       await expect(homeCards.locator('.pcard-ribbon')).toHaveCount(featured.length)
       await expect(homeCards.locator('.pcard-visual .pcard-name')).toHaveCount(featured.length)
@@ -189,11 +210,8 @@ try {
         }
       }
       await page.goto(`${url}/${slug}/`)
-      const portfolioSwitch = page.getByRole('group', { name: 'Portfolio', exact: true })
-      await expect(portfolioSwitch.getByRole('link', { name: portfolios[variant].name, exact: true })).toHaveAttribute('aria-current', 'true')
-      await portfolioSwitch.getByRole('link', { name: portfolios[other].name, exact: true }).click()
-      await page.waitForURL(`${base}/${other}/`)
-      await page.getByRole('heading', { level: 1, name: cases[other].heading, exact: true }).waitFor()
+      await expect(page.locator('.nav-portfolio-switch')).toHaveCount(0)
+      await expect(page.locator(`#nav a[href*="/portfolio-split/${other}/"], footer a[href*="/portfolio-split/${other}/"]`)).toHaveCount(0)
       assert.deepEqual(errors, [], `${variant} at ${viewport.width}px`)
       console.log(`${variant} passed at ${viewport.width}px`)
       await page.close()

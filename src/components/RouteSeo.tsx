@@ -1,5 +1,5 @@
 import mitPortfolio from '../config/mitPortfolio.json'
-import { isExperimental, portfolio } from '../config/portfolio'
+import { isExperimental, portfolio, previewRoot } from '../config/portfolio'
 import { Helmet } from 'react-helmet-async'
 import { useLocation } from 'react-router-dom'
 import { categories } from '../data/categories'
@@ -92,8 +92,8 @@ function getHomeSchema() {
         '@type': 'Person',
         name: 'Parth Pawar',
         url: SITE_URL,
-        jobTitle: 'Product Designer',
-        image: `${SITE_URL}/Assets/character/me/1.webp`,
+        jobTitle: isExperimental ? 'Artist and Creative Technologist' : 'Product Designer',
+        image: `${SITE_ORIGIN}${previewRoot}/Assets/character/me/1.webp`,
         alumniOf: {
           '@type': 'CollegeOrUniversity',
           name: 'New York University Tisch School of the Arts',
@@ -102,13 +102,9 @@ function getHomeSchema() {
           'https://www.linkedin.com/in/parth-pawar-1501/',
           'https://www.instagram.com/designwhich.works',
         ],
-        knowsAbout: [
-          'UX Design',
-          'AI Wearables',
-          'Fintech',
-          'Design Engineering',
-          'Physical Computing',
-        ],
+        knowsAbout: isExperimental
+          ? ['Experimental Interaction Design', 'Musical Interfaces', 'Installations', 'Physical Computing']
+          : ['UX Design', 'AI Wearables', 'Fintech', 'Design Engineering', 'Physical Computing'],
       },
     ],
   }
@@ -171,12 +167,14 @@ function getRouteMeta(pathname: string): RouteMeta {
   if (pathname === '/about') {
     return {
       title: 'About · Parth Pawar',
-      description: 'About Parth Pawar, Product Designer and Head of UI/UX at Mentra. Experience across AI wearables, fintech, civic tools, and design engineering.',
-      image: toAbsoluteUrl('/Assets/character/me/1.webp'),
+      description: isExperimental
+        ? 'About Parth Pawar’s practice in musical instruments, interactive installations, creative tools, and teaching.'
+        : 'About Parth Pawar, Product Designer and Head of UI/UX at Mentra. Experience across AI wearables, fintech, civic tools, and design engineering.',
+      image: toAbsoluteUrl(`${previewRoot}/Assets/character/me/1.webp`),
       url,
       type: 'website',
       robots,
-      imageAlt: 'Portrait of Parth Pawar, Product Designer.',
+      imageAlt: 'Portrait of Parth Pawar.',
       schema: {
         '@context': 'https://schema.org',
         '@type': 'ProfilePage',
@@ -185,11 +183,10 @@ function getRouteMeta(pathname: string): RouteMeta {
         mainEntity: {
           '@type': 'Person',
           name: 'Parth Pawar',
-          jobTitle: 'Product Designer',
-          worksFor: {
-            '@type': 'Organization',
-            name: 'Mentra',
-          },
+          jobTitle: isExperimental ? 'Artist and Creative Technologist' : 'Product Designer',
+          ...(!isExperimental && {
+            worksFor: { '@type': 'Organization', name: 'Mentra' },
+          }),
         },
       },
     }

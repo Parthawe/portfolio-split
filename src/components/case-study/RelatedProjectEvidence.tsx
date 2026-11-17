@@ -1,4 +1,4 @@
-import { projectLink } from '../../config/portfolio'
+import { projectSlugs } from '../../config/portfolio'
 import { Link } from 'react-router-dom'
 import { getProject } from '../../data/projects'
 import { projectImageProps } from '../../utils/projectImage'
@@ -14,14 +14,14 @@ const links: Record<string, { slug: string; title: string; note: string }[]> = {
 }
 
 export default function RelatedProjectEvidence({ slug }: { slug: string }) {
-  const items = links[slug]
-  if (!items) return null
+  const items = links[slug]?.filter(item => projectSlugs.includes(item.slug))
+  if (!items?.length) return null
   return <section className="project-evidence-links" aria-label="Related documented work">
     <h2>See the related work</h2>
     <div>{items.map(item => {
       const project = getProject(item.slug)
       const src = project?.cover16x9 || project?.image
-      return <Link key={item.slug} to={projectLink(`/${item.slug}`)}>
+      return <Link key={item.slug} to={`/${item.slug}`}>
         {src && <img {...projectImageProps(src)} src={src} alt="" loading="lazy" />}
         <span><strong>{item.title}</strong><span>{item.note}</span></span>
       </Link>

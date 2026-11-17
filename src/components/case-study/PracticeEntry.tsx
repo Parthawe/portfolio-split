@@ -1,4 +1,4 @@
-import { projectLink } from '../../config/portfolio'
+import { isExperimental, projectSlugs } from '../../config/portfolio'
 import { Helmet } from 'react-helmet-async'
 import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
@@ -24,6 +24,7 @@ export default function PracticeEntry({ slug }: { slug: keyof typeof practiceEnt
     return settleAnchor(id)
   }, [location.hash, anchors])
   const project = getProject(slug)!
+  const related = entry.related.filter(item => projectSlugs.includes(item.slug))
   const record = projectRecords[slug]
   const study = studyComparisons[slug]
   const firstStudy = study?.items[0]
@@ -56,7 +57,7 @@ export default function PracticeEntry({ slug }: { slug: keyof typeof practiceEnt
         </section>
         <nav className="practice-entry__nav" aria-label="Project navigation">
           <Link to="/work" className="glass-action">Back to work</Link>
-          <a href={`https://designwhich.works/process/${encodeURIComponent(slug)}`} className="glass-action">References &amp; process ↗</a>
+          {!isExperimental && <a href={`https://designwhich.works/process/${encodeURIComponent(slug)}`} className="glass-action">References &amp; process ↗</a>}
         </nav>
         {study && <details id={anchors.notes[0]} className="practice-entry__details" open={notesOpen} onToggle={event => setNotesOpen(event.currentTarget.open)}>
           <summary>Read the other studies ({study.items.length - 1})</summary>
@@ -70,7 +71,7 @@ export default function PracticeEntry({ slug }: { slug: keyof typeof practiceEnt
           {anchors.related.slice(1).map(id => <span key={id} id={id} className="practice-entry__anchor" />)}
           <h2>Related work with original material</h2>
           <p>These separate projects have their own documentation; they do not replace the missing course artifacts.</p>
-          {entry.related.map(item => <Link key={item.slug} to={projectLink(`/${item.slug}`)} className="practice-entry__link"><span>{item.title}</span><span>{item.note}</span></Link>)}
+          {related.map(item => <Link key={item.slug} to={`/${item.slug}`} className="practice-entry__link"><span>{item.title}</span><span>{item.note}</span></Link>)}
         </section>
       </article>
     </main>

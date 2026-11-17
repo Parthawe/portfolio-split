@@ -12,7 +12,7 @@ import { usePrefersReduced } from '../hooks/usePrefersReduced';
 import { useWebGLAvailable } from '../hooks/useWebGLAvailable';
 import { isHeroScenePerformanceDegraded } from '../utils/performance';
 import { usePerformanceDegraded } from '../hooks/usePerformanceDegraded';
-import { layoutHeroWeb, type WebNode, type WebEdge } from '../data/heroWeb';
+import { ART_HERO_DESTINATIONS, layoutHeroWeb, type WebNode, type WebEdge } from '../data/heroWeb';
 import SuperwhiteHighlight from './SuperwhiteHighlight';
 import { isExperimental } from '../config/portfolio';
 import { Link } from 'react-router-dom';
@@ -28,7 +28,7 @@ interface NodeConfig {
 }
 
 const NODES: NodeConfig[] = [
-  { position: [0, 1.9, 0], label: 'Installations', labelOffset: [0, 1.16, 0.1], route: '/installations' },
+  { position: [0, 1.9, 0], label: 'Explore Work', labelOffset: [0, 1.16, 0.1], route: '/work' },
   { position: [2.05, 0.6, -0.2], label: 'Design for Good', labelOffset: [0.45, 1.08, 0.12], route: '/design-for-good' },
   { position: [0, 0.15, 0.3], label: 'Product Design', labelOffset: [0, -1.12, 0.12], route: '/ux-design' },
   { position: [-2.15, 0.1, 0.3], label: 'Brand & Visual', labelOffset: [-0.36, -0.92, 0.12], route: '/brand-visual' },
@@ -37,7 +37,7 @@ const NODES: NodeConfig[] = [
 ];
 
 const SAFE_DESKTOP_NODES: NodeConfig[] = [
-  { position: [0.05, 1.78, 0], label: 'Installations', labelOffset: [0.02, 1.08, 0.1], route: '/installations' },
+  { position: [0.05, 1.78, 0], label: 'Explore Work', labelOffset: [0.02, 1.08, 0.1], route: '/work' },
   { position: [2.05, 0.72, -0.2], label: 'Design for Good', labelOffset: [0.42, 1.0, 0.12], route: '/design-for-good' },
   { position: [0.45, 0.04, 0.3], label: 'Product Design', labelOffset: [0.04, -1.02, 0.12], route: '/ux-design' },
   { position: [-1.15, -0.1, 0.3], label: 'Brand & Visual', labelOffset: [-0.36, -0.88, 0.12], route: '/brand-visual' },
@@ -1998,7 +1998,7 @@ function ExpandedWeb({
   dark: boolean;
   labelsAlwaysOn: boolean;
 }) {
-  const { nodes, edges } = useMemo(() => layoutHeroWeb(positions), [positions]);
+  const { nodes, edges } = useMemo(() => layoutHeroWeb(positions, isExperimental), [positions]);
   const nodeById = useMemo(() => new Map(nodes.map((n) => [n.id, n])), [nodes]);
 
   // Hovering an object lights up the threads that touch it.
@@ -2125,7 +2125,10 @@ function SceneContent({ reduced, isMobile, dark, expanded, selection, onSelect }
   const dragging = useRef(false);
   const aspect = size.height > 0 ? size.width / size.height : 1;
   const useSafeDesktopLayout = !isMobile && (size.width < 1480 || aspect < 0.95);
-  const nodes = useMemo(() => (useSafeDesktopLayout ? SAFE_DESKTOP_NODES : NODES), [useSafeDesktopLayout]);
+  const nodes = useMemo(() => {
+    const layout = useSafeDesktopLayout ? SAFE_DESKTOP_NODES : NODES;
+    return isExperimental ? layout.map((node, index) => ({ ...node, ...ART_HERO_DESTINATIONS[index] })) : layout;
+  }, [useSafeDesktopLayout]);
   // Phone screens get a closer, more deliberate resting composition. The
   // desktop framing leaves too much empty air above the hero copy on portrait
   // viewports, so the scene owns the visual stage without entering that copy.
