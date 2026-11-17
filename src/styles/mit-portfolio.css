@@ -98,3 +98,36 @@
 @media (max-width: 620px) {
   .mit-projects li { grid-template-columns: minmax(0, 1fr); }
 }
+
+.mit-evidence {
+  border-top: 1px solid var(--ink-10);
+  padding-block: .65rem;
+}
+
+.mit-performance {
+  max-width: 780px;
+  margin: 1.5rem 0;
+}
+
+.mit-performance video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #111110;
+}
+
+.mit-performance figcaption {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: .35rem 1rem;
+  padding-block: .75rem;
+  color: var(--ink-70);
+  font-size: var(--text-sm);
+}
+
+.mit-performance a {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: .22em;
+}

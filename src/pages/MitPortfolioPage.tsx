@@ -10,6 +10,7 @@ const groups = [
     heading: 'Tools for making with code',
     intro: 'I’m interested in tools that let people change a rule and find something they wouldn’t have drawn on their own.',
     guide: 'https://www.media.mit.edu/groups/future-sketches/applicant-information/',
+    evidence: { text: 'At NYU ITP I was a graduate assistant for Physical Computing, Interaction as Art Medium, and 100 Days of Making.', to: '/about#teaching', label: 'See my teaching experience' },
     next: 'I’d build a small workshop around editable constraints. Give people one starting rule, let them change it, and see which variations they can explain and make again on their own.',
     projects: [
       {
@@ -44,6 +45,7 @@ const groups = [
     heading: 'Making invisible processes tangible',
     intro: 'I use light, sound, and material to ask what becomes easier to notice when an interaction leaves the screen.',
     guide: 'https://www.media.mit.edu/groups/critical-matter/applicant-information/',
+    evidence: { text: 'The slider moves a servo, and each visitor’s turn leaves a visible trace in the salt.', to: '/sea-of-salt#cs-system', label: 'Inspect the slider, servo, and mill' },
     next: 'Enigma Tabletop is a proposed study. I’d compare the same letter classifier with activity shown on a screen or on a physical light panel, then ask visitors what they noticed when the model hesitated between two letters.',
     projects: [
       {
@@ -72,6 +74,25 @@ const groups = [
       },
     ],
   },
+  {
+    id: 'opera-of-the-future',
+    name: 'Opera of the Future',
+    heading: 'Making room for a musical answer',
+    intro: 'I use fabrication and interaction design to make instruments that can take part in a performance. Jugalbandi began with a Hindustani duet and the question of how a machine could answer a musician.',
+    guide: 'https://www.media.mit.edu/groups/opera-of-the-future/applicant-information/',
+    next: 'I’d build a study for two performers around the same acoustic mechanisms. Give each performer control over when a reply can begin, then listen for how different timings affect whether they leave space, overlap, or pass the phrase back.',
+    film: true,
+    projects: [
+      {
+        name: 'Inside Jugalbandi',
+        image: '/Assets/Projects/Jugalbandi/Photos/538A3938_nsquare_23.webp',
+        alt: 'Hexa-18 controller showing its top and sensor faces',
+        description: 'I designed and fabricated Hexa-18 and the robotic flute, harp, and rainsticks. The performer shapes the input with the controller. The acoustic mechanisms answer with air, plucked strings, and falling grains.',
+        to: '/jugalbandi#cs-instrument',
+        action: 'Follow the gesture into the mechanism',
+      },
+    ],
+  },
 ]
 
 export default function MitPortfolioPage() {
@@ -97,6 +118,18 @@ export default function MitPortfolioPage() {
                 <h2 id={`${group.id}-heading`}>{group.heading}</h2>
                 <p>{group.intro}</p>
               </header>
+              {group.film && (
+                <figure className="mit-performance">
+                  <video controls playsInline preload="none" poster="/Assets/mockups/projects/jugalbandi_16x9.webp" aria-label="Jugalbandi original performance">
+                    <source src="/Assets/films/jugalbandi.mp4" type="video/mp4" />
+                    <track kind="captions" src="/Assets/captions/jugalbandi.en.vtt" srcLang="en" label="English" />
+                  </video>
+                  <figcaption>
+                    <span>Jugalbandi · Original performance · Music begins at 0:20</span>
+                    <a href="/Assets/films/jugalbandi.mp4">Open the full recording</a>
+                  </figcaption>
+                </figure>
+              )}
               <ol className="mit-projects" aria-label={`Selected work for ${group.name}`}>
                 {group.projects.map(project => (
                   <li key={project.name}>
@@ -109,6 +142,12 @@ export default function MitPortfolioPage() {
                   </li>
                 ))}
               </ol>
+              {group.evidence && (
+                <div className="mit-evidence">
+                  <p>{group.evidence.text}</p>
+                  <Link className="mit-project-link" to={group.evidence.to}>{group.evidence.label} <span aria-hidden="true">↗</span></Link>
+                </div>
+              )}
               <div className="mit-next">
                 <h3>What I’d explore next</h3>
                 <p>{group.next}</p>
