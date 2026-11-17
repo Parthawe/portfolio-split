@@ -2187,7 +2187,7 @@ body.page-ready .wr-hero-stage {
   }
 
   .wr-portfolio-hero.wr-hero--plays:not(.wr-hero--web-open) {
-    height: min(100svh, calc(150vw - 830px));
+    height: min(100svh, calc(150vw - 795px));
   }
 
   .wr-featured-v2-inner {
