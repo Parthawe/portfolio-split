@@ -16,14 +16,6 @@ const groups = [
     next: 'I’d build a small workshop around editable constraints. Give people one starting rule, let them change it, and see which variations they can explain and make again on their own.',
     projects: [
       {
-        name: 'Butler’s Slice',
-        image: '/Assets/Projects/Typeface/photos/hero-title.jpg',
-        alt: 'A display specimen of Butler’s Slice',
-        description: 'I carried one diagonal cut through a type family. In the browser workshop, you can pull the actual Bézier points and see how the outline changes.',
-        to: '/typeface/workshop',
-        action: 'Open the glyph workshop',
-      },
-      {
         name: 'Enigma',
         image: '/Assets/Projects/Enigma/photos/tablet-input.jpg',
         alt: 'A hand drawing on the tablet below Enigma',
@@ -38,6 +30,14 @@ const groups = [
         description: 'I drew eight workshops and wrote the rules that arrange them into a floor you can explore.',
         to: '/after-hours',
         action: 'Explore the workshop floor',
+      },
+      {
+        name: 'Butler’s Slice',
+        image: '/Assets/Projects/Typeface/photos/hero-title.jpg',
+        alt: 'A display specimen of Butler’s Slice',
+        description: 'I carried one diagonal cut through a type family. In the browser workshop, you can pull the actual Bézier points and see how the outline changes.',
+        to: '/typeface/workshop',
+        action: 'Open the glyph workshop',
       },
     ],
   },
