@@ -38,12 +38,30 @@
 
 .mit-group-nav {
   display: flex;
-  flex-wrap: wrap;
-  gap: .65rem;
+  flex-direction: column;
   margin-top: 1.4rem;
+  max-width: 46rem;
+  border-bottom: 1px solid var(--ink-15);
 }
 
-.mit-group-nav a { min-height: 44px; }
+.mit-group-nav a {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+  align-items: baseline;
+  gap: .2rem 1rem;
+  padding-block: .65rem;
+  min-height: 44px;
+  border-top: 1px solid var(--ink-15);
+  color: var(--ink-70);
+  text-decoration: none;
+}
+
+.mit-group-nav__name { color: var(--ink); font-weight: 600; }
+.mit-group-nav a:hover .mit-group-nav__name { text-decoration: underline; text-underline-offset: .22em; }
+
+@media (max-width: 420px) {
+  .mit-group-nav a { grid-template-columns: minmax(0, 1fr); }
+}
 
 .mit-group {
   scroll-margin-top: calc(var(--nav-h) + 1.75rem);
@@ -104,6 +122,12 @@
   padding-block: .65rem;
 }
 
+.mit-evidence--teaching {
+  margin-top: 1.25rem;
+  border-top: 0;
+  padding-block: 0;
+}
+
 .mit-performance {
   max-width: 780px;
   margin: 1.5rem 0;
@@ -126,7 +150,16 @@
   font-size: var(--text-sm);
 }
 
+.mit-performance__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1rem;
+}
+
 .mit-performance a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
   color: var(--ink);
   text-decoration: underline;
   text-underline-offset: .22em;

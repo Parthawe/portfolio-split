@@ -3,6 +3,8 @@ import Footer from '../components/Footer'
 import Nav from '../components/Nav'
 import '../styles/mit-portfolio.css'
 
+const performancePath = '/Assets/films/jugalbandi.mp4'
+
 const groups = [
   {
     id: 'future-sketches',
@@ -65,12 +67,12 @@ const groups = [
         action: 'See the mill and slider',
       },
       {
-        name: 'Jugalbandi',
-        image: '/Assets/mockups/projects/jugalbandi_16x9.webp',
-        alt: 'A musician performing with the Hexa-18 controller',
-        description: 'I built the performer’s controller and the acoustic instruments that answer it. Air, strings, and falling grains each needed their own timing.',
-        to: '/jugalbandi#cs-film',
-        action: 'Watch the original duet',
+        name: 'Shuffle',
+        image: '/Assets/mockups/projects/shuffle_16x9.webp',
+        alt: 'The original Shuffle board with labeled motorized faders',
+        description: 'Push one fader and the others move. A physical game about balancing student life.',
+        to: '/shuffle#cs-film',
+        action: 'Watch the physical board in use',
       },
     ],
   },
@@ -107,7 +109,10 @@ export default function MitPortfolioPage() {
             <p>I build tools and physical interfaces that let people see, hear, and change how a system responds.</p>
             <nav className="mit-group-nav" aria-label="Research groups">
               {groups.map(group => (
-                <Link key={group.id} to={`#${group.id}`} className="glass-action">{group.name} <span aria-hidden="true">↓</span></Link>
+                <Link key={group.id} to={`#${group.id}`}>
+                  <span className="mit-group-nav__name">{group.name} <span aria-hidden="true">↓</span></span>
+                  <span>{group.film ? 'Jugalbandi · Original performance' : group.projects[0].name}</span>
+                </Link>
               ))}
             </nav>
           </header>
@@ -118,15 +123,24 @@ export default function MitPortfolioPage() {
                 <h2 id={`${group.id}-heading`}>{group.heading}</h2>
                 <p>{group.intro}</p>
               </header>
+              {group.id === 'future-sketches' && group.evidence && (
+                <div className="mit-evidence mit-evidence--teaching">
+                  <p>{group.evidence.text}</p>
+                  <Link className="mit-project-link" to={group.evidence.to}>{group.evidence.label} <span aria-hidden="true">↗</span></Link>
+                </div>
+              )}
               {group.film && (
                 <figure className="mit-performance">
                   <video controls playsInline preload="none" poster="/Assets/mockups/projects/jugalbandi_16x9.webp" aria-label="Jugalbandi original performance">
-                    <source src="/Assets/films/jugalbandi.mp4" type="video/mp4" />
-                    <track kind="captions" src="/Assets/captions/jugalbandi.en.vtt" srcLang="en" label="English" />
+                    <source src={performancePath} type="video/mp4" />
+                    <track kind="captions" src="/Assets/captions/jugalbandi.en.vtt" srcLang="en" label="English (automatic captions)" />
                   </video>
                   <figcaption>
                     <span>Jugalbandi · Original performance · Music begins at 0:20</span>
-                    <a href="/Assets/films/jugalbandi.mp4">Open the full recording</a>
+                    <div className="mit-performance__links">
+                      <a href={`${performancePath}#t=20`}>Open at 0:20</a>
+                      <a href={performancePath}>Open the full recording</a>
+                    </div>
                   </figcaption>
                 </figure>
               )}
@@ -142,7 +156,7 @@ export default function MitPortfolioPage() {
                   </li>
                 ))}
               </ol>
-              {group.evidence && (
+              {group.id !== 'future-sketches' && group.evidence && (
                 <div className="mit-evidence">
                   <p>{group.evidence.text}</p>
                   <Link className="mit-project-link" to={group.evidence.to}>{group.evidence.label} <span aria-hidden="true">↗</span></Link>

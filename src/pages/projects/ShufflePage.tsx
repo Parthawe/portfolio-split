@@ -133,7 +133,7 @@ export default function ShufflePage() {
         {/* Process */}
         <CsSection id="cs-process" label="02 &mdash; Process" title="Hardware &amp; Fabrication">
           <CsBody>
-            <p>The magic of the board is that the sliders push back. Each of the eight faders is a motorised potentiometer: the Arduino reads the one you move and drives the motors on the others, so raising Finals physically drags Sleep and Social Life down in front of you. The zero-sum rule is not displayed&mdash;it is enforced by the hardware.</p>
+            <p>Each of the eight faders is a motorized potentiometer. The Arduino reads the fader you move and drives the motors on the other faders.</p>
             <p>The enclosure is a laser-cut plywood wedge, built as two angled panels of four faders each, with the slider caps 3D-printed to sit comfortably under a fingertip. Underneath, the motorised faders bolt to the panels on standoffs and route back to an Arduino on a breadboard, with the firmware written in C++.</p>
           </CsBody>
           <div className="cs-label-row">
@@ -172,9 +172,7 @@ export default function ShufflePage() {
         {/* Exhibition */}
         <CsSection id="cs-exhibition" label="03 &mdash; In Play" title="Watching People Negotiate a Week">
           <CsBody>
-            <p>During informal exhibition interactions, visitors reached for the faders and noticed the others moving in response. Those observations informed the presentation; no completion-rate or comprehension study is documented here.</p>
-            <p>A quick interaction often became a longer conversation about priorities and burnout. Watching someone lower Sleep to raise Finals made the tradeoff immediately legible.</p>
-            <p>Friends compared slider positions side by side, turning a tactile interface into the kind of reflective debate that forms and calendars rarely create.</p>
+            <p>The original film and build photographs show how the faders move in response. The archive does not include a study of how visitors interpreted the trade-offs.</p>
           </CsBody>
         </CsSection>
 
